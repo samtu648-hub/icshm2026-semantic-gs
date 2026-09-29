@@ -9972,16 +9972,28 @@
       "public_sha256": "dbb83ed10133ff9a32ef962e0d647787aa8f8a2f2fd73ecdb6252e23ae8bb621",
       "bytes": 201
     },
+    "publication/audit.json": {
+      "sources": [],
+      "processing": "publication metadata or generated verification record",
+      "public_sha256": "e81faa4c8a3ef5b3df3852a063cf62569e237e4bcfeadca8e3be59ed13b121c1",
+      "bytes": 221
+    },
     "publication/export_notes.json": {
       "sources": [],
       "processing": "publication metadata or generated verification record",
       "public_sha256": "0a53d9f1d6b5ebe9fefdf6f23a43a0b57b1ddf1188b9640334a2191099b24d12",
       "bytes": 1142
     },
-    "publication/release.json": {
+    "publication/prepublication_verification.json": {
       "sources": [],
       "processing": "publication metadata or generated verification record",
-      "public_sha256": "1639518457cf6e90e45fccaf53ab6b31790803c842915dd0fc679f848e4f1bdb",
+      "public_sha256": "86995e225dc16ace0c97f60ca9623ff5124a9beff21f4be1c1b46652116fd2a6",
+      "bytes": 966
+    },
+    "publication/release.json": {
+      "sources": [],
+      "processing": "publication metadata or generated verification record; publication-only revision after initial export",
+      "public_sha256": "096f2b9166c3216370f028bc8537f23cee2cca687e52f32395d0cd02dfbbb517",
       "bytes": 488
     },
     "reports/README.md": {
@@ -10296,7 +10308,7 @@
       "sources": [
         {
           "path": "scripts/audit_public_release.py",
-          "sha256": "b1e9ac1e79a86ffbbf3c0e8a4b26ccd52fa475b65df41ecfa4f0e7503b45bde1"
+          "sha256": "9e5246e1424a2a837497414feb2f8dcb5f52f141759c35052e59e076de3f322b"
         }
       ],
       "processing": "byte-equivalent text copy; publication-only revision after initial export",
@@ -13805,7 +13817,7 @@
       "sources": [
         {
           "path": "scripts/prepare_public_release.py",
-          "sha256": "3f7834cad927f35bb83a4e524a38ff4a4b5ca73c15e01b03a4458c4b9f1acf6c"
+          "sha256": "189dd9fb9ed6e2159b67b345cbc95f4feb0a6d5b42f14445e6e7012e99ce46eb"
         }
       ],
       "processing": "byte-equivalent text copy; publication-only revision after initial export",
@@ -19866,7 +19878,7 @@
       "sources": [
         {
           "path": "tests/test_public_release.py",
-          "sha256": "e2075ae9ceaae5d4fffcd4e2b0b7252be509c26f087bc87b5c3562cf2dc9a53c"
+          "sha256": "9462712780cd6dabdd7e78ae16e91867df57d7d280ba7cee3b8593e37c425af2"
         }
       ],
       "processing": "byte-equivalent text copy; publication-only revision after initial export",

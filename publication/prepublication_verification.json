@@ -1,0 +1,35 @@
+{
+  "publication_record": "REPORT-005-GITHUB-PUBLIC-RELEASE",
+  "status": "passed_prepublication",
+  "source_audit": {
+    "status": "passed",
+    "checks": 32677,
+    "failures": [],
+    "source_files": 1972,
+    "archive_sha256": "5a5e9da16e536729bc8321e3ef681e180801ba96e42d6189ee6b3a62d6f207b3",
+    "no_training": true,
+    "no_inference": true
+  },
+  "site_audit": {
+    "status": "passed",
+    "checks": 7911,
+    "failures": [],
+    "files": 1177,
+    "full_video_decode": true,
+    "source_hash_check": false
+  },
+  "offline_browser": {
+    "checks": 56,
+    "desktop_mobile": true,
+    "all_eight_videos_play_seek": true
+  },
+  "repository_health": {
+    "tests": 715,
+    "skipped": 103,
+    "status": "passed",
+    "reason": "100 optional dependencies plus 3 unbundled historical artifacts"
+  },
+  "no_training": true,
+  "no_inference": true,
+  "scope": "Local publication snapshot; online deployment verification is recorded separately in REPORT005."
+}
