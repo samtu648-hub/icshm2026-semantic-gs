@@ -616,7 +616,9 @@ class Package:
         save(self.out/'data/asset_manifest.json',{'schema_version':1,'experiment_id':ID,'assets':self.assets})
         save(self.out/'data/source_hashes.json',self.sources)
         save(self.out/'data/build.json',dict(experiment_id=ID,evidence_cutoff='2026-09-23',built_date='2026-09-29',
-             source_registry_entries=len(self.registry),source_report_count=len(list((ROOT/'experiments/runs').glob('*/report.md')))-int((ROOT/'experiments/runs'/ID/'report.md').exists()),
+             source_registry_entries=len(self.registry),source_report_count=sum(
+                 (ROOT/(e.get('report_path') or f"experiments/runs/{e['experiment_id']}/report.md")).is_file()
+                 for e in [*self.registry,*self.supplemental]),
              state_counts=dict(Counter(e['state'] for e in self.records)),figure_groups=len(self.figures),videos=len(self.videos),gap_count=len(self.gaps),
              handoff_revision=2,author_guide_chapters=len(self.author_guide['sections']),author_guide_terms=len(self.author_guide['glossary']),
              palette=PALETTE.tolist(),classes=CLASSES,git_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),

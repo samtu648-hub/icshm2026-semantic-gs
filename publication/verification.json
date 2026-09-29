@@ -1,0 +1,142 @@
+{
+  "publication_record": "REPORT-005-GITHUB-PUBLIC-RELEASE",
+  "date": "2026-09-29",
+  "release_commit": "1ffbcfb2d2a825e6a7fe3c02721afeff2ee717e6",
+  "release_tag": "paper-handoff-20260929-v1",
+  "repository": "https://github.com/samtu648-hub/icshm2026-semantic-gs",
+  "pages": "https://samtu648-hub.github.io/icshm2026-semantic-gs/",
+  "github_actions_run": 36527815312,
+  "deployment": "success",
+  "first_deployment_failure": "GitHub Pages default environment permitted main only; exact release tag was added, failed deploy retried successfully.",
+  "source_preservation": {
+    "source_files_before": 1922,
+    "changed": [
+      "scripts/build_paper_handoff.py",
+      "PROJECT_STATUS.md",
+      "TASKS.md",
+      "experiments/registry.yaml"
+    ],
+    "missing": []
+  },
+  "anonymous_download": {
+    "anonymous_download": true,
+    "bytes": 82221694,
+    "sha256": "4dbb424cb9e0abf189375463e3852f553f6636fca3eec35611d983b7bae219ba",
+    "url": "https://github.com/samtu648-hub/icshm2026-semantic-gs/releases/download/paper-handoff-20260929-v1/paper-handoff-20260929-public.zip"
+  },
+  "public_health": {
+    "tests": 715,
+    "skipped": 103,
+    "errors": 0,
+    "failures": 0,
+    "local_clone": "passed",
+    "anonymous_remote_clone": "passed"
+  },
+  "original_health": {
+    "tests": 715,
+    "skipped": 100,
+    "errors": 0,
+    "failures": 0
+  },
+  "offline_browser": {
+    "checks": 56,
+    "status": "passed",
+    "relocated_chinese_space_directory": true
+  },
+  "limitations": [
+    "No model training, inference or rescoring was performed.",
+    "Model weights, raw dataset and full historical run artifacts are not distributed.",
+    "Original private history remains private; historical experiment commits are provenance, not public clone commits.",
+    "Prepublication ZIP receipt was written before final sealing; the final digest is pinned in publication/release.json and the release SHA256 asset."
+  ],
+  "online_browser": {
+    "status": "passed",
+    "checks": 62,
+    "labels": [
+      "351 experiment rows",
+      "ten figure themes",
+      "eight playable videos",
+      "twelve readable author chapters",
+      "sixteen glossary entries",
+      "author_no_overflow_1440_contents",
+      "author_no_overflow_1440_A04",
+      "author_no_overflow_1440_A09",
+      "author_no_overflow_1440_glossary",
+      "author_no_overflow_390_contents",
+      "author_no_overflow_390_A04",
+      "author_no_overflow_390_A09",
+      "author_no_overflow_390_glossary",
+      "author self-check answer expands",
+      "author answer explains mixed-system mistake",
+      "author evidence link reaches figure library",
+      "no_overflow_1440_F03",
+      "no_overflow_1440_F07",
+      "no_overflow_1440_F09",
+      "no_overflow_1440_F10",
+      "no_overflow_1440_experiments",
+      "no_overflow_1366_F03",
+      "no_overflow_1366_F07",
+      "no_overflow_1366_F09",
+      "no_overflow_1366_F10",
+      "no_overflow_1366_experiments",
+      "no_overflow_390_F03",
+      "no_overflow_390_F07",
+      "no_overflow_390_F09",
+      "no_overflow_390_F10",
+      "no_overflow_390_experiments",
+      "search resolves experiment",
+      "empty search response",
+      "status filter",
+      "filter reset",
+      "paired example expanded",
+      "portable report and provenance detail",
+      "video_0_plays",
+      "video_0_seeks",
+      "video_1_plays",
+      "video_1_seeks",
+      "video_2_plays",
+      "video_2_seeks",
+      "video_3_plays",
+      "video_3_seeks",
+      "video_4_plays",
+      "video_4_seeks",
+      "video_5_plays",
+      "video_5_seeks",
+      "video_6_plays",
+      "video_6_seeks",
+      "video_7_plays",
+      "video_7_seeks",
+      "enlarged text fits",
+      "zero failed site responses",
+      "zero browser errors",
+      "anonymous GitHub ",
+      "anonymous GitHub /blob/main/docs/paper/author_guide.md",
+      "anonymous GitHub /blob/main/docs/paper/team_comparison.md",
+      "anonymous GitHub /releases/tag/paper-handoff-20260929-v1",
+      "anonymous rendered README",
+      "browser has no authenticated GitHub session"
+    ],
+    "errors": []
+  },
+  "downloaded_site_audit": {
+    "status": "passed",
+    "checks": 7911,
+    "failures": [],
+    "files": 1177,
+    "full_video_decode": true,
+    "source_hash_check": false
+  },
+  "image_metadata": {
+    "images_checked": 70,
+    "nonempty_exif": []
+  },
+  "status": "completed_verified_publication",
+  "initial_verification_failures": [
+    "Three saved-artifact-only tests were made explicit optional skips in the public export.",
+    "Two Git provenance tests needed an initial public commit; passed after initializing public history.",
+    "Personal-path sanitation quote handling and PNG/JPG asset counting were corrected before upload.",
+    "First SSH push did not respond; HTTPS GitHub CLI credential helper succeeded.",
+    "First Pages deploy was rejected by its default main-only environment rule; the exact approved release tag was added and the deploy rerun succeeded.",
+    "Online browser first checked a streaming HTML glossary before parsing completed, then checked video playback after a fixed 200 ms; replaced timing assumptions with DOM and decoded playback/seek readiness, then 62 checks passed."
+  ]
+}

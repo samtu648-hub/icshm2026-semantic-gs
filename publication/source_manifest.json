@@ -125,12 +125,12 @@
       "sources": [
         {
           "path": "PROJECT_STATUS.md",
-          "sha256": "03eaf54f5b86d812d719003bcce3bd5f4496cf155df9e40e6d83f7295adfa033"
+          "sha256": "13214669d6fcd9b7597c91c7683b4d58669fde1508e87a3e5e788c44242b9bdb"
         }
       ],
-      "processing": "byte-equivalent text copy; portable links or explicit missing-runtime annotations",
-      "public_sha256": "1a4a7284ed597196a054a07c63723e6291ecf96813e8b8ef046bc85bf622f353",
-      "bytes": 141814
+      "processing": "public links previously rewritten; update REPORT005 completion paragraph",
+      "public_sha256": "243b7360fb639fc4245fb99b51a1de9982b4953e327587bdc09a1eaa66424335",
+      "bytes": 142107
     },
     "README.md": {
       "sources": [
@@ -169,12 +169,12 @@
       "sources": [
         {
           "path": "TASKS.md",
-          "sha256": "d6e64820e0763a6f90ca6aee9d3902d61e374d7d1ba93640493b6fe07252b055"
+          "sha256": "e254c574149f21b86235769a857c5263637b6f10cfcaf3086b9cb8b60c55c84a"
         }
       ],
-      "processing": "byte-equivalent text copy; portable links or explicit missing-runtime annotations",
-      "public_sha256": "5ea52f86ee0d5439427801bcea1c45f1cfc91cbc56007167e371d17aa4161ace",
-      "bytes": 119490
+      "processing": "public links previously rewritten; update REPORT005 completion paragraph",
+      "public_sha256": "ad81494a34dbaff13216b8729631cb4a62a7ae517eb85064b18c23b0248fa396",
+      "bytes": 119783
     },
     "adapters/scaffold_gs/visibility_rasterizer/README.md": {
       "sources": [
@@ -1935,12 +1935,12 @@
       "sources": [
         {
           "path": "experiments/registry.yaml",
-          "sha256": "819ca1b23c264043b7b7afa706f17ea14380e53b65244f54e504bea44f32de83"
+          "sha256": "a63d680365539c39d9430b6adfe4102221d331a3bd3fa8fde2b656f697b2a283"
         }
       ],
-      "processing": "byte-equivalent text copy",
-      "public_sha256": "819ca1b23c264043b7b7afa706f17ea14380e53b65244f54e504bea44f32de83",
-      "bytes": 1356475
+      "processing": "publication completion record or verification; historical indices frozen; path sanitation only",
+      "public_sha256": "a63d680365539c39d9430b6adfe4102221d331a3bd3fa8fde2b656f697b2a283",
+      "bytes": 1357177
     },
     "experiments/runs/GEO-000/config.yaml": {
       "sources": [
@@ -3024,23 +3024,23 @@
       "sources": [
         {
           "path": "experiments/runs/REPORT-005-GITHUB-PUBLIC-RELEASE/config.yaml",
-          "sha256": "dab9fac2aa6e267130224e95d98f598164151b0ca1e8704dfd0ea6f4b641b328"
+          "sha256": "7117635d30aa53b1679bc0cb517d432ea5022521a4c07568487e6530ee6e0fa6"
         }
       ],
-      "processing": "byte-equivalent text copy",
-      "public_sha256": "dab9fac2aa6e267130224e95d98f598164151b0ca1e8704dfd0ea6f4b641b328",
-      "bytes": 879
+      "processing": "publication completion record or verification; historical indices frozen; path sanitation only",
+      "public_sha256": "7117635d30aa53b1679bc0cb517d432ea5022521a4c07568487e6530ee6e0fa6",
+      "bytes": 1175
     },
     "experiments/runs/REPORT-005-GITHUB-PUBLIC-RELEASE/report.md": {
       "sources": [
         {
           "path": "experiments/runs/REPORT-005-GITHUB-PUBLIC-RELEASE/report.md",
-          "sha256": "bd5e59eab3cce48eba1e763a168b3a464531b287d2358a6e98e7c26b8e748b54"
+          "sha256": "9bdae8c643c74b9ecd5685c6ef3662cbd02092aaeb1d60033e751d015ec6e553"
         }
       ],
-      "processing": "byte-equivalent text copy",
-      "public_sha256": "bd5e59eab3cce48eba1e763a168b3a464531b287d2358a6e98e7c26b8e748b54",
-      "bytes": 673
+      "processing": "publication completion record or verification; historical indices frozen; path sanitation only",
+      "public_sha256": "9bdae8c643c74b9ecd5685c6ef3662cbd02092aaeb1d60033e751d015ec6e553",
+      "bytes": 6278
     },
     "experiments/runs/RESEARCH-RECON-001/config.yaml": {
       "sources": [
@@ -9974,8 +9974,8 @@
     },
     "publication/audit.json": {
       "sources": [],
-      "processing": "publication metadata or generated verification record",
-      "public_sha256": "e81faa4c8a3ef5b3df3852a063cf62569e237e4bcfeadca8e3be59ed13b121c1",
+      "processing": "publication metadata or generated verification record; publication-only revision after initial export",
+      "public_sha256": "20bcfe23b72d901fb6734e27c99efc1504c1c921e3b5ea43a80e0fd4390ac065",
       "bytes": 221
     },
     "publication/export_notes.json": {
@@ -9995,6 +9995,12 @@
       "processing": "publication metadata or generated verification record; publication-only revision after initial export",
       "public_sha256": "096f2b9166c3216370f028bc8537f23cee2cca687e52f32395d0cd02dfbbb517",
       "bytes": 488
+    },
+    "publication/verification.json": {
+      "sources": [],
+      "processing": "publication metadata or generated verification record",
+      "public_sha256": "ba26964c11759a3e5801df6cffcde74dd58e148be1fa8ce2256a5f219c5d5550",
+      "bytes": 5216
     },
     "reports/README.md": {
       "sources": [
@@ -11595,12 +11601,12 @@
       "sources": [
         {
           "path": "scripts/build_paper_handoff.py",
-          "sha256": "fcd24b1cadf976364117703d5c5e64a2db25773770b8d1db071255e255d81ea0"
+          "sha256": "d2d7ae6441d3a7e5b012a42c96db20a1ae30c16ca852d55be1659ac6c5a5613d"
         }
       ],
-      "processing": "byte-equivalent text copy",
-      "public_sha256": "fcd24b1cadf976364117703d5c5e64a2db25773770b8d1db071255e255d81ea0",
-      "bytes": 64612
+      "processing": "publication completion record or verification; historical indices frozen; path sanitation only",
+      "public_sha256": "d2d7ae6441d3a7e5b012a42c96db20a1ae30c16ca852d55be1659ac6c5a5613d",
+      "bytes": 64679
     },
     "scripts/build_photo_geometry.py": {
       "sources": [
@@ -12085,6 +12091,17 @@
       "processing": "byte-equivalent text copy",
       "public_sha256": "01a33315040a0ec75fac590d121ccc85956a317aa265fe5ea3078c8416750b54",
       "bytes": 5532
+    },
+    "scripts/check_public_site.mjs": {
+      "sources": [
+        {
+          "path": "scripts/check_public_site.mjs",
+          "sha256": "a3fe30f8895b9d41e2a0ff05aa6d20294883d476a23996ddaec6a454402e21b8"
+        }
+      ],
+      "processing": "publication completion record or verification; historical indices frozen; path sanitation only",
+      "public_sha256": "a3fe30f8895b9d41e2a0ff05aa6d20294883d476a23996ddaec6a454402e21b8",
+      "bytes": 8033
     },
     "scripts/check_quality_expert_scale_identity.py": {
       "sources": [
