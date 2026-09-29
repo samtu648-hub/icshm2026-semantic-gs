@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-174-IMPROVEDGS-BRIDGE-PROTECTED-EAS",
+  "title": "RGB170桥梁硬保护背景可靠性EAS单变量候选",
+  "phase": "reconstruction",
+  "parent_experiment": "RGB-170-IMPROVEDGS-BUDGET15M-H50K;QUAL-025-BRIDGE-PROTECTED-EAS-DIAG",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "split_path": "outputs/quality/all_data/RGB-120-r2/split.json",
+  "seed": 0,
+  "data": {
+    "scene": "outputs/quality/all_data/RGB-120-r2/scene",
+    "labels": "outputs/quality/all_data/SEM-370-r1/labels",
+    "eas_reliability": "outputs/quality/QUAL-025/diagnostic-r2/reliability",
+    "rgb_train_views": 400,
+    "semantic_localization_views": 300,
+    "official_cameras_fixed": true,
+    "initial_point_count": 72292,
+    "initial_ply_sha256": "10a88fb018c27530b3bbfa0f7000408693ba75228067f5311e7775e4755e68f2"
+  },
+  "training": {
+    "iterations": 50000,
+    "densify_from_iter": 500,
+    "densify_until_iter": 15000,
+    "densification_interval": 100,
+    "save_iterations": [15000, 20000, 30000, 40000, 50000],
+    "training_method": "improvedgs",
+    "budget": 1500000,
+    "use_eas": true,
+    "use_las": true,
+    "use_rap": true,
+    "use_mu": true,
+    "edge_sample_cams": 10,
+    "single_primary_variable": "Replace RGB170 native EAS edge weights with fixed RGB170-residual reliability-weighted edges while hard-protecting all available labeled bridge pixels; RGB loss and all other training controls remain identical"
+  },
+  "controls_held_fixed": [
+    "all400 official cameras and full real-photo RGB supervision",
+    "72,292-point initialization, seed 0 and camera sampler",
+    "50k horizon, 15k densification cutoff and 1.5M budget",
+    "EAS/LAS/RAP/MU, edge camera schedule, gradient eligibility and optimizer",
+    "no deletion, opacity edit, semantic training, 3D label construction or generative completion"
+  ],
+  "evaluation": {
+    "baseline": "RGB-170-IMPROVEDGS-BUDGET15M-H50K@50000",
+    "scopes": [
+      "all400 training-view RGB fit and per-view wins",
+      "all300 deck, stay_cable, tower and foundation regions",
+      "159-160, 235-245, 385-392 and legacy difficult groups",
+      "stay_cable visible support, boundary and continuity",
+      "water, shore, sky and background artifact regions",
+      "fixed 144-pose no-GT trajectory, resources and render speed"
+    ],
+    "interpretation": "Bridge structure is primary and background cleanliness is secondary. Full400 remains training fit; the 144 trajectory has no GT and is not a generalization claim."
+  },
+  "output": "outputs/quality/RGB-174/full-r1",
+  "preserve_failures": true,
+  "semantic_training": false
+}

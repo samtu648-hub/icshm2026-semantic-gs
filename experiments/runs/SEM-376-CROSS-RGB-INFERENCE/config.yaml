@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-376-CROSS-RGB-INFERENCE",
+  "parent_experiment": "SEM-371-STANDARD-ALL300;SEM-375-SCAFFOLD-NOAPPEARANCE-ALL300",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "split_path": "outputs/quality/all_data/RGB-120-r2/split.json",
+  "main_variable": "frozen semantic checkpoint at fixed RGB input; complete 2x2 crossover, zero training",
+  "output_path": "outputs/quality/SEM-376/r1",
+  "arms": {
+    "standard_sem375": {
+      "rgb": "outputs/quality/backbone_comparison/standard",
+      "semantic": "outputs/quality/SEM-375/r1",
+      "rgb_id": "RGB-130-STANDARD-ALL400",
+      "semantic_id": "SEM-375-SCAFFOLD-NOAPPEARANCE-ALL300"
+    },
+    "scaffold_sem371": {
+      "rgb": "outputs/quality/SEM-375/r1",
+      "semantic": "outputs/quality/backbone_comparison/standard",
+      "rgb_id": "RGB-136-SCAFFOLD-NOAPPEARANCE-ALL400",
+      "semantic_id": "SEM-371-STANDARD-ALL300"
+    }
+  },
+  "inference_views": 544,
+  "training_steps": 0,
+  "quality_scope": "all300 training-view fit; 100 unlabeled and144 trajectory have no GT"
+}

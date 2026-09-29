@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "experiment_id": "GEO-027-STD-CTRL-10K",
+  "title": "Fresh Standard 3DGS original-initialization 10k control",
+  "phase": "standard_geometry_initialization_control",
+  "status": "prepared_not_started_gpu_driver_unavailable",
+  "code_git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "parent_experiment": "RGB-011-FULL,GEO-026-P0-F64",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1",
+  "seed": 0,
+  "backbone": "standard-3dgs",
+  "upstream_commit": "54c035f7834b564019656c3e3fcc3646292f727d",
+  "source_binding": {
+    "working_tree_diff_sha256": "843942f218b47a5b03a517881f4cc229d0eeb898f8fbdaa1f86aaf6ae69f8e21",
+    "dataset_readers_sha256": "44ac9fe50b5a6a219676cceb8d334111f4bd21f1f83568e9378d82a4e7828b1a",
+    "train_py_sha256": "0fc5d65b0c789b250b6e770757925909f5ea94cdc7c5e977eaaec99ddc03e92c",
+    "render_py_sha256": "601b01c7caaf5f02fa0e11c508664ef156f2d9d8a6d5ad5f3bf7737ae773e305",
+    "diff_gaussian_rasterization_commit": "9c5c2028f6fbee2be239bc4c9421ff894fe4fbe0",
+    "simple_knn_commit": "86710c2d4b46680c02301765dd79e465819c8f19"
+  },
+  "runner_binding": {
+    "scripts/run_geometry_standard_10k.sh": "a5f08c9c06c7f9386d4b3bc5dcb09963fff0a2eb83037e44c9bcbd7338e2763e",
+    "scripts/evaluate_geometry_standard_checkpoints.sh": "9254130e4b30e7f44a8e106b5d8a72c85917c3a23cc0209059dc9268fdc90f11",
+    "scripts/verify_geo027_standard_source.py": "3ed24e288acec57df98d0f3912dc28fe237ecd7f577041730f21965e42d2e322"
+  },
+  "training": {
+    "iterations": [1000, 3000, 5000, 10000],
+    "schedule": "one fresh continuous 0-to-10000 process",
+    "train_views": 303,
+    "validation_views": 74,
+    "resolution": [1320, 989],
+    "initialization": "original training-only DLT sparse/0/points3D.ply",
+    "initialization_ply_sha256": "10a88fb018c27530b3bbfa0f7000408693ba75228067f5311e7775e4755e68f2"
+  },
+  "preflight": {
+    "standard_source_binding": "passed",
+    "standard_reader_train_cameras": 303,
+    "standard_reader_validation_cameras": 74,
+    "standard_reader_initial_points": 72292,
+    "standard_reader_points_finite": true,
+    "gpu_driver_probe": "failed_nvidia_smi_could_not_communicate_with_driver",
+    "training_started": false
+  },
+  "fixed_pair_contract": [
+    "same Standard source and native recipe",
+    "same official cameras and full-frame PINHOLE RGB",
+    "same 303/74 split, seed, losses, optimizer, densification and evaluator",
+    "only sparse/0/points3D.ply differs between arms"
+  ],
+  "output_root": "external_gitignored:ICSHM_OUTPUT_ROOT/geometry_prior/standard_v1/runs/GEO-027-STD-CTRL-10K"
+}

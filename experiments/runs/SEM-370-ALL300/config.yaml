@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-370-ALL300",
+  "parent_experiment": "RGB-120-ALL400;SEM-330;SEM-331;SEM-349;SEM-362;SEM-363",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "split_path": "outputs/quality/all_data/RGB-120-r2/split.json",
+  "quality_claim": null,
+  "main_variable": "all300 labels on matched frozen all400 renderer; unchanged semantic recipes",
+  "static_steps": 10000,
+  "mask2former_steps": 6000,
+  "b2_paired_steps": [
+    3000,
+    6000
+  ],
+  "deck_steps": 3000,
+  "stay_cable_steps": 3000,
+  "fusion": "fixed SEM363 shared head transfer; no in-sample refitting or new experts",
+  "diagnostic_views": [
+    "159.png",
+    "160.png",
+    "140.png",
+    "146.png",
+    "081.png",
+    "057.png",
+    "064.png",
+    "054.png",
+    "174.png"
+  ]
+}

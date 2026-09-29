@@ -1,0 +1,12 @@
+{
+ "schema_version":1,"experiment_id":"QUAL-015-COMPONENT-EXPLORATORY",
+ "parent_experiment":"SEM-416-COMPONENT-POINT-DIAG;SEM-421-COMPONENT-EXPLORATORY-CTRL;SEM-422-COMPONENT-EXPLORATORY-QUOTA",
+ "git_commit":"49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+ "seed":20260805,"dataset_manifest":"data/manifests/contest_dataset_v1.json","split_id":"spatial_confirmation_v2",
+ "pair":["SEM-421-COMPONENT-EXPLORATORY-CTRL","SEM-422-COMPONENT-EXPLORATORY-QUOTA"],
+ "output_path":"outputs/quality/QUAL-015/r1",
+ "quota":{"points_per_component":16,"area_max":1024,"fraction_cap":0.05,"seed":418},
+ "protocol":"docs/experiments/component_exploratory_protocol.md",
+ "reason":"Latest user explicitly requested empirical extension without excessive defensive stopping. Preserve SEM416's failed 10-percent prevalence gate; test the same unchanged intervention as exploratory research under new IDs.",
+ "quality_claim":null
+}

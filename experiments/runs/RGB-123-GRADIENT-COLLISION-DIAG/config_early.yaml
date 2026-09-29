@@ -1,0 +1,126 @@
+{
+  "experiment_id": "RGB-123-GRADIENT-COLLISION-DIAG",
+  "parent_experiment": "RGB-120-ALL400",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 0,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "parent_run": "outputs/quality/all_data/RGB-120-r2",
+  "semantic_batch": "outputs/quality/all_data/SEM-370-r1",
+  "output": "outputs/quality/diagnostics/RGB-123-early7k-r1",
+  "views": [
+    "159.png",
+    "160.png",
+    "161.png",
+    "049.png",
+    "241.png",
+    "146.png"
+  ],
+  "main_variable": "diagnostic only: sum per-pixel absolute screen-position derivatives versus absolute summed derivatives; no optimizer or model edits",
+  "loss": "0.8 L1 +0.2 DSSIM; region masks applied to fixed dL/dRGB sources, not independently normalized region losses",
+  "roi_boxes": {
+    "159.png": {
+      "shore": [
+        [
+          20,
+          720,
+          290,
+          870
+        ],
+        [
+          920,
+          720,
+          1310,
+          860
+        ]
+      ],
+      "near": [
+        [
+          20,
+          890,
+          240,
+          985
+        ]
+      ],
+      "far_bank_reference": [
+        [
+          30,
+          150,
+          600,
+          250
+        ]
+      ]
+    },
+    "160.png": {
+      "shore": [
+        [
+          20,
+          740,
+          285,
+          885
+        ],
+        [
+          920,
+          740,
+          1310,
+          875
+        ]
+      ],
+      "near": [
+        [
+          20,
+          905,
+          230,
+          985
+        ]
+      ],
+      "far_bank_reference": [
+        [
+          30,
+          150,
+          600,
+          250
+        ]
+      ]
+    },
+    "161.png": {
+      "shore": [
+        [
+          20,
+          740,
+          285,
+          885
+        ],
+        [
+          920,
+          740,
+          1310,
+          875
+        ]
+      ],
+      "near": [
+        [
+          20,
+          905,
+          230,
+          985
+        ]
+      ],
+      "far_bank_reference": [
+        [
+          30,
+          150,
+          600,
+          250
+        ]
+      ]
+    }
+  },
+  "reference_masks": "GT deck ID1 and stay_cable ID2; target background masks exclude all structural labels dilated4px",
+  "metric": "1 - sum_g(|sum_p gx|+|sum_p gy|)/sum_gp(|gx|+|gy|); auxiliary per-Gaussian quantiles/radius strata",
+  "pixel_validation": "16 fixed single-pixel native backward sums versus instrumented combined backward",
+  "authorization": "2026-09-15 user \u90a3\u6211\u4eec\u63a8\u8fdb\u4e00\u4e0b: first diagnostic only; training conditional, not launched",
+  "quality_claim": null,
+  "iteration": 7000,
+  "phase": "same frozen diagnostic at saved 7k densification-active endpoint; no updates"
+}

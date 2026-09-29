@@ -1,0 +1,17 @@
+{
+  "schema_version": 2,
+  "experiment_id": "GEO-010-10K",
+  "title": "Fresh continuous Scaffold MapAnything Apache P0-initialization candidate",
+  "status": "preregistered_ready_for_gpu",
+  "code_git_commit": "23bfe97e14e260688e05a42094f8a858bcfa962f",
+  "parent_experiment": "GEO-010-P0,GEO-002",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1",
+  "seed": 0,
+  "backbone": "frozen-scaffold-gs-MapAnything-P0-initialization",
+  "iterations": [1000, 3000, 5000, 10000],
+  "training": "one continuous 0-to-10000 process from fused P0 PLY",
+  "mapanything_input": {"source_commit": "9d1db2dd728bd8a10e74b15d2eb646e1bf933791", "checkpoint_sha256": "fa06c0fdccefc5048e072c85935d5789b1e36b307f3859033c17f9dcb9fd5201", "fusion_ply_sha256": "f6a69c4d15bf49eaf8019a5c0cb31d4d796fd9261121a538c7110fd17832d889", "fusion_points_sha256": "6de4d03f822f3427f6eb0a3bd8901cca4313aa673d2a122968fb5bf3eb940933"},
+  "fixed_controls": ["same P0 cameras and undistorted scene", "same train/validation split", "same seed/resolution/loss/evaluator", "Scaffold receives XYZ plus original RGB only"],
+  "output_root": "external_gitignored:ICSHM_OUTPUT_ROOT/geometry_prior/v2/runs/GEO-010-10K"
+}

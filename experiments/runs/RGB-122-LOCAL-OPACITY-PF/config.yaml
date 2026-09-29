@@ -1,0 +1,89 @@
+{
+  "experiment_id": "RGB-122-LOCAL-OPACITY-PF",
+  "parent_experiment": "RGB-120-ALL400",
+  "diagnostic_parent": "RGB-121-LOCAL-ISOLATION-DIAG",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 0,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "parent_run": "outputs/quality/all_data/RGB-120-r2",
+  "previous": "outputs/quality/diagnostics/RGB-121-r2",
+  "semantic_batch": "outputs/quality/all_data/SEM-370-r1",
+  "output": "outputs/quality/diagnostics/RGB-122-r1",
+  "stable_id": 44174,
+  "anchor_id": 4417,
+  "offset_id": 4,
+  "opacity_multiplier": 0.5,
+  "main_variable": "single generated offset opacity multiplier 1 to0.5; no training",
+  "ply_sha256": "ac44851e4d97c4c7685686f1b41ebcd8da139f2e43e9c1175ed301762112dfdf",
+  "views": [
+    "157.png",
+    "158.png",
+    "159.png",
+    "160.png",
+    "161.png",
+    "162.png",
+    "172.png",
+    "173.png",
+    "174.png",
+    "175.png",
+    "176.png",
+    "054.png",
+    "081.png",
+    "146.png"
+  ],
+  "shore_boxes": {
+    "159.png": [
+      [
+        20,
+        720,
+        290,
+        870
+      ],
+      [
+        920,
+        720,
+        1310,
+        860
+      ]
+    ],
+    "160.png": [
+      [
+        20,
+        740,
+        285,
+        885
+      ],
+      [
+        920,
+        740,
+        1310,
+        875
+      ]
+    ],
+    "161.png": [
+      [
+        20,
+        740,
+        285,
+        885
+      ],
+      [
+        920,
+        740,
+        1310,
+        875
+      ]
+    ]
+  },
+  "trajectory": {
+    "keyframes": [
+      "159.png",
+      "160.png",
+      "161.png"
+    ],
+    "frames_per_segment": 4,
+    "method": "existing catmull_rom center plus smoothstep quaternion slerp"
+  },
+  "quality_claim": null
+}

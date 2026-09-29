@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-390-RGB150-DEV270-SEED20260919-MEMORY",
+  "title": "Corrected second-seed native-crop control with seed-aware initialization",
+  "phase": "semantic_segmentation",
+  "parent_experiment": "SEM-384-RGB150-DEV270",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260919,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "dev30_local_composition_v1",
+  "split_path": "experiments/splits/dev30_local_composition_v1.json",
+  "method": "mask2former",
+  "main_variable": "Matched second-seed control with 6000 native 768 crops and a seed-aware fresh-head initialization contract.",
+  "causal_claim": null,
+  "iterations": 6000,
+  "crop": 768,
+  "context_fraction": 0.0,
+  "context_schedule": "native_crop_on_every_successful_update",
+  "sampling_trace_keys": ["name", "top", "left", "flip"],
+  "preflight_mode_counts": {"native_crop": 8},
+  "rgb_run": "outputs/quality/RGB-150/full-r1",
+  "rgb_evaluation": "outputs/quality/RGB-150/full-r1/evaluation",
+  "parent_semantic_run": "outputs/quality/SEM-384/r1",
+  "recipe_reference_semantic_run": "outputs/quality/SEM-384/r1",
+  "label_root": "outputs/quality/all_data/SEM-370-r1/labels",
+  "label_manifest": "outputs/quality/all_data/SEM-370-r1/label_manifest.json",
+  "semantic_train_views": 270,
+  "semantic_holdout_views": 30,
+  "output_path": "outputs/quality/SEM-390/r1",
+  "seed_aware_initialization": {
+    "reference_seed": 20260805,
+    "reference_experiment": "SEM-384-RGB150-DEV270",
+    "allowed_cross_seed_tensors": [
+      "sem_seg_head.predictor.class_embed.weight",
+      "sem_seg_head.predictor.class_embed.bias"
+    ],
+    "training_initialization_reference": "outputs/quality/SEM-390/r1/preflight/initialization-contract.json"
+  },
+  "commands": {
+    "prepare": "python3 scripts/run_sem390_sem391_confirmation.py --artifact-root <artifact-root> --arm control --stage prepare",
+    "preflight": "python3 scripts/run_sem390_sem391_confirmation.py --artifact-root <artifact-root> --arm control --stage preflight",
+    "train": "python3 scripts/run_sem390_sem391_confirmation.py --artifact-root <artifact-root> --arm control --stage train",
+    "inference": "python3 scripts/run_sem390_sem391_confirmation.py --artifact-root <artifact-root> --arm control --stage inference"
+  },
+  "quality_claim": null,
+  "scope": "270-view training fit and fixed 30-view development holdout; corrected second seed; not blind or strictly spatially guarded",
+  "unchanged_inference": "SEM384 native 768 crop and 512 stride sliding inference",
+  "failure_policy": "Preserve every failed attempt; do not alter model, optimizer, loss, schedule, AMP, recomputation, seed, endpoint, crop, split, initialization contract, or inference.",
+  "holdout_access": {
+    "rgb_during_semantic_training": false,
+    "labels_during_semantic_training": false,
+    "allowed_only_after_both_pair_checkpoints_are_sealed": ["RGB inference input", "ground-truth evaluation"]
+  },
+  "memory_policy": {
+    "swin_activation_recomputation": true,
+    "implementation": "native BasicLayer checkpoint branch on all four Swin stages"
+  },
+  "confirmation_protocol": "docs/experiments/sem390_sem391_context_confirmation_protocol.md"
+}

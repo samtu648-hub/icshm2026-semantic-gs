@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-090-CABLE-NETWORK-DIAG",
+  "title": "Training-only frozen SEM-001 three-family cable-network cleanup diagnostic",
+  "phase": "R2 inference-only semantic feasibility diagnostic",
+  "status": "completed_preflight_visual_failure_not_run_full",
+  "owner": "unassigned",
+  "parent_experiment": "SEM-001,SEM-080-STRUCTURAL-DIAG",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_001_scaffold_static_v1",
+  "seed": 20260902,
+  "frozen_rgb": {"backbone": "Scaffold-GS", "rgb_experiment": "RGB-030-FULL", "iteration": 30000, "train_camera_count": 303, "n_offsets": 10, "appearance_camera_id": 0, "coordinate_frame": "official_colmap_reference", "pose_convention": "CAMERA_FROM_WORLD", "official_to_model_sim3": "identity"},
+  "frozen_semantic": {"experiment": "SEM-001", "config": "experiments/runs/SEM-001/config.yaml", "semantic_storage": "per_anchor_logits", "class_names": ["background", "deck", "stay_cable", "tower", "foundation"], "checkpoint_sha256": "8e3dbe30e17f67081a72380018fc281c155ec00eed83cd5a19b3285bf4fb8aa3", "checkpoint_is_not_modified": true},
+  "data": {"semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json", "label_manifest": "experiments/runs/SEM-001/label_manifest.json", "training_images": 219, "validation_images_opened": 0, "uses_unlabeled_rgb": false, "uses_hidden_test_rgb_or_labels": false, "access_rule": "The runner may load only the 219 labelled SEM-001 training views. It has no validation or external-camera mode. Labels are read after the frozen-probability predicate only for authorised training metrics."},
+  "cable_network_rule": {"hough_threshold": 32, "minimum_line_length_px": 48, "maximum_line_gap_px": 10, "structure_contact_radius_px": 32, "retained_line_half_width_px": 3, "main_max_verticality": 0.8, "stay_min_verticality": 0.3, "hanger_min_verticality": 0.85, "main_tower_top_fraction": 0.4, "main_boundary_band_px": 16, "hanger_main_contact_radius_px": 24},
+  "mechanism": {"single_changed_variable": "post-raster three-family cable-network predicate replacing SEM-080's tower-to-deck-only predicate", "candidate_input": "frozen SEM-001 five-channel probabilities only", "main_cable_template": "tower-top to another tower-top or the image boundary", "hanger_template": "deck to retained main-cable neighbourhood", "stay_template": "tower to deck", "transfer": "for rejected raw stay_cable pixels: p_background += p_stay_cable; p_stay_cable = 0", "forbidden_inputs": ["target-view RGB", "target-view labels", "validation views", "unlabelled views", "hidden test inputs"], "frozen_artifacts": ["RGB geometry", "RGB colors", "RGB opacity", "RGB checkpoint", "SEM-001 anchor logits"]},
+  "diagnostic_decision": {"not_a_formal_candidate": true, "no_configuration_selection": "This single registered three-family grammar rule is measured independently on hash-parity calibration and check halves; no threshold or template parameter is selected by this run.", "next_step_only_if_supported": "A separate formal candidate may be preregistered only if visual samples preserve all three normal cable families and the independent training check has a useful official-error trade-off. The 74-view split remains unopened until a later rule is frozen.", "formal_replacement_gates_remain": "SEM-070's mIoU, stay_cable, protected-class, difficult-view, RGB, checkpoint and official-camera gates still apply to any later candidate."},
+  "isolation": {"training_views": ["001.png", "010.png", "030.png"]},
+  "outputs": {"root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_090/cable_network_diag", "training_access": "training_only_access.json", "training_per_view": "training_per_view_cable_network_diagnostics.csv", "training_visual_samples": ["001.png", "010.png", "030.png"], "triptych": "training_cable_network_triptych/raw_cleaned_family_evidence", "result": "result.json"},
+  "runtime": {"preflight_training_limit": 8, "no_output_is_tracked_by_git": true},
+  "fallback": "RGB-030-FULL Scaffold-GS + SEM-001"
+}

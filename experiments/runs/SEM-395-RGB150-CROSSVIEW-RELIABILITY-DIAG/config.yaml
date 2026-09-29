@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-395-RGB150-CROSSVIEW-RELIABILITY-DIAG",
+  "title": "Frozen RGB150 depth and SEM392 probability cross-view reliability diagnostic",
+  "phase": "semantic_diagnostic",
+  "parent_experiment": "RGB-150-STANDARD-ABSGRAD-DEV30;SEM-392-RGB150-DEV270-SEED20260919-MEMORY",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 395,
+  "training": false,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "dev30_local_composition_v1",
+  "split_path": "experiments/splits/dev30_local_composition_v1.json",
+  "camera_graph": "experiments/geometry_camera_graph.json",
+  "trajectory_segments": "experiments/trajectory_segments.json",
+  "protocol": "docs/experiments/sem395_crossview_reliability_protocol.md",
+  "label_root": "outputs/quality/all_data/SEM-370-r1/labels",
+  "label_manifest": "outputs/quality/all_data/SEM-370-r1/label_manifest.json",
+  "output_path": "outputs/quality/SEM-395/r1",
+  "main_variable": "One frozen, pre-registered two-source reliability filter combining RGB150 native alpha-normalized inverse-depth proxy, two-way reprojection/depth checks, and SEM392 bilinearly sampled source confidence/agreement. No training, threshold search, source search after scoring, or prediction replacement is deployed.",
+  "parents": {
+    "rgb150": {
+      "run": "outputs/quality/RGB-150/full-r1",
+      "scene": "outputs/quality/RGB-150/scene",
+      "source": "outputs/quality/rgb140/source-r1",
+      "training_result": "outputs/quality/RGB-150/full-r1/result.json",
+      "training_result_sha256": "4351e9989c554b1d033db2ae9fa12c34ebd30208e67804e6adb2b707af771903",
+      "evaluation_result": "outputs/quality/RGB-150/full-r1/evaluation/result.json",
+      "evaluation_result_sha256": "cd9deb55ec8bb0b1317e7c0baae61f3101609e18df2486067bebde615ee2468d",
+      "point_cloud": "outputs/quality/RGB-150/full-r1/model/point_cloud/iteration_30000/point_cloud.ply",
+      "point_cloud_sha256": "bcc9b95b065c94b592ed045275bdd1bff0f92e99fe94799719e2192305cbece0",
+      "saved_renders": "outputs/quality/RGB-150/full-r1/evaluation/images",
+      "seed": 0,
+      "recipe": "Standard 3DGS plus AbsGS on the Dev30 split"
+    },
+    "sem392": {
+      "checkpoint": "outputs/quality/SEM-392/r1/mask2former/model-6000.pt",
+      "checkpoint_sha256": "1763e203f02d9ac12c453abcd4f8d6521762af79232bb6bfa706b1f45a0e810a",
+      "probabilities": "outputs/quality/SEM-394/r1/parent-sem392/probabilities",
+      "reproduction_result": "outputs/quality/SEM-394/r1/parent-sem392/reproduce-result.json",
+      "reproduction_result_sha256": "14085436777fd7913efacd9c316929a8a13eee30ff9146e87125a7ed3f05a6e1",
+      "inference_source_sha256": "debd14ba97e6e8b89db5e281ccc023b53159718a284b332fcce21813345a7d6e",
+      "seed": 20260919,
+      "probability_key": "probability",
+      "probability_shape": [5, 989, 1320],
+      "probability_dtype": "float32"
+    }
+  },
+  "access_contract": {
+    "diagnostic_target_universe": "primary_fold.train_rgb_300 only (270 views)",
+    "diagnostic_source_universe": "primary_fold.train_rgb_300 only (270 views)",
+    "target_count": 24,
+    "sources_per_target": 2,
+    "maximum_pairs": 48,
+    "holdout_rgb_access": false,
+    "holdout_label_access": false,
+    "unlabeled_supervision": false,
+    "prepare_label_access": false,
+    "render_label_access": false,
+    "evidence_label_access": false,
+    "score_label_access": "Only labels for the pre-sealed target/source names, all within primary_fold.train_rgb_300"
+  },
+  "selection": {
+    "method": "Allocate at least one target to every eligible trajectory segment, allocate remaining slots by descending segment population with seeded hash tie-breaks, then select fixed within-segment quantiles. Select source 1 by shared points and source 2 by shared-points-times-baseline under a source-separation rule.",
+    "uses_labels_rgb_pixels_model_outputs_or_errors": false,
+    "source_minimum_shared_points": 64,
+    "source_maximum_axis_angle_deg": 45.0,
+    "source_minimum_center_distance": 0.05,
+    "source_maximum_center_distance": 3.0,
+    "second_source_minimum_separation": 0.25,
+    "visualization_target_count": 6,
+    "visualization_rule": "Six evenly spaced indices, including both endpoints, in the sealed target plan sorted by segment, slot, and filename."
+  },
+  "depth_proxy": {
+    "native_inverse_depth_sum": "sum(T * alpha / z) from the frozen RGB150 renderer",
+    "native_alpha": "white override-color render on black background, sum(T * alpha)",
+    "surface_proxy": "Z_proxy = alpha / inverse_depth_sum",
+    "interpretation": "Opacity-normalized inverse-depth reciprocal surface proxy; not geometric ground truth, expected Z, or an independently reconstructed surface."
+  },
+  "reliability_filter": {
+    "minimum_depth": 0.01,
+    "alpha_minimum": 0.85,
+    "depth_discontinuity_relative_maximum": 0.05,
+    "relative_depth_maximum": 0.04,
+    "cycle_reprojection_maximum_px": 1.0,
+    "source_confidence_minimum": 0.80,
+    "probability_interpolation": "bilinear in the full-resolution PINHOLE pixel-centre grid followed by five-class renormalization",
+    "semantic_rule": "both independently filtered source projections must be reliable and their smallest-class-ID argmax labels must agree",
+    "schemes_tested": 1
+  },
+  "diagnostic_groups": {
+    "target_confidence": {"low": "<0.80", "medium": "[0.80,0.95)", "high": ">=0.95"},
+    "target_opacity": {"low": "[0.85,0.93)", "medium": "[0.93,0.98)", "high": ">=0.98"},
+    "covisibility": {"low": "minimum pair shared points <500", "medium": "[500,1500)", "high": ">=1500"},
+    "space": "sealed trajectory segment ID"
+  },
+  "counterfactual": {
+    "operation": "Replace SEM392 target argmax only at reliable-consensus pixels with the agreeing source class, for diagnosis only.",
+    "deployable_candidate": false,
+    "training_gain_claim_allowed": false,
+    "reported_counts": ["corrected pixels", "damaged pixels", "net correct pixels", "sources agree but target GT disagrees", "five-class confusion"]
+  },
+  "outcome_rules": {
+    "reliable_positive_net_and_coverage": "reliability_filter_has_positive_net_value_and_warrants_a_training_or_fusion_candidate",
+    "positive_but_too_sparse": "reliability_filter_is_correct_but_too_sparse",
+    "geometry_dominant_failure": "current_rgb150_depth_or_geometry_is_insufficient",
+    "semantic_or_annotation_dominant_failure": "semantic_or_annotation_inconsistency_dominates",
+    "classification_rule": "Positive means corrected > damaged. Too sparse means positive but reliable consensus <1% of all target pixels or <0.5% of target-foreground GT pixels. Geometry-dominant means non-positive and geometry-stage rejects exceed semantic-confidence-plus-source-disagreement rejects; otherwise semantic/annotation dominates."
+  },
+  "confirmation_split_candidate": {
+    "seed": 395,
+    "regions": 3,
+    "views_per_region": 10,
+    "guard_radius": 0.5220235426020557,
+    "minimum_region_separation": 1.5,
+    "minimum_rgb_train": 340,
+    "minimum_semantic_train": 250,
+    "selection_inputs": "official camera centres, trajectory segments, and >=8-point camera graph only; retained graph component count may not exceed the full released graph component count",
+    "selection_uses_labels_or_model_outputs": false,
+    "future_execution": "fresh RGB initialization, RGB training, and semantic training after excluding confirmation and buffer views from every access path"
+  },
+  "budget": {
+    "maximum_gpu_minutes": 30,
+    "maximum_cpu_minutes": 120,
+    "maximum_peak_gpu_mib": 11200,
+    "maximum_output_gib": 4.0,
+    "maximum_pairs": 48,
+    "stop_conditions": [
+      "Any config, code, parent, graph, segment, manifest, split, checkpoint, probability-cache, or sealed prerequisite hash differs.",
+      "Any holdout name enters the target/source/access log or any label is read before the evidence seal.",
+      "Any frozen RGB render differs pixel-exactly from the saved RGB150 rendering.",
+      "Any probability is non-finite, has the wrong shape/dtype/key, fails simplex validation, or differs from its sealed cache hash.",
+      "Any output, time, pair-count, disk, or GPU-memory budget is exceeded.",
+      "Any coordinate round-trip, two-way reprojection, independent count, or RGB-freeze assertion fails."
+    ]
+  },
+  "commands": {
+    "prepare": "python3 scripts/run_sem395_crossview_reliability.py --artifact-root <artifact-root> --stage prepare",
+    "render": "<artifact-root>/r1/envs/r1-cuda128/bin/python scripts/run_sem395_crossview_reliability.py --artifact-root <artifact-root> --stage render",
+    "evidence": "python3 scripts/run_sem395_crossview_reliability.py --artifact-root <artifact-root> --stage evidence",
+    "score": "python3 scripts/run_sem395_crossview_reliability.py --artifact-root <artifact-root> --stage score"
+  },
+  "scope": "Read-only frozen-model diagnostic over 24 preselected SEM392 training views and at most 48 preselected training-view sources. Not a blind test, holdout result, training result, system replacement, or geometric ground-truth evaluation.",
+  "quality_claim": null
+}

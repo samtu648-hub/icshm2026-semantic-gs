@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-001",
+  "title": "SEM-001 frozen Scaffold-GS static five-class semantic baseline",
+  "phase": "R2/S0",
+  "parent_experiment": "RGB-030-FULL,RGB-060,SEM-001-PF",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "data": {
+    "split_id": "sem_001_scaffold_static_v1",
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "label_manifest": "experiments/runs/SEM-001/label_manifest.json",
+    "label_root": "$R1_OUTPUT_ROOT/r2/sem_001/labels",
+    "training_images": 219,
+    "validation_images": 74,
+    "unlabeled_rgb_in_semantic_supervision": false,
+    "pseudo_labels": false,
+    "input_resolution": [1320, 989],
+    "label_grid": "full-frame PINHOLE derived with the R1 SIMPLE_RADIAL K; no crop"
+  },
+  "frozen_rgb": {
+    "backbone": "Scaffold-GS",
+    "upstream_commit": "59c833b56bbbf510f3f64d40f81721995caced66",
+    "rgb_experiment": "RGB-030-FULL",
+    "iteration": 30000,
+    "train_camera_count": 303,
+    "n_offsets": 10,
+    "appearance_camera_id": 0,
+    "coordinate_frame": "official_colmap_reference",
+    "pose_convention": "CAMERA_FROM_WORLD",
+    "official_to_model_sim3": "identity",
+    "frozen_parameters": ["anchor", "offset", "opacity", "scaling", "rotation", "anchor_feat", "opacity_mlp", "cov_mlp", "color_mlp", "appearance_embedding"]
+  },
+  "semantic": {
+    "class_mapping": {"background": 0, "deck": 1, "stay_cable": 2, "tower": 3, "foundation": 4},
+    "storage": "five trainable logits per frozen Scaffold anchor; each generated Gaussian inherits its anchor logits",
+    "rasterization": "two frozen-geometry Gaussian rasterizer calls (classes 0-2 and 3-4); probabilities are concatenated and normalized",
+    "trainable_parameters": ["semantic_anchor_logits"],
+    "ignore_policy": "none; every pixel is official ID 0..4"
+  },
+  "training": {
+    "seed": 20260731,
+    "initial_background_logit": 0.0,
+    "learning_rate": 0.05,
+    "weight_decay": 0.0,
+    "loss": "weighted NLL on rasterized class probabilities",
+    "class_weighting": "median_frequency/count, clipped to [0.05,20.0], calculated only from semantic training labels",
+    "rgb_optimizer": "none"
+  },
+  "preflight": {"iterations": 8, "log_every": 1, "purpose": "Not used by the full run"},
+  "full": {"iterations": 10000, "log_every": 100, "purpose": "Pre-registered SEM-001 full static baseline budget"},
+  "isolation": {"views": ["001.png", "054.png", "140.png"]},
+  "external_camera": {"image_name": "140.png", "output": "RGB + five log-probability logits .npy + single-channel uint8 ID PNG on official SIMPLE_RADIAL grid"}
+}

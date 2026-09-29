@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-074-RESIDUAL-SUPPORT-PRUNE-TOL-PF",
+  "title": "Numerically paired conservative exclusion of 29 training low-support high-residual anchors",
+  "phase": "R2 frozen RGB inference cleanup preflight",
+  "status": "completed_numeric_gate_passed_visual_cleanup_failed",
+  "parent_experiment": "RGB-030-FULL,RGB-072-FLOATER-SUPPORT-DIAG,RGB-073-RESIDUAL-SUPPORT-PRUNE-PF",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1 74-view explicitly reused development set",
+  "seed": "not_applicable_deterministic_frozen_mask",
+  "data": {
+    "split": "experiments/splits/rgb_r1_spatial_v1.json",
+    "validation_count": 74,
+    "selection_uses_validation_RGB": false,
+    "selection_uses_semantic_labels": false
+  },
+  "frozen_rgb": {
+    "experiment_id": "RGB-030-FULL",
+    "iteration": 30000,
+    "train_camera_count": 303,
+    "n_offsets": 10,
+    "checkpoint_or_ply_modified": false
+  },
+  "mask_source": {
+    "experiment_id": "RGB-072-FLOATER-SUPPORT-DIAG",
+    "anchor_statistics_npz_sha256": "563a90d9b87e4696eaf09dd4b5a1500db0a5490951e9fdf65fd0048da061fecd",
+    "minimum_dominant_pixels": 256,
+    "maximum_dominant_views": 4,
+    "minimum_mean_RGB_MAE": 0.15,
+    "minimum_high_error_pixel_fraction": 0.50,
+    "high_error_pixel_definition_RGB_MAE_min": 0.15,
+    "expected_selected_anchor_count": 29,
+    "identical_to_RGB073_mask": true,
+    "no_grid_or_retuning": true
+  },
+  "baseline_reproduction": {
+    "evidence_source": "RGB-073 first-view engineering failure only",
+    "maximum_absolute_difference_uint8": 1,
+    "maximum_mean_absolute_difference_uint8": 0.0001,
+    "maximum_different_pixel_fraction": 0.0001,
+    "save_replayed_baseline": true
+  },
+  "evaluation": {
+    "entrypoint": "scripts/evaluate_rgb.py",
+    "evaluate_both_replayed_baseline_and_candidate": true,
+    "developer_gate": {
+      "candidate_vs_replayed_mean_PSNR_not_lower": true,
+      "candidate_vs_replayed_mean_SSIM_not_lower": true,
+      "candidate_vs_replayed_mean_LPIPS_Alex_not_higher": true,
+      "candidate_vs_recorded_RGB030_mean_PSNR_not_lower": true,
+      "worst_10_percent_PSNR_drop_max_dB": 0.02,
+      "challenge_140_146_PSNR_drop_max_dB": 0.02,
+      "at_least_one_global_metric_strictly_better": true,
+      "frozen_artifact_hashes_equal": true
+    },
+    "visual_samples": ["054.png", "140.png", "151.png", "159.png", "160.png"],
+    "scope_note": "Reused 74-view development set; no blind-generalization claim."
+  },
+  "outputs": {
+    "root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/rgb_074/residual_support_prune_tol/full-20260903-r1"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SUBMIT-020-SEM161-FREEZE",
+  "created_date": "2026-09-06",
+  "repository_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "worktree_state": "pre-existing user modifications preserved; freeze is additive and hash-only",
+  "output_root_env": "ICSHM_OUTPUT_ROOT",
+  "current_candidate": "RGB-030-FULL + SEM-161",
+  "artifacts": [
+    {"role": "rgb_checkpoint", "path": "r1/runs/RGB-030-FULL/chkpnt30000.pth", "sha256": "d287563eaa4d2a29df2f619153f53288978d1096bbbb1cd88fc4da7da076da68"},
+    {"role": "rgb_anchor_state", "path": "r1/runs/RGB-030-FULL/point_cloud/iteration_30000/point_cloud.ply", "sha256": "6f22dc598205493e5a9683b95bcb6387f0c0c02f53c6b0d0f9fb0b62789c20d5"},
+    {"role": "rgb_opacity_mlp", "path": "r1/runs/RGB-030-FULL/point_cloud/iteration_30000/opacity_mlp.pt", "sha256": "0e010c9da52caffe1a6b8a0ece2c72431431a90a6dbc334d2f7ee22a1bbd0399"},
+    {"role": "rgb_covariance_mlp", "path": "r1/runs/RGB-030-FULL/point_cloud/iteration_30000/cov_mlp.pt", "sha256": "ad47c33af6519a38da591d8e8fc4124d0a93cdac5d8e65be212bb73cbc5cd34e"},
+    {"role": "rgb_color_mlp", "path": "r1/runs/RGB-030-FULL/point_cloud/iteration_30000/color_mlp.pt", "sha256": "997f953b4771271195ea5cc27ecb12c02039b578093c42b1302ee9d1ee0e65ae"},
+    {"role": "rgb_appearance_embedding", "path": "r1/runs/RGB-030-FULL/point_cloud/iteration_30000/embedding_appearance.pt", "sha256": "cce14bf171c611595b8f11b086f9768d293de6c5e5d4dce84dff97150f741186"},
+    {"role": "semantic_3d_sidecar", "path": "r2/sem_001/full/checkpoints/semantic_sidecar.pth", "sha256": "8e3dbe30e17f67081a72380018fc281c155ec00eed83cd5a19b3285bf4fb8aa3"},
+    {"role": "semantic_five_class_2d_checkpoint", "path": "r2/sem_102/final_training/final-20260902-r1/checkpoints/segformer_b2_final.pth", "sha256": "88e3084db7b6394ab8253fea2ac129d68d81053af50fc3b38556f1288972763c"},
+    {"role": "semantic_five_class_2d_contract", "path": "r2/sem_102/final_training/final-20260902-r1/final_checkpoint_contract.json", "sha256": "22de5209f679eb811e9fee021aa446bc05578ba9710d9c28c161d856348b8479"},
+    {"role": "stay_cable_binary_checkpoint", "path": "r2/sem_141/final_training/final-20260904-r1/checkpoints/cable_binary_final.pth", "sha256": "6858766c26599496b0021ee20da11552ad8c960547c4444aadd8c854fef432e0"},
+    {"role": "stay_cable_binary_contract", "path": "r2/sem_141/final_training/final-20260904-r1/final_checkpoint_contract.json", "sha256": "9880d5454e16501d808dedddb55408dfd4c346251c8f8b8b1f320653ba0bb1ee"},
+    {"role": "foundation_gate_result", "path": "r2/sem_151/foundation_gate_final/full-20260904-r1/result.json", "sha256": "e1d932db9264adf281f56ec03f62db9d6927f8120bf6220b13c18b85b5ed8d3f"},
+    {"role": "foundation_gate_prediction_manifest", "path": "r2/sem_151/foundation_gate_final/full-20260904-r1/prediction_manifest.json", "sha256": "8443adc70cd7837c6ea83b4fb6f17015701799d55abab575d4f94a17950b33c1"},
+    {"role": "deck_binary_checkpoint", "path": "r2/sem_161/final_training/final-20260904-r1/checkpoints/deck_binary_final.pth", "sha256": "8e50ffca587412f2a015e01bc5ffc80ae3503e6c302cc5291d55c183d664628f"},
+    {"role": "deck_binary_contract", "path": "r2/sem_161/final_training/final-20260904-r1/final_checkpoint_contract.json", "sha256": "7bcdd9ccc6939f1e49514176a4bc6bb5935a6f60ec435786de9f6e45200a5c80"},
+    {"role": "deck_binary_training_result", "path": "r2/sem_161/final_training/final-20260904-r1/result.json", "sha256": "abd6136f38c4641f7f1b7fa0f5ead08fa5bfd8bea7fe0cd363e88c589aa04213"},
+    {"role": "current_developer_result", "path": "r2/sem_161/developer_audit/final-20260904-r1/result.json", "sha256": "fbf3eb9999407fec83ce3c74577603ae06e96360004d51b555327c5dfb8ec5f2"},
+    {"role": "current_developer_prediction_manifest", "path": "r2/sem_161/developer_audit/final-20260904-r1/prediction_manifest.json", "sha256": "c23ab7029463fe81d65a0f8ed624740c3e3bb411170270e85cd19f28d76e2c0e"}
+  ],
+  "fusion_contract": {
+    "stay_cable_threshold": 0.70,
+    "foundation_keep_threshold": 0.10,
+    "deck_threshold": 0.99,
+    "deck_transition": "background_to_deck_only",
+    "protected_classes": ["stay_cable", "tower", "foundation"],
+    "external_pose_convention": "COLMAP_CAMERA_FROM_WORLD",
+    "external_camera_model": "SIMPLE_RADIAL",
+    "output_classes": {"0": "background", "1": "deck", "2": "stay_cable", "3": "tower", "4": "foundation"}
+  },
+  "developer_metrics": {
+    "mIoU_with_background": 0.8338701728,
+    "background": {"iou": 0.985128, "precision": 0.992825, "recall": 0.992192},
+    "deck": {"iou": 0.914667, "precision": 0.950392, "recall": 0.960525},
+    "stay_cable": {"iou": 0.706983, "precision": 0.842841, "recall": 0.814334},
+    "tower": {"iou": 0.834870, "precision": 0.883822, "recall": 0.937786},
+    "foundation": {"iou": 0.727703, "precision": 0.782758, "recall": 0.911866}
+  },
+  "immutability_policy": "New research may read these artifacts but may not overwrite, rename, delete, continue-train, or silently replace them. Promotion requires a separately registered experiment and hidden evaluation remains decisive."
+}

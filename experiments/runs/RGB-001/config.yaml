@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-001",
+  "title": "R1 spatial split and fair RGB backbone protocol",
+  "phase": "R1",
+  "parent_experiment": "none",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1",
+  "seed": 0,
+  "split_generation_seed": 20260730,
+  "backbone": "multi-candidate-rgb-backbone",
+  "change_from_parent": "Freeze the guarded spatial split and the common RGB backbone comparison contract before any candidate training.",
+  "data": {
+    "root_env": "ICSHM_DATA_ROOT",
+    "use_labeled_rgb": true,
+    "use_unlabeled_rgb": true,
+    "use_pseudo_labels": false,
+    "manifest": "data/manifests/contest_dataset_v1.json",
+    "split": "experiments/splits/rgb_r1_spatial_v1.json",
+    "primary_400_training_key": "train_rgb_400",
+    "control_300_training_key": "train_rgb_300",
+    "validation_key": "validation_labeled"
+  },
+  "camera": {
+    "source_coordinate_frame": "official_colmap_reference",
+    "pose_convention": "CAMERA_FROM_WORLD",
+    "source_model": "SIMPLE_RADIAL",
+    "resolution": [1320, 989],
+    "r1_distortion_policy": "Full-frame OpenCV SIMPLE_RADIAL-to-PINHOLE undistortion with newCameraMatrix equal to released K; no crop; keep the official world frame.",
+    "prepared_scene_command": "python3 scripts/prepare_rgb_colmap_scene.py --dataset-root $ICSHM_DATA_ROOT --split experiments/splits/rgb_r1_spatial_v1.json --output-root $ICSHM_OUTPUT_ROOT/icshm2026/rgb_r1_spatial_v1/scene_400 --training-key train_rgb_400",
+    "initialization": "DLT re-triangulation of released images.txt POINT3D_ID tracks after undistortion; reject mean reprojection error above 3 px."
+  },
+  "training": {
+    "screening_budget": "500 iterations, one seed, only after the shared CUDA environment compiles each candidate",
+    "full_budget": "30000 optimizer iterations, upstream fixed training seed 0, identical 1320x989 prepared inputs; record actual GPU-hours and best-validation iteration for each candidate",
+    "status": "protocol_frozen; all candidate CUDA preflights completed; authorized full runs are in progress serially",
+    "hardware_contract": "One NVIDIA GeForce RTX 5070 with 12227 MiB VRAM. GPU commands must run with host device access; the ordinary repository sandbox intentionally hides /dev/nvidia*.",
+    "cuda_compiler_contract": "Each candidate compiled with the isolated CUDA 12.8 nvcc toolchain targeting RTX 5070 sm_120; a PyTorch runtime alone was not treated as sufficient."
+  },
+  "evaluation": {
+    "protocol": "docs/experiments/protocol.md",
+    "metrics": "METRICS.md",
+    "entrypoint": "scripts/evaluate_rgb.py",
+    "metric_implementation": {
+      "image_decode": "Pillow RGB, float32 / 255, no resize, crop, color conversion beyond RGB decode, or alpha channel",
+      "psnr": "Per-view RGB MSE over all pixels and three channels in [0,1]; PSNR = -10 log10(MSE), exact reconstruction = +inf",
+      "ssim": "Per-view three-channel SSIM in scripts/evaluate_rgb.py: opencv-python-headless==4.11.0.86, 11x11 Gaussian window, sigma 1.5, C1=(0.01)^2, C2=(0.03)^2, BORDER_REFLECT_101, mean over all pixels and channels",
+      "lpips": "lpips==0.1.4, net=alex, version=0.1, eval mode, RGB converted from [0,1] to [-1,1], batch size 1; cache and record the downloaded AlexNet weight before a real run",
+      "supporting_packages": "requirements/r1_evaluation.txt"
+    },
+    "local_image_space": "prepared undistorted PINHOLE validation images",
+    "required_views": "all validation_labeled, plus separately report 140.png through 146.png",
+    "external_camera_gate": "Before a candidate can advance, render an official CAMERA_FROM_WORLD camera through the submission adapter and validate output size and official-to-model pose conversion."
+  },
+  "upstreams": {
+    "standard_3dgs": "54c035f7834b564019656c3e3fcc3646292f727d",
+    "mip_splatting": "dda02ab5ecf45d6edb8c540d9bb65c7e451345a9",
+    "scaffold_gs": "59c833b56bbbf510f3f64d40f81721995caced66"
+  },
+  "output": {
+    "root": "experiments/runs/RGB-001/output"
+  }
+}

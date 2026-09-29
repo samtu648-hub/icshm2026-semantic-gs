@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "experiment_id": "QUAL-026-RGB170-SPATIAL-CONFIRMATION",
+  "title": "RGB170预算收益的真实训练排除空间确认",
+  "phase": "reconstruction_confirmation",
+  "parent_experiment": "RGB-175-IMPROVEDGS-SPATIAL-BUDGET10M;RGB-176-IMPROVEDGS-SPATIAL-BUDGET15M",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "spatial_confirmation_v1",
+  "split_path": "experiments/splits/spatial_confirmation_v1.json",
+  "evaluation": {"train_views": 353, "holdout_views": 30, "buffer_views": 17, "labels": "outputs/quality/all_data/SEM-370-r1/labels", "classes": ["deck", "stay_cable", "tower", "foundation"], "comparison": "RGB176 1.5M minus matched RGB175 1.0M", "interpretation": "historically exposed development spatial confirmation, not blind test"},
+  "output": "outputs/quality/QUAL-026/r1",
+  "preserve_failures": true
+}

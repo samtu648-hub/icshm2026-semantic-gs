@@ -1,0 +1,18 @@
+{
+  "schema_version": 2,
+  "experiment_id": "GEO-000-10K",
+  "title": "Fresh continuous Scaffold original-initialization control",
+  "status": "preregistered_ready_for_gpu",
+  "code_git_commit": "7b7d2ebb5550183be865ae8e1ff12dd74f7bfbda",
+  "parent_experiment": "GEO-000,GEO-002",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1",
+  "seed": 0,
+  "backbone": "frozen-scaffold-gs-original-initialization",
+  "iterations": [1000, 3000, 5000, 10000],
+  "training": "one continuous 0-to-10000 process; no GEO-000 3k resume",
+  "scene": "prepared full-frame-undistorted PINHOLE scene with original training-only DLT initialization",
+  "input_ply_sha256": "10a88fb018c27530b3bbfa0f7000408693ba75228067f5311e7775e4755e68f2",
+  "fixed_controls": ["official P0 cameras", "303 train RGB and 74 spatial validation cameras", "seed 0", "resolution 1320x989", "frozen Scaffold source and minimal patch", "fixed local RGB evaluator"],
+  "output_root": "external_gitignored:ICSHM_OUTPUT_ROOT/geometry_prior/v2/runs/GEO-000-10K"
+}

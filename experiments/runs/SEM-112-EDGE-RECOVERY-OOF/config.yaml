@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-112-EDGE-RECOVERY-OOF",
+  "title": "Training-only edge-connected low-confidence stay_cable recovery",
+  "phase": "R2 semantic protected-fusion optimisation",
+  "status": "completed_calibration_gate_failed",
+  "owner": "unassigned",
+  "parent_experiment": "SEM-110-PROTECTED-FUSION-OOF,SEM-111-PROTECTED-FUSION-FINAL,SEM-001,SEM-101-RENDERED-SEG-OOF,RGB-030-FULL",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "seed": 20260902,
+  "data": {
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "semantic_split_sha256": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+    "oof_split": "experiments/splits/sem_005_oof_spatial_v1.json",
+    "oof_split_sha256": "ce8a24e11d93df7634331a1ce33ae59385297cae90a0bd688b61769cf27f222c",
+    "label_manifest": "experiments/runs/SEM-001/label_manifest.json",
+    "training_images": 219,
+    "validation_images": 74,
+    "access_rule": "Before any authorised training label opens, hash-validate exactly the frozen SEM-001 training class maps, SEM-101 spatial OOF probabilities, SEM-101 same-camera frozen rendered RGB and SEM-110 high-confidence baseline. Partition the 219 training names by the pre-existing label-independent hash. Select one edge quantile on calibration only, then read the training check half once. The fixed 74-view set, real RGB, unlabelled images, hidden inputs, all model training and external-camera mode are unavailable."
+  },
+  "inputs": {
+    "sem001_checkpoint_sha256": "8e3dbe30e17f67081a72380018fc281c155ec00eed83cd5a19b3285bf4fb8aa3",
+    "sem101_oof_summary_sha256": "88fd816d8fa9d56c0a78dece570ca38ca02d43d66a801aee671e6c4de1681923",
+    "sem101_rendered_rgb_manifest_sha256": "a8e08740ac8fa30f115f26cb822b604addca2b2f4c0a316ac4914f1fdd9ceb67",
+    "sem110_result_sha256": "e7d3d22ffd7a0f10db3a0a0abdddbe33467770fa2957a56b5c12be1fa90746ff"
+  },
+  "frozen_rgb": {
+    "backbone": "Scaffold-GS",
+    "rgb_experiment": "RGB-030-FULL",
+    "iteration": 30000,
+    "geometry_color_opacity_checkpoint_unchanged": true,
+    "sem001_checkpoint_unchanged": true,
+    "sem101_checkpoint_unchanged": true,
+    "coordinate_frame": "official_colmap_reference",
+    "pose_convention": "CAMERA_FROM_WORLD"
+  },
+  "single_changed_variable": "Starting exactly from SEM-110's high-confidence 0.80 protected fusion, restore a low-confidence SEM-001 stay_cable pixel only when it has frozen rendered-RGB luminance-edge support and lies within the fixed two-pixel neighbourhood of a high-confidence rendered-domain stay_cable seed. No other class, source, model, threshold or geometry variable changes.",
+  "fusion": {
+    "high_stay_cable_threshold": 0.8,
+    "low_stay_cable_threshold": 0.55,
+    "edge_quantile_grid": [0.8, 0.85, 0.9],
+    "adjacency_radius": 2,
+    "protected_sem001_predicted_class_ids": [1, 3, 4],
+    "recovery_base_class_id": 2,
+    "mutable_class_ids": [0, 2],
+    "edge_source": "central-difference luminance gradient of hash-validated frozen SEM-101 same-camera rendered RGB; no reference RGB",
+    "selection_rule": "On calibration only, choose among candidates passing every optimisation gate by highest stay_cable IoU, then highest recall, then fewer background-to-stay_cable pixels and fewer recovered pixels. The training check half and 74-view never select an edge quantile."
+  },
+  "training_oof_gates": {
+    "mIoU_with_background_improvement_min": 0.002,
+    "stay_cable_iou_improvement_min": 0.002,
+    "stay_cable_recall_improvement_min": 0.005,
+    "background_to_stay_cable_growth_max_fraction": 0.1,
+    "raw_background_to_stay_cable_reduction_min_fraction": 0.8
+  },
+  "outputs": {
+    "root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_112/edge_recovery_oof/full-20260902-r1",
+    "training_visual_samples": ["001.png", "017.png", "031.png"],
+    "panel_order": ["GT", "frozen_SEM-110", "edge_recovered", "error"]
+  },
+  "forbidden": [
+    "SEM-111_threshold_change",
+    "high_threshold_change",
+    "low_threshold_change",
+    "adjacency_radius_change",
+    "SEM-001_checkpoint_change",
+    "SEM-101_checkpoint_change",
+    "RGB_checkpoint_change",
+    "Scaffold_training",
+    "SegFormer_training",
+    "real_RGB_input",
+    "fixed_74_view_access",
+    "unlabeled_input",
+    "hidden_test_input",
+    "external_camera_mode",
+    "check_based_selection",
+    "raw_semantic_Hough_or_topology_evidence"
+  ],
+  "classes": {"0": "background", "1": "deck", "2": "stay_cable", "3": "tower", "4": "foundation"},
+  "fallback": "RGB-030-FULL Scaffold-GS + SEM-001"
+}

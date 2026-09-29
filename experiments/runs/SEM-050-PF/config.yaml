@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-050-PF",
+  "status": "completed_preflight_not_a_quality_result",
+  "phase": "R2/U1-A",
+  "purpose": "SegFormer-B2 paired-data, loss, CUDA, reload, and full-resolution sliding-window smoke",
+  "trains_new_3d_parameters": false,
+  "updates_RGB": false,
+  "updates_SEM_001": false,
+  "uses_unlabeled_RGB_for_training": false,
+  "uses_fixed_validation_for_selection": false,
+  "inputs": {
+    "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+    "parent_split_repo_path": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "oof_split": "experiments/splits/sem_005_oof_spatial_v1.json",
+    "label_manifest": "experiments/runs/SEM-001/label_manifest.json",
+    "prepared_grid": "rgb_r1_spatial_v1 scene_400_eval full-frame PINHOLE",
+    "resolution": [1320, 989]
+  },
+  "model": {
+    "architecture": "SegFormer-B2",
+    "implementation": "huggingface/transformers",
+    "implementation_version": "4.57.1",
+    "implementation_tag_commit": "a47e6666f8f9a61e44a5d149c5e3d230e6c8053c",
+    "implementation_license": "Apache-2.0",
+    "pretrained_model_id": "nvidia/mit-b2",
+    "pretrained_revision": "3bb39e8739149c3777d0325349b2a6c32c6413db",
+    "weight_license": "NVIDIA Source Code License for SegFormer; non-commercial research/evaluation only",
+    "classification_head": "reinitialized_for_five_official_classes"
+  },
+  "training": {
+    "seed": 20260805,
+    "crop_size": 768,
+    "batch_size": 1,
+    "gradient_accumulation": 1,
+    "smoke_iterations": 16,
+    "iterations_per_fold": 3000,
+    "optimizer": "AdamW",
+    "learning_rate": 0.00006,
+    "weight_decay": 0.01,
+    "loss": "five_class_cross_entropy_only",
+    "class_weight_rule": "per-fold training pixels only; median_count/count clipped to [0.05,20]",
+    "paired_augmentation": "uniform 768 crop and horizontal flip p=0.5 only",
+    "amp": "bf16_if_supported_else_fp16",
+    "early_stopping": false
+  },
+  "inference": {
+    "crop_size": 768,
+    "stride": 512,
+    "overlap": 256,
+    "blend": "uniform_probability_tile_coverage_average",
+    "output_resolution": [1320, 989]
+  },
+  "environment": "isolated icshm-semantic2d; never install into frozen Scaffold environment",
+  "budget": {"maximum_total_gpu_hours": 6.0},
+  "classes": {"0": "background", "1": "deck", "2": "stay_cable", "3": "tower", "4": "foundation"}
+}

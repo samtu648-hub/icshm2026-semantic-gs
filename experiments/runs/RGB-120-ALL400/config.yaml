@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-120-ALL400",
+  "parent_experiment": "RGB-110-SCAFFOLD-CTRL",
+  "seed": 0,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "split_path": "outputs/quality/all_data/RGB-120-r2/split.json",
+  "quality_claim": null,
+  "iterations": 30000,
+  "main_variable": "303 to400 photometric images; same RGB110 initialization, source and recipe",
+  "image_cache_device": "cpu",
+  "source_commit": "59c833b56bbbf510f3f64d40f81721995caced66"
+}

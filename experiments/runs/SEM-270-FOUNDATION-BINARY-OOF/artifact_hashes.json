@@ -1,0 +1,422 @@
+{
+  "experiment_id": "SEM-270-FOUNDATION-BINARY-OOF",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "scope": "Hierarchical hashes: all438 probability maps and438 OOF PNGs individually indexed in the sealed prediction_manifest.json; include six models, configs, source snapshots, paired sampling, metrics, audits and visual outputs here. No frozen artifact changed.",
+  "files": [
+    {
+      "path": "data/manifests/contest_dataset_v1.json",
+      "sha256": "0a188d4b4cfa5ffc2a7f151018f1cb012782e8f9860a3338aed084478d675b3e",
+      "bytes": 1579
+    },
+    {
+      "path": "experiments/geometry_camera_graph.json",
+      "sha256": "653a3ab1821d9bc5c66b4010eb79bf1ed41f57f7f91b5aba96dc9ff5ddfe6149",
+      "bytes": 9826941
+    },
+    {
+      "path": "experiments/runs/SEM-001/label_manifest.json",
+      "sha256": "62eb1cfca5b3096cccfe5dd6997d12677c7ab79726f3b860d2392b040b7ed057",
+      "bytes": 163609
+    },
+    {
+      "path": "experiments/runs/SEM-270-FOUNDATION-BINARY-OOF/config.yaml",
+      "sha256": "a5a10e615086111b87232377befc6a7d253e00bda579691fbd83220c7ee73ff2",
+      "bytes": 3632
+    },
+    {
+      "path": "experiments/splits/sem_001_scaffold_static_v1.json",
+      "sha256": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+      "bytes": 7011
+    },
+    {
+      "path": "experiments/splits/sem_005_oof_spatial_v1.json",
+      "sha256": "ce8a24e11d93df7634331a1ce33ae59385297cae90a0bd688b61769cf27f222c",
+      "bytes": 18477
+    },
+    {
+      "path": "outputs/sem270/audit-20260907-r1/result.json",
+      "sha256": "a9e481b76d6464506f7e0031d3d0b6a5b3ba76fab115294ed7cfee2cdbe7b715",
+      "bytes": 3463
+    },
+    {
+      "path": "outputs/sem270/diagnostic-20260907-r1/result.json",
+      "sha256": "1453ad10627ce3485579abb20536f1f52bb30ee8d636e772b4b76c5727e23912",
+      "bytes": 17821
+    },
+    {
+      "path": "outputs/sem270/external-20260907-r1/native/binary_candidate_140.png",
+      "sha256": "a28c18ebd9ae51c7d611ac416fe783152b6a78d108273c1b254ba6a3c3f36e93",
+      "bytes": 6995
+    },
+    {
+      "path": "outputs/sem270/external-20260907-r1/native/five_control_140.png",
+      "sha256": "261608302e1341f93faff36c691052c4d36e82dd9a8db1bc9f1616b9d34ea0e3",
+      "bytes": 7009
+    },
+    {
+      "path": "outputs/sem270/external-20260907-r1/native/manifest.json",
+      "sha256": "0185de8bd37762668c2bf9f35be8d49d0f7c7f2d3cef1d580692620d2cf3eeae",
+      "bytes": 980
+    },
+    {
+      "path": "outputs/sem270/external-20260907-r1/native/rgb/140.png",
+      "sha256": "563e041da15e713f2acc3139f2b922d129b7db7910b18d18b8ac6489e3de10d3",
+      "bytes": 723010
+    },
+    {
+      "path": "outputs/sem270/external-20260907-r1/native/semantic/140.png",
+      "sha256": "e6dce5a5484528ef18e3fef6cb53dca95134000e64046294a99b4c404a482198",
+      "bytes": 7070
+    },
+    {
+      "path": "outputs/sem270/external-20260907-r1/result.json",
+      "sha256": "a538872b629804826d27f3a0ca85c820369c7c391bf41491260c0495364cfd14",
+      "bytes": 3850
+    },
+    {
+      "path": "outputs/sem270/external-20260907-r1/small/binary_candidate_140.png",
+      "sha256": "bd7049170c8ef9013549719cdfe5c2ef795a7dcb10bfc66e403e8062bfa9ab0b",
+      "bytes": 1330
+    },
+    {
+      "path": "outputs/sem270/external-20260907-r1/small/five_control_140.png",
+      "sha256": "bff771b0aa9bb23400e863cddbe4e2166c0e0a7b53ec03c074efb699a58cc0ca",
+      "bytes": 1354
+    },
+    {
+      "path": "outputs/sem270/external-20260907-r1/small/manifest.json",
+      "sha256": "ca55746f6790fde6fd9313f50572bfa6b72f6d1566cc9a61a60f558c016d9cdb",
+      "bytes": 979
+    },
+    {
+      "path": "outputs/sem270/external-20260907-r1/small/rgb/140.png",
+      "sha256": "fd80dcc2ef23d6d7f04df2ca19887f94535a160250ef2a438ac5cd4a84ebe2ee",
+      "bytes": 76420
+    },
+    {
+      "path": "outputs/sem270/external-20260907-r1/small/semantic/140.png",
+      "sha256": "37fa73834a99ac90a39e94def923027b60ecd500e3988b4e7049afbcbe97a6b6",
+      "bytes": 1304
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/calibration_sealed.json",
+      "sha256": "b4c1f0771b2cabac640ae3ce2a9f40257e8d2a595052b1622ff4926cdc533bc6",
+      "bytes": 728304
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/fold0_binary_candidate/model.pth",
+      "sha256": "26f27f3adc17060dbe653947c7f16ecaac237d515fe44696eb517ca4588247f1",
+      "bytes": 109557699
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/fold0_binary_candidate/training_result.json",
+      "sha256": "f4824a2dc9bda480b2c69d8ed300f7eaa8aec7d6f603d532223c4b58f82e063b",
+      "bytes": 35249
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/fold0_five_control/model.pth",
+      "sha256": "e36235fb180e19ace613b4cafb34bb6f44287b95ae93705080a23a7e44b1289f",
+      "bytes": 109566915
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/fold0_five_control/training_result.json",
+      "sha256": "ce84ac9ad33f1f5e0dc05d9816945a50606967b4d7c286f9c81a90c1e209ff6d",
+      "bytes": 35339
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/fold0_result.json",
+      "sha256": "e5cec754df64084259904597d4c1e045195a298b598116573689143490c8a27e",
+      "bytes": 84105
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/fold0_sampling_plan.json",
+      "sha256": "ffea0b5e174c3e0681fbea4d8f9ee94ad8ab1267a1e94593c46fa90a1143b516",
+      "bytes": 242563
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/fold1_binary_candidate/model.pth",
+      "sha256": "f9758c072a38f8ec0a374e65fc8b9db7f2afb2d9b8bfe8c31fce42b6c64a8b7a",
+      "bytes": 109560003
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/fold1_binary_candidate/training_result.json",
+      "sha256": "81e15df01224761e6a8072e8ca2671a3a1a3dc105cbbf2371facfbb71e7ee38b",
+      "bytes": 38876
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/fold1_five_control/model.pth",
+      "sha256": "3508c5d7ba9635c7719823e18665b13adf302a7ba854819bd2f8af2eb7fbc659",
+      "bytes": 109569283
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/fold1_five_control/training_result.json",
+      "sha256": "63b594f9442da1426c6330d7733bf86ee08489065848b67baedb3734583a813a",
+      "bytes": 38973
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/fold1_result.json",
+      "sha256": "b02100109808b262ece031475c97b88cf66b11c4e84b01340113b72c132b2a4e",
+      "bytes": 92543
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/fold1_sampling_plan.json",
+      "sha256": "7d21f1912441e1d355de46034e9eb01a6a9b7c40f9adda5da8b61057bb614ae2",
+      "bytes": 242607
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/fold2_binary_candidate/model.pth",
+      "sha256": "bf38369598afb26f24791d61e860b34845a2931b4700c0ba64c924e9e6ce24ae",
+      "bytes": 109568259
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/fold2_binary_candidate/training_result.json",
+      "sha256": "1741516f7c619e8dedf3f514f0c9927c98011517f3187f2f98af828093b54d1d",
+      "bytes": 51563
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/fold2_five_control/model.pth",
+      "sha256": "ce064fef241c801ef055326d51e78a7a1a6554700a0ccf7e17d3ac91a60cc4b1",
+      "bytes": 109577475
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/fold2_five_control/training_result.json",
+      "sha256": "5d407ccb95ad7aeab590603461794a461e793eaa4214baf2bd5d3c8d653738ae",
+      "bytes": 51663
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/fold2_result.json",
+      "sha256": "e7452d59e6ba04860fe0180596c8624c253b976df05c8efb935284b3b8b22482",
+      "bytes": 122035
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/fold2_sampling_plan.json",
+      "sha256": "b9c138ebf72b708c3d4d1522c1fbdaa7ba8e61ff38f5e526b70efdb2f29e62b6",
+      "bytes": 242571
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/freeze_before.json",
+      "sha256": "23da6dc16efbaac0633fa6f6e9ae17359a43252597c8ea2597d94dd68bf4175c",
+      "bytes": 2604
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/panels/028_corrected_2x.png",
+      "sha256": "6031d465e34ca23f140a46104dee42d1ed384309dfa6335e3cfea289fea2b609",
+      "bytes": 67732
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/panels/028_foundation_zoom.png",
+      "sha256": "3f20112ca8bb08357b58b4fded96504f7c01f24fa13113bbe1f0d7224fdab869",
+      "bytes": 140001
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/panels/028_harmed_2x.png",
+      "sha256": "1bf45a2dad335b64c5f77884e8d8226f0c4865da805985eb5b1fd1e86a5157e8",
+      "bytes": 61650
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/panels/028_panel.png",
+      "sha256": "9f2a1e221535f4fb615d93a94547c5aa61c32ede14a7ee5c380b92ee3b624aac",
+      "bytes": 831650
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/panels/162_corrected_2x.png",
+      "sha256": "eea5abfdcd53009eacfee7897f61db67f3fbf77c74541f1cda18ba5137e1b95d",
+      "bytes": 49050
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/panels/162_foundation_zoom.png",
+      "sha256": "c42cda432e7cd2a4ba6cf214a9c5967f9c9525ad36b8d63f6d883d0d1878cf66",
+      "bytes": 625075
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/panels/162_harmed_2x.png",
+      "sha256": "3430bf9b4b4d3f1fcd8c4e663d922314a2c31f60f8623443b7e8b55df7fae6b7",
+      "bytes": 48793
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/panels/162_panel.png",
+      "sha256": "e18284278ca64eec8bf504b53eacf4d38047da07409c736216795e161e76530d",
+      "bytes": 847010
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/panels/268_corrected_2x.png",
+      "sha256": "a442ea411a8852d5767df4fea6bdb33d03e9f5f1d2b4dc8e45160d2fae1d9a5c",
+      "bytes": 69536
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/panels/268_foundation_zoom.png",
+      "sha256": "3832a6007b1e85b72b53fa502b2a241a99706ab73631f2c6236a4763e826c6cd",
+      "bytes": 60809
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/panels/268_harmed_2x.png",
+      "sha256": "74b559fc2975d767eed073ccb430e946f0c3d83d9d667a8336209a3294499b65",
+      "bytes": 62797
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/panels/268_panel.png",
+      "sha256": "7238f49ea5cf416b920ac0719aa098594b6d803d6c83dad529de34eba4119e3c",
+      "bytes": 713076
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/panels/282_corrected_2x.png",
+      "sha256": "c403b528f715727a4af2c1561a19173c075a6442f58551051984c6798bd5114f",
+      "bytes": 13890
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/panels/282_harmed_2x.png",
+      "sha256": "c403b528f715727a4af2c1561a19173c075a6442f58551051984c6798bd5114f",
+      "bytes": 13890
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/panels/282_panel.png",
+      "sha256": "0d83ab498e5e37d916eec474916437197c23f59b92a14023a459e332ce174034",
+      "bytes": 688852
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/panels/283_corrected_2x.png",
+      "sha256": "a8757c2daf50d8e922a5c276abf50ae0e3be5c809dbd370c11ced210cf73a591",
+      "bytes": 66512
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/panels/283_foundation_zoom.png",
+      "sha256": "05a95e9b34b09b02f0addedbaf5038cf05d86fe377ed989b6df9ed2abb9d69ac",
+      "bytes": 98725
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/panels/283_harmed_2x.png",
+      "sha256": "58af4f9730a2981b5d4b591c9057208399848c7c4873143133952749c9e21a0d",
+      "bytes": 56794
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/panels/283_panel.png",
+      "sha256": "5de1a2450967001b35e115e6060ada9b4dd686e6e2ea61a26bd2ca77e5e9d385",
+      "bytes": 869760
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/panels/295_corrected_2x.png",
+      "sha256": "8bde700df26980dbd24837bef7cb2b8f3e17556ddce988b75ce832ca9f84e96d",
+      "bytes": 49499
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/panels/295_foundation_zoom.png",
+      "sha256": "f3f201ced6ba8a10525a27bc84453ff6effd9e216fe4e1ba8f95e1c641cf5e8d",
+      "bytes": 74725
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/panels/295_harmed_2x.png",
+      "sha256": "53b53d1f322af95923d7d37d8849000d51bff6aa5b6a48e64ca2da60d14e125b",
+      "bytes": 60460
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/panels/295_panel.png",
+      "sha256": "ddd42fac6e03928dec001aac6c1a11b251e94fa15830d1bb8911977a278c3afc",
+      "bytes": 911804
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/panels/manifest.json",
+      "sha256": "6faf3da71d55554ee0e341a1734801398c2a8ffd43f78e3ab8ada21dbe83cad1",
+      "bytes": 7716
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/prediction_manifest.json",
+      "sha256": "d2177aa5c7acaa682e8895455c1cfbc33d7f76dd19b7a697cfa94bd59d5df3ca",
+      "bytes": 215551
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/prediction_seal.json",
+      "sha256": "036d164d6df533c6965b9d803e00bd0babcb47d907375d8f626badccd0647add",
+      "bytes": 330500
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/result.json",
+      "sha256": "fa6809236801834f59b7b255ecea35763fc8ea2e2c3226dce7258167249f5b84",
+      "bytes": 1131761
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/source_snapshot/audit_sem260_error_budget.py",
+      "sha256": "d04744cac969ae5f7bb05deed115fcc8319511201d3665c723a663259fbdfa3a",
+      "bytes": 7181
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/source_snapshot/config.yaml",
+      "sha256": "a5a10e615086111b87232377befc6a7d253e00bda579691fbd83220c7ee73ff2",
+      "bytes": 3632
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/source_snapshot/run_sem250_colmap_track_deck_diag.py",
+      "sha256": "8ddc94fdaf77de1f4e63b404391ff9710508ec0fd5eecb8706529ab781871a8b",
+      "bytes": 13136
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/source_snapshot/run_sem270_foundation_binary_oof.py",
+      "sha256": "13d6b8d6b7e59884fca8502e84e62942cf1cbfcf2d404f6f4c23cacc4535d240",
+      "bytes": 19257
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/source_snapshot/semantic_cable_binary.py",
+      "sha256": "77585944bf12021537558ac21fd17534c861c9083c36ab1680c88df7f22dcd53",
+      "bytes": 11328
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/source_snapshot/semantic_foundation_binary.py",
+      "sha256": "4bebb49a33708455de9bcd507738015f092508b60e8a837bd9a6f7df07f24146",
+      "bytes": 3369
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/source_snapshot/semantic_protected_fusion.py",
+      "sha256": "58b3c3a8939c4acacbf07791188cd462f30fc9365a2acb36f012888bcbbb780c",
+      "bytes": 9119
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/source_snapshot/semantic2d.py",
+      "sha256": "22d1eeeaa438d6dcc680dabfba64b69f4ffa387178da848756a9ebfede0f0b3d",
+      "bytes": 6812
+    },
+    {
+      "path": "outputs/sem270/full-20260907-r1/source_snapshot/submission_sem161.py",
+      "sha256": "a85d9aa04dfb0f35e6f25b1512bfa048e09eecf661e20e3c2fe51a00f31b96a3",
+      "bytes": 3013
+    },
+    {
+      "path": "outputs/sem270/smoke-20260907-r1/result.json",
+      "sha256": "a6297c16dfacea4f5a23c9acca447f90910fbd8eb8cf597e9a1a1af38570fb16",
+      "bytes": 25287
+    },
+    {
+      "path": "scripts/audit_sem270_external.py",
+      "sha256": "1980d8c3cd97e6cea290c9cf309462858bc36689d3eb8aca957d0befa9489676",
+      "bytes": 4688
+    },
+    {
+      "path": "scripts/audit_sem270_foundation.py",
+      "sha256": "58ef73cd8523a7d254c735de482d8b119c571818213d2b6b6427290595fd6d38",
+      "bytes": 9991
+    },
+    {
+      "path": "scripts/diagnose_sem270_foundation.py",
+      "sha256": "ae3f9d86a9c156957fd79fc9d4159ac367bc02cd99478a5eff11e77730539557",
+      "bytes": 3448
+    },
+    {
+      "path": "scripts/run_sem270_foundation_binary_oof.py",
+      "sha256": "13d6b8d6b7e59884fca8502e84e62942cf1cbfcf2d404f6f4c23cacc4535d240",
+      "bytes": 19257
+    },
+    {
+      "path": "src/semantic_foundation_binary.py",
+      "sha256": "4bebb49a33708455de9bcd507738015f092508b60e8a837bd9a6f7df07f24146",
+      "bytes": 3369
+    },
+    {
+      "path": "src/semantic_refinement.py",
+      "sha256": "e1e868cba2c14335f820cb00ad5a987f0b5144c2124a84c41c00f9aa33f9d99b",
+      "bytes": 2973
+    },
+    {
+      "path": "tests/test_semantic_foundation_binary.py",
+      "sha256": "1599f2039515399ea3c9bd1e0e9d5a9f3f0a78a17f883e877698fd79f1832a14",
+      "bytes": 2670
+    }
+  ]
+}

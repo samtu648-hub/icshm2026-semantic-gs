@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "experiment_id": "VIS-005-SELECTIVE-RECOVERY-FLYTHROUGH",
+  "title": "hard 0.30 versus two fixed SEM-123 selective-recovery rules",
+  "phase": "developer-only semantic visualization",
+  "status": "completed_developer_visualization",
+  "parent_experiment": "VIS-001-FLYTHROUGH,VIS-004-DEV-THRESHOLD-FLYTHROUGH,SEM-123-BAND-RECOVERY-DEV-SWEEP,SEM-122-UNCERTAINTY-BAND-DIAG,SEM-120-DEV-THRESHOLD-SWEEP,SEM-111-PROTECTED-FUSION-FINAL,SEM-001,SEM-102-RENDERED-SEG-FINAL,RGB-030-FULL",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "not_applicable_novel_camera_metadata_visualization",
+  "seed": "not_applicable_deterministic_frozen_inference",
+  "frozen_inputs": {
+    "sem123_result_sha256": "75146360d3f5da6a6fd63ece2fcfa86efc404ac9668f6e757e14578cf24c0359",
+    "sem001_checkpoint_sha256": "8e3dbe30e17f67081a72380018fc281c155ec00eed83cd5a19b3285bf4fb8aa3",
+    "sem102_final_checkpoint_sha256": "88e3084db7b6394ab8253fea2ac129d68d81053af50fc3b38556f1288972763c",
+    "sem102_final_result_sha256": "2ccae7090ee1a9a980d7d3762cb946556bb6ea59cca7c35e52027b1f492dbacd"
+  },
+  "model": {
+    "rgb": "frozen RGB-030-FULL Scaffold-GS",
+    "semantic_base": "frozen SEM-001 sidecar",
+    "semantic_teacher": "frozen SEM-102 rendered-RGB SegFormer-B2 final checkpoint",
+    "updates_parameters": false,
+    "rgb_geometry_color_opacity_checkpoint_unchanged": true
+  },
+  "trajectory": {
+    "source_experiment": "VIS-001-FLYTHROUGH",
+    "trajectory_id": "frozen_scaffold_sem001_bridge_flythrough_v1",
+    "frames": 144,
+    "fps": 24,
+    "duration_seconds": 6.0,
+    "coordinate_frame": "official_colmap_reference",
+    "pose_convention": "CAMERA_FROM_WORLD",
+    "input_camera_model": "SIMPLE_RADIAL",
+    "keyframe_inputs": "official camera metadata only",
+    "uses_reference_rgb_or_labels": false
+  },
+  "single_changed_variable": "Visualise the two fixed SEM-123 recovery predicates instead of the hard-0.30-only protected fusion. Both predicates begin from exactly hard 0.30, recover only the frozen [0.20,0.30) band and leave deck, tower and foundation unchanged; no model, probability, RGB or display rule changes.",
+  "comparison": {
+    "selection_notice": "The first recovery rule is SEM-123's pre-recorded development-score leader and the second is its more conservative Pareto record. This video only checks their spatial appearance on new poses; it cannot tune, rank, promote or formalise either rule.",
+    "columns": [
+      {
+        "id": "hard030",
+        "header": "Hard 0.30 visual baseline",
+        "rule": {"kind": "protected_hard_threshold", "stay_cable_threshold": 0.30}
+      },
+      {
+        "id": "sem123_leader",
+        "header": "SEM-123 recall candidate p20 d02 any",
+        "rule": {"kind": "selective_band_recovery", "lower_threshold": 0.20, "upper_threshold": 0.30, "probability_minimum": 0.20, "maximum_seed_distance": 2.0, "prior_mode": "any"}
+      },
+      {
+        "id": "sem123_conservative",
+        "header": "SEM-123 conservative p20 d04 SEM-001 cable",
+        "rule": {"kind": "selective_band_recovery", "lower_threshold": 0.20, "upper_threshold": 0.30, "probability_minimum": 0.20, "maximum_seed_distance": 4.0, "prior_mode": "sem001_stay_cable"}
+      }
+    ]
+  },
+  "outputs": {
+    "root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/vis_005/selective_recovery/flythrough-20260903-r1",
+    "comparison_video": "semantic_dev030_vs_sem123_leader_vs_sem123_conservative.mp4",
+    "codec": "H.264 yuv420p",
+    "resolution": [3960, 1032]
+  },
+  "contract": {
+    "class_names": ["background", "deck", "stay_cable", "tower", "foundation"],
+    "stay_cable_class_id": 2,
+    "no_extra_display_filter": true,
+    "no_reference_rgb_or_labels": true,
+    "protected_sem001_classes_exact": ["deck", "tower", "foundation"],
+    "official_external_camera_supported": true,
+    "no_video_driven_rule_change": true
+  },
+  "fallback": "RGB-030-FULL Scaffold-GS + SEM-001"
+}

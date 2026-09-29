@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "experiment_id": "QUAL-001-FOUNDATION",
+  "parent_experiment": "RESEARCH-RECON-001,RGB-030-FULL,SEM-161-DECK-BINARY-FINAL,SEM-329-SECOND-SOURCE-VETO-FINAL",
+  "status": "implementation_in_progress",
+  "seed": 0,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1;sem_001_scaffold_static_v1;sem_005_oof_spatial_v1",
+  "input_hashes": {
+    "data/manifests/contest_dataset_v1.json": "0a188d4b4cfa5ffc2a7f151018f1cb012782e8f9860a3338aed084478d675b3e",
+    "experiments/splits/rgb_r1_spatial_v1.json": "141944ca14288536a73a55586763b3104493112069a536bc0dfcc2d9f0081847",
+    "experiments/splits/sem_001_scaffold_static_v1.json": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+    "experiments/splits/sem_005_oof_spatial_v1.json": "ce8a24e11d93df7634331a1ce33ae59385297cae90a0bd688b61769cf27f222c"
+  },
+  "frozen_manifest": "experiments/runs/SUBMIT-020-SEM161-FREEZE/frozen_manifest.json",
+  "classes": ["background", "deck", "stay_cable", "tower", "foundation"],
+  "rgb": {
+    "iterations": 30000,
+    "smoke_iterations": 300,
+    "save_iterations": [7000, 15000, 30000],
+    "resolution": [1320, 989],
+    "training_seed": 0,
+    "scene": "rgb_r1_spatial_v1/scene_400_eval",
+    "initialization": "existing training-only DLT; no pose refinement",
+    "coordinate_transform": "identity; official CAMERA_FROM_WORLD",
+    "pgsr_distance_units": "official input coordinates; min=0.01, max=1.5; no silent scale fitting",
+    "pgsr_empty_neighbors": "skip this camera multiview term, report coverage; never borrow dev views",
+    "smoke_is_quality_evidence": false
+  },
+  "semantics": {
+    "static_steps": 10000,
+    "expert_steps": [3000, 6000, 12000],
+    "fiveclass_crop_stride": [768, 512],
+    "binary_crop_stride": [960, 480],
+    "b2_learning_rate": 0.00006,
+    "weight_decay": 0.01,
+    "seed_base": 20260805,
+    "rgb_frozen": true,
+    "calibration_scope": "training-side semantic OOF only; no developer threshold tuning",
+    "canonical_space": "PINHOLE; remap final probabilities then argmax; legacy adapter unchanged"
+  },
+  "features": {
+    "variants": ["none", "fixed_medium", "learned_granularity"],
+    "dimensions": 16,
+    "head_dimensions": [16, 128, 5],
+    "iterations": 30000,
+    "supervision_downsample": 2,
+    "mix_grid": [0, 0.25, 0.5, 0.75, 1],
+    "geometry_gradients": false,
+    "required_compositing": "native backbone projection, sorting, visibility and weights"
+  },
+  "review": {
+    "first": "rebuild SEM329 matches/reference bank without changing its rule",
+    "second": "background-to-deck only; two distinct reliable real training sources agree; calibrated deck probability",
+    "deck_threshold_grid": [null, 0.5, 0.6, 0.7, 0.8, 0.85, 0.9, 0.925, 0.95, 0.97, 0.98, 0.99, 0.995],
+    "stay_cable_copy": false,
+    "depth_is_ground_truth": false
+  },
+  "validation": {
+    "systems": ["scaffold_matched", "new_backbone_finalist"],
+    "trial_seeds": [0, 1, 2],
+    "additional_inconclusive_seeds": [3, 4],
+    "outer_folds": [0, 1, 2],
+    "guard_radius": 0.5220235426020557,
+    "outer_isolation": ["rgb", "initialization_observations", "semantic_labels", "feature_teachers", "reference_bank"],
+    "inner_scope": "semantic cross-fitting within outer training; outer RGB may be shared",
+    "historically_reused_data": true,
+    "official_score_formula_invented": false,
+    "tradeoff_promotion": "explicit human evidence review"
+  },
+  "execution": {
+    "max_concurrent_gpu_jobs": 1,
+    "minimum_free_gib": 100,
+    "external_compute_requires_confirmation": true,
+    "uploads_authorized": false,
+    "overwrite_frozen_authorized": false,
+    "quality_claim": null
+  }
+}

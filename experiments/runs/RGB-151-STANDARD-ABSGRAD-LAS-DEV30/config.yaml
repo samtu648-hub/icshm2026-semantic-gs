@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-151-STANDARD-ABSGRAD-LAS-DEV30",
+  "parent_experiment": "RGB-150-STANDARD-ABSGRAD-DEV30",
+  "git_commit": "working_tree_pending",
+  "seed": 0,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "dev30_local_composition_v1",
+  "split_path": "experiments/splits/dev30_local_composition_v1.json",
+  "status": "preregistered_full_r2_after_zero_step_gpu_context_race",
+  "preflight_revision": "r2",
+  "main_variable": "Replace only the native binary large-Gaussian split shape with the fixed ImprovedGS-inspired long-axis split package",
+  "control": {
+    "experiment": "RGB-150-STANDARD-ABSGRAD-DEV30",
+    "reuse_completed_control": true,
+    "reason": "The candidate-off worker path is native and does not import or install the LAS hook"
+  },
+  "data": {
+    "scene": "outputs/quality/RGB-150/scene",
+    "access": "outputs/quality/RGB-150/access.json",
+    "camera_count": 400,
+    "training_camera_count": 370,
+    "evaluation_camera_count": 30,
+    "initialization": "training-observation-only DLT retriangulation inherited from RGB150",
+    "initial_point_count": 79630,
+    "initial_ply_sha256": "30916591f71c5fb2af8b548c996bc1c036dec597cd81caba21cab2376ad8574e"
+  },
+  "training": {
+    "output": "outputs/quality/RGB-151/full-r2",
+    "iterations": 30000,
+    "signed_clone_threshold": 0.0002,
+    "absolute_split_threshold": 0.0004,
+    "densify_from_iter": 500,
+    "densify_until_iter": 15000,
+    "densification_interval": 100,
+    "opacity_reset_interval": 3000,
+    "camera_sampler": "upstream Python random shuffle and randint without replacement per epoch",
+    "train_command": "python3 scripts/run_rgb151_split_shape.py --artifact-root $R1_OUTPUT_ROOT --stage train",
+    "evaluation_command": "python3 scripts/run_rgb151_split_shape.py --artifact-root $R1_OUTPUT_ROOT --stage evaluate"
+  },
+  "split_shape": {
+    "method": "long_axis",
+    "split_distance": 0.45,
+    "opacity_multiplier": 0.6,
+    "support_radius_sigma": 3.0,
+    "child_count": 2,
+    "preserve_native_rng_draw": true
+  },
+  "fixed": [
+    "RGB150 data roles, cameras, initialization, seed, iteration count and camera sampler",
+    "absolute-gradient split eligibility and threshold",
+    "signed-gradient clone path",
+    "losses, optimizer, learning rates, pruning, opacity reset and SH schedule",
+    "parent deletion, two-child append and native optimizer-state initialization"
+  ],
+  "excluded": [
+    "ImprovedGS candidate sampling, importance budget, clone replacement, RAP, MU and GC",
+    "semantic-conditioned behavior, historical Gaussian IDs, anisotropy gates and hand-selected regions",
+    "parameter scan, checkpoint selection, semantic training and full-data training"
+  ],
+  "rng_policy": {
+    "camera_schedule": "Candidate hook makes no Python random calls; seed and access list match RGB150",
+    "torch": "Consume and discard the native torch.normal draw for every matching split event before deterministic LAS placement",
+    "limit": "Shape-dependent later topology can change selected-parent counts, so full 30k Torch RNG identity is not claimed"
+  },
+  "output": {
+    "root": "outputs/quality/RGB-151",
+    "source": "outputs/quality/rgb140/source-r1",
+    "report": "experiments/runs/RGB-151-STANDARD-ABSGRAD-LAS-DEV30/report.md"
+  },
+  "license": {
+    "method_reference": "ImprovedGS Long-Axis Split",
+    "paper": "https://arxiv.org/abs/2508.12313",
+    "source": "https://github.com/XiaoBin2001/Improved-GS",
+    "source_commit": "20b5db343a87c2f9fb4b70c6e39ff1f042a8a47a",
+    "source_license": "ImprovedGS Non-Commercial Research License",
+    "implementation": "independent project implementation of the cited equations; no upstream source copied"
+  },
+  "evaluation_plan": {
+    "primary": "fixed dev30 holdout PSNR, SSIM and LPIPS-Alex after 30k",
+    "secondary": "370-view training fit, regular/oblique/distant holdout groups, final Gaussian count, runtime and peak memory",
+    "mechanism": "split-event counts plus fixed same-position artifact and true-structure review",
+    "interpretation": "single split and single seed; neither a blind test nor evidence that elongation alone is the artifact cause"
+  }
+}

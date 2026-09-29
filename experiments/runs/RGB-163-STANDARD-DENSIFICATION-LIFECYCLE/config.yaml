@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-163-STANDARD-DENSIFICATION-LIFECYCLE",
+  "parent_experiment": "RGB-130-STANDARD-ALL400;RGB-140-STANDARD-ABSGRAD-ALL400",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 0,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "split_path": "outputs/quality/all_data/RGB-120-r2/split.json",
+  "method": "standard-3dgs",
+  "main_variable": "diagnostic checkpoint time only; no training-recipe change from RGB130",
+  "iterations": 30000,
+  "save_iterations": [500, 1000, 3000, 7000, 15000, 30000],
+  "densify_from_iter": 500,
+  "densify_until_iter": 15000,
+  "diagnostic_view_groups": {
+    "near_oblique": [159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169],
+    "severe_smear": [235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245],
+    "mid_distance": [316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326],
+    "far_distance": [350, 351, 352, 353, 354, 355, 356, 357, 358],
+    "late_oblique": [385, 386, 387, 388, 389, 390, 391, 392]
+  },
+  "quality_claim": null
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "experiment_id": "QUAL-009-DATASET-PROFILE",
+  "title": "Released dataset class, thin-structure, and camera-coverage profile",
+  "phase": "diagnostic",
+  "parent_experiment": "SEM-367-EXPERT-ERROR-STRATA;SEM-370-ALL300;RGB-120-ALL400",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": null,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "main_variable": "Read-only paper-facing dataset profile; no training, prediction, threshold, split, or model change.",
+  "inputs": {
+    "label_root": "outputs/quality/all_data/SEM-370-r1/labels",
+    "label_manifest": "outputs/quality/all_data/SEM-370-r1/label_manifest.json",
+    "camera_images_txt": "outputs/quality/all_data/RGB-120-r2/scene/sparse/0/images.txt",
+    "spatial_split": "experiments/splits/spatial_confirmation_v1.json"
+  },
+  "analysis": {
+    "image_width": 1320,
+    "image_height": 989,
+    "expected_labeled_views": 300,
+    "expected_camera_views": 400,
+    "class_mapping": {
+      "0": "background",
+      "1": "deck",
+      "2": "stay_cable",
+      "3": "tower",
+      "4": "foundation"
+    },
+    "component_connectivity": 8,
+    "component_area_bins": [64, 256, 1024],
+    "interior_distance_thresholds_px": [1, 2, 4]
+  },
+  "output_path": "outputs/quality/QUAL-009/r1",
+  "quality_claim": null,
+  "protocol": "docs/experiments/qual009_dataset_profile_protocol.md"
+}
+

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-153-STANDARD-SIGNED-SPATIAL30",
+  "title": "Matched original Standard 3DGS spatial-confirmation control",
+  "phase": "reconstruction",
+  "parent_experiment": "RGB-130-STANDARD-ALL400;RGB-152-STANDARD-ABSGRAD-SPATIAL30",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "spatial_confirmation_v1",
+  "split_path": "experiments/splits/spatial_confirmation_v1.json",
+  "seed": 0,
+  "main_variable": "Original Standard 3DGS signed-gradient densification replaces RGB152 AbsGS absolute-gradient split; all spatial data roles, initialization, budget, seed, and evaluation remain fixed.",
+  "data": {
+    "scene": "outputs/quality/RGB-152/scene",
+    "resolution": "1320x989",
+    "rgb_train_views": 353,
+    "rgb_confirmation_views": 30,
+    "buffer_excluded_views": 17,
+    "scene_views": 383,
+    "semantic_train_labeled_views": 256,
+    "official_cameras_fixed": true,
+    "initial_point_cloud_source": "Exact RGB152 training-only DLT initialization",
+    "initial_point_count": 78045,
+    "initial_ply_sha256": "b7bddeda3759a11e833bd3d60ee554b8e005688ab14f9d41b99d99e2ac59521a",
+    "confirmation_used_for_initialization": false,
+    "buffer_used_for_initialization": false,
+    "use_semantics": false
+  },
+  "training": {
+    "iterations": 30000,
+    "seed": 0,
+    "densification": "original Standard 3DGS signed-gradient clone and split",
+    "densify_grad_threshold": 0.0002,
+    "densify_from_iter": 500,
+    "densify_until_iter": 15000,
+    "densification_interval": 100,
+    "opacity_reset_interval": 3000,
+    "source_relative_to_artifact_root": "r1/third_party/standard-3dgs",
+    "command": "python3 scripts/run_rgb153_spatial_standard.py --artifact-root <artifact-root> --stage train",
+    "output": "outputs/quality/RGB-153/full-r1"
+  },
+  "evaluation": {
+    "protocol": "Separate full-resolution metrics for 353 train views, 30 spatial confirmation views, and three fixed ten-view regions",
+    "metrics": ["PSNR", "SSIM", "LPIPS"],
+    "training_metrics_are_fit_results": true,
+    "claim": "historically exposed spatial development confirmation; not blind"
+  },
+  "output": {
+    "root": "outputs/quality/RGB-153",
+    "preserve_failures": true
+  },
+  "protocol": "docs/experiments/rgb153_sem407_spatial_standard_protocol.md"
+}
+

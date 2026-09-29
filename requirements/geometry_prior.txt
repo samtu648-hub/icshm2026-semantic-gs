@@ -1,0 +1,8 @@
+# Base utilities for GeometryPrior preparation (not the model checkpoints).
+numpy==1.26.4
+opencv-python-headless==4.11.0.86
+Pillow==11.3.0
+scipy==1.16.1
+
+# MapAnything, DA3 and LingBot-Map are intentionally not pinned here until
+# their approved upstream URL, commit, license and checkpoint are recorded.

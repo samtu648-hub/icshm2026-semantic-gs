@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-416-COMPONENT-POINT-DIAG",
+  "parent_experiment": "SEM-412-RGB154-SPATIAL255;SEM-367-EXPERT-ERROR-STRATA",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "spatial_confirmation_v2",
+  "split_path": "experiments/splits/spatial_confirmation_v2.json",
+  "parent_config": "experiments/runs/SEM-412-RGB154-SPATIAL255/config.yaml",
+  "sampling_plan": "outputs/quality/SEM-412/r1/sampling-plan.json",
+  "snapshots": [0, 3000, 6000],
+  "crops_per_training_view": 2,
+  "component_max_area": 1024,
+  "points_per_component": 16,
+  "max_quota_fraction": 0.05,
+  "diagnostic_seed": 416,
+  "support_gate": {"late_snapshot_min_low_coverage_components": 30, "late_snapshot_min_low_coverage_views": 10, "late_snapshot_min_low_coverage_fraction": 0.1, "low_coverage_points_below": 4},
+  "output_path": "outputs/quality/SEM-416/r1",
+  "protocol": "docs/experiments/component_sampling_dropgaussian_protocol.md"
+}

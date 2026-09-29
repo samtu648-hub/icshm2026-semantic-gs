@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-110-PROTECTED-FUSION-OOF",
+  "title": "Training-only protected SEM-001 plus rendered-RGB OOF fusion",
+  "phase": "R2 semantic two-stream fusion diagnostic",
+  "status": "completed_oof_gate_passed",
+  "owner": "unassigned",
+  "parent_experiment": "SEM-001,SEM-101-RENDERED-SEG-OOF,SEM-102-RENDERED-SEG-FINAL,RGB-030-FULL",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "seed": 20260902,
+  "data": {
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "semantic_split_sha256": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+    "oof_split": "experiments/splits/sem_005_oof_spatial_v1.json",
+    "oof_split_sha256": "ce8a24e11d93df7634331a1ce33ae59385297cae90a0bd688b61769cf27f222c",
+    "label_manifest": "experiments/runs/SEM-001/label_manifest.json",
+    "training_images": 219,
+    "validation_images": 74,
+    "access_rule": "Render frozen SEM-001 class maps for exactly the 219 authorised training cameras without labels. Validate the pre-existing SEM-101 OOF teacher probability manifest, partition these training names by deterministic hash, select one threshold from calibration labels only, then read check labels once. The 74 fixed validation views, real RGB, unlabelled images, hidden test inputs, external cameras and all training are unavailable."
+  },
+  "inputs": {
+    "sem001_config": "experiments/runs/SEM-001/config.yaml",
+    "sem001_checkpoint": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_001/full/checkpoints/semantic_sidecar.pth",
+    "sem001_checkpoint_sha256": "8e3dbe30e17f67081a72380018fc281c155ec00eed83cd5a19b3285bf4fb8aa3",
+    "sem101_oof_summary_sha256": "88fd816d8fa9d56c0a78dece570ca38ca02d43d66a801aee671e6c4de1681923",
+    "sem101_rendered_training_manifest_sha256": "a8e08740ac8fa30f115f26cb822b604addca2b2f4c0a316ac4914f1fdd9ceb67"
+  },
+  "frozen_rgb": {
+    "backbone": "Scaffold-GS",
+    "rgb_experiment": "RGB-030-FULL",
+    "iteration": 30000,
+    "geometry_color_opacity_checkpoint_unchanged": true,
+    "semantic_checkpoint_unchanged": true,
+    "appearance_camera_id": 0,
+    "coordinate_frame": "official_colmap_reference",
+    "pose_convention": "CAMERA_FROM_WORLD"
+  },
+  "single_changed_variable": "At inference only, fuse the frozen SEM-001 class map with the existing SEM-101 spatial-OOF rendered-RGB probabilities in the background/stay_cable lane. SEM-001 deck, tower and foundation predictions are immutable; no other model, label, split or camera input changes.",
+  "fusion": {
+    "protected_sem001_predicted_class_ids": [1, 3, 4],
+    "mutable_class_ids": [0, 2],
+    "teacher_score": "SEM-101 OOF raw five-class probability for official stay_cable ID 2",
+    "stay_cable_threshold_grid": [0.2, 0.35, 0.5, 0.65, 0.8],
+    "partition": "blake2b(name, person=sem110-v1) parity; label-independent deterministic calibration/check halves",
+    "selection_rule": "On calibration only, retain candidates satisfying every fixed gate and select the largest background-to-stay_cable reduction; ties choose the higher stay_cable threshold. Check labels never select a threshold."
+  },
+  "training_oof_gates": {
+    "mIoU_with_background_drop_max": 0.0,
+    "stay_cable_iou_min": 0.65,
+    "stay_cable_recall_min": 0.9,
+    "background_to_stay_cable_reduction_min_fraction": 0.8,
+    "protected_prediction_pixels_exact": true
+  },
+  "outputs": {
+    "sem001_training_render_root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_110/sem001_training_predictions/full-20260902-r1",
+    "fusion_oof_root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_110/protected_fusion_oof/full-20260902-r1",
+    "training_visual_samples": ["001.png", "017.png", "031.png"],
+    "panel_order": ["GT", "frozen_SEM-001", "protected_fusion", "error"]
+  },
+  "forbidden": [
+    "SEM-001_checkpoint_change",
+    "RGB_checkpoint_change",
+    "Scaffold_training",
+    "SegFormer_training",
+    "real_RGB_input",
+    "fixed_74_view_access",
+    "unlabeled_input",
+    "hidden_test_access",
+    "external_camera_mode",
+    "check_based_threshold_selection",
+    "retraining_or_second_threshold_grid"
+  ],
+  "classes": {"0": "background", "1": "deck", "2": "stay_cable", "3": "tower", "4": "foundation"},
+  "fallback": "RGB-030-FULL Scaffold-GS + SEM-001"
+}

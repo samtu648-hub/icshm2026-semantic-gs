@@ -1,0 +1,387 @@
+{
+  "experiment_id": "SEM-280-FOUNDATION-BOUNDARY-OOF",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "scope": "Hierarchical hashes: all 438 probability maps and 438 OOF PNGs are individually indexed by the sealed prediction_manifest.json. This manifest covers configs, code, source snapshots, models, sampling/results, audit outputs and visual panels; frozen parents remain in SUBMIT-020.",
+  "files": [
+    {
+      "path": "experiments/runs/SEM-280-FOUNDATION-BOUNDARY-OOF/config.yaml",
+      "sha256": "7887130cf3ccce8672f0cda123db52eac95be0158fc55cfe6d3e61bd5ba467dd",
+      "bytes": 4308
+    },
+    {
+      "path": "outputs/sem280/audit-20260907-r2/result.json",
+      "sha256": "1c9de57e97148d3869ce9c48146729a93e89cb342678eb0fd7d65f179d8ebfb6",
+      "bytes": 4780
+    },
+    {
+      "path": "outputs/sem280/external-20260907-r4/native/five_control_140.png",
+      "sha256": "5d722db0c690ddbf99b2353f96b71085fdf6dd4fc45f3d745e6500b9dc371b29",
+      "bytes": 7014
+    },
+    {
+      "path": "outputs/sem280/external-20260907-r4/native/foundation_boundary_candidate_140.png",
+      "sha256": "89dfd49f6e671f05f43c1ee5a047d49538b1062cab69cb4889d1d7bd103bcbfc",
+      "bytes": 7006
+    },
+    {
+      "path": "outputs/sem280/external-20260907-r4/native/manifest.json",
+      "sha256": "19433058d4c9d61e91838bccab1fee8db9c882b45dbe77254fd677d9a17c7964",
+      "bytes": 980
+    },
+    {
+      "path": "outputs/sem280/external-20260907-r4/native/rgb/140.png",
+      "sha256": "563e041da15e713f2acc3139f2b922d129b7db7910b18d18b8ac6489e3de10d3",
+      "bytes": 723010
+    },
+    {
+      "path": "outputs/sem280/external-20260907-r4/native/semantic/140.png",
+      "sha256": "e6dce5a5484528ef18e3fef6cb53dca95134000e64046294a99b4c404a482198",
+      "bytes": 7070
+    },
+    {
+      "path": "outputs/sem280/external-20260907-r4/result.json",
+      "sha256": "4fb6061dda52bba36e74178665f4a45aca48d0124d08affd1ea9aa9c19663f70",
+      "bytes": 3882
+    },
+    {
+      "path": "outputs/sem280/external-20260907-r4/small/five_control_140.png",
+      "sha256": "7b6721a6d797c1b66c6618b4ef382012b637e62ff18bf10ce69cbc0a38f03bec",
+      "bytes": 1356
+    },
+    {
+      "path": "outputs/sem280/external-20260907-r4/small/foundation_boundary_candidate_140.png",
+      "sha256": "aaf4592457eaea33781d3f08fb950f591cac18f3b9115b27a1ca9783beb8733f",
+      "bytes": 1320
+    },
+    {
+      "path": "outputs/sem280/external-20260907-r4/small/manifest.json",
+      "sha256": "bdfc5c7257ea0c5f5572be75ef25cc7be50cc3d046ef3da283f72f2652af9848",
+      "bytes": 979
+    },
+    {
+      "path": "outputs/sem280/external-20260907-r4/small/rgb/140.png",
+      "sha256": "fd80dcc2ef23d6d7f04df2ca19887f94535a160250ef2a438ac5cd4a84ebe2ee",
+      "bytes": 76420
+    },
+    {
+      "path": "outputs/sem280/external-20260907-r4/small/semantic/140.png",
+      "sha256": "37fa73834a99ac90a39e94def923027b60ecd500e3988b4e7049afbcbe97a6b6",
+      "bytes": 1304
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/calibration_sealed.json",
+      "sha256": "2f6c767d3ae76c47681d5a2cb4ad711cd3afcbcbee11d642bc07a2c759a3a483",
+      "bytes": 752014
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/fold0_five_control/model.pth",
+      "sha256": "00e613d1db437e1ef0dbda89fac20cd96ea97180b6381b7d09400f7ffeada741",
+      "bytes": 109567619
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/fold0_five_control/training_result.json",
+      "sha256": "2fa31f4516196b4b876ece699b42467ea22a1c0d57d6ce9a8c8b892aa9665f7f",
+      "bytes": 40495
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/fold0_foundation_boundary_candidate/model.pth",
+      "sha256": "87c6df8634f74e175a537da8f2a24a5b789d082a005d37b68b5f9be3919c5fac",
+      "bytes": 109567619
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/fold0_foundation_boundary_candidate/training_result.json",
+      "sha256": "f7c74db7bc57a6efb64b1d98e38c8ee8ce21cb09564a49f26e5b07c1da5a590d",
+      "bytes": 40539
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/fold0_result.json",
+      "sha256": "2db790c4dc038f4a78adf0a1c8d66da24045c424c1efd6d040dec1d988d91908",
+      "bytes": 96005
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/fold0_sampling_plan.json",
+      "sha256": "ffea0b5e174c3e0681fbea4d8f9ee94ad8ab1267a1e94593c46fa90a1143b516",
+      "bytes": 242563
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/fold1_five_control/model.pth",
+      "sha256": "b7aa4c5dd209116ca5eb6d49c5d8ba9ac1cc34b5051cad7bf39bf9178851513b",
+      "bytes": 109570051
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/fold1_five_control/training_result.json",
+      "sha256": "efea4cb25e9cf622d76ee26c767bc34c5ef5490e68d2febc3e58a41abfea598d",
+      "bytes": 44752
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/fold1_foundation_boundary_candidate/model.pth",
+      "sha256": "f29c981ec14536500ba350690631add408934542d93dadf0844349d783e7cd6b",
+      "bytes": 109570051
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/fold1_foundation_boundary_candidate/training_result.json",
+      "sha256": "2379c00d4fa66457a436373d3cfb1024f52dceb20d7dee89498d36643840ff0c",
+      "bytes": 44788
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/fold1_result.json",
+      "sha256": "99d985cfcc747a89c3db63501b0b519b14840cf33b94fcbca263651f69129539",
+      "bytes": 105855
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/fold1_sampling_plan.json",
+      "sha256": "7d21f1912441e1d355de46034e9eb01a6a9b7c40f9adda5da8b61057bb614ae2",
+      "bytes": 242607
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/fold2_five_control/model.pth",
+      "sha256": "1029fa271980d50b2f1482c0fe84bdf64e488746b7e5a9d844abd4513477228f",
+      "bytes": 109578499
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/fold2_five_control/training_result.json",
+      "sha256": "c41a21786296dc2d0304c34b208c36015767d9e6ae9312b6be08afb84bac5e8a",
+      "bytes": 59581
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/fold2_foundation_boundary_candidate/model.pth",
+      "sha256": "160720a0633245fcc2f5ef0d3e29166c4aa1d0d272e39aebb538d0532bdb8eeb",
+      "bytes": 109578499
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/fold2_foundation_boundary_candidate/training_result.json",
+      "sha256": "b49d79e14f8fe7ffa5092e35e15dfaefc446590ec7f564d1dab3a0b0e5346e54",
+      "bytes": 59615
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/fold2_result.json",
+      "sha256": "e89fc79cf460a46ee61cf47d88986d82d453ea853f539b3e8f1a1d4d9ca5b61b",
+      "bytes": 140214
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/fold2_sampling_plan.json",
+      "sha256": "b9c138ebf72b708c3d4d1522c1fbdaa7ba8e61ff38f5e526b70efdb2f29e62b6",
+      "bytes": 242571
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/freeze_before.json",
+      "sha256": "23da6dc16efbaac0633fa6f6e9ae17359a43252597c8ea2597d94dd68bf4175c",
+      "bytes": 2604
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/panels/028_corrected_2x.png",
+      "sha256": "1c626d30b11b74267634eeaac7acdb71c1aa3cda38d4cc5fc6ed60f280c3dafd",
+      "bytes": 68036
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/panels/028_foundation_zoom.png",
+      "sha256": "eb16f6706720449e0c6d9967c3ad79fe8fa02cab2d6998cb6a2f711bcb6ce3e1",
+      "bytes": 140441
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/panels/028_harmed_2x.png",
+      "sha256": "2c6655ab700519a6da735b27e87d05f3ca9e244fab3ed26520bc027ede0fbbd7",
+      "bytes": 61875
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/panels/028_panel.png",
+      "sha256": "f2e0a5014e740f18ad35bb47c9bb1aaa47a23bdfa33d348d801ef03081bc7768",
+      "bytes": 832109
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/panels/162_corrected_2x.png",
+      "sha256": "49d475ad924989fcc1004b8170d3bb8eb044805cff55815984dc9aaa0cd3d1a4",
+      "bytes": 55364
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/panels/162_foundation_zoom.png",
+      "sha256": "d0e8f9e94625ec30a08772a034270e4d49871aaab5b0ae96a75f5a540ebc979a",
+      "bytes": 434139
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/panels/162_harmed_2x.png",
+      "sha256": "3c52c58c6b92ab812494b1b8c80eb33b9ae02ffaee73092a9c34c4c730cfdf96",
+      "bytes": 46636
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/panels/162_panel.png",
+      "sha256": "e380405bd025e2a04008462e7a0ea508f4daa23abdfb6eb716e49f7924e023a5",
+      "bytes": 844582
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/panels/268_corrected_2x.png",
+      "sha256": "628877c74a37d91d19e272871c1648eecb1940188694c7b673533348c78a5261",
+      "bytes": 70039
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/panels/268_foundation_zoom.png",
+      "sha256": "0f8e2efe221a265a6c76aeb8bf527fc189a7dc894275ad4ab8eb58e09d11c841",
+      "bytes": 61169
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/panels/268_harmed_2x.png",
+      "sha256": "628877c74a37d91d19e272871c1648eecb1940188694c7b673533348c78a5261",
+      "bytes": 70039
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/panels/268_panel.png",
+      "sha256": "72b9bb6d9b4b9efd1857e9e1a2b8f2183c5546b139c879a7d269f544f1464035",
+      "bytes": 713681
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/panels/282_corrected_2x.png",
+      "sha256": "9cb6d7bde3e5cf9b3b00ef41c88b4c84982c7190f1c576de24467d4db4c87c2b",
+      "bytes": 14143
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/panels/282_harmed_2x.png",
+      "sha256": "9cb6d7bde3e5cf9b3b00ef41c88b4c84982c7190f1c576de24467d4db4c87c2b",
+      "bytes": 14143
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/panels/282_panel.png",
+      "sha256": "f4af23ed1d6126eb645b880a08fe47cd1815c3d2de9f7deadc5fb428e5667ec3",
+      "bytes": 689233
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/panels/283_corrected_2x.png",
+      "sha256": "33193a9a41ff0ae4580dadedcbf26a6641d37e9dcd100d95ee1457680b5a84e4",
+      "bytes": 66936
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/panels/283_foundation_zoom.png",
+      "sha256": "dd05a03c11077cf7a0017279c13094ae6694bc1e81f9bced03d47f1c71efa287",
+      "bytes": 99194
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/panels/283_harmed_2x.png",
+      "sha256": "cdb20687394b8f024cb92ba32417dfebf7f02f0ac8bc8cb109a62e15901870df",
+      "bytes": 57040
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/panels/283_panel.png",
+      "sha256": "ee19aed845da1059cdadc0920a7ec8477832d38ef2c5145d05d1819949574296",
+      "bytes": 870206
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/panels/295_corrected_2x.png",
+      "sha256": "53cf3c31b56c02c333bc1ad863f1754285143cf9e1f6b13344a3d979fe8e58df",
+      "bytes": 50008
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/panels/295_foundation_zoom.png",
+      "sha256": "cdbacb29d116cd159f508e7e3df5b3a57262e9d8c0db6b01b14968db6521bf4d",
+      "bytes": 75918
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/panels/295_harmed_2x.png",
+      "sha256": "a6c1ce344d85c4550ab4d4c71468dbd7947dc45dbc51fa11d8977a686cff059d",
+      "bytes": 60890
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/panels/295_panel.png",
+      "sha256": "7cb9c7abe1b0db167559b41f543ce82631f6e4f55deabdb586cb041c7f6e581b",
+      "bytes": 912930
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/panels/manifest.json",
+      "sha256": "5e03d7254846ff3ec8f931277b8ecfca665210f8d5428d1b9dd9d9fd79d7e1d8",
+      "bytes": 7727
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/prediction_manifest.json",
+      "sha256": "6faa97b0a11a6bdb04c9ab2ae4722dd60c30ae488c2e7aa74a1b237b542ca5e3",
+      "bytes": 221258
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/prediction_seal.json",
+      "sha256": "eebe3b2d9b4cbbb701818f6dedb7ca4a2f1a1ef742ff70bbbda60c14759c49fc",
+      "bytes": 377498
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/result.json",
+      "sha256": "fe14b301a6fd371556a79da7cfe048929521fcbea9dc17e3861409d02384c115",
+      "bytes": 1204259
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/source_snapshot/audit_sem260_error_budget.py",
+      "sha256": "d04744cac969ae5f7bb05deed115fcc8319511201d3665c723a663259fbdfa3a",
+      "bytes": 7181
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/source_snapshot/config.yaml",
+      "sha256": "7887130cf3ccce8672f0cda123db52eac95be0158fc55cfe6d3e61bd5ba467dd",
+      "bytes": 4308
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/source_snapshot/run_sem250_colmap_track_deck_diag.py",
+      "sha256": "8ddc94fdaf77de1f4e63b404391ff9710508ec0fd5eecb8706529ab781871a8b",
+      "bytes": 13136
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/source_snapshot/run_sem280_foundation_boundary_oof.py",
+      "sha256": "2d80a1efc101c7b271f4857050efed85e69372462306a1dd51724671c6be9be0",
+      "bytes": 27568
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/source_snapshot/semantic2d.py",
+      "sha256": "22d1eeeaa438d6dcc680dabfba64b69f4ffa387178da848756a9ebfede0f0b3d",
+      "bytes": 6812
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/source_snapshot/semantic_cable_binary.py",
+      "sha256": "77585944bf12021537558ac21fd17534c861c9083c36ab1680c88df7f22dcd53",
+      "bytes": 11328
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/source_snapshot/semantic_foundation_binary.py",
+      "sha256": "4bebb49a33708455de9bcd507738015f092508b60e8a837bd9a6f7df07f24146",
+      "bytes": 3369
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/source_snapshot/semantic_foundation_boundary.py",
+      "sha256": "919b99edee765b2e1ce8d0100510ed26096f642f39b89e4617852849b65584ff",
+      "bytes": 4912
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/source_snapshot/semantic_protected_fusion.py",
+      "sha256": "58b3c3a8939c4acacbf07791188cd462f30fc9365a2acb36f012888bcbbb780c",
+      "bytes": 9119
+    },
+    {
+      "path": "outputs/sem280/full-20260907-r1/source_snapshot/submission_sem161.py",
+      "sha256": "a85d9aa04dfb0f35e6f25b1512bfa048e09eecf661e20e3c2fe51a00f31b96a3",
+      "bytes": 3013
+    },
+    {
+      "path": "outputs/sem280/smoke-20260907-r1/result.json",
+      "sha256": "9aad76c8cb4b8e15e8baee1c4416dc07dbc043226457b00a6f5b72fb6ffe5b42",
+      "bytes": 26031
+    },
+    {
+      "path": "scripts/audit_sem280_external.py",
+      "sha256": "7daaaedd786704d91cbd1d485525e0aff9e92712c7447ab3505bd24c60d343c2",
+      "bytes": 6196
+    },
+    {
+      "path": "scripts/audit_sem280_foundation.py",
+      "sha256": "23ca7697aa078af48a543a2d44bae01cd24796df1b59119d1c6ff5ab2c364de1",
+      "bytes": 15924
+    },
+    {
+      "path": "scripts/run_sem280_foundation_boundary_oof.py",
+      "sha256": "2d80a1efc101c7b271f4857050efed85e69372462306a1dd51724671c6be9be0",
+      "bytes": 27568
+    },
+    {
+      "path": "src/semantic_foundation_boundary.py",
+      "sha256": "919b99edee765b2e1ce8d0100510ed26096f642f39b89e4617852849b65584ff",
+      "bytes": 4912
+    },
+    {
+      "path": "tests/test_semantic_foundation_boundary.py",
+      "sha256": "ad5959721d3becfe949ae6fd45315695020e8f00eb21c86edada64eb7514bfe4",
+      "bytes": 3892
+    }
+  ]
+}

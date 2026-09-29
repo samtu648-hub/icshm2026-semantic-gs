@@ -1,0 +1,17 @@
+{
+  "schema_version": 3,
+  "experiment_id": "SEM-003-PF",
+  "title": "SEM-003 bg/stay-conflict Dirichlet regularizer CUDA smoke",
+  "phase": "R2/S2",
+  "parent_experiment": "SEM-001,SEM-002,SEM-003-DIAG,SEM-003-CTRL-PF",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "data": {"split_id": "sem_001_scaffold_static_v1", "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json", "label_manifest": "experiments/runs/SEM-001/label_manifest.json", "training_images": 219, "validation_images": 74, "unlabeled_rgb_in_semantic_supervision": false, "pseudo_labels": false, "input_resolution": [1320, 989], "label_grid": "full-frame PINHOLE derived with the R1 SIMPLE_RADIAL K; no crop"},
+  "frozen_rgb": {"backbone": "Scaffold-GS", "upstream_commit": "59c833b56bbbf510f3f64d40f81721995caced66", "rgb_experiment": "RGB-030-FULL", "iteration": 30000, "train_camera_count": 303, "n_offsets": 10, "appearance_camera_id": 0, "coordinate_frame": "official_colmap_reference", "pose_convention": "CAMERA_FROM_WORLD", "official_to_model_sim3": "identity"},
+  "conflict_diagnostic": {"eligibility_policy": {"minimum_support_views": 3, "minimum_background_fraction": 0.10, "minimum_stay_cable_fraction": 0.10, "maximum_protected_fraction": 0.05, "conflict_quantile": 0.90}},
+  "dirichlet": {"alpha_definition": "alpha=1+softplus(raw_evidence)=1+exp(log_evidence_strength)*softmax(class_logits)", "initial_evidence_strength": 1000000.0, "prediction": "Dirichlet posterior predictive alpha/sum(alpha)", "source_initialization": "convert final frozen SEM-001 semantic checkpoint; no intermediate SEM-001/021/022 checkpoint is resumed"},
+  "conflict_regularizer": {"enabled": true, "lambda": 0.001, "target_evidence_strength": 1.0, "definition": "lambda * mean_{g in frozen_train_only_eligibility}(log_evidence_strength[g]-log(target_evidence_strength))^2. Ordinary five-class NLL remains active for every anchor. A stop-gradient eligibility mask excludes anchors with material deck/tower/foundation evidence."},
+  "training": {"seed": 20260731, "learning_rate": 0.05, "weight_decay": 0.0, "loss": "SEM-001 weighted five-class NLL plus the sole pre-registered restricted Dirichlet concentration regularizer", "class_weighting": "Reuse SEM-001 train-only median_frequency/count clipped to [0.05,20.0]", "rgb_optimizer": "none", "camera_id_embedding": false, "per_image_embedding": false, "predicted_pose_input": false},
+  "preflight": {"iterations": 8, "log_every": 1, "validation_views": 3, "checkpoint_iterations": [8]},
+  "isolation": {"views": ["001.png", "054.png", "140.png"]},
+  "external_camera": {"image_name": "140.png", "output": "RGB + five log-probability logits .npy + single-channel uint8 ID PNG on official SIMPLE_RADIAL grid"}
+}

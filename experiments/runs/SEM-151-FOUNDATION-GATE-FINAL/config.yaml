@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-151-FOUNDATION-GATE-FINAL",
+  "title": "Frozen foundation verification gate on the SEM-141 developer candidate",
+  "phase": "R2 precision-first foundation developer candidate",
+  "status": "completed_developer_target_gate_passed",
+  "owner": "unassigned",
+  "parent_experiment": "SEM-150-FOUNDATION-GATE-OOF,SEM-141-CABLE-BINARY-FINAL,SEM-102-RENDERED-SEG-FINAL,SEM-001,RGB-030-FULL",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_001_scaffold_static_v1; explicitly reused 74-view developer audit",
+  "seed": "not_applicable_deterministic_frozen_probability_gate",
+  "data": {
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "semantic_split_sha256": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+    "developer_validation_images": 74,
+    "access_sequence": "Validate all frozen hashes, materialise all 74 predictions and prediction_manifest.json without labels, then open the explicitly reused development labels once."
+  },
+  "inputs": {
+    "sem150_result_sha256": "e29843e21f0f9097b6c78c6ccf3fa0d59b10605ca9abbd8cbaf5320984d991a0",
+    "sem141_result_sha256": "4d003d02fbdf4245e97977e35ce96b9edc973b27f810232ca0532602ae6bef1c",
+    "sem141_prediction_manifest_sha256": "eae2885c225e77f72248be228b27f2754a4efc6027472d13416bcc79181d624a",
+    "sem102_result_sha256": "7ee7d21b36b84c8a16ff72153d64ddf254994dd0c16f918b6b550821acca03a7",
+    "sem102_prediction_manifest_sha256": "8e44e34a2cb781a2a2fa814ceffc9f54a6d9fdf05a9fda977f70e77d9094a0c0",
+    "sem102_external_logits_sha256": "51232dd4230c747eb644d146b260a854e28644e669774afd5ba4f41d8f213794",
+    "sem141_external_semantic_sha256": "46738443166ca52199e891c9509a460458560547546d047ea76ec040ff20ae40",
+    "sem141_external_rgb_sha256": "563e041da15e713f2acc3139f2b922d129b7db7910b18d18b8ac6489e3de10d3"
+  },
+  "single_changed_variable": "Apply SEM-150's OOF-frozen 0.10 class-4 threshold to existing SEM-141 foundation pixels using frozen SEM-102 final probabilities; only class 4 to class 0 rejection is permitted.",
+  "fusion": {
+    "foundation_threshold": 0.1,
+    "foundation_candidate_class_id": 4,
+    "rejected_class_id": 0,
+    "immutable_prediction_class_ids": [1, 2, 3]
+  },
+  "developer_target_gate": {
+    "baseline": "SEM-141-CABLE-BINARY-FINAL",
+    "minimum_foundation_iou_gain": 0.03,
+    "minimum_foundation_precision_gain": 0.08,
+    "minimum_foundation_recall": 0.90,
+    "minimum_mIoU_gain": 0.0,
+    "minimum_background_to_foundation_reduction": 0.10,
+    "difficult_subset_drop_max": 0.005,
+    "immutable_deck_stay_cable_tower_predictions_exact": true,
+    "claim_boundary": "Passing recommends hidden evaluation only; this 74-view result is developer-only."
+  },
+  "outputs": {
+    "output_root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_151/foundation_gate_final/full-20260904-r1",
+    "validation_visual_samples": ["059.png", "081.png", "159.png"],
+    "panel_order": ["frozen_rendered_RGB", "GT", "SEM-141", "SEM-151", "green_corrected_red_harmed"]
+  },
+  "forbidden": [
+    "threshold_or_model_selection_from_74_view",
+    "retraining",
+    "new_foundation_predictions",
+    "deck_stay_cable_or_tower_prediction_change",
+    "real_RGB_input",
+    "unlabeled_input",
+    "hidden_test_access",
+    "SEM141_SEM102_or_RGB_checkpoint_change",
+    "morphology_connected_component_or_view_specific_cleanup"
+  ],
+  "classes": {"0": "background", "1": "deck", "2": "stay_cable", "3": "tower", "4": "foundation"},
+  "fallback": "SEM-141-CABLE-BINARY-FINAL with SEM-111 and SEM-001 retained"
+}

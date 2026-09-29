@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-070-APPEARANCE-PF",
+  "title": "Nearest-training-camera appearance fallback preflight",
+  "phase": "R2 frozen RGB inference diagnostic",
+  "status": "completed_gate_failed",
+  "parent_experiment": "RGB-030-FULL",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1 74-view explicitly reused development set",
+  "seed": "not_applicable_deterministic_metadata_only_selection",
+  "backbone": "frozen RGB-030-FULL Scaffold-GS",
+  "change_from_parent": "Replace only the arbitrary test-ordinal/fixed-zero appearance embedding with the nearest training camera by official camera-center distance.",
+  "data": {
+    "root_env": "ICSHM_DATA_ROOT",
+    "split": "experiments/splits/rgb_r1_spatial_v1.json",
+    "training_count": 303,
+    "validation_count": 74,
+    "validation_is_development_only": true,
+    "selection_reads_reference_rgb": false,
+    "selection_reads_semantic_labels": false
+  },
+  "frozen_rgb": {
+    "experiment_id": "RGB-030-FULL",
+    "iteration": 30000,
+    "train_camera_count": 303,
+    "n_offsets": 10,
+    "geometry_changed": false,
+    "opacity_changed": false,
+    "color_mlp_changed": false,
+    "appearance_table_changed": false
+  },
+  "appearance_rule": {
+    "candidate": "argmin Euclidean camera-center distance over the 303 training cameras in official COLMAP coordinates",
+    "tie_break": "lowest learned training embedding index",
+    "legacy_validation": "test-list ordinal indexes an unrelated training-only embedding table",
+    "legacy_external": "fixed training embedding index 0",
+    "no_grid_or_fitted_parameter": true
+  },
+  "evaluation": {
+    "entrypoint": "scripts/evaluate_rgb.py",
+    "protocol": "docs/experiments/protocol.md",
+    "metrics": "METRICS.md",
+    "developer_gate": {
+      "mean_PSNR_gain_dB_min": 0.10,
+      "mean_SSIM_not_lower": true,
+      "mean_LPIPS_Alex_reduction_min": 0.005,
+      "worst_10_percent_PSNR_drop_max_dB": 0.10,
+      "challenge_140_146_PSNR_drop_max_dB": 0.10,
+      "frozen_artifact_hashes_equal": true
+    },
+    "scope_note": "The 74 views are already a development set; passing permits only a deterministic inference candidate, not a fresh blind-generalization claim."
+  },
+  "outputs": {
+    "root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/rgb_070/nearest_appearance/full-20260903-r1",
+    "visual_samples": ["054.png", "140.png", "151.png", "159.png", "183.png"]
+  }
+}

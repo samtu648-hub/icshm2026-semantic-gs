@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "experiment_id": "GEO-026-P0-F64",
+  "title": "VGGT-Omega preserved-output canonical-depth float64 P0 audit",
+  "phase": "geometry_prior_numeric_representation_audit",
+  "status": "preregistered_ready_for_cpu_audit",
+  "code_git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "parent_experiment": "GEO-025-P0",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1",
+  "seed": 0,
+  "execution_binding_sha256": {
+    "scripts/audit_vggt_p0_float64.py": "2bba2f9a3caf94e623b3437ca57fe0b167ad092fdd9f6ebaa6dcd55b3252138d",
+    "src/geometry_prior/vggt_p0_float64_audit.py": "6eff32f11d36676a4b9d18a0aebc0e1bfa1b78331884412538938daadd3d342e",
+    "experiments/splits/rgb_r1_spatial_v1.json": "141944ca14288536a73a55586763b3104493112069a536bc0dfcc2d9f0081847"
+  },
+  "source_run": "external_gitignored:ICSHM_OUTPUT_ROOT/geometry_prior/v2/runs/GEO-025-P0/full_v25_bf16_attempt1",
+  "source_artifacts_sha256": {
+    "progress.json": "e6c0d9ac3a6184604cc344c516e411220c3723c85cf4fa2a0f9a62dafe78b123",
+    "window_manifest.json": "867b86267ca99ec7b251f2a79c33d89fadb3a5674bc0d59bc09540d3a022b3d5",
+    "failure.json": "0779da412fc133ec87d1cad59efe2ed09326191cdf4d047933cd6c1241a7674f",
+    "coordinate_failure_diagnosis.json": "07c8f87a4d2dc1dc0052e9e8b575dd46574042a2c01fac4557fd802b1f2fabe4"
+  },
+  "fixed_input": {
+    "records": 7575,
+    "windows": 303,
+    "unique_training_images": 303,
+    "model_rerun": false,
+    "checkpoint_rerun": false,
+    "allowed_mutation_of_source": false
+  },
+  "canonical_coordinate_contract": {
+    "representation": "stored float32 depth plus stored float64 PINHOLE intrinsics and official cam2world",
+    "backprojection_arithmetic": "float64",
+    "projection_arithmetic": "float64",
+    "maximum_pixel_roundtrip_error": 1e-7,
+    "maximum_depth_roundtrip_absolute_error": 1e-10,
+    "maximum_depth_roundtrip_relative_error": 1e-10,
+    "serialized_float32_world_points_role": "diagnostic_only_not_consumed_by_fusion",
+    "serialized_world_fidelity_absolute_tolerance": 2e-5,
+    "serialized_world_fidelity_relative_tolerance": 2e-5,
+    "historical_0_001_pixel_serialized_world_gate": "reported_diagnostic_only; GEO-025-P0 failure remains unchanged"
+  },
+  "hard_gates": [
+    "source artifact hashes match exactly",
+    "303-window and 7575-record coverage is exact with no duplicate pair",
+    "only primary_fold.train_rgb_400 images are present",
+    "array schema, dtype, shape, finite values, valid mask, positive depth, intrinsics and official pose pass for every record",
+    "serialized world_points remain within the fixed 2e-5 absolute/relative fidelity bound",
+    "canonical float64 roundtrip passes 1e-7 pixel and 1e-10 absolute/relative depth limits for every valid pixel"
+  ],
+  "output_root": "external_gitignored:ICSHM_OUTPUT_ROOT/geometry_prior/v2/runs/GEO-026-P0-F64",
+  "next_gate": "only completed_passed_for_fusion may materialize a fusion input; Standard control/candidate remain blocked until fusion and candidate-scene reload pass"
+}

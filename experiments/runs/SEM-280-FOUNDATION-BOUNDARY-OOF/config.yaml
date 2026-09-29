@@ -1,0 +1,68 @@
+{
+  "experiment_id": "SEM-280-FOUNDATION-BOUNDARY-OOF",
+  "status": "preregistered",
+  "parent_experiment": "SEM-270-FOUNDATION-BINARY-OOF,SEM-160-DECK-BINARY-OOF",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "seed": 20260805,
+  "split_id": "sem_005_oof_spatial_v1; incremental OOF; reused108 calibration/111 check",
+  "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+  "semantic_split_sha256": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+  "oof_split": "experiments/splits/sem_005_oof_spatial_v1.json",
+  "oof_split_sha256": "ce8a24e11d93df7634331a1ce33ae59385297cae90a0bd688b61769cf27f222c",
+  "camera_graph": "experiments/geometry_camera_graph.json",
+  "arm_names": ["five_control", "foundation_boundary_candidate"],
+  "single_changed_variable": "Candidate multiplies weighted five-class CE by exactly2.0 only on true foundation pixels within a fixed16px inner boundary band. Control uses multiplier1.0 and dispatches to the original weighted CE reduction. Both retain five-class context, identical original initialization, native960 RGB, labels, class weights, view/crop/flip sequence, optimizer, 3000 steps, inference, fixed p(foundation)>=0.5 and unrestricted background/foundation replacement lane. No radius, multiplier, threshold, model, checkpoint, seed or postprocessing search.",
+  "parents": {
+    "model_config": "r2/sem_005/third_party/nvidia_mit_b2_3bb39e8",
+    "rgb": "r2/sem_101/rendered_training_rgb/full-20260902-r3",
+    "sem160": "r2/sem_160/deck_binary_oof_summary/full-20260904-r1",
+    "labels": "r2/sem_001/labels",
+    "sem270_result": "outputs/sem270/full-20260907-r1/result.json",
+    "sem270_result_sha256": "fa6809236801834f59b7b255ecea35763fc8ea2e2c3226dce7258167249f5b84"
+  },
+  "training": {
+    "iterations": 3000,
+    "crop": 960,
+    "optimizer": "AdamW",
+    "learning_rate": 0.00006,
+    "weight_decay": 0.01,
+    "loss": "Five-class CE with median class count/count clipped [0.05,20]. Candidate alone applies fixed2.0 multiplier to true foundation pixels at chessboard distance<=16px inside the GT foundation boundary; normalized by effective target weight.",
+    "foundation_inner_boundary_radius_pixels": 16,
+    "arm_boundary_multipliers": {
+      "five_control": 1.0,
+      "foundation_boundary_candidate": 2.0
+    },
+    "initialization": "Original local pretrained nvidia/mit-b2; no contest-fitted weights; shared initial tensors checked across arms",
+    "precision": "bfloat16 autocast; float32 loss",
+    "augmentation": "Paired fixed sequence: uniform training view, native random crop, horizontal flip p0.5; no resize",
+    "checkpoint": "final only; no early stopping or checkpoint selection"
+  },
+  "inference": {
+    "crop": 960,
+    "stride": 480,
+    "probability": "Both arms save five-class softmax class4 as float32",
+    "threshold": 0.5,
+    "strength": 1,
+    "mutable_classes": [0, 4],
+    "protected_classes": [1, 2, 3],
+    "historical_foundation_rejection": "Released only in this research copy; no dilation, morphology or blanket foundation protection"
+  },
+  "gates": {
+    "foundation_iou_gain": 0.01,
+    "foundation_precision_gain": 0.01,
+    "maximum_recall_drop": 0.005,
+    "recall_floor": 0.95,
+    "minimum_recall_gain_vs_control": 0.01,
+    "maximum_iou_drop_vs_control": 0.005,
+    "maximum_miou_drop_vs_control": 0.001,
+    "maximum_per_fold_iou_drop_vs_baseline": 0.01,
+    "protected_exact": true,
+    "rgb_exact": true
+  },
+  "evaluation": "Seal both arms all219 predictions/config before reused108 calibration. Candidate must recover recall while retaining nearly all five-class-control IoU/mIoU, pass the original SEM-270 baseline gates, and keep every spatial fold within1pp foundation IoU of its SEM-160 baseline. Only on calibration pass score reused111 check with identical gates. Only on check pass register a separate all219 final and frozen74 developer audit. All evidence is incremental OOF/development, not hidden generalisation.",
+  "maximum_gpu_hours": 2,
+  "minimum_free_disk_gib": 100,
+  "visual_samples": ["028.png", "295.png", "162.png", "283.png", "282.png", "268.png"],
+  "license": "Existing SegFormer-B2 NVIDIA research/evaluation weights; no new external code or weights"
+}

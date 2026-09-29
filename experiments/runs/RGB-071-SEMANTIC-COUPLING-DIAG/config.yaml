@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-071-SEMANTIC-COUPLING-DIAG",
+  "title": "Frozen RGB reconstruction error versus semantic error coupling audit",
+  "phase": "R2 read-only cross-task diagnostic",
+  "status": "completed_read_only_diagnostic",
+  "parent_experiment": "RGB-030-FULL,SEM-001,SEM-111-PROTECTED-FUSION-FINAL",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1 74-view explicitly reused development set",
+  "seed": "not_applicable_deterministic_read_only_statistics",
+  "inputs": {
+    "rgb": "frozen RGB-030-FULL reference/render pairs and fixed per-view RGB metrics",
+    "semantic_labels": "existing SEM-001 prepared validation labels",
+    "semantic_predictions": ["SEM-001", "SEM-111-PROTECTED-FUSION-FINAL"]
+  },
+  "analysis": {
+    "view_level": "Pearson and Spearman association of PSNR/SSIM/LPIPS-Alex with mIoU and stay_cable IoU",
+    "pixel_level": "RGB MAE and reference edge strength stratified by semantic correctness and background/stay_cable error direction",
+    "changes_predictions": false,
+    "causal_claim_allowed": false
+  },
+  "outputs": {
+    "root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/rgb_071/semantic_coupling/full-20260903-r1"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "phase": "R2 label-assisted transient experiment",
+  "status": "registered_conditional_not_run",
+  "owner": "unassigned",
+  "parent_experiment": "RGB-092-TRANSIENT,SEM-161-DECK-BINARY-FINAL",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1",
+  "seed": 0,
+  "backbone": "scaffold-gs",
+  "data": {
+    "split": "experiments/splits/rgb_r1_spatial_v1.json",
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "manifest_sha256": "0a188d4b4cfa5ffc2a7f151018f1cb012782e8f9860a3338aed084478d675b3e",
+    "split_sha256": "141944ca14288536a73a55586763b3104493112069a536bc0dfcc2d9f0081847",
+    "train_count": 303,
+    "labeled_train_count": 219,
+    "unlabeled_train_count": 84,
+    "validation_count": 74,
+    "label_grid": "full-frame PINHOLE",
+    "access": "Train only; final 74-view audit after checkpoint freeze, never masked"
+  },
+  "training": {
+    "iterations": 0,
+    "checkpoint": "Frozen SEM-161 final; no retraining"
+  },
+  "transient": {
+    "enabled": true,
+    "backbone": "facebook/dinov2-small",
+    "revision": "ed25f3a31f01632728cabb09d1542f84ab7b0056",
+    "license": "Apache-2.0",
+    "reference_commit": "66fa22ac74a6ffba024842dff29ded114d41f4d0",
+    "feature_max_size": 350,
+    "feature_layer": "last normalized patch hidden state; CLS excluded",
+    "head": "affine 384->1; softplus; sigma >=0.1",
+    "init_std": 0.01,
+    "dropout": 0.5,
+    "learning_rate": 0.001,
+    "log_prior": 0.5,
+    "head_start": 500,
+    "warmup": 2000,
+    "ramp": 500,
+    "weight_floor": 0.2,
+    "protection_radius": 8,
+    "inlier_rule": "1/(2*sigma^2)>1",
+    "feature_distance": "clamp(2-2*cosine,0,1)",
+    "head_loss": "eligible-fraction-weighted mean(distance/(2*sigma^2)+0.5*log(sigma)); detached rendering",
+    "normalization": "RGB loss averaged over original area, not sum of weights",
+    "unlabeled": "all weights 1",
+    "rng": "private head initialization and dropout preserve RGB RNG"
+  },
+  "evaluation": {
+    "visual_views": [
+      "054.png",
+      "140.png",
+      "151.png",
+      "159.png",
+      "160.png",
+      "183.png"
+    ],
+    "min_psnr_gain": 0.05,
+    "min_lpips_reduction": 0.003,
+    "max_ssim_drop": 0.001,
+    "max_worst10_psnr_drop": 0.1,
+    "max_challenge_psnr_drop": 0.1,
+    "retention_vs_rgb030": true,
+    "visual_gate": "At least 2 major artifacts improved; none obviously worse or eroded",
+    "sem180": "Only if numeric, visual and reload gates pass"
+  },
+  "repository_head": "49cdcdb1c9915a9544d568754af95ea20a85ec9c plus preserved worktree",
+  "experiment_id": "SEM-180-RGB-INPUT-AUDIT",
+  "title": "Frozen deck new RGB input audit",
+  "fusion": {
+    "threshold": 0.99,
+    "crop": 960,
+    "stride": 480,
+    "eligible": "SEM-161=0 AND SEM-141=0",
+    "transition": "0->1 only"
+  },
+  "gate": {
+    "deck_iou_gain": 0.002,
+    "deck_recall_gain": 0.005,
+    "min_precision": 0.94,
+    "min_miou_gain": 0,
+    "max_background_fp_ratio": 1.1,
+    "oblique_mean_not_down": true,
+    "protected_exact": true,
+    "external_camera": true
+  }
+}

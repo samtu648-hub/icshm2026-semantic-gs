@@ -1,0 +1,36 @@
+{
+  "experiment_id": "SEM-322-POSE-SOURCE-ACCESS",
+  "status": "preregistered",
+  "parent_experiment": "SEM-321-ROMAV2-DENSE-GEOMETRY-DIAG,SEM-320-ROMAV2-DENSE-PREFLIGHT,SUBMIT-020-SEM161-FREEZE",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c plus sealed sources",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_005_oof_spatial_v1; inherited3 calibration targets; no labels",
+  "parent_config": "experiments/runs/SEM-320-ROMAV2-DENSE-PREFLIGHT/config.yaml",
+  "parent_config_sha256": "3dcefab61d0c4d1aa30bbe0df1ab6e21f1bb7a60a9e86eecab4191de90307c3f",
+  "geometry_config": "experiments/runs/SEM-321-ROMAV2-DENSE-GEOMETRY-DIAG/config.yaml",
+  "geometry_config_sha256": "23672a35c19139ca6000598ac4cb29fad9140ea5e0af080a0962685a9b15d9cc",
+  "single_changed_variable": "Replace privileged target-track source retrieval with one fixed pose-only bounded candidate policy. Rank1 and existence within top3 are reported separately; this combined policy is not a pure ranking-versus-budget causal ablation. No multi-source union or semantic fusion.",
+  "retrieval": {
+    "target_policy": "lexicographically first inherited calibration target in each of the same three spatial folds",
+    "candidates_per_target": 3,
+    "maximum_optical_axis_angle_degrees": 60.0,
+    "ranking": "same-fold train only; optical-axis angle<=60deg, then ascending camera-center Euclidean distance, angle, filename; no fallback or sweep",
+    "inputs": "official w2c poses only; skip observation lines without parsing tracks or 2D keypoints. No images or labels used to rank sources. Rendered target RGB is used only by the fixed matcher after selection sealing."
+  },
+  "runtime": "Inherit immutable SEM320 official weight/source hashes, fast512, native Torch correlation, precision, seed, GPU and disk limits. At most9 forward/reverse pairs and one fresh-process first-forward replay. No self probe, training, new downloads or dependency changes.",
+  "geometry": "Inherit SEM321 overlap>=0.5 in both directions, native cycle<=2px, symmetric epipolar<=2px, source radial undistortion and target pinhole official COLMAP coordinates. No RANSAC, estimated poses or threshold changes.",
+  "screen": {
+    "pair_accessible": "reliable512-grid fraction>=0.01 AND epipolar retention after cycle>=0.80",
+    "selected_source": "first accessible candidate in the sealed pose ranking, not highest coverage",
+    "all_three_targets_require_accessible_source": true,
+    "minimum_selected_pairs_beating_identity_factor2": 2,
+    "missing_candidates": "fewer than3 eligible sources for any target fails bounded accessibility; retain that outcome",
+    "interpretation": "Necessary small reused-target geometric feasibility screen only, not semantic precision, class coverage, full scene generalization or deployment validation. No automatic label access."
+  },
+  "audit": "Before inference seal configuration, all transitive project source hashes, upstream/weight/input hashes and full pose candidate ranking. Recompute pose ranking independently from inverse4x4 transforms with no tracks; perturb synthetic observation lines and assert invariance. Recompute all geometry with independent CPU Torch sampling, radial fixed-point inverse and essential matrix. Exact counts/decisions; quantiles within2e-5 native px. Fresh-process first-forward replay must match exactly.",
+  "access_policy": "Only3 calibration rendered target RGB and at most9 same-fold train real source RGB may be decoded. Historical111/check IDs are permitted only as same-fold training sources, never as targets; report them explicitly. No real target RGB, any source/target labels,74 developer, guard or unlabeled RGB. Official pose metadata may be read for all cameras; observations are not parsed. No target-track metadata dependency, source masks, novel rendering or semantic export.",
+  "freeze_policy": "All18 SUBMIT020 production artifacts and selected rendered RGB bytes/arrays remain exact before/after. All SEM314/320/321 configurations, scripts and sealed outputs unchanged. No production replacement, upload, commit or push.",
+  "stop": "Any engineering failure stops execution and retains failure.json. Quality failure closes this bounded pose-top3 policy; no K/angle/threshold/resolution/retrieval rescue sweep. Positive outcome permits a separately registered larger reliability/class-coverage study, not label transfer in this ID.",
+  "resource_budget": {"maximum_total_seconds":1800,"minimum_free_disk_gib":100}
+}

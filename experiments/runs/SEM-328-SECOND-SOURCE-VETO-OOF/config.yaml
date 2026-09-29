@@ -1,0 +1,43 @@
+{
+  "experiment_id": "SEM-328-SECOND-SOURCE-VETO-OOF",
+  "status": "preregistered",
+  "parent_experiment": "SEM-325-DENSE-FOUNDATION-REVIEW-OOF,SEM-327-SOURCE-BOUNDARY-DIAG",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c plus sealed worktree sources",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_005_oof_spatial_v1; same105 calibration then fixed111 check; reused incremental OOF",
+  "parent_config": "experiments/runs/SEM-325-DENSE-FOUNDATION-REVIEW-OOF/config.yaml",
+  "parent_config_sha256": "836b45510e33a0c63040592074f4e6f3af293272f9c11602571403683bac6770",
+  "boundary_diagnostic": "outputs/sem327/diagnostic-20260908-r1/result.json",
+  "boundary_diagnostic_sha256": "2c966032b0ef9b664a7a6bab14aecbf169a5e6744c758ae5ec9508b044df1c13",
+  "partitions": {
+    "calibration": {
+      "prediction": "outputs/sem325/calibration-predict-20260908-r2/result.json",
+      "prediction_sha256": "f6c50cf9ac1db51e8ac6f9fe54f4f3af22535d428e1abbbd80f247c3bcb720c5",
+      "audit": "outputs/sem325/calibration-audit-20260908-r2/result.json",
+      "audit_sha256": "b040fda7499f7400f1b145f0ebd6cc274187186bbba8f96e42e59b52a3e5c0eb",
+      "quality": "outputs/sem325/calibration-score-20260908-r2/result.json",
+      "quality_sha256": "6c9c6bdc70db1f9809c5d992a39f21c4c760acfec150da9625d79894c27ee1be"
+    },
+    "check": {
+      "prediction": "outputs/sem325/check-predict-20260908-r1/result.json",
+      "prediction_sha256": "5179c6107b0359de41188e807a6ca5a7cbf8cccf97d788b86b9b52e3d714e45d",
+      "audit": "outputs/sem325/check-audit-20260908-r1/result.json",
+      "audit_sha256": "b2b1aea669d14f26bf1c7e9204cb6c743b6515539bed4c85438e48b287d4317d",
+      "quality": "outputs/sem325/check-score-20260908-r1/result.json",
+      "quality_sha256": "a811c2edefb2ea960088aac9b08a2aa5c92bc362a651e982f7a17e63bcfeb3c6",
+      "matching_root": "outputs/sem325/check-matching-20260908-r1"
+    }
+  },
+  "single_changed_variable": "Second reliable source foundation veto on the original SEM3254-to0 changes. No source-boundary margin or two-background-votes requirement. Preserve the original dense decision unless a second source independently has reliable native correspondence and source label4.",
+  "source_policy": "Use the second entry in the already sealed pose-ordered accessible_sources list, i.e. next passing pair after the old primary. No source/GT ranking, no K or matching/geometry change. At most one second source. No second source or no reliable pixel evidence retains SEM325, not the pre-dense baseline.",
+  "native_rule": "On baseline4/dense0 pixels only: sample unchanged native_support into second real source, undistort to second source PINHOLE labels, floor edge-origin coordinates. Reliable label4 restores baseline4; all other cases keep dense0. Never use target GT. New rule can only veto previous deletions, never introduce a new deletion/addition outside them.",
+  "access_policy": "All second source names/hashes/roles sealed before source decoding, source must be same-fold train excluding target/oof/guard/74. Predict105 PNGs and exact independent reconstruction before105 GT score. Check111 only after paired calibration improvement; fixed new source selection/rule. Historical check IDs may be same-fold sources, not blind.",
+  "research_progression": "Advance to fixed111 when candidate mIoU and foundationIoU both strictly exceed SEM325 dense, and foundation recall is nondecreasing. Report full metrics versus both SEM325 and SEM160 plus all folds, without requiring an arbitrary minimum gain or changing historical SEM326 acceptance. Tradeoffs are retained even if not advancing. Any final74 separately registered.",
+  "audit": "Verify parent dense PNGs, original source and matching seals; exact CPU primary versus independent Torch/radial/essential second-source evidence and each full output. Disabled bypass and class1/2/3 masks exact. Score via independent per-view confusion and restoration arithmetic; original105/111 matrices reproduce SEM325. RGB/18freeze unchanged. This OOF run does not claim fresh official-camera rendering.",
+  "resource_budget": {
+    "maximum_seconds_per_stage": 1800,
+    "minimum_free_disk_gib": 100
+  },
+  "stop": "No radius sweep, additional source union, new matching/training or74 access; no production/bundle overwrite."
+}

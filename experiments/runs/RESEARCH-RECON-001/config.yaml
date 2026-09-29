@@ -1,0 +1,88 @@
+{
+  "experiment_id": "RESEARCH-RECON-001",
+  "status": "completed_research_only",
+  "created_date": "2026-09-08",
+  "parent_experiment": "RGB-060,RGB-030-FULL,RGB-071-SEMANTIC-COUPLING-DIAG,RGB-090-TRANSIENT-DIAG,SEM-329-SECOND-SOURCE-VETO-FINAL,VIS-006-SEM329-FLYTHROUGH",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c plus preserved uncommitted worktree; not a claim about historical runs",
+  "seed": "not_applicable_read_only_research",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1;sem_001_scaffold_static_v1; historical metrics retain original roles and provenance",
+  "rgb_split": "experiments/splits/rgb_r1_spatial_v1.json",
+  "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+  "scope": "Primary-paper/author-code/official-rule research and local report comparison; no new model or quality result.",
+  "access_policy": "Read local docs/configs and public sources only; no new GT pixel read, training, candidate installation, inference, threshold selection, production overwrite, commit or push.",
+  "question": "Whether PGSR/2DGS and GOF/SOF suit the bridge, which completed methods are transferable, and how to test quality-first.",
+  "recommendation": "Keep frozen Scaffold control; PGSR first and SOF second experimental hypotheses; 2DGS/GOF mechanism references, Zip-NeRF heterogeneous alternative. Rebuild render-domain semantics and correspondence evidence per backbone. Not an adoption decision.",
+  "evidence_file_sha256": {
+    "experiments/runs/RGB-060/config.yaml": "74222059bfde5921dae5ee1b5e4d1a6cb2bcbbad1b5f528cfde4101031ed4e5b",
+    "experiments/runs/RGB-060/report.md": "699bfd0d6fab74d0bd809d94ffea3a864bc30eefcbed49c7911522cba157cc4d",
+    "experiments/runs/RGB-071-SEMANTIC-COUPLING-DIAG/config.yaml": "6531c80abe4ab481c29547267445efc1387a5ca6609eb8825e7525c48241c21b",
+    "experiments/runs/RGB-071-SEMANTIC-COUPLING-DIAG/report.md": "9d724ecec3270a378379f733052206b8ddb8fdb280f6fc3db245467b315a6618",
+    "experiments/runs/RGB-090-TRANSIENT-DIAG/config.yaml": "2f171f327304eebb29f864ccd4265ed247b42e895ac5e4dd059f0c5ce0d5ed50",
+    "experiments/runs/RGB-090-TRANSIENT-DIAG/report.md": "ba70d9bb25624d6d7cd754ad99741c9c759294aa501916ebbf1d926df8b7a8c2",
+    "experiments/runs/RGB-101-ENVIRONMENT/config.yaml": "ee06b96c1c1c619ebb6b86dcea5db927376f1d930abba529645a02a38a982033",
+    "experiments/runs/RGB-101-ENVIRONMENT/report.md": "05bf35f2b233523facda54b518f2e4aca13f40127df0e905e4103939bef4ec9a",
+    "experiments/runs/SEM-141-CABLE-BINARY-FINAL/config.yaml": "53d94f67361e7bd60a6e999d5c4367bb00111923e65f73432a5aab94f8418a18",
+    "experiments/runs/SEM-141-CABLE-BINARY-FINAL/report.md": "da94147c9f858f38f96c1af278f9fbfa4c3f0e31be17f0b4f334830cf3105206",
+    "experiments/runs/SEM-151-FOUNDATION-GATE-FINAL/config.yaml": "eadc1e8f9770dcea004ff821063260a128f202ee421258b35b26b7574e757716",
+    "experiments/runs/SEM-151-FOUNDATION-GATE-FINAL/report.md": "b7867b8e64308943c3ce87ce3b77de0a520f4b416058d9827de33860fae54a6d",
+    "experiments/runs/SEM-161-DECK-BINARY-FINAL/config.yaml": "30773ad89c7a7b5a6a023acc1b14604bf853ebe2a082b1c37619271a620f8306",
+    "experiments/runs/SEM-161-DECK-BINARY-FINAL/report.md": "c07d87c72e46546c1ae6058f14e372df3a14b68e8b7d5767fac74800bd467d69",
+    "experiments/runs/SEM-263-NESTED-POINT-OOF/config.yaml": "acce89e57599fe6cf3aeda7af9b03c54d5cd6d6d8d6f7c7e8e541a42c6f5a347",
+    "experiments/runs/SEM-263-NESTED-POINT-OOF/report.md": "231b09090ddfbfb3bad172346d8b3536a0f4b6867d6d567b8674c13bc84b8dea",
+    "experiments/runs/SEM-324-DENSE-LABEL-AGREEMENT/config.yaml": "e2ae6b8a7c400e260d679b860065a46b4249e6eba9d17dde362fa4043daba44f",
+    "experiments/runs/SEM-324-DENSE-LABEL-AGREEMENT/report.md": "6c5565d8794471a2df3f69597f9c27d7b883e9451a6ed2acbf410f1cff46f24a",
+    "experiments/runs/SEM-329-SECOND-SOURCE-VETO-FINAL/config.yaml": "f1b41fbbfd814ef611ac7cc362acb7e157c7d85396ed7988f12f27db98c43584",
+    "experiments/runs/SEM-329-SECOND-SOURCE-VETO-FINAL/report.md": "817a3011894ce63456f99c04607e44cf974674b50a835d38973f3b718b4cdb24",
+    "experiments/runs/GEO-010-10K/config.yaml": "161b3555a608d51a9b5a0a27f844df24ad0d0a632e70c0d30abc4641abc7e625",
+    "experiments/runs/GEO-010-10K/report.md": "ced1c1392b171544760f8774e776e5e83e323576bb6f0133110bea88998c400d",
+    "experiments/runs/GEO-011-3K/config.yaml": "e623c0cff960a0f8a4f552c8f8f41505bfd88a0bd52b6d0e5970fd52823abcbc",
+    "experiments/runs/GEO-011-3K/report.md": "88619439caf7bc3624b4b0db3dfc5a4e884531803a554948b04591ae63db7c68",
+    "experiments/runs/VIS-006-SEM329-FLYTHROUGH/config.yaml": "74c8df049ef497ae26d25c37c8622f76dae1976eb8e57e7f6e70df53d52fdf51",
+    "experiments/runs/VIS-006-SEM329-FLYTHROUGH/report.md": "3ff1665113b637e9c559b7b6eee13e37f6dc3ef81455eb1f659df5c2bf85708c",
+    "data/manifests/contest_dataset_v1.json": "0a188d4b4cfa5ffc2a7f151018f1cb012782e8f9860a3338aed084478d675b3e",
+    "experiments/splits/rgb_r1_spatial_v1.json": "141944ca14288536a73a55586763b3104493112069a536bc0dfcc2d9f0081847",
+    "experiments/splits/sem_001_scaffold_static_v1.json": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854"
+  },
+  "artifact_source": "outputs/reconstruction_review_20260908/report-source.md",
+  "claim_ledger": "outputs/reconstruction_review_20260908/claim-ledger.json",
+  "artifact_pdf": "outputs/reconstruction_review_20260908/reconstruction-review.pdf",
+  "report_path": "experiments/runs/RESEARCH-RECON-001/report.md",
+  "external_sources_as_of": "2026-09-08",
+  "upstream_references": {
+    "PGSR": {
+      "repository": "https://github.com/zju3dv/PGSR",
+      "commit": "de24f1a38b350387e8d8fe381b2cd70c1ae946e7",
+      "license_review": "Research/nonprofit source terms read; full competition/future reuse compatibility unresolved"
+    },
+    "2DGS": {
+      "repository": "https://github.com/hbb1/2d-gaussian-splatting",
+      "commit": "f3e3b9fa67bbd1c75e05167ff37391d8dab2a678",
+      "license_review": "Full dependency licensing unresolved"
+    },
+    "GOF": {
+      "repository": "https://github.com/autonomousvision/gaussian-opacity-fields",
+      "commit": "5245b20e5d11acd6d1ff5af4b890dc2bedd99693",
+      "license_review": "Full dependency licensing unresolved"
+    },
+    "SOF": {
+      "repository": "https://github.com/r4dl/SOF",
+      "commit": "b9eb4170c843014f5f96d54924976161bd675469",
+      "critical_code_read": "https://raw.githubusercontent.com/r4dl/SOF/main/scripts/run_nvs.py",
+      "caveat": "main inspected directly; pin exact code before implementation",
+      "license_review": "Full dependency licensing unresolved"
+    },
+    "Zip-NeRF": {
+      "repository": "https://github.com/jonbarron/camp_zipnerf",
+      "commit": "not_pinned_research_reference_only",
+      "license_review": "Full dependency licensing unresolved"
+    }
+  },
+  "not_performed": [
+    "candidate training or compilation",
+    "new quality scoring",
+    "formal backbone change",
+    "all-data fitting",
+    "push or upload"
+  ]
+}

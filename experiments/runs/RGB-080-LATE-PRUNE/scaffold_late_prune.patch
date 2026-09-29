@@ -1,0 +1,88 @@
+--- a/arguments/__init__.py
++++ b/arguments/__init__.py
+@@ -147,6 +147,7 @@
+         self.update_from = 1500
+         self.update_interval = 100
+         self.update_until = 15_000
++        self.prune_until = 15_000
+         
+         self.min_opacity = 0.005
+         self.success_threshold = 0.8
+--- a/scene/gaussian_model.py
++++ b/scene/gaussian_model.py
+@@ -521,9 +521,8 @@
+         return optimizable_tensors
+ 
+ 
+-    # statis grad information to guide liftting. 
+-    def training_statis(self, viewspace_point_tensor, opacity, update_filter, offset_selection_mask, anchor_visible_mask):
+-        # update opacity stats
++    def training_opacity_statis(self, opacity, anchor_visible_mask):
++        """Accumulate native anchor opacity/visit support without growth gradients."""
+         temp_opacity = opacity.clone().view(-1).detach()
+         temp_opacity[temp_opacity<0] = 0
+         
+@@ -533,6 +532,10 @@
+         # update anchor visiting statis
+         self.anchor_demon[anchor_visible_mask] += 1
+ 
++    # statis grad information to guide liftting.
++    def training_statis(self, viewspace_point_tensor, opacity, update_filter, offset_selection_mask, anchor_visible_mask):
++        self.training_opacity_statis(opacity, anchor_visible_mask)
++
+         # update neural gaussian statis
+         anchor_visible_mask = anchor_visible_mask.unsqueeze(dim=1).repeat([1, self.n_offsets]).view(-1)
+         combined_mask = torch.zeros_like(self.offset_gradient_accum, dtype=torch.bool).squeeze(dim=1)
+@@ -694,14 +697,14 @@
+                 
+ 
+ 
+-    def adjust_anchor(self, check_interval=100, success_threshold=0.8, grad_threshold=0.0002, min_opacity=0.005):
++    def adjust_anchor(self, check_interval=100, success_threshold=0.8, grad_threshold=0.0002, min_opacity=0.005, enable_growth=True):
+         # # adding anchors
+-        grads = self.offset_gradient_accum / self.offset_denom # [N*k, 1]
+-        grads[grads.isnan()] = 0.0
+-        grads_norm = torch.norm(grads, dim=-1)
+         offset_mask = (self.offset_denom > check_interval*success_threshold*0.5).squeeze(dim=1)
+-        
+-        self.anchor_growing(grads_norm, grad_threshold, offset_mask)
++        if enable_growth:
++            grads = self.offset_gradient_accum / self.offset_denom # [N*k, 1]
++            grads[grads.isnan()] = 0.0
++            grads_norm = torch.norm(grads, dim=-1)
++            self.anchor_growing(grads_norm, grad_threshold, offset_mask)
+         
+         # update offset_denom
+         self.offset_denom[offset_mask] = 0
+--- a/train.py
++++ b/train.py
+@@ -166,15 +166,21 @@
+                 logger.info("\n[ITER {}] Saving Gaussians".format(iteration))
+                 scene.save(iteration)
+             
+-            # densification
+-            if iteration < opt.update_until and iteration > opt.start_stat:
+-                # add statis
+-                gaussians.training_statis(viewspace_point_tensor, opacity, visibility_filter, offset_selection_mask, voxel_visible_mask)
+-                
+-                # densification
++            # Growth ends at update_until. Native opacity/visit statistics and
++            # pruning may continue independently until prune_until.
++            if iteration < opt.prune_until and iteration > opt.start_stat:
++                if iteration < opt.update_until:
++                    gaussians.training_statis(viewspace_point_tensor, opacity, visibility_filter, offset_selection_mask, voxel_visible_mask)
++                else:
++                    gaussians.training_opacity_statis(opacity, voxel_visible_mask)
++
+                 if iteration > opt.update_from and iteration % opt.update_interval == 0:
+-                    gaussians.adjust_anchor(check_interval=opt.update_interval, success_threshold=opt.success_threshold, grad_threshold=opt.densify_grad_threshold, min_opacity=opt.min_opacity)
+-            elif iteration == opt.update_until:
++                    anchor_count_before = gaussians.get_anchor.shape[0]
++                    enable_growth = iteration < opt.update_until
++                    gaussians.adjust_anchor(check_interval=opt.update_interval, success_threshold=opt.success_threshold, grad_threshold=opt.densify_grad_threshold, min_opacity=opt.min_opacity, enable_growth=enable_growth)
++                    if not enable_growth:
++                        logger.info("[ITER {}] opacity-only pruning: {} -> {} anchors".format(iteration, anchor_count_before, gaussians.get_anchor.shape[0]))
++            elif iteration == opt.prune_until:
+                 del gaussians.opacity_accum
+                 del gaussians.offset_gradient_accum
+                 del gaussians.offset_denom

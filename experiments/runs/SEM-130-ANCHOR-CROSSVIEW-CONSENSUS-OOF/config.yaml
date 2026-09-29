@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-130-ANCHOR-CROSSVIEW-CONSENSUS-OOF",
+  "title": "Strict spatial-OOF anchor cross-view consensus for selective stay_cable recovery",
+  "phase": "R2 semantic development optimisation",
+  "status": "completed_calibration_gate_failed",
+  "owner": "unassigned",
+  "parent_experiment": "SEM-123-BAND-RECOVERY-DEV-SWEEP,SEM-122-UNCERTAINTY-BAND-DIAG,SEM-121-CONTINUOUS-FUSION-OOF,SEM-120-DEV-THRESHOLD-SWEEP,VIS-005-SELECTIVE-RECOVERY-FLYTHROUGH,SEM-111-PROTECTED-FUSION-FINAL,SEM-110-PROTECTED-FUSION-OOF,SEM-001,SEM-101-RENDERED-SEG-OOF,RGB-030-FULL",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "seed": 20260903,
+  "data": {
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "semantic_split_sha256": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+    "oof_split": "experiments/splits/sem_005_oof_spatial_v1.json",
+    "oof_split_sha256": "ce8a24e11d93df7634331a1ce33ae59385297cae90a0bd688b61769cf27f222c",
+    "training_images": 219,
+    "access_rule": "Before any label, validate frozen SEM-001 training maps and SEM-101 spatial-OOF probabilities, render only frozen dominant-anchor diagnostics for the 219 authorised training cameras, and aggregate source evidence from other cameras in the target's own spatial OOF fold. The current target camera is excluded and the one OOF teacher model for its fold was trained without every view in that fold. A deterministic 108/111 calibration/check split selects and checks one source-count predicate. The 74 development views, real RGB, unlabelled imagery, hidden inputs and external-camera mode are unavailable."
+  },
+  "inputs": {
+    "sem001_checkpoint_sha256": "8e3dbe30e17f67081a72380018fc281c155ec00eed83cd5a19b3285bf4fb8aa3",
+    "sem101_oof_summary_sha256": "88fd816d8fa9d56c0a78dece570ca38ca02d43d66a801aee671e6c4de1681923",
+    "sem110_result_sha256": "e7d3d22ffd7a0f10db3a0a0abdddbe33467770fa2957a56b5c12be1fa90746ff",
+    "sem123_result_sha256": "75146360d3f5da6a6fd63ece2fcfa86efc404ac9668f6e757e14578cf24c0359"
+  },
+  "frozen_rgb": {
+    "backbone": "Scaffold-GS",
+    "rgb_experiment": "RGB-030-FULL",
+    "iteration": 30000,
+    "train_camera_count": 303,
+    "n_offsets": 10,
+    "appearance_camera_id": 0,
+    "geometry_color_opacity_checkpoint_unchanged": true,
+    "sem001_checkpoint_unchanged": true,
+    "sem101_oof_checkpoint_unchanged": true,
+    "coordinate_frame": "official_colmap_reference",
+    "pose_convention": "CAMERA_FROM_WORLD"
+  },
+  "single_changed_variable": "Starting from the fixed SEM-123 p20_d02_any recovery proposal above hard protected fusion 0.30, retain a proposed hard-background-to-stay_cable pixel only when its dominant frozen Scaffold anchor has sufficient class-2 support in other source cameras from the same spatial OOF fold. No hard-0.30 stay_cable pixel may be deleted; SEM-001 deck, tower and foundation pixels remain exact; no RGB, geometry, checkpoint, semantic parameter, source model, label split or camera convention changes.",
+  "crossview_consensus": {
+    "recovery_rule": {
+      "lower_threshold": 0.20,
+      "upper_threshold": 0.30,
+      "probability_minimum": 0.20,
+      "maximum_seed_distance": 2.0,
+      "prior_mode": "any"
+    },
+    "dominant_anchor": "Exact frozen RGB marginal-contribution dominant generated offset from the pinned rasterizer, mapped to its frozen anchor ID.",
+    "source_camera_rule": "Only a different camera in the target camera's own SEM-101 spatial OOF fold. Every source probability and target probability is produced by the same frozen fold model whose training set excludes the whole fold.",
+    "minimum_dominant_pixels_per_source_view": 8,
+    "minimum_mean_oof_stay_cable_probability": 0.30,
+    "minimum_source_view_grid": [1, 2, 3, 4, 6, 8],
+    "operation": "candidate = hard_0.30; candidate[SEM-123-proposed-addition AND other-view-source-count >= selected-minimum] = stay_cable",
+    "explicit_nonoperation": "Do not globally suppress anchors, do not modify any raw hard-0.30 stay_cable pixel, do not delete a cable pixel, and do not access labels while source support is built."
+  },
+  "selection": {
+    "partition": "Existing deterministic blake2b(name, person=sem110-v1) calibration/check halves; label-independent.",
+    "score_weights": {"mIoU_with_background": 0.55, "stay_cable_iou": 0.30, "stay_cable_recall": 0.15},
+    "calibration_gates": {
+      "mIoU_with_background_drop_max": 0.0,
+      "stay_cable_iou_drop_max": 0.0,
+      "stay_cable_recall_gain_minimum": 0.001
+    },
+    "check_gates": {
+      "mIoU_with_background_drop_max": 0.0,
+      "stay_cable_iou_drop_max": 0.0,
+      "stay_cable_recall_gain_minimum": 0.0
+    },
+    "rule": "On calibration only, retain candidates that preserve or improve hard-0.30 mIoU and stay_cable IoU, gain at least 0.10pp stay_cable recall, keep protected predictions exact and have no more background-to-stay_cable pixels than unfiltered p20_d02_any. Select the largest weighted score; ties prefer higher cable IoU, fewer background-to-stay_cable pixels, then larger source-count threshold. The check evaluates that one fixed threshold once; it requires non-declining hard-0.30 mIoU, cable IoU and recall, exact protected predictions, and no more background errors than raw p20_d02_any."
+  },
+  "outputs": {
+    "root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_130/anchor_crossview_consensus_oof/full-20260903-r1",
+    "fold_anchor_support_counts": "fold_anchor_support_counts.npz",
+    "anchor_support_summary": "anchor_support_summary.json",
+    "training_visual_samples": ["001.png", "017.png", "031.png"],
+    "panel_order": ["GT", "hard_0.30", "raw_SEM-123_p20_d02_any", "crossview_consensus", "consensus_additions_green_true_cable_red_background_orange_other"]
+  },
+  "forbidden": [
+    "SEM-001_checkpoint_change",
+    "SEM-101_checkpoint_change",
+    "RGB_checkpoint_change",
+    "Scaffold_training",
+    "SegFormer_training",
+    "global_anchor_suppression",
+    "deleting_hard_0.30_stay_cable",
+    "real_RGB_input",
+    "fixed_74_view_access",
+    "unlabelled_input",
+    "hidden_test_input",
+    "external_camera_mode",
+    "check_based_source_count_selection",
+    "development_based_refit",
+    "claiming_blind_or_formal_replacement_status"
+  ],
+  "classes": {"0": "background", "1": "deck", "2": "stay_cable", "3": "tower", "4": "foundation"},
+  "fallback": "RGB-030-FULL Scaffold-GS + SEM-001"
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "experiment_id": "VIS-004-DEV-THRESHOLD-FLYTHROUGH",
+  "title": "SEM-111, SEM-120 developer-leader and Pareto semantic flythrough",
+  "phase": "developer-only semantic visualization",
+  "status": "completed_developer_visualization",
+  "parent_experiment": "VIS-001-FLYTHROUGH,SEM-120-DEV-THRESHOLD-SWEEP,SEM-111-PROTECTED-FUSION-FINAL,SEM-102-RENDERED-SEG-FINAL,SEM-001,RGB-030-FULL",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "not_applicable_novel_camera_metadata_visualization",
+  "seed": "not_applicable_deterministic_frozen_inference",
+  "frozen_inputs": {
+    "sem120_result_sha256": "2cc91b76d31c4915cc8775376700549f03bc469c327953fd6aad950a276f1798",
+    "sem001_checkpoint_sha256": "8e3dbe30e17f67081a72380018fc281c155ec00eed83cd5a19b3285bf4fb8aa3",
+    "sem102_final_checkpoint_sha256": "88e3084db7b6394ab8253fea2ac129d68d81053af50fc3b38556f1288972763c",
+    "sem102_final_result_sha256": "2ccae7090ee1a9a980d7d3762cb946556bb6ea59cca7c35e52027b1f492dbacd"
+  },
+  "model": {
+    "rgb": "frozen RGB-030-FULL Scaffold-GS",
+    "semantic_base": "frozen SEM-001 sidecar",
+    "semantic_teacher": "frozen SEM-102 rendered-RGB SegFormer-B2 final checkpoint",
+    "updates_parameters": false,
+    "rgb_geometry_color_opacity_checkpoint_unchanged": true
+  },
+  "trajectory": {
+    "source_experiment": "VIS-001-FLYTHROUGH",
+    "trajectory_id": "frozen_scaffold_sem001_bridge_flythrough_v1",
+    "frames": 144,
+    "fps": 24,
+    "duration_seconds": 6.0,
+    "coordinate_frame": "official_colmap_reference",
+    "pose_convention": "CAMERA_FROM_WORLD",
+    "input_camera_model": "SIMPLE_RADIAL",
+    "keyframe_inputs": "official camera metadata only",
+    "uses_reference_rgb_or_labels": false
+  },
+  "comparison": {
+    "sem111_historical_threshold": 0.8,
+    "sem120_developer_leader_threshold": 0.2,
+    "sem120_pareto_threshold": 0.3,
+    "selection_notice": "0.20 is the pre-declared development-score leader; 0.30 is the nearby higher-mIoU/higher-cable-IoU, lower-background-error Pareto alternative. Both are developer-only and neither overwrites SEM-111's historical formal record.",
+    "panel_order": ["SEM-111 threshold 0.80", "SEM-120 developer leader threshold 0.20", "SEM-120 Pareto threshold 0.30"]
+  },
+  "outputs": {
+    "root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/vis_004/dev_threshold_fusion/flythrough-20260903-r1",
+    "comparison_video": "semantic_sem111_vs_dev020_vs_dev030.mp4",
+    "codec": "H.264 yuv420p",
+    "resolution": [3960, 1032]
+  },
+  "contract": {
+    "class_names": ["background", "deck", "stay_cable", "tower", "foundation"],
+    "stay_cable_class_id": 2,
+    "no_extra_display_filter": true,
+    "no_reference_rgb_or_labels": true,
+    "protected_sem001_classes_exact": ["deck", "tower", "foundation"],
+    "official_external_camera_supported": true
+  },
+  "fallback": "RGB-030-FULL Scaffold-GS + SEM-001"
+}

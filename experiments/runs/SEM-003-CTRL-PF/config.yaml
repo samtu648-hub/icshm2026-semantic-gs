@@ -1,0 +1,18 @@
+{
+  "schema_version": 3,
+  "experiment_id": "SEM-003-CTRL-PF",
+  "title": "SEM-003 Dirichlet representation equivalence and CTRL CUDA smoke",
+  "phase": "R2/S2",
+  "parent_experiment": "SEM-001,SEM-002,SEM-003-DIAG",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "data": {"split_id": "sem_001_scaffold_static_v1", "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json", "label_manifest": "experiments/runs/SEM-001/label_manifest.json", "training_images": 219, "validation_images": 74, "unlabeled_rgb_in_semantic_supervision": false, "pseudo_labels": false, "input_resolution": [1320, 989], "label_grid": "full-frame PINHOLE derived with the R1 SIMPLE_RADIAL K; no crop"},
+  "frozen_rgb": {"backbone": "Scaffold-GS", "upstream_commit": "59c833b56bbbf510f3f64d40f81721995caced66", "rgb_experiment": "RGB-030-FULL", "iteration": 30000, "train_camera_count": 303, "n_offsets": 10, "appearance_camera_id": 0, "coordinate_frame": "official_colmap_reference", "pose_convention": "CAMERA_FROM_WORLD", "official_to_model_sim3": "identity"},
+  "conflict_diagnostic": {"eligibility_policy": {"minimum_support_views": 3, "minimum_background_fraction": 0.10, "minimum_stay_cable_fraction": 0.10, "maximum_protected_fraction": 0.05, "conflict_quantile": 0.90}},
+  "dirichlet": {"alpha_definition": "alpha=1+softplus(raw_evidence)=1+exp(log_evidence_strength)*softmax(class_logits)", "initial_evidence_strength": 1000000.0, "prediction": "Dirichlet posterior predictive alpha/sum(alpha)", "source_initialization": "convert final frozen SEM-001 semantic checkpoint; this is a representation conversion, not an SEM-001 intermediate-checkpoint continuation"},
+  "equivalence": {"image_name": "001.png", "max_probability_difference": 0.00001, "class_png_requirement": "bit_identical", "rgb_max_absolute_pixel_difference": 0},
+  "conflict_regularizer": {"enabled": false, "lambda": 0.001, "target_evidence_strength": 1.0, "definition": "CTRL: disabled; no global gate or conflict regularizer."},
+  "training": {"seed": 20260731, "learning_rate": 0.05, "weight_decay": 0.0, "loss": "SEM-001 weighted five-class NLL on ordinary all-contributor Dirichlet predictive probabilities", "class_weighting": "Reuse SEM-001 train-only median_frequency/count clipped to [0.05,20.0]", "rgb_optimizer": "none"},
+  "preflight": {"iterations": 8, "log_every": 1, "validation_views": 3, "checkpoint_iterations": [8]},
+  "isolation": {"views": ["001.png", "054.png", "140.png"]},
+  "external_camera": {"image_name": "140.png", "output": "RGB + five log-probability logits .npy + single-channel uint8 ID PNG on official SIMPLE_RADIAL grid"}
+}

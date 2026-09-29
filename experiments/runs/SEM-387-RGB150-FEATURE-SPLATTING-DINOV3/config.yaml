@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-387-RGB150-FEATURE-SPLATTING-DINOV3",
+  "title": "Frozen RGB150 supervised Feature Splatting with a matched DINOv3 distillation arm",
+  "phase": "semantic_segmentation",
+  "parent_experiment": "RGB-150-STANDARD-ABSGRAD-DEV30;SEM-384-RGB150-DEV270",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "dev30_local_composition_v1",
+  "split_path": "experiments/splits/dev30_local_composition_v1.json",
+  "method": "frozen_standard_3dgs_feature_splatting",
+  "main_variable": "Add frozen DINOv3 ViT-B/16 final-patch-token cosine distillation on the 100 unlabeled RGB-training views while preserving the matched supervised 270-view updates, field capacity, decoder, initialization, optimizer, crop/flip plan and endpoint.",
+  "causal_claim": null,
+  "arms": [
+    "label_only",
+    "dinov3_distilled"
+  ],
+  "iterations": 6000,
+  "analysis_checkpoint": 3000,
+  "primary_checkpoint": 6000,
+  "crop": 768,
+  "rgb_run": "outputs/quality/RGB-150/full-r1",
+  "rgb_model": "outputs/quality/RGB-150/full-r1/model",
+  "rgb_evaluation": "outputs/quality/RGB-150/full-r1/evaluation",
+  "scene": "outputs/quality/RGB-150/scene",
+  "rgb_source": "outputs/quality/rgb140/source-r1",
+  "label_root": "outputs/quality/all_data/SEM-370-r1/labels",
+  "label_manifest": "outputs/quality/all_data/SEM-370-r1/label_manifest.json",
+  "parent_sampling_plan": "outputs/quality/SEM-384/r1/sampling-plan.json",
+  "parent_sampling_plan_sha256": "b17b813ae84d6523f4fc6b322643348e44663e47788cf02c2e9ffa521f0b7dc0",
+  "unlabeled_sampling_seed": 20260806,
+  "semantic_train_views": 270,
+  "unlabeled_teacher_views": 100,
+  "semantic_holdout_views": 30,
+  "output_path": "outputs/quality/SEM-387/r1",
+  "feature_splatting": {
+    "source": "vuer-ai/feature-splatting-inria",
+    "source_commit": "e8647b3fdb19dfebd8bab61a8e495fde03ead119",
+    "status": "project adaptation, not a strict paper reproduction",
+    "latent_dim": 32,
+    "latent_initialization": "zeros",
+    "latent_learning_rate": 0.0025,
+    "decoder_learning_rate": 0.001,
+    "weight_decay": 0.0,
+    "decoder": "weight-normalized 1x1 shared trunk 32->256 with ReLU; matched 256->5 class head and 256->768 DINOv3 head",
+    "render": "native Standard 3DGS override-color passes with identical projection, sorting, opacity and transmittance; signed channels use a detached affine map with margin 0.5 and exact alpha-mass restoration",
+    "densification": false,
+    "pruning": false,
+    "rgb_geometry_sh_opacity_exposure_frozen": true
+  },
+  "loss": {
+    "semantic": "unweighted five-class pixel cross entropy",
+    "semantic_weight": 1.0,
+    "distillation": "mean patch-wise cosine distance",
+    "distillation_weight": 0.01,
+    "distillation_weight_basis": "effective DINO coefficient in the official full Feature Splatting clip_dino training objective",
+    "label_only": "cross_entropy",
+    "dinov3_distilled": "cross_entropy + 0.01 * DINOv3 cosine distance on one additional unlabeled crop per successful update"
+  },
+  "dinov3": {
+    "model_dir_env": "DINOV3_VITB16_DIR",
+    "model_id": "facebook/dinov3-vitb16-pretrain-lvd1689m",
+    "hf_reference_revision": "5931719e67bbdb9737e363e781fb0c67687896bc",
+    "source_manifest_sha256": "cbd11fe8edd8083efad8979ff4151baabd341631ed222fa5bd1ea64edf3bc2e3",
+    "license": "DINOv3 License; acknowledge use in publications and retain the agreement for redistribution",
+    "architecture": "DINOv3ViTModel",
+    "patch_size": 16,
+    "hidden_size": 768,
+    "num_hidden_layers": 12,
+    "num_register_tokens": 4,
+    "selected_output": "normalized final last_hidden_state patch tokens after removing CLS and four register tokens",
+    "preprocessing": "same frozen RGB150 crop/flip; RGB [0,1], ImageNet mean/std; no center crop or resize",
+    "frozen": true,
+    "file_sha256": {
+      "config.json": "3c9cc418f4622fd6d5587fd142b6f3cba0ba6a69f67ced907d8b7f26118451ec",
+      "preprocessor_config.json": "960c41d1f3a7778b936365769a2d90550b318a6c0a53a0296957adacfe5e0dd7",
+      "LICENSE.md": "25d122eb8f5b880fd23c736fb6ea8018ee45c12237e00b8a86d14c653904999e",
+      "model.safetensors": "9a21ac3df0c63839d62612dda6f454d816c25611cc7a52966ed5a5a94921dc8b"
+    }
+  },
+  "matching": {
+    "shared_labeled_sampling": "exact SEM384 6000-entry name/top/left/flip plan",
+    "shared_initial_state": true,
+    "shared_parameter_shapes": true,
+    "shared_optimizer_recipe": true,
+    "candidate_only_access": "one independently preregistered crop/flip from the 100 unlabeled RGB-training views per successful update",
+    "candidate_extra_cost_reported_separately": true
+  },
+  "preflight": {
+    "successful_updates_per_arm": 8,
+    "quality_gate": false,
+    "required_checks": [
+      "signed zero-field gradient",
+      "chunk reassembly",
+      "probability conservation",
+      "matched initialization and labeled trace",
+      "DINOv3 frozen state",
+      "RGB parameter and rendered-pixel invariance",
+      "checkpoint exact replay",
+      "12GB resource gate"
+    ]
+  },
+  "commands": {
+    "prepare": "python3 scripts/run_sem387_feature_splatting.py --artifact-root <artifact-root> --stage prepare",
+    "preflight": "python3 scripts/run_sem387_feature_splatting.py --artifact-root <artifact-root> --stage preflight",
+    "train": "python3 scripts/run_sem387_feature_splatting.py --artifact-root <artifact-root> --stage train",
+    "inference": "python3 scripts/run_sem387_feature_splatting.py --artifact-root <artifact-root> --stage inference"
+  },
+  "quality_claim": null,
+  "scope": "single Dev30 development split, single seed and fixed 6000-step endpoint; not blind, multi-seed or a strict Feature Splatting reproduction",
+  "holdout_access": {
+    "rgb_during_prepare_preflight_training": false,
+    "labels_during_prepare_preflight_training": false,
+    "allowed_after_both_arm_6000_checkpoints_are_sealed": [
+      "RGB inference input",
+      "ground-truth evaluation"
+    ]
+  },
+  "trajectory": "results/frozen_scaffold_sem001/flythrough_v1/cameras",
+  "failure_policy": "Preserve failed artifacts. No latent-width, loss-weight, layer, resolution, decoder or endpoint rescue under this experiment ID.",
+  "forbidden_additions": [
+    "second seed",
+    "all-data fit",
+    "geometry or RGB optimization",
+    "layer search",
+    "loss-weight search",
+    "CLIP or SAM",
+    "Mask2Former pseudo-labels",
+    "fusion or post-processing",
+    "quality-selected checkpoint"
+  ]
+}

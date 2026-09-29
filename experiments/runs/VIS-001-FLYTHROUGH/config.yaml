@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "experiment_id": "VIS-001-FLYTHROUGH",
+  "title": "Frozen Scaffold-GS plus SEM-001 interpolated-camera flythrough",
+  "phase": "result visualization",
+  "parent_experiment": "SUBMIT-010-BUNDLE,RGB-030-FULL,SEM-001",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "not_applicable_camera_metadata_visualization",
+  "seed": "not_applicable_deterministic_interpolation",
+  "model": {
+    "bundle": "external_gitignored:ICSHM_OUTPUT_ROOT/submission/sem001-baseline-v1",
+    "rgb": "RGB-030-FULL Scaffold-GS",
+    "semantic": "SEM-001",
+    "updates_parameters": false
+  },
+  "trajectory": {
+    "keyframe_pose_names": ["140.png", "146.png", "154.png", "161.png", "169.png", "176.png", "183.png"],
+    "keyframe_inputs": "official camera metadata only",
+    "position_interpolation": "Catmull-Rom",
+    "rotation_interpolation": "eased quaternion SLERP",
+    "sampling": "half-step; no generated frame equals a keyframe pose",
+    "frames_per_segment": 24,
+    "segments": 6,
+    "frames": 144,
+    "fps": 24,
+    "duration_seconds": 6.0,
+    "coordinate_frame": "official_colmap_reference",
+    "pose_convention": "CAMERA_FROM_WORLD",
+    "uses_reference_rgb_or_labels": false
+  },
+  "outputs": {
+    "root": "external_gitignored:ICSHM_OUTPUT_ROOT/results/frozen_scaffold_sem001/flythrough_v1",
+    "rgb_video": "frozen_scaffold_rgb_flythrough.mp4",
+    "semantic_video": "frozen_scaffold_sem001_side_by_side.mp4",
+    "codec": "H.264 yuv420p",
+    "rgb_resolution": [1320, 990],
+    "side_by_side_resolution": [2640, 1030]
+  }
+}

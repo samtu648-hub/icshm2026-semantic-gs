@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-120-DEV-THRESHOLD-SWEEP",
+  "title": "Explicit 74-view development sweep for protected-fusion thresholds",
+  "phase": "R2 semantic development iteration",
+  "status": "completed_development_sweep",
+  "owner": "unassigned",
+  "parent_experiment": "SEM-111-PROTECTED-FUSION-FINAL,SEM-110-PROTECTED-FUSION-OOF,SEM-001,SEM-102-RENDERED-SEG-FINAL,RGB-030-FULL",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "seed": 20260903,
+  "data": {
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "semantic_split_sha256": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+    "development_images": 74,
+    "access_rule": "The already-opened 74 semantic-validation views are explicitly repurposed as a reusable development set under user authorisation. Scores may rank visual/development candidates but are not blind-test or formal-replacement evidence. Real RGB, unlabelled images, hidden test data, external-camera mode, RGB changes and model training remain unavailable."
+  },
+  "inputs": {
+    "sem001_result_sha256": "abd82b7c21820c26e7cea4fa0d7b7ce155d833107b0388e9783c78ba9b81900d",
+    "sem102_prediction_manifest_sha256": "8e44e34a2cb781a2a2fa814ceffc9f54a6d9fdf05a9fda977f70e77d9094a0c0",
+    "sem111_result_sha256": "45d2aa9095815a086a8927c7233bd585f6bb2ebcfe9a1c8b936c3d57915757d9"
+  },
+  "frozen_rgb": {
+    "backbone": "Scaffold-GS",
+    "rgb_experiment": "RGB-030-FULL",
+    "iteration": 30000,
+    "geometry_color_opacity_checkpoint_unchanged": true,
+    "sem001_checkpoint_unchanged": true,
+    "sem102_checkpoint_unchanged": true,
+    "coordinate_frame": "official_colmap_reference",
+    "pose_convention": "CAMERA_FROM_WORLD"
+  },
+  "single_changed_variable": "Sweep only the stay_cable probability threshold used in the existing SEM-111 protected fusion. Every SEM-001 deck/tower/foundation prediction remains exact and all other inputs, geometry, RGB, checkpoints and inference steps remain fixed.",
+  "baseline": {
+    "sem111_threshold": 0.8,
+    "sem111_result_role": "qualified historical baseline and rollback; its original formal result is retained but this sweep's selected score is developer-only"
+  },
+  "sweep": {
+    "stay_cable_thresholds": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9],
+    "developer_score": "0.55*mIoU_with_background + 0.30*stay_cable_IoU + 0.15*stay_cable_recall; ties prefer fewer background-to-stay_cable pixels, then higher threshold",
+    "selection_role": "development leader only; it must not be called blind, formal, or a replacement without a separately documented final evaluation"
+  },
+  "outputs": {
+    "root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_120/dev_threshold_sweep/full-20260903-r1",
+    "visual_samples": ["054.png", "140.png", "183.png"],
+    "panel_order": ["GT", "SEM-111", "selected_development_threshold", "selected_error"]
+  },
+  "forbidden": [
+    "SEM-001_checkpoint_change",
+    "SEM-102_checkpoint_change",
+    "RGB_checkpoint_change",
+    "Scaffold_training",
+    "SegFormer_training",
+    "real_RGB_input",
+    "unlabeled_input",
+    "hidden_test_input",
+    "external_camera_mode",
+    "claiming_blind_or_formal_replacement_status"
+  ],
+  "classes": {"0": "background", "1": "deck", "2": "stay_cable", "3": "tower", "4": "foundation"},
+  "fallback": "RGB-030-FULL Scaffold-GS + SEM-001"
+}

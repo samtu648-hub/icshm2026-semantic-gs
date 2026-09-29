@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-004-DIAG",
+  "title": "Frozen SEM-001 stay_cable false-positive source diagnostic",
+  "phase": "R2 diagnostic only",
+  "parent_experiments": ["SEM-001", "SEM-002", "SEM-003"],
+  "status": "diagnostic_only_not_a_semantic_candidate",
+  "trains_new_parameters": false,
+  "updates_RGB": false,
+  "updates_semantic_parameters": false,
+  "uses_unlabeled_RGB": false,
+  "uses_pseudo_labels": false,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "data": {
+    "split_id": "sem_001_scaffold_static_v1",
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "label_manifest": "experiments/runs/SEM-001/label_manifest.json",
+    "training_images": 219,
+    "validation_images": 74,
+    "uses_guard_band": false,
+    "uses_hidden_test_rgb_or_labels": false,
+    "training_rule_selection": "Only training-side results may be used to assess pre-registered diagnostic rules. Validation is a read-only application of those rules and supports no threshold, mask, loss, or capacity selection."
+  },
+  "frozen_rgb": {
+    "backbone": "Scaffold-GS",
+    "upstream_commit": "59c833b56bbbf510f3f64d40f81721995caced66",
+    "rgb_experiment": "RGB-030-FULL",
+    "iteration": 30000,
+    "train_camera_count": 303,
+    "n_offsets": 10,
+    "appearance_camera_id": 0,
+    "coordinate_frame": "official_colmap_reference",
+    "pose_convention": "CAMERA_FROM_WORLD",
+    "official_to_model_sim3": "identity"
+  },
+  "frozen_semantic": {
+    "experiment": "SEM-001",
+    "semantic_checkpoint_sha256": "8e3dbe30e17f67081a72380018fc281c155ec00eed83cd5a19b3285bf4fb8aa3",
+    "semantic_storage": "per_anchor_logits",
+    "class_names": ["background", "deck", "stay_cable", "tower", "foundation"],
+    "expected_rgb_max_absolute_pixel_difference": 0
+  },
+  "sem003_train_only_evidence": {
+    "experiment": "SEM-003-DIAG",
+    "artifact_sha256": "84b60b867e07e2a1a1e17cd47d053e1b00c8c19a820efdb0dfd53bdd35b8d3b0",
+    "role": "read-only dominant-anchor support and protected-conflict annotation; it neither gates nor reweights SEM-001"
+  },
+  "contribution_diagnostic": {
+    "definition": "Exact frozen RGB marginal r(g,p)=T(g,p)*alpha(g,p)*G(g,p), decoded from the pinned rasterizer. Per-pixel maximum contribution and its generated Gaussian/anchor are diagnostic only; no gate, filter, reweighting, loss, or backward pass is constructed.",
+    "comparisons": ["GT background predicted stay_cable", "GT background predicted background"],
+    "statistics": ["contributor_count", "foreground_mass", "maximum_contribution", "maximum_over_foreground_concentration", "dominant_anchor_train_support_views", "dominant_anchor_bg_stay_evidence", "dominant_anchor_sem003_conflict_eligibility"],
+    "uses_validation_for_selection": false
+  },
+  "error_region_rules": {
+    "near_gt_stay_cable_boundary_px": 8.0,
+    "small_false_positive_component_area_px": 256,
+    "large_false_positive_component_area_px": 4096,
+    "frozen_from": "pre-run training-side protocol; validation applies unchanged definitions"
+  },
+  "label_geometry": {
+    "source": "official LabelMe JSON transformed with the SEM-001 SIMPLE_RADIAL-to-full-frame-PINHOLE procedure",
+    "rasterization_consistency": "Rebuild each released semantic label deterministically and compare to the SEM-001 label PNG.",
+    "adjacency_radius_px": 2,
+    "representative_training_cases": 5,
+    "selection": "training side only: descending absolute rasterization-area change for stay_cable, tie-break by image name"
+  },
+  "direction_diagnostic": {
+    "training_only": true,
+    "direction_coordinate_frame": "official_COLMAP_reference",
+    "direction_definition": "global XY azimuth of (anchor_position - official_camera_center), binned into eight equal bins",
+    "azimuth_bins": 8,
+    "stable_anchor_minimum_support_views": 3,
+    "stable_anchor_minimum_dominant_pixels": 128,
+    "minimum_dominant_pixels_per_direction_bin": 32,
+    "minimum_common_direction_bins_between_train_halves": 2,
+    "minimum_cable_fraction_range": 0.10,
+    "minimum_half_pattern_correlation": 0.50,
+    "train_half_assignment": "sha256(image_name)[0] parity; fixed before diagnostic execution",
+    "note": "This is a read-only low-capacity bin statistic, not a view-conditioned neural module and not a camera/image embedding."
+  },
+  "hypothesis_readiness": {
+    "minimum_training_signals": 3,
+    "dominant_error_structure_fraction": 0.60,
+    "minimum_thin_polygon_fraction": 0.60,
+    "thin_polygon_minimum_thinness": 0.80,
+    "minimum_contribution_concentration_absolute_difference": 0.05,
+    "minimum_conflict_eligibility_lift": 1.20,
+    "minimum_reproducible_direction_anchor_fraction": 0.40,
+    "proposal_if_ready": "One independently pre-registered, anchor-local background-to-stay_cable residual with fixed direction bins only; RGB remains frozen, no camera/image IDs, no validation-selected mask, and a matched SEM-001 control.",
+    "failure_rule": "If fewer than three training-side signals pass, declare no_go_for_new_semantic_mechanism and do not start SEM-004/S3."
+  },
+  "visualization": {
+    "per_view_semantic_triptych": "GT / frozen SEM-001 prediction / error palette; no source RGB required",
+    "hard_views": ["140.png", "141.png", "142.png", "143.png", "144.png", "145.png", "146.png"]
+  },
+  "external_camera_audit": {
+    "image_name": "140.png",
+    "required_outputs": ["RGB", "five logits", "single-channel uint8 semantic PNG with IDs 0..4"],
+    "expected_output_size": [1320, 989]
+  },
+  "seed": 20260805,
+  "runtime": {
+    "output_root": "ICSHM_OUTPUT_ROOT/r2/sem_004/diagnostic",
+    "extension_root": "ICSHM_OUTPUT_ROOT/torch_extensions/sem_004",
+    "paths_are_supplied_by_command_or_environment": true
+  }
+}

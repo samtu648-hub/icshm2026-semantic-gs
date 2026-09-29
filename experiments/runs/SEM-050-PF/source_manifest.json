@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-050-PF",
+  "code": {
+    "name": "Hugging Face Transformers SegFormer implementation",
+    "url": "https://github.com/huggingface/transformers",
+    "version": "4.57.1",
+    "tag_commit": "a47e6666f8f9a61e44a5d149c5e3d230e6c8053c",
+    "license": "Apache-2.0"
+  },
+  "model": {
+    "model_id": "nvidia/mit-b2",
+    "url": "https://huggingface.co/nvidia/mit-b2",
+    "revision": "3bb39e8739149c3777d0325349b2a6c32c6413db",
+    "access": "public_non_gated",
+    "license": "NVIDIA Source Code License for SegFormer; non-commercial research/evaluation only",
+    "pytorch_model_sha256": "4500b5665471b593e6757e15bcca5034f433fe3902fe8ec2b7230774a57f264f",
+    "pytorch_model_bytes": 98978917,
+    "config_sha256": "d9a879499e7d73e2b33af0638cee320b1070c8f0dadb620eac8907df3d18caa9",
+    "preprocessor_config_sha256": "d96ab2cb112985c19d5ea32f1d1f2369104fc78b1379f5ce26e33ca8646202a7"
+  },
+  "environment": {
+    "name": "icshm-semantic2d",
+    "python": "3.12.13",
+    "torch": "2.11.0+cu128",
+    "torchvision": "0.26.0+cu128",
+    "transformers": "4.57.1",
+    "numpy": "2.2.6",
+    "opencv": "4.12.0",
+    "scipy": "1.16.3",
+    "user_site_policy": "PYTHONNOUSERSITE=1",
+    "gpu": "NVIDIA GeForce RTX 5070, 12227 MiB",
+    "driver": "580.173.02",
+    "bf16_supported": true
+  },
+  "path_policy": "The model cache and all generated outputs are external and Git-ignored; no absolute host path is recorded."
+}

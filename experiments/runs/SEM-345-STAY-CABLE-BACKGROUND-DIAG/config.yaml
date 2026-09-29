@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-345-STAY-CABLE-BACKGROUND-DIAG",
+  "parent_experiment": "SEM-341-MASK2FORMER-OOF,SEM-342-RAW-FUSION-DIAG,SEM-344-EXTERNAL-CAMERA-PREFLIGHT",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260805,
+  "registered_utc": "2026-09-12T07:15:55.226236+00:00",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "same historical108 calibration only; same three semantic OOF/shared303RGB;111 existing aggregate report only, no new label access; SEM344 fixed24x3 trajectory without GT",
+  "comparison": "outputs/quality/mask2former/SEM-341-r1/comparison",
+  "preflight_config": "experiments/runs/SEM-340-MASK2FORMER-PREFLIGHT/config.yaml",
+  "frozen_manifest": "experiments/runs/SUBMIT-020-SEM161-FREEZE/frozen_manifest.json",
+  "trajectory": "outputs/quality/external_camera/SEM-344-trajectory-r1",
+  "trajectory_audit": "outputs/quality/external_camera/SEM-344-audit-r1/result.json",
+  "main_variable": "diagnostic focus on existing raw stay_cable background false positives; no prediction modification or model changes",
+  "gt_role": "calibration",
+  "probability_bins": [
+    0,
+    0.5,
+    0.8,
+    0.95,
+    1.000001
+  ],
+  "distance_to_gt_cable_bins_pixels": [
+    0,
+    2,
+    8,
+    32,
+    1000000000
+  ],
+  "connectivity": 8,
+  "detached_definition": "raw stay_cable pixels in an8-connected raw nonbackground component containing no raw deck/tower/foundation; no morphology, distance or component-size gate",
+  "evidence_masks": [
+    "detached",
+    "static_background",
+    "binary_background",
+    "both_background",
+    "detached_both_background"
+  ],
+  "binary_background_definition": "existing same-fold SEM331 binary model argmax==0, no probability-threshold search",
+  "statistics": "all raw stay_cable by GT class; confusion matrices of unchanged raw/old fusion/static; joint static-class x binary-argmax x detached x fixed-confidence-bin x GT-class counts; correction and true-stay_cable loss if diagnostic mask were mapped2->0, no output labels; fixed confidence and GT-distance bins descriptive only",
+  "examples": "calibration top3 pure-background-error components ranked by FP count then name, plus worst true-cable-loss component for detached-both-background; trajectory largest detached component for each fold, no correctness claim; ranking for display only",
+  "minimum_free_gib": 100,
+  "no_new_training": true,
+  "no_new_model_inference": true,
+  "no_candidate_outputs": true,
+  "no_threshold_selection": true,
+  "no_recalibration": true,
+  "future_protocol": "Any change to protected raw stay_cable requires separately preregistered experiment, retained raw+sealed0.05 controls, calibration-only selection and explicit recall tradeoff review.111/trajectory errors cannot be used to tune and then claim independence. Do not revive failed SEM070/080 geometry rules.",
+  "input_hashes": {
+    "outputs/quality/mask2former/SEM-341-r1/comparison/result.json": "b80b03cf68e69f823cb86c9248fba9dd8e28393ea5dfb03efa2adadd1f382b08",
+    "experiments/runs/SEM-340-MASK2FORMER-PREFLIGHT/config.yaml": "d0bee61014a21368a80f0f89d5c07f831965a9dbe3a9184579d0ccd35ea2b755",
+    "experiments/runs/SUBMIT-020-SEM161-FREEZE/frozen_manifest.json": "53ca7d469eed2666cd1a5d3bfd8c4374275daa6e173cddd62d88a4d410794815",
+    "outputs/quality/external_camera/SEM-344-audit-r1/result.json": "269192ba14b651e8638dedb5de8e29c20e94fa23554d7e3f14a9913fa35eeaca",
+    "experiments/runs/SEM-344-EXTERNAL-CAMERA-PREFLIGHT/config.yaml": "b3a753cdd22c622fea76bb20c5c8e3628f1ead8f0d55baf02ce8023b65466b87",
+    "experiments/runs/SEM-343-RAW-FOUNDATION-GATE/selection.json": "e44d2426764efa55645af4f92667b856d64c85af3c773747f29435d16203cec1",
+    "experiments/runs/SEM-070-POST-CLEAN/report.md": "a3e886bf1d28f67e72cfd8d1a22c55c1c570a9ac7ace6059972a41fda18dd7f5",
+    "experiments/runs/SEM-080-STRUCTURAL-DIAG/report.md": "0ffeae4b76001b5508fe5c925bb5276b8d1e9698848201e89cdd7a8d46e38c35",
+    "data/manifests/contest_dataset_v1.json": "0a188d4b4cfa5ffc2a7f151018f1cb012782e8f9860a3338aed084478d675b3e",
+    "experiments/splits/sem_001_scaffold_static_v1.json": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+    "experiments/splits/sem_005_oof_spatial_v1.json": "ce8a24e11d93df7634331a1ce33ae59385297cae90a0bd688b61769cf27f222c"
+  }
+}

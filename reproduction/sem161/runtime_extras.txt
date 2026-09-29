@@ -1,0 +1,2 @@
+# Required by frozen Scaffold scene.dataset_readers; absent from old host list.
+colorama==0.4.6

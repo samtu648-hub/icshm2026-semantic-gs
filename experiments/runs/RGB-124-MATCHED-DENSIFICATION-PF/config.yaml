@@ -1,0 +1,33 @@
+{
+  "experiment_id": "RGB-124-MATCHED-DENSIFICATION-PF",
+  "parent_experiment": "RGB-120-ALL400",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 0,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "parent_run": "outputs/quality/all_data/RGB-120-r2",
+  "output": "outputs/quality/diagnostics/RGB-124-r1",
+  "steps": 500,
+  "start_iteration": 7000,
+  "arms": [
+    "signed",
+    "absolute"
+  ],
+  "growth_interval": 100,
+  "growth_cap": 128,
+  "level_caps": [
+    43,
+    43,
+    42
+  ],
+  "main_variable": "densification ranking native signed2D L2 versus per-pixel absolute2D L2; same budget and no pruning",
+  "common_changes": [
+    "reset unavailable growth statistics",
+    "fixed per-level quota",
+    "disable pruning",
+    "stable lexicographic tie break",
+    "same seed0 fresh camera sampling sequence"
+  ],
+  "checkpoint": "model/chkpnt7000.pth",
+  "quality_claim": null
+}

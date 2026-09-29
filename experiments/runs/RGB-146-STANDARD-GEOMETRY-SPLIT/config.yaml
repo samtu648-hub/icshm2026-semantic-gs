@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-146-STANDARD-GEOMETRY-SPLIT",
+  "title": "RGB-146-STANDARD-GEOMETRY-SPLIT",
+  "phase": "reconstruction",
+  "parent_experiment": "RGB-140-STANDARD-ABSGRAD-ALL400",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "split_path": "outputs/quality/all_data/RGB-120-r2/split.json",
+  "seed": 0,
+  "backbone": "Standard 3DGS all400/30k with AbsGS homodirectional split-gradient densification",
+  "change_from_parent": "Photo-geometry child placement; same absolute-gradient budget ranking in both arms",
+  "method_source": {
+    "baseline_repo": "https://github.com/graphdeco-inria/gaussian-splatting.git",
+    "baseline_commit": "54c035f7834b564019656c3e3fcc3646292f727d",
+    "absgs_repo": "https://github.com/TY424/AbsGS.git",
+    "absgs_commit": "87d7a5aac21c0b237a6af9e715e3a0c7df4902d3",
+    "license": "Gaussian-Splatting research/evaluation license",
+    "adaptation_scope": "AbsGS absolute-gradient accumulation and split qualification only; no use_reduce, max-weight pruning, camera optimization, depth, semantic loss, or other upstream changes"
+  },
+  "data": {
+    "scene": "outputs/quality/all_data/RGB-120-r2/scene",
+    "resolution": "1320x989",
+    "rgb_train_views": 400,
+    "official_cameras_fixed": true,
+    "initial_point_cloud_source": "RGB130/RGB120 original 303-view COLMAP sparse point cloud",
+    "initial_point_count": 72292,
+    "initial_ply_sha256": "10a88fb018c27530b3bbfa0f7000408693ba75228067f5311e7775e4755e68f2",
+    "use_labeled_rgb": true,
+    "use_unlabeled_rgb": true,
+    "use_pseudo_labels": false,
+    "use_depth": false,
+    "use_semantics": false
+  },
+  "training": {
+    "iterations": 30000,
+    "seed": 0,
+    "signed_clone_threshold": 0.0002,
+    "absolute_split_threshold": 0.0004,
+    "densify_from_iter": 500,
+    "densify_until_iter": 15000,
+    "densification_interval": 100,
+    "opacity_reset_interval": 3000,
+    "output": "outputs/quality/rgb144/candidate-r1"
+  },
+  "evaluation": {
+    "protocol": "RGB130 matched all-400 training-view metrics, fixed-nine local crops, and fixed-144 external-camera trajectory",
+    "metrics": [
+      "PSNR",
+      "SSIM",
+      "LPIPS"
+    ],
+    "baseline": "RGB-145-STANDARD-GEOMETRY-CTRL",
+    "training_metrics_are_fit_results": true,
+    "trajectory_has_ground_truth": false,
+    "historical_reference": "RGB-140-STANDARD-ABSGRAD-ALL400"
+  },
+  "output": "outputs/quality/rgb144/candidate-r1",
+  "source": "outputs/quality/rgb140/source-r1",
+  "status": "registered_not_started",
+  "geometry": {
+    "arm": "candidate",
+    "matcher": "kornia.LoFTR outdoor",
+    "kornia_version": "0.8.1",
+    "input_wh": [
+      1024,
+      768
+    ],
+    "confidence_min": 0.8,
+    "cycle_px_max": 1.5,
+    "epipolar_px_max": 1.5,
+    "merge_px_max": 1.5,
+    "min_cameras": 4,
+    "check_error_px_max": 2,
+    "min_angle_deg": 1,
+    "max_relative_depth_std": 0.02,
+    "nearest_unused": 8,
+    "ellipsoid_sigma": 3,
+    "min_projection_cameras": 3,
+    "guided_fraction": 0.25,
+    "split_cap": 2048,
+    "population_envelope": 790065,
+    "initial_points": 72292,
+    "cache": "outputs/quality/rgb144/geometry-r1/proposals.json"
+  }
+}

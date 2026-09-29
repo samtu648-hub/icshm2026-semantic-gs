@@ -1,0 +1,15 @@
+{
+  "experiment_id": "SUBMIT-030-SEM161-BUNDLE",
+  "status": "completed_local_interface_audit",
+  "parent_experiment": "SUBMIT-020-SEM161-FREEZE",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "candidate": "RGB-030-FULL + SEM-161",
+  "freeze_manifest": "experiments/runs/SUBMIT-020-SEM161-FREEZE/frozen_manifest.json",
+  "freeze_artifacts": 18,
+  "input": "COLMAP cameras.txt and images.txt only; SIMPLE_RADIAL; CAMERA_FROM_WORLD",
+  "output": "input-size RGB plus uint8 class-ID semantic PNG; optional explicit SEM-001/111/141/151 fallbacks",
+  "pipeline": "frozen RGB -> SEM-001 -> SEM-102 -> cable 0.70 -> foundation 0.10 -> deck 0.99",
+  "forbidden": ["reference_RGB", "semantic_labels", "hidden_metric_claim", "external_upload", "frozen_artifact_mutation"],
+  "audit": "two fresh-process 140 replays against frozen external result, 320x240 dimension, nonempty-output rejection, content manifest verification",
+  "official_status": "2026-09-07 announcement requires email submission by 2026-09-30; no private cameras or final naming/limit specification available locally"
+}

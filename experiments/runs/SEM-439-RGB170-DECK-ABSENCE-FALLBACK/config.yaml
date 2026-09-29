@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-439-RGB170-DECK-ABSENCE-FALLBACK",
+  "title": "SEM437 native inference with zero-deck global-1.5x fallback",
+  "phase": "semantic_inference_development",
+  "parent_experiment": "SEM-438-RGB170-MASK2FORMER-MULTISCALE-AUDIT",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "semantic_training": false,
+  "native_prediction_root": "outputs/quality/SEM-438/r3/full/predictions/native",
+  "fallback_prediction_root": "outputs/quality/SEM-438/r3/full/predictions/global_1p5",
+  "sem438_result": "outputs/quality/SEM-438/r3/full/result.json",
+  "checkpoint": "outputs/quality/SEM-437/r2/mask2former/model-12000.pt",
+  "checkpoint_sha256": "9c94304cd011625c4cc46b752be99a9a9b8b0511d35079eb6307bae0cb12ce07",
+  "parent_export_result": "outputs/quality/SEM-437/r2/export/result.json",
+  "label_root": "outputs/quality/all_data/SEM-370-r1/labels",
+  "output_path": "outputs/quality/SEM-439/r1",
+  "rule": {
+    "native_deck_pixel_count_equals": 0,
+    "fallback_minimum_deck_pixels": 256,
+    "fallback_class": 1,
+    "allowed_overwritten_native_classes": [0, 2],
+    "protected_native_classes": [3, 4]
+  },
+  "required_hard_view_behavior": {
+    "355.png": "trigger_and_add_at_least_256_deck_pixels",
+    "356.png": "trigger_and_add_at_least_256_deck_pixels",
+    "357.png": "remain_native_when_fallback_has_no_deck"
+  },
+  "retention_gate": {
+    "all300_exact_native": true,
+    "checkpoint_unchanged": true,
+    "rgb_unchanged": true,
+    "maximum_changed_fraction_per_triggered_view": 0.002
+  },
+  "quality_scope": "The trigger and threshold were designed after inspecting released no-GT 344-358 and all300 training-fit distributions. This is a development anomaly fallback, not spatial or hidden-test evidence.",
+  "protocol": "docs/experiments/sem439_deck_absence_fallback_protocol.md",
+  "commands": {
+    "run": "python3 scripts/run_sem439_deck_absence_fallback.py",
+    "audit": "python3 scripts/audit_sem439_deck_absence_fallback.py"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-436-RGB170-MASK2FORMER-LONG12K-ALL300",
+  "title": "RGB170全300标签Mask2Former 6k加固定低学习率12k开发候选",
+  "phase": "semantic_segmentation_full_data_development",
+  "parent_experiment": "RGB-170-IMPROVEDGS-BUDGET15M-H50K;SEM-378-RGB140-ABSGRAD-ALL300;SEM-434-RGB152-MASK2FORMER-LONG12K;SEM-435-RGB154-MASK2FORMER-LONG12K",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "method": "mask2former_swin_l_long_training",
+  "main_variable": "Frozen RGB170 renders replace RGB140 while the full300 Mask2Former recipe uses the preregistered 6k plus fixed-low-LR tail through 12k.",
+  "iterations": 12000,
+  "base_phase_steps": 6000,
+  "extension_lr_multiplier": 0.1,
+  "endpoints": [6000, 8000, 10000, 12000],
+  "crop": 768,
+  "semantic_train_views": 300,
+  "rgb_training_result": "outputs/quality/RGB-170/full-r1/result.json",
+  "rgb_model": "outputs/quality/RGB-170/full-r1/model/point_cloud/iteration_50000/point_cloud.ply",
+  "rgb_evaluation_result": "outputs/quality/RGB-170/full-r1/evaluation-r1/result.json",
+  "rgb_trajectory_result": "outputs/quality/RGB-170/full-r1/trajectory-r1/result.json",
+  "rgb_images": "outputs/quality/RGB-170/full-r1/evaluation-r1/images/50000",
+  "trajectory_images": "outputs/quality/RGB-170/full-r1/trajectory-r1/50000",
+  "frozen_rgb170_sha256": {
+    "training_result": "90a58cfeab6aefadc656ce1918e8d0817a1af8caee9c010a82718a684921bf1b",
+    "model": "54390020839cadb238e6a81bb40b4790c6c3da34d2d0b3cc3c74f6d2fc6e3277",
+    "evaluation_result": "39ea38376855190410970f2556a02cdea511c2607534dc36b16cca620da22aa0",
+    "trajectory_result": "a5ee78684eba7d2643641d052f8a1e93f516e73ec79782bf397f32dd733551b2"
+  },
+  "label_root": "outputs/quality/all_data/SEM-370-r1/labels",
+  "label_manifest": "outputs/quality/all_data/SEM-370-r1/label_manifest.json",
+  "recipe_reference_run": "outputs/quality/SEM-434/r2",
+  "output_path": "outputs/quality/SEM-436/r2",
+  "commands": {
+    "prepare": "python3 scripts/run_sem436_rgb170_long_all300.py --artifact-root $ICSHM_OUTPUT_ROOT --stage prepare",
+    "train": "python3 scripts/run_sem436_rgb170_long_all300.py --artifact-root $ICSHM_OUTPUT_ROOT --stage train",
+    "inference": "python3 scripts/run_sem436_rgb170_long_all300.py --artifact-root $ICSHM_OUTPUT_ROOT --stage inference",
+    "audit": "python3 scripts/audit_sem436_rgb170_long_all300.py"
+  },
+  "scope": "All 300 labeled views are training data. Metrics are training fit; 301-400 and the 144-pose trajectory have no GT. This run does not establish spatial generalization.",
+  "protocol": "docs/experiments/sem436_rgb170_long_all300_protocol.md"
+}

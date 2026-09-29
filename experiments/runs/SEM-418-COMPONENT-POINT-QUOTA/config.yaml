@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "base_config": "experiments/runs/SEM-412-RGB154-SPATIAL255/config.yaml",
+  "experiment_id": "SEM-418-COMPONENT-POINT-QUOTA",
+  "parent_experiment": "SEM-416-COMPONENT-POINT-DIAG;SEM-417-COMPONENT-POINT-CTRL",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "spatial_confirmation_v2",
+  "main_variable": "Replace at most 5 percent of each matched foreground mask's 12544 points with up to 16 pixel-center points per full-image component of area <=1024",
+  "component_quota": true,
+  "points_per_component": 16,
+  "max_quota_fraction": 0.05,
+  "component_max_area": 1024,
+  "quota_seed": 418,
+  "output_path": "outputs/quality/SEM-418/r1",
+  "protocol": "docs/experiments/component_sampling_dropgaussian_protocol.md"
+}

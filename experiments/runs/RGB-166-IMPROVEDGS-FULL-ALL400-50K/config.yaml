@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-166-IMPROVEDGS-FULL-ALL400-50K",
+  "title": "ImprovedGS全400桥梁结构训练长度曲线",
+  "phase": "reconstruction",
+  "parent_experiment": "RGB-165-IMPROVEDGS-FULL-ALL400",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "split_path": "outputs/quality/all_data/RGB-120-r2/split.json",
+  "seed": 0,
+  "source": {
+    "repository": "https://github.com/XiaoBin2001/Improved-GS",
+    "commit": "20b5db343a87c2f9fb4b70c6e39ff1f042a8a47a",
+    "license": "non-commercial research and evaluation"
+  },
+  "data": {
+    "scene": "outputs/quality/all_data/RGB-120-r2/scene",
+    "rgb_train_views": 400,
+    "official_cameras_fixed": true,
+    "initial_point_count": 72292,
+    "initial_ply_sha256": "10a88fb018c27530b3bbfa0f7000408693ba75228067f5311e7775e4755e68f2",
+    "use_semantics": false
+  },
+  "training": {
+    "iterations": 50000,
+    "saved_iterations": [
+      30000,
+      35000,
+      40000,
+      45000,
+      50000
+    ],
+    "seed": 0,
+    "training_method": "improvedgs",
+    "budget": 1000000,
+    "use_eas": true,
+    "use_las": true,
+    "use_rap": true,
+    "use_mu": true,
+    "edge_sample_cams": 10,
+    "inherited_hyperparameters": "RGB-165",
+    "single_primary_variable": "training horizon"
+  },
+  "evaluation": {
+    "primary": "bridge structural fidelity across all released views",
+    "scopes": [
+      "all400 full-image fit",
+      "all300 labeled bridge-class regions",
+      "fixed difficult groups including 159-160, 235-245, and 385-392",
+      "fixed novel trajectory and spatial holdout evidence"
+    ],
+    "structural_targets": [
+      "deck",
+      "tower",
+      "foundation",
+      "stay_cable"
+    ],
+    "endpoint_selection": "choose the earliest non-inferior structural endpoint; do not default to 50k"
+  },
+  "output": {
+    "root": "outputs/quality/RGB-166",
+    "preserve_failures": true
+  }
+}

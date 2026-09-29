@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SUBMIT-010-BUNDLE",
+  "title": "Frozen Scaffold-GS plus SEM-001 relocatable baseline bundle",
+  "phase": "submission readiness",
+  "parent_experiment": "RGB-030-FULL,RGB-060,SEM-001,SUBMIT-001",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_001_scaffold_static_v1",
+  "seed": "not_applicable_read_only_packaging",
+  "lock": "configs/submission/sem001_baseline_v1.json",
+  "inputs": {
+    "rgb_experiment": "RGB-030-FULL",
+    "rgb_iteration": 30000,
+    "semantic_experiment": "SEM-001",
+    "scaffold_upstream_commit": "59c833b56bbbf510f3f64d40f81721995caced66",
+    "semantic_checkpoint_sha256": "8e3dbe30e17f67081a72380018fc281c155ec00eed83cd5a19b3285bf4fb8aa3"
+  },
+  "bundle": {
+    "output": "external_gitignored:ICSHM_OUTPUT_ROOT/submission/sem001-baseline-v1",
+    "vendors_scaffold_source": true,
+    "copies_dataset": false,
+    "copies_labels": false,
+    "copies_predictions": false,
+    "content_addressed_manifest": true
+  },
+  "smoke": {
+    "poses": ["001.png", "054.png", "140.png"],
+    "input_camera_model": "SIMPLE_RADIAL",
+    "input_pose_convention": "CAMERA_FROM_WORLD",
+    "official_to_model_sim3": "identity",
+    "output_grid": "official_SIMPLE_RADIAL",
+    "writes_rgb": true,
+    "writes_five_channel_logits": true,
+    "writes_uint8_class_png": true,
+    "uses_reference_rgb_or_labels": false
+  },
+  "limits": {
+    "official_final_command_and_naming_published": false,
+    "clean_ubuntu_rebuild_completed": false,
+    "external_appearance_fallback": "fixed training embedding index 0"
+  }
+}

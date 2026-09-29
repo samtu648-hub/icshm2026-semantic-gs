@@ -1,0 +1,16 @@
+{
+  "experiment_id": "RGB-116-SOF-CHECKPOINT-DIAG",
+  "parent_experiment": "RGB-112-SOF-NVS,RGB-113-SOF-GEO",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1",
+  "seed": 0,
+  "checkpoints": [7000, 15000, 30000],
+  "training_sample": "12 evenly spaced indices including endpoints in sorted 303 train names; no label access",
+  "evaluation_views": "all 74 historically reused developer photos",
+  "resolution": [1320, 989],
+  "metrics": "full native frame PSNR and MAE, diagnostic only; no new threshold/recipe selection on developer images",
+  "final_adapter_check": "compare deployment RGB with existing author-render audit; maximum 1 uint8 level allowed for quantization",
+  "training": false,
+  "checkpoint_promotion": false,
+  "causation_limit": "checkpoint association does not isolate a particular geometry loss; any controlled training intervention needs its own ID"
+}

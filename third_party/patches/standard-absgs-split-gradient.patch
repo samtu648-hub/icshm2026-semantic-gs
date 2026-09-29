@@ -1,0 +1,241 @@
+diff --git a/arguments/__init__.py b/arguments/__init__.py
+index 0b2f448..c5546bc 100644
+--- a/arguments/__init__.py
++++ b/arguments/__init__.py
+@@ -93,6 +93,7 @@ class OptimizationParams(ParamGroup):
+         self.densify_from_iter = 500
+         self.densify_until_iter = 15_000
+         self.densify_grad_threshold = 0.0002
++        self.densify_grad_abs_threshold = 0.0004
+         self.depth_l1_weight_init = 1.0
+         self.depth_l1_weight_final = 0.01
+         self.random_background = False
+diff --git a/gaussian_renderer/__init__.py b/gaussian_renderer/__init__.py
+index e12f4b6..d5189b9 100644
+--- a/gaussian_renderer/__init__.py
++++ b/gaussian_renderer/__init__.py
+@@ -23,7 +23,9 @@ def render(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor,
+     """
+  
+     # Create zero tensor. We will use it to make pytorch return gradients of the 2D (screen-space) means
+-    screenspace_points = torch.zeros_like(pc.get_xyz, dtype=pc.get_xyz.dtype, requires_grad=True, device="cuda") + 0
++    # AbsGS keeps the native signed screen-space gradient in x/y and stores
++    # homodirectional (per-pixel absolute) x/y accumulation in z/w.
++    screenspace_points = torch.zeros((pc.get_xyz.shape[0], 4), dtype=pc.get_xyz.dtype, requires_grad=True, device="cuda") + 0
+     try:
+         screenspace_points.retain_grad()
+     except:
+diff --git a/scene/gaussian_model.py b/scene/gaussian_model.py
+index 473887d..8890e46 100644
+--- a/scene/gaussian_model.py
++++ b/scene/gaussian_model.py
+@@ -59,6 +59,7 @@ class GaussianModel:
+         self._opacity = torch.empty(0)
+         self.max_radii2D = torch.empty(0)
+         self.xyz_gradient_accum = torch.empty(0)
++        self.xyz_gradient_accum_abs = torch.empty(0)
+         self.denom = torch.empty(0)
+         self.optimizer = None
+         self.percent_dense = 0
+@@ -76,6 +77,7 @@ class GaussianModel:
+             self._opacity,
+             self.max_radii2D,
+             self.xyz_gradient_accum,
++            self.xyz_gradient_accum_abs,
+             self.denom,
+             self.optimizer.state_dict(),
+             self.spatial_lr_scale,
+@@ -90,12 +92,14 @@ class GaussianModel:
+         self._rotation, 
+         self._opacity,
+         self.max_radii2D, 
+-        xyz_gradient_accum, 
++        xyz_gradient_accum,
++        xyz_gradient_accum_abs,
+         denom,
+         opt_dict, 
+         self.spatial_lr_scale) = model_args
+         self.training_setup(training_args)
+         self.xyz_gradient_accum = xyz_gradient_accum
++        self.xyz_gradient_accum_abs = xyz_gradient_accum_abs
+         self.denom = denom
+         self.optimizer.load_state_dict(opt_dict)
+ 
+@@ -178,6 +182,7 @@ class GaussianModel:
+     def training_setup(self, training_args):
+         self.percent_dense = training_args.percent_dense
+         self.xyz_gradient_accum = torch.zeros((self.get_xyz.shape[0], 1), device="cuda")
++        self.xyz_gradient_accum_abs = torch.zeros((self.get_xyz.shape[0], 1), device="cuda")
+         self.denom = torch.zeros((self.get_xyz.shape[0], 1), device="cuda")
+ 
+         l = [
+@@ -358,6 +363,7 @@ class GaussianModel:
+         self._rotation = optimizable_tensors["rotation"]
+ 
+         self.xyz_gradient_accum = self.xyz_gradient_accum[valid_points_mask]
++        self.xyz_gradient_accum_abs = self.xyz_gradient_accum_abs[valid_points_mask]
+ 
+         self.denom = self.denom[valid_points_mask]
+         self.max_radii2D = self.max_radii2D[valid_points_mask]
+@@ -403,6 +409,7 @@ class GaussianModel:
+ 
+         self.tmp_radii = torch.cat((self.tmp_radii, new_tmp_radii))
+         self.xyz_gradient_accum = torch.zeros((self.get_xyz.shape[0], 1), device="cuda")
++        self.xyz_gradient_accum_abs = torch.zeros((self.get_xyz.shape[0], 1), device="cuda")
+         self.denom = torch.zeros((self.get_xyz.shape[0], 1), device="cuda")
+         self.max_radii2D = torch.zeros((self.get_xyz.shape[0]), device="cuda")
+ 
+@@ -449,13 +456,16 @@ class GaussianModel:
+ 
+         self.densification_postfix(new_xyz, new_features_dc, new_features_rest, new_opacities, new_scaling, new_rotation, new_tmp_radii)
+ 
+-    def densify_and_prune(self, max_grad, min_opacity, extent, max_screen_size, radii):
++    def densify_and_prune(self, max_grad, max_grad_abs, min_opacity, extent, max_screen_size, radii):
+         grads = self.xyz_gradient_accum / self.denom
+         grads[grads.isnan()] = 0.0
+ 
++        grads_abs = self.xyz_gradient_accum_abs / self.denom
++        grads_abs[grads_abs.isnan()] = 0.0
++
+         self.tmp_radii = radii
+         self.densify_and_clone(grads, max_grad, extent)
+-        self.densify_and_split(grads, max_grad, extent)
++        self.densify_and_split(grads_abs, max_grad_abs, extent)
+ 
+         prune_mask = (self.get_opacity < min_opacity).squeeze()
+         if max_screen_size:
+@@ -470,4 +480,5 @@ class GaussianModel:
+ 
+     def add_densification_stats(self, viewspace_point_tensor, update_filter):
+         self.xyz_gradient_accum[update_filter] += torch.norm(viewspace_point_tensor.grad[update_filter,:2], dim=-1, keepdim=True)
++        self.xyz_gradient_accum_abs[update_filter] += torch.norm(viewspace_point_tensor.grad[update_filter,2:], dim=-1, keepdim=True)
+         self.denom[update_filter] += 1
+diff --git a/train.py b/train.py
+index 8206903..78585a3 100644
+--- a/train.py
++++ b/train.py
+@@ -168,7 +168,7 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
+ 
+                 if iteration > opt.densify_from_iter and iteration % opt.densification_interval == 0:
+                     size_threshold = 20 if iteration > opt.opacity_reset_interval else None
+-                    gaussians.densify_and_prune(opt.densify_grad_threshold, 0.005, scene.cameras_extent, size_threshold, radii)
++                    gaussians.densify_and_prune(opt.densify_grad_threshold, opt.densify_grad_abs_threshold, 0.005, scene.cameras_extent, size_threshold, radii)
+                 
+                 if iteration % opt.opacity_reset_interval == 0 or (dataset.white_background and iteration == opt.densify_from_iter):
+                     gaussians.reset_opacity()
+diff --git a/submodules/diff-gaussian-rasterization/cuda_rasterizer/backward.cu b/submodules/diff-gaussian-rasterization/cuda_rasterizer/backward.cu
+index 006b1ef..a1d3fcb 100644
+--- a/submodules/diff-gaussian-rasterization/cuda_rasterizer/backward.cu
++++ b/submodules/diff-gaussian-rasterization/cuda_rasterizer/backward.cu
+@@ -407,7 +407,7 @@ __global__ void preprocessCUDA(
+ 	const float scale_modifier,
+ 	const float* proj,
+ 	const glm::vec3* campos,
+-	const float3* dL_dmean2D,
++	const float4* dL_dmean2D,
+ 	glm::vec3* dL_dmeans,
+ 	float* dL_dcolor,
+ 	float* dL_dcov3D,
+@@ -464,7 +464,7 @@ renderCUDA(
+ 	const uint32_t* __restrict__ n_contrib,
+ 	const float* __restrict__ dL_dpixels,
+ 	const float* __restrict__ dL_invdepths,
+-	float3* __restrict__ dL_dmean2D,
++	float4* __restrict__ dL_dmean2D,
+ 	float4* __restrict__ dL_dconic2D,
+ 	float* __restrict__ dL_dopacity,
+ 	float* __restrict__ dL_dcolors,
+@@ -625,6 +625,8 @@ renderCUDA(
+ 			// Update gradients w.r.t. 2D mean position of the Gaussian
+ 			atomicAdd(&dL_dmean2D[global_id].x, dL_dG * dG_ddelx * ddelx_dx);
+ 			atomicAdd(&dL_dmean2D[global_id].y, dL_dG * dG_ddely * ddely_dy);
++			atomicAdd(&dL_dmean2D[global_id].z, fabsf(dL_dG * dG_ddelx * ddelx_dx));
++			atomicAdd(&dL_dmean2D[global_id].w, fabsf(dL_dG * dG_ddely * ddely_dy));
+ 
+ 			// Update gradients w.r.t. 2D covariance (2x2 matrix, symmetric)
+ 			atomicAdd(&dL_dconic2D[global_id].x, -0.5f * gdx * d.x * dL_dG);
+@@ -653,7 +655,7 @@ void BACKWARD::preprocess(
+ 	const float focal_x, float focal_y,
+ 	const float tan_fovx, float tan_fovy,
+ 	const glm::vec3* campos,
+-	const float3* dL_dmean2D,
++	const float4* dL_dmean2D,
+ 	const float* dL_dconic,
+ 	const float* dL_dinvdepth,
+ 	float* dL_dopacity,
+@@ -701,7 +703,7 @@ void BACKWARD::preprocess(
+ 		scale_modifier,
+ 		projmatrix,
+ 		campos,
+-		(float3*)dL_dmean2D,
++		(float4*)dL_dmean2D,
+ 		(glm::vec3*)dL_dmean3D,
+ 		dL_dcolor,
+ 		dL_dcov3D,
+@@ -725,7 +727,7 @@ void BACKWARD::render(
+ 	const uint32_t* n_contrib,
+ 	const float* dL_dpixels,
+ 	const float* dL_invdepths,
+-	float3* dL_dmean2D,
++	float4* dL_dmean2D,
+ 	float4* dL_dconic2D,
+ 	float* dL_dopacity,
+ 	float* dL_dcolors,
+diff --git a/submodules/diff-gaussian-rasterization/cuda_rasterizer/backward.h b/submodules/diff-gaussian-rasterization/cuda_rasterizer/backward.h
+index 4d02560..80f5238 100644
+--- a/submodules/diff-gaussian-rasterization/cuda_rasterizer/backward.h
++++ b/submodules/diff-gaussian-rasterization/cuda_rasterizer/backward.h
+@@ -34,7 +34,7 @@ namespace BACKWARD
+ 		const uint32_t* n_contrib,
+ 		const float* dL_dpixels,
+ 		const float* dL_invdepths,
+-		float3* dL_dmean2D,
++		float4* dL_dmean2D,
+ 		float4* dL_dconic2D,
+ 		float* dL_dopacity,
+ 		float* dL_dcolors,
+@@ -56,7 +56,7 @@ namespace BACKWARD
+ 		const float focal_x, float focal_y,
+ 		const float tan_fovx, float tan_fovy,
+ 		const glm::vec3* campos,
+-		const float3* dL_dmean2D,
++		const float4* dL_dmean2D,
+ 		const float* dL_dconics,
+ 		const float* dL_dinvdepth,
+ 		float* dL_dopacity,
+diff --git a/submodules/diff-gaussian-rasterization/cuda_rasterizer/rasterizer_impl.cu b/submodules/diff-gaussian-rasterization/cuda_rasterizer/rasterizer_impl.cu
+index 41c4ed3..164afb8 100644
+--- a/submodules/diff-gaussian-rasterization/cuda_rasterizer/rasterizer_impl.cu
++++ b/submodules/diff-gaussian-rasterization/cuda_rasterizer/rasterizer_impl.cu
+@@ -411,7 +411,7 @@ void CudaRasterizer::Rasterizer::backward(
+ 		imgState.n_contrib,
+ 		dL_dpix,
+ 		dL_invdepths,
+-		(float3*)dL_dmean2D,
++		(float4*)dL_dmean2D,
+ 		(float4*)dL_dconic,
+ 		dL_dopacity,
+ 		dL_dcolor,
+@@ -436,7 +436,7 @@ void CudaRasterizer::Rasterizer::backward(
+ 		focal_x, focal_y,
+ 		tan_fovx, tan_fovy,
+ 		(glm::vec3*)campos,
+-		(float3*)dL_dmean2D,
++		(float4*)dL_dmean2D,
+ 		dL_dconic,
+ 		dL_dinvdepth,
+ 		dL_dopacity,
+diff --git a/submodules/diff-gaussian-rasterization/rasterize_points.cu b/submodules/diff-gaussian-rasterization/rasterize_points.cu
+index e625c19..c55707f 100644
+--- a/submodules/diff-gaussian-rasterization/rasterize_points.cu
++++ b/submodules/diff-gaussian-rasterization/rasterize_points.cu
+@@ -161,7 +161,8 @@ std::tuple<torch::Tensor, torch::Tensor, torch::Tensor, torch::Tensor, torch::Te
+   }
+ 
+   torch::Tensor dL_dmeans3D = torch::zeros({P, 3}, means3D.options());
+-  torch::Tensor dL_dmeans2D = torch::zeros({P, 3}, means3D.options());
++  // x/y: native signed gradient; z/w: AbsGS per-pixel absolute x/y sum.
++  torch::Tensor dL_dmeans2D = torch::zeros({P, 4}, means3D.options());
+   torch::Tensor dL_dcolors = torch::zeros({P, NUM_CHANNELS}, means3D.options());
+   torch::Tensor dL_dconic = torch::zeros({P, 2, 2}, means3D.options());
+   torch::Tensor dL_dopacity = torch::zeros({P, 1}, means3D.options());

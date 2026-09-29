@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-438-RGB170-MASK2FORMER-MULTISCALE-AUDIT",
+  "title": "SEM437-12k frozen multiscale and automatic bridge-strip inference audit",
+  "phase": "semantic_inference_development",
+  "parent_experiment": "SEM-437-RGB170-MASK2FORMER-CONTEXT50-LONG12K-ALL300",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "method": "frozen_mask2former_multiscale_bridge_strip_inference",
+  "semantic_training": false,
+  "checkpoint": "outputs/quality/SEM-437/r2/mask2former/model-12000.pt",
+  "checkpoint_sha256": "9c94304cd011625c4cc46b752be99a9a9b8b0511d35079eb6307bae0cb12ce07",
+  "parent_export_result": "outputs/quality/SEM-437/r2/export/result.json",
+  "parent_inference_result": "outputs/quality/SEM-437/r2/inference/result.json",
+  "parent_prediction_root": "outputs/quality/SEM-437/r2/inference/predictions/12000",
+  "label_root": "outputs/quality/all_data/SEM-370-r1/labels",
+  "label_manifest": "outputs/quality/all_data/SEM-370-r1/label_manifest.json",
+  "output_path": "outputs/quality/SEM-438/r3",
+  "model_config": "configs/ade20k/semantic-segmentation/swin/maskformer2_swin_large_IN21k_384_bs16_160k_res640.yaml",
+  "tile": 768,
+  "stride": 512,
+  "rgb_resize": "pillow_bilinear",
+  "probability_resize": "pillow_bilinear_then_simplex_normalize",
+  "arms": {
+    "native": {"scale": 1.0},
+    "global_1p5": {"scale": 1.5},
+    "global_2p0": {"scale": 2.0},
+    "strip_2p0": {
+      "source_height": 384,
+      "scale": 2.0,
+      "anchor_classes": [1, 2],
+      "anchor_y_percentile": 85,
+      "fallback_anchor_y": 494
+    },
+    "fixed_ensemble": {
+      "weights": {"native": 0.5, "global_1p5": 0.25, "strip_2p0": 0.25}
+    }
+  },
+  "probe_names": ["344.png", "345.png", "346.png", "347.png", "348.png", "349.png", "350.png", "351.png", "352.png", "353.png", "354.png", "355.png", "356.png", "357.png", "358.png"],
+  "probe_expansion_gate": {
+    "maximum_per_view_changed_fraction": 0.05,
+    "minimum_added_deck_pixels_355_357": 256,
+    "minimum_recovered_views_355_357": 2,
+    "required": ["native_exact_parent", "finite_simplex", "checkpoint_unchanged", "rgb_unchanged"]
+  },
+  "fixed_ensemble_retention_gate_pp": {
+    "five_class_miou_min_delta": -0.05,
+    "foreground_miou_min_delta": -0.05,
+    "deck_iou_strict_improvement": true,
+    "stay_cable_iou_min_delta": -0.10,
+    "tower_iou_min_delta": -0.10,
+    "foundation_iou_min_delta": -0.10,
+    "boundary_f1_min_delta": -0.10
+  },
+  "quality_scope": "All300 metrics are training-fit development evidence. Released 301-400 and 144 trajectory frames have no GT. The hard 344-358 probe can authorize expansion but cannot select scales, weights, or establish accuracy.",
+  "protocol": "docs/experiments/sem438_multiscale_inference_protocol.md",
+  "commands": {
+    "prepare": "python3 scripts/run_sem438_multiscale_audit.py --artifact-root <artifact-root> --stage prepare",
+    "probe": "python3 scripts/run_sem438_multiscale_audit.py --artifact-root <artifact-root> --stage probe",
+    "full": "python3 scripts/run_sem438_multiscale_audit.py --artifact-root <artifact-root> --stage full",
+    "audit": "python3 scripts/audit_sem438_multiscale.py"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "status": "metadata_inventory_only_no_training_or_scoring",
+  "existing_final_sources": {
+    "five": {
+      "path": "outputs/quality/mask2former/SEM-349-r1/fit",
+      "result_sha256": "42ffcbc870190d52f45f06b6b672a132e637ec3d67108647794905a0fb279f68",
+      "trained_steps": 6000,
+      "train_views": 219,
+      "prediction_views": 74
+    },
+    "static": {
+      "path": "outputs/quality/semantic/SEM-330-Scaffold-development-full-static-after-sof-20260909-r1",
+      "result_sha256": "2222a7c78e53b4a7dc6233dbcc5da5121a500a0b9aff1419e9bbf1fcaf38046e",
+      "trained_steps": 10000,
+      "train_views": 219,
+      "prediction_views": 74
+    },
+    "b2_3k": {
+      "path": "outputs/quality/experts/SEM-331-Scaffold-fiveclass-development-full-dualline-20260909-r1",
+      "result_sha256": "91c4090276a41db35e1ba46d8e166787d229695d6ffb6d8153a36261ae60bb8e",
+      "trained_steps": 3000,
+      "train_views": 219,
+      "prediction_views": 74
+    },
+    "deck": {
+      "path": "outputs/quality/experts/SEM-331-Scaffold-deck-development-full-dualline-20260909-r1",
+      "result_sha256": "567c09a23c8e185ab83404101c47413f965ca57f486b5299367cd7998cd5b672",
+      "trained_steps": 3000,
+      "train_views": 219,
+      "prediction_views": 74
+    },
+    "stay_cable": {
+      "path": "outputs/quality/experts/SEM-331-Scaffold-stay_cable-development-full-dualline-20260909-r1",
+      "result_sha256": "d47a6773fdd8c9009adcebe5a0fb166abce51150b07493dca8f1f0aae2729f71",
+      "trained_steps": 3000,
+      "train_views": 219,
+      "prediction_views": 74
+    }
+  },
+  "missing_matched_final_source": "B2 same-6000-trajectory paired3k/6k final219 ->74",
+  "b2_endpoint_storage_estimates": [
+    {
+      "fold": "oof-0",
+      "views": 95,
+      "models_bytes": 219082270,
+      "probability_bytes": 3927996929,
+      "estimated_74_bytes": 3278785141.010526,
+      "result_sha256": "0773e20c93913c51f8ebbc6396d7366ac39972d67ef49320725b2536c73560a7"
+    },
+    {
+      "fold": "oof-1",
+      "views": 84,
+      "models_bytes": 219082398,
+      "probability_bytes": 3644023833,
+      "estimated_74_bytes": 3429293869.928571,
+      "result_sha256": "329ce690a890722ec9cd85496c0566798ef667ff21fb97bf06c828d09b6a1865"
+    },
+    {
+      "fold": "oof-2",
+      "views": 40,
+      "models_bytes": 219082910,
+      "probability_bytes": 1736075492,
+      "estimated_74_bytes": 3430822570.2,
+      "result_sha256": "013899145b7435184d47f7aec39de2e28c21765dbca02f3d45b83d16ec7287a5"
+    }
+  ],
+  "free_gib": 103.58206558227539,
+  "minimum_free_gib": 100,
+  "proposed_additional_disk_budget_gib": 4.5,
+  "requires_minimum_free_before_new_queue_gib": 104.5,
+  "final_meta_unique_views": 219,
+  "final_meta_candidate_rows": 1822350,
+  "single_float64_feature_matrix_mib": 597.8473663330078,
+  "new_74_gt_decodes": 0,
+  "automatic_training_authorized": false
+}

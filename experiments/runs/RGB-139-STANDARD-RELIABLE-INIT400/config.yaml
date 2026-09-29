@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-139-STANDARD-RELIABLE-INIT400",
+  "title": "全400分层可靠性精选初始化Standard对照",
+  "phase": "reconstruction",
+  "parent_experiment": "RGB-137-STANDARD-ALL400-INIT400",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "seed": 0,
+  "backbone": "Standard 3DGS all400/30k with 72,292-point reliability-selected all400 initialization",
+  "change_from_parent": "initialization point selection only: stratified geometry-reliability selection from RGB137 all400 tracks at the exact RGB130 point budget",
+  "initialization": {
+    "source_scene": "outputs/quality/rgb137/scene-r2",
+    "source_views": 400,
+    "source_accepted_points": 85985,
+    "target_points": 72292,
+    "stratification": "track-length quartile x maximum-triangulation-angle quartile; proportional deterministic allocation",
+    "within_stratum_ranking": "equal mean of within-stratum percentile scores: lower mean reprojection error, higher DLT nullspace gap, lower split-half relative 3D difference; missing split-half gets neutral 0.5; POINT3D_ID ascending tie-break",
+    "low_parallax_policy": "no angle threshold; every angle/track-length stratum retains the same proportional budget",
+    "labels_or_semantics": false,
+    "monocular_depth": false,
+    "camera_optimization": false
+  },
+  "training": {
+    "rgb_views": 400,
+    "resolution": "1320x989",
+    "iterations": 30000,
+    "seed": 0,
+    "recipe": "exact RGB130 Standard optimizer, loss, opacity reset and densification parameters",
+    "expected_wall_minutes": 33,
+    "expected_peak_vram_gib": 5.2
+  },
+  "evaluation": {
+    "protocol": "same RGB137 all400 fit metrics, fixed nine views/local crops and fixed 144-pose trajectory",
+    "metrics": ["PSNR", "SSIM", "LPIPS", "fixed ROI RGB MAE", "class-region RGB MAE"],
+    "comparators": ["RGB-130-STANDARD-ALL400", "RGB-137-STANDARD-ALL400-INIT400"]
+  },
+  "output": {"root": "outputs/quality/rgb139"}
+}

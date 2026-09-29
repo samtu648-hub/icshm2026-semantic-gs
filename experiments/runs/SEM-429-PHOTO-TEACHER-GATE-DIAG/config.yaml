@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-429-PHOTO-TEACHER-GATE-DIAG",
+  "title": "Flip-stable photo-teacher gate for paired render-domain supervision",
+  "phase": "semantic_segmentation_diagnostic",
+  "parent_experiment": "SEM-396-RGB152-SPATIAL256;SEM-378-RGB140-ABSGRAD-ALL300;QUAL-005-PHOTO-INPUT-DIAG",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "spatial_confirmation_v1;released_unlabeled_301_400",
+  "split_path": "experiments/splits/spatial_confirmation_v1.json",
+  "main_variable": "Use the same frozen 2D model on the registered real photo as a horizontal-flip-stable teacher, permitting only large background-to-deck/tower corrections.",
+  "training_updates": 0,
+  "runtime_root": "outputs/quality/mask2former/SEM-340",
+  "upstream_config": "configs/ade20k/semantic-segmentation/swin/maskformer2_swin_large_IN21k_384_bs16_160k_res640.yaml",
+  "validation": {
+    "experiment_id": "SEM-396-RGB152-SPATIAL256",
+    "checkpoint": "outputs/quality/SEM-396/r1/mask2former/model-6000.pt",
+    "checkpoint_result": "outputs/quality/SEM-396/r1/mask2former/result.json",
+    "saved_predictions": "outputs/quality/SEM-396/r1/inference/predictions",
+    "render_root": "outputs/quality/RGB-152/full-r2/evaluation/images",
+    "photo_root": "outputs/quality/RGB-152/scene/images",
+    "label_root": "outputs/quality/all_data/SEM-370-r1/labels",
+    "views": 30
+  },
+  "public_unlabeled": {
+    "experiment_id": "SEM-378-RGB140-ABSGRAD-ALL300",
+    "checkpoint": "outputs/quality/SEM-378/r1/mask2former/model-6000.pt",
+    "checkpoint_result": "outputs/quality/SEM-378/r1/mask2former/result.json",
+    "saved_predictions": "outputs/quality/SEM-378/r1/inference/predictions",
+    "render_root": "outputs/quality/rgb140/full-r2/evaluation/images",
+    "photo_root": "outputs/quality/all_data/RGB-120-r2/scene/images",
+    "first_index": 301,
+    "last_index": 400,
+    "views": 100
+  },
+  "gate": {
+    "render_source_class": 0,
+    "teacher_classes": [1, 3],
+    "minimum_component_pixels": {"1": 128, "3": 64},
+    "require_horizontal_flip_agreement": true,
+    "protected_prediction_classes": [2, 4]
+  },
+  "promotion_gates": {
+    "minimum_changed_precision": 0.60,
+    "minimum_five_class_miou_delta_pp": 0.0,
+    "require_positive_net_corrections": true,
+    "require_stay_cable_prediction_identity": true,
+    "require_foundation_prediction_identity": true
+  },
+  "output_path": "outputs/quality/SEM-429/r2",
+  "command": "<artifact-root>/r1/envs/r1-cuda128/bin/python scripts/run_sem429_photo_teacher_gate.py --artifact-root <artifact-root>",
+  "scope": "Zero-training historically exposed spatial validation plus qualitative released-unlabeled coverage; not blind and not a deployable hidden-view score.",
+  "protocol": "docs/experiments/sem429_photo_teacher_gate_protocol.md"
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-152-STANDARD-ABSGRAD-SPATIAL30",
+  "title": "Fresh Standard AbsGS spatial-confirmation reconstruction baseline",
+  "phase": "reconstruction",
+  "parent_experiment": "RGB-140-STANDARD-ABSGRAD-ALL400;SEM-395-RGB150-CROSSVIEW-RELIABILITY-DIAG",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "spatial_confirmation_v1",
+  "split_path": "experiments/splits/spatial_confirmation_v1.json",
+  "seed": 0,
+  "main_variable": "Evaluation protocol only: retrain the unchanged RGB140 Standard plus AbsGS recipe from scratch after excluding the fixed 30-view spatial confirmation and 17-view buffer from RGB optimization, initialization observations, and point colours.",
+  "causal_claim": null,
+  "data": {
+    "scene": "outputs/quality/RGB-152/scene",
+    "resolution": "1320x989",
+    "rgb_train_views": 353,
+    "rgb_confirmation_views": 30,
+    "buffer_excluded_views": 17,
+    "scene_views": 383,
+    "semantic_train_labeled_views": 256,
+    "official_cameras_fixed": true,
+    "initial_point_cloud_source": "Training-only DLT re-triangulation from 353-view released tracks after PINHOLE conversion",
+    "initial_point_count": 78045,
+    "initial_ply_sha256": "b7bddeda3759a11e833bd3d60ee554b8e005688ab14f9d41b99d99e2ac59521a",
+    "confirmation_used_for_initialization": false,
+    "buffer_used_for_initialization": false,
+    "use_semantics": false
+  },
+  "training": {
+    "iterations": 30000,
+    "seed": 0,
+    "signed_clone_threshold": 0.0002,
+    "absolute_split_threshold": 0.0004,
+    "densify_from_iter": 500,
+    "densify_until_iter": 15000,
+    "densification_interval": 100,
+    "opacity_reset_interval": 3000,
+    "command": "python3 scripts/run_rgb152_spatial.py --artifact-root <artifact-root> --stage train",
+    "output": "outputs/quality/RGB-152/full-r2"
+  },
+  "evaluation": {
+    "protocol": "Separate full-resolution metrics for 353 train views, 30 spatial confirmation views, and three fixed ten-view regions",
+    "metrics": ["PSNR", "SSIM", "LPIPS"],
+    "training_metrics_are_fit_results": true,
+    "claim": "historically exposed spatial development confirmation; not blind"
+  },
+  "output": {
+    "root": "outputs/quality/RGB-152",
+    "source": "outputs/quality/rgb140/source-r1",
+    "preserve_failures": true
+  },
+  "protocol": "docs/experiments/spatial_confirmation_v1_protocol.md"
+}

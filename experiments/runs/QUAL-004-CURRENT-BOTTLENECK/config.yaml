@@ -1,0 +1,48 @@
+{
+  "experiment_id": "QUAL-004-CURRENT-BOTTLENECK",
+  "parent_experiment": "SEM-363,SEM-366,SEM-367,SEM-350,SEM-351,QUAL-002,QUAL-003",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_001_scaffold_static_v1; historical74 development; selected9 posthoc display only; RGB shared303",
+  "final_config": "outputs/quality/final_transfer/SEM-363-transfer-r1/effective_config.json",
+  "output": "outputs/quality/diagnostics/QUAL-004-r1",
+  "names": [
+    "159.png",
+    "160.png",
+    "140.png",
+    "146.png",
+    "081.png",
+    "057.png",
+    "064.png",
+    "054.png",
+    "174.png"
+  ],
+  "crops": {
+    "159": [
+      0,
+      250,
+      1000,
+      950
+    ],
+    "160": [
+      0,
+      250,
+      1000,
+      950
+    ],
+    "146": [
+      300,
+      0,
+      1050,
+      850
+    ],
+    "057": [
+      450,
+      150,
+      1200,
+      900
+    ]
+  },
+  "main_variable": "saved-output diagnostic only; no prediction changes"
+}

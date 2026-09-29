@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "experiment_id": "GEO-020-PF-R2",
+  "title": "DA3-Large official-P0 smoke retry license gate",
+  "phase": "geometry_prior_preflight",
+  "status": "completed_smoke_and_geometry_generation",
+  "parent_experiment": "GEO-020-PF-R1,GEO-002",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1",
+  "primary_fold": "spatial-01",
+  "seed": 0,
+  "backbone": "DepthAnything3-da3-large-offline-prior",
+  "fixed_input_contract": {"pose": "official_COLMAP_CAMERA_FROM_WORLD_converted_to_OpenCV_cam2world_P0", "camera": "SIMPLE_RADIAL_full_frame_undistorted_PINHOLE_pairing", "rgb": "raw_undistorted_RGB_only", "window": "training_only_strong_covisibility_windows_8_then_at_most_16", "forbidden": ["validation_or_guard_band_inputs", "test_RGB_or_labels", "DA3_pose_replacement", "DA3_GS_branch"]},
+  "source": {"url": "https://github.com/ByteDance-Seed/Depth-Anything-3", "code_license": "Apache-2.0", "commit": "3d835ec1a5802d64a8b8b15f817a1ab54809bfe4"},
+  "checkpoint": {"model_id": "depth-anything/DA3-LARGE-1.1", "source_url": "https://huggingface.co/depth-anything/DA3-LARGE-1.1", "license": "CC-BY-NC-4.0 per official model-zoo", "sha256": "739905c423cf0d6ccaf9e61a8401d82ba1ac32d7f4d3ee6dca8f92b377633f64", "size_bytes": 1643843860},
+  "environment": {"name": "icshm-geometry", "python": "3.12.13", "torch": "2.11.0+cu128", "cuda_runtime": "12.8", "gpu": "NVIDIA GeForce RTX 5070 12227 MiB", "driver": "580.173.02", "depth_anything_3": "installed_editable_official_source", "xformers": "0.0.35", "numpy": "1.26.4", "scipy": "1.15.3"},
+  "preflight_result": {"explicit_competition_license_confirmation_found": true, "source_present": true, "checkpoint_present": true, "model_execution": "completed_two_8_view_training_windows", "p0_windows": "two_smoke_plus_70_full_training_windows", "geometry_prior_npz_v2": "completed_560_npz_no_nan_inf", "peak_torch_allocated_mib": 4671, "amp_dtype": "bf16", "scaffold_training": "not_started"},
+  "worktree": {"git_commit": "66d71ed", "run_code_commit": "1f1c3e8", "state": "pre_existing_unrelated_user_modifications_preserved; DA3 runner was uncommitted during execution and is now committed"},
+  "output_root": "external_gitignored:ICSHM_OUTPUT_ROOT/geometry_prior/v2/runs/GEO-020-PF-R2",
+  "artifacts": {"smoke_summary": "external_gitignored:.../GEO-020-PF-R2/run_summary.json", "full_summary": "external_gitignored:.../GEO-020-PF-R2/full_geometry/run_summary.json", "full_manifest_sha256": "e1e093827466ab7efe9e3d8a307055e2ba9aff8621d6fee6cc6a5a0b7803685b", "fusion_manifest": "external_gitignored:.../GEO-020-PF-R2/fusion_manifest.json", "fusion_ply_sha256": "5de866cfe1523b33c70dc8668f02def01dfcae092d7499b4d924113d8138d02f"}
+}

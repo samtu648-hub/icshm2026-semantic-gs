@@ -1,0 +1,16 @@
+{
+  "experiment_id": "RGB-101-ENVIRONMENT",
+  "status": "completed_candidate_not_promoted",
+  "parent_experiment": "RGB-100-ENV-CTRL",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1",
+  "seed": 0,
+  "single_variable": "explicit world-direction environment RGB layer behind Scaffold alpha, jointly trained; control uses identical renderer with a fixed zero layer",
+  "environment": {"height": 16, "width": 32, "channels": 3, "init": 0.0, "learning_rate": 0.01, "constraint": "project RGB parameters to [0,1] after each Adam step", "coordinates": "equirectangular longitude atan2(z,x), latitude asin(y); COLMAP reference world", "interpolation": "bilinear with longitude wrap and pole border", "compositing": "C_GS + (1-alpha_GS)*E(world_ray)", "learns_from": "303 RGB training views only, no semantic labels"},
+  "training": {"iterations": 30000, "smoke_iterations": 300, "checkpoint": "final only", "resolution": [1320,989], "recipe": "all original RGB-030-FULL Scaffold parameters, initialization, losses, densification and appearance unchanged; no continuation from frozen model", "control_id": "RGB-100-ENV-CTRL", "smoke": "engineering only: finite loss, nonzero environment update, checkpoint reload and zero-map forward/geometry-gradient equivalence; no quality tuning"},
+  "evaluation": {"min_psnr_gain": 0.05, "min_lpips_reduction": 0.003, "max_ssim_drop": 0.001, "max_worst10_psnr_drop": 0.1, "max_challenge_psnr_drop": 0.1, "retention_vs_rgb030": true, "visual_views": ["054.png","140.png","151.png","159.png","160.png","183.png"], "visual_gate": "At least two major artifacts improve, none obviously worsens or erodes. Numeric failure stops promotion regardless of examples."},
+  "budget": {"maximum_full_runs": 2, "minimum_free_disk_gib": 100, "gpu_policy": "single GPU sequential; OOM stops, no unregistered resolution or capacity changes"},
+  "failure": "drop recipe, preserve output, no map-size/lr/loss/threshold/seed search; frozen RGB030 and SEM161 remain current",
+  "result": {"PSNR_dB": 20.7019299833, "SSIM": 0.8518293267, "LPIPS": 0.3175807277, "worst10_PSNR_dB": 18.1500438699, "challenge_140_146_PSNR_dB": 21.1507045417, "delta_vs_rgb100_PSNR_dB": 0.1350328905, "delta_vs_rgb030_challenge_PSNR_dB": -0.1880192244, "seconds": 2633.0371, "peak_cuda_allocated_mib": 6884.1631, "external_camera_reload": true, "semantic_audit_opened": false, "promotion": false}
+}

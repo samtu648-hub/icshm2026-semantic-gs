@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-060-CABLE-GEO",
+  "title": "Training-side stay_cable centerline triangulation geometry gate",
+  "phase": "R2/Cable3D geometry preflight",
+  "parent_experiment": "SEM-001,SEM-004-DIAG",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "seed": 20260805,
+  "data": {
+    "parent_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "source_training_only_spatial_split": "experiments/splits/sem_005_oof_spatial_v1.json",
+    "geometry_split": "experiments/splits/sem_060_cable_geometry_v1.json",
+    "split_selection_rule": "choose the existing training-only spatial fold with the largest fit set; break ties by lowest fold id",
+    "expected_fit_views": 177,
+    "expected_check_views": 40,
+    "expected_guard_views": 2,
+    "label_manifest": "experiments/runs/SEM-001/label_manifest.json",
+    "label_root": "$ICSHM_OUTPUT_ROOT/r2/sem_001/labels",
+    "camera_graph": "experiments/geometry_camera_graph.json",
+    "camera_dir": "$ICSHM_DATA_ROOT/camera_parameters",
+    "input_grid": "SEM-001 full-frame PINHOLE, same K, no crop",
+    "fixed_74_view_policy": "names may be audited for disjointness; no validation RGB, label, prediction or metric is loaded",
+    "unlabeled_rgb_used": false,
+    "pseudo_labels_used": false
+  },
+  "class_mapping": {
+    "background": 0,
+    "deck": 1,
+    "stay_cable": 2,
+    "tower": 3,
+    "foundation": 4
+  },
+  "centerline": {
+    "class_id": 2,
+    "connectivity": 8,
+    "minimum_component_area_px": 16,
+    "close_kernel_px": 3,
+    "close_iterations": 1,
+    "open_kernel_px": 0,
+    "open_iterations": 0,
+    "thinning": "opencv_ximgproc_ZHANGSUEN",
+    "minimum_skeleton_component_px": 8,
+    "sample_grid_spacing_px": 8,
+    "maximum_samples_per_image": 600,
+    "endpoint_neighbor_count": 1,
+    "branch_neighbor_count_minimum": 3
+  },
+  "matching": {
+    "minimum_camera_graph_shared_points": 40,
+    "maximum_pair_neighbors_per_camera": 6,
+    "minimum_camera_baseline": 0.30,
+    "maximum_camera_baseline": 5.00,
+    "maximum_optical_axis_angle_deg": 60.0,
+    "track_to_centerline_distance_px": 2.0,
+    "epipolar_distance_px": 1.5,
+    "trackless_epipolar_matching": true,
+    "mutual_nearest_epipolar_match": true,
+    "maximum_matches_per_source_pixel": 1,
+    "maximum_width_ratio": 3.0
+  },
+  "triangulation": {
+    "method": "deterministic pair-RANSAC followed by multi-view linear DLT refinement",
+    "minimum_independent_support_views": 3,
+    "minimum_independent_camera_baseline": 0.30,
+    "minimum_triangulation_angle_deg": 1.5,
+    "ransac_reprojection_threshold_px": 2.0,
+    "support_centerline_distance_px": 2.0,
+    "maximum_fit_median_reprojection_error_px": 1.5,
+    "maximum_fit_p90_reprojection_error_px": 2.5,
+    "maximum_support_observations_per_candidate": 24,
+    "candidate_voxel_size_official": 0.025,
+    "maximum_candidates_before_support": 100000,
+    "require_positive_depth_in_every_support_view": true,
+    "require_projection_inside_every_support_image": true
+  },
+  "curves": {
+    "representation": "piecewise straight 3D cable segments; a valid special case of a piecewise 3D curve",
+    "ransac_iterations_per_curve": 2000,
+    "line_inlier_radius_official": 0.05,
+    "minimum_inlier_candidates": 6,
+    "minimum_curve_length_official": 0.30,
+    "maximum_along_curve_gap_official": 0.30,
+    "minimum_occupied_bin_fraction": 0.50,
+    "endpoint_quantiles": [0.02, 0.98],
+    "maximum_curves": 80,
+    "sampling_spacing_official": 0.015
+  },
+  "evaluation": {
+    "tolerance_pixels": [2, 4, 8],
+    "coverage_minimum_recall_at_2px": 0.02,
+    "far_false_positive_distance_px": 8,
+    "representative_success_count": 3,
+    "representative_failure_count": 3
+  },
+  "coordinate_audit": {
+    "maximum_pose_roundtrip_absolute_error": 1e-9,
+    "maximum_candidate_distance_in_fit_camera_diameters": 3.0,
+    "require_finite_curve_bounds": true
+  },
+  "geometry_gate": {
+    "minimum_support_views_per_retained_candidate": 3,
+    "minimum_precision_at_2px": 0.90,
+    "minimum_recall_at_2px": 0.20,
+    "minimum_covered_check_view_fraction": 0.50,
+    "maximum_median_reprojection_error_px": 2.0,
+    "maximum_p90_reprojection_error_px": 4.0,
+    "maximum_far_false_positive_fraction": 0.10,
+    "require_camera_coordinate_scale_depth_and_leakage_checks": true,
+    "pass_action": "authorize implementation of SEM-061-CABLE-EQ only",
+    "fail_action": "drop_geometry_not_reliable; do not implement or train the Cable3D micro-splat branch"
+  },
+  "output": {
+    "root": "$ICSHM_OUTPUT_ROOT/r2/sem_060_cable_geo",
+    "large_artifacts_git_ignored": true
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "experiment_id": "QUAL-020-DUAL-RECONSTRUCTION-COMPLEMENTARITY",
+  "title": "AbsGS versus Standard semantic error complementarity on v1/v2",
+  "phase": "quality_audit",
+  "parent_experiment": "SEM-396-RGB152-SPATIAL256;SEM-407-RGB153-SPATIAL256;SEM-412-RGB154-SPATIAL255;SEM-413-RGB155-SPATIAL255",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "spatial_confirmation_v1;spatial_confirmation_v2",
+  "main_variable": "No model change: count AbsGS-only and Standard-only correct pixels under each fixed matched semantic pair.",
+  "output_path": "outputs/quality/QUAL-020/complementarity.json",
+  "quality_claim": null,
+  "scope": "Read-only descriptive oracle upper bound on two historically exposed folds; no fusion or selector fitted.",
+  "protocol": "docs/experiments/sem431_433_dual_domain_protocol.md"
+}
+

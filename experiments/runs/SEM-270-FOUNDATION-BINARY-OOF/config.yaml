@@ -1,0 +1,77 @@
+{
+  "experiment_id": "SEM-270-FOUNDATION-BINARY-OOF",
+  "status": "preregistered",
+  "parent_experiment": "SEM-150-FOUNDATION-GATE-OOF,SEM-160-DECK-BINARY-OOF,SEM-260-ERROR-BUDGET",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "seed": 20260805,
+  "split_id": "sem_005_oof_spatial_v1; incremental OOF; reused108 calibration/111 check",
+  "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+  "semantic_split_sha256": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+  "oof_split": "experiments/splits/sem_005_oof_spatial_v1.json",
+  "oof_split_sha256": "ce8a24e11d93df7634331a1ce33ae59385297cae90a0bd688b61769cf27f222c",
+  "camera_graph": "experiments/geometry_camera_graph.json",
+  "arm_names": [
+    "five_control",
+    "binary_candidate"
+  ],
+  "single_changed_variable": "Native-resolution five-class training task versus foundation/non-foundation specialization. Same SegFormer-B2 shared initialization, RGB images, crop/flip sequence, 3000-step optimizer, inverse-frequency CE recipe, inference tiling, 0.5 decision and mutable background/foundation lane. Target grouping and its derived class frequencies/final output width are the intrinsic task intervention; no independent loss or threshold search.",
+  "parents": {
+    "model_config": "r2/sem_005/third_party/nvidia_mit_b2_3bb39e8",
+    "rgb": "r2/sem_101/rendered_training_rgb/full-20260902-r3",
+    "sem160": "r2/sem_160/deck_binary_oof_summary/full-20260904-r1",
+    "labels": "r2/sem_001/labels"
+  },
+  "training": {
+    "iterations": 3000,
+    "crop": 960,
+    "optimizer": "AdamW",
+    "learning_rate": 0.00006,
+    "weight_decay": 0.01,
+    "loss": "Cross entropy; median class count/count clipped [0.05,20], train-only counts for each task",
+    "initialization": "Original local pretrained nvidia/mit-b2; no contest-fitted parent weights; identical shared tensors checked across arms",
+    "precision": "bfloat16 autocast; float32 loss",
+    "augmentation": "Paired fixed sequence: uniform training view, native random crop, horizontal flip p0.5; no resize",
+    "checkpoint": "final only; no early stopping, seeds or step search"
+  },
+  "inference": {
+    "crop": 960,
+    "stride": 480,
+    "probability": "Control softmax class4, candidate softmax class1; float32 maps saved",
+    "threshold": 0.5,
+    "strength": 1,
+    "mutable_classes": [
+      0,
+      4
+    ],
+    "protected_classes": [
+      1,
+      2,
+      3
+    ],
+    "historical_foundation_rejection": "Released only in this research copy; no static-foundation veto, dilation or blanket foundation protection"
+  },
+  "gates": {
+    "foundation_iou_gain": 0.01,
+    "foundation_precision_gain": 0.01,
+    "maximum_recall_drop": 0.005,
+    "recall_floor": 0.95,
+    "developer_recall_floor": 0.9,
+    "miou_nondecreasing": true,
+    "candidate_beats_matched_control_iou": true,
+    "protected_exact": true,
+    "rgb_exact": true
+  },
+  "evaluation": "Seal both arms all219 predictions/config before108 calibration. Only on pass score reused111 check with same gates. Only on check pass register separate all219 final, followed by fixed74 developer audit with same relative gains/retention and recall floor90%. No frozen production replacement without full audit; no hidden generalization claim.",
+  "maximum_gpu_hours": 2,
+  "minimum_free_disk_gib": 100,
+  "visual_samples": [
+    "028.png",
+    "295.png",
+    "162.png",
+    "283.png",
+    "282.png",
+    "268.png"
+  ],
+  "license": "Existing SegFormer-B2 NVIDIA research/evaluation weights; no new external code or weights"
+}

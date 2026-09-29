@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-397-RGB152-SPATIAL256-BOUNDARY",
+  "title": "Fixed stay-cable boundary-Dice candidate on the SEM396 spatial baseline",
+  "phase": "semantic_segmentation",
+  "parent_experiment": "SEM-396-RGB152-SPATIAL256;QUAL-008-SPATIAL-BOTTLENECK-DIAG",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "spatial_confirmation_v1",
+  "split_path": "experiments/splits/spatial_confirmation_v1.json",
+  "method": "mask2former_stay_cable_boundary_dice",
+  "main_variable": "Add a fixed 0.05 stay_cable soft morphological boundary-Dice term to the otherwise unchanged SEM396 Mask2Former training objective.",
+  "causal_claim": "Any matched difference from SEM396 is attributed to the registered auxiliary boundary term, subject to single-seed CUDA variation.",
+  "iterations": 6000,
+  "crop": 768,
+  "sampling_trace_keys": ["name", "top", "left", "flip"],
+  "boundary_objective": {
+    "type": "soft_morphological_boundary_dice",
+    "class_id": 2,
+    "class_name": "stay_cable",
+    "radius_px": 1,
+    "weight": 0.05,
+    "epsilon": 1.0,
+    "applied_to": "final_dense_normalized_semantic_probability",
+    "weight_search": false
+  },
+  "rgb_run": "outputs/quality/RGB-152/full-r2",
+  "rgb_evaluation": "outputs/quality/RGB-152/full-r2/evaluation",
+  "label_root": "outputs/quality/all_data/SEM-370-r1/labels",
+  "label_manifest": "outputs/quality/all_data/SEM-370-r1/label_manifest.json",
+  "semantic_train_views": 256,
+  "semantic_confirmation_views": 30,
+  "buffer_excluded_views": 17,
+  "output_path": "outputs/quality/SEM-397/r1",
+  "commands": {
+    "prepare": "python3 scripts/run_sem397_spatial_boundary.py --artifact-root <artifact-root> --stage prepare",
+    "train": "python3 scripts/run_sem397_spatial_boundary.py --artifact-root <artifact-root> --stage train",
+    "inference": "python3 scripts/run_sem397_spatial_boundary.py --artifact-root <artifact-root> --stage inference"
+  },
+  "promotion_gates": {
+    "confirmation_five_class_miou_strictly_above": 0.89204606,
+    "confirmation_boundary_f1_gain_at_least": 0.005,
+    "confirmation_stay_cable_recall_strictly_above": 0.91651491,
+    "maximum_confirmation_stay_cable_precision_drop": 0.002,
+    "maximum_any_confirmation_class_iou_drop": 0.003,
+    "maximum_any_region_five_class_miou_drop": 0.005,
+    "all_gates_required": true
+  },
+  "quality_claim": null,
+  "scope": "Matched single-seed development experiment on 256 training and 30 historically exposed spatial-confirmation labels; not blind and not an all-data final model.",
+  "confirmation_access": {
+    "rgb_during_semantic_training": false,
+    "labels_during_semantic_training": false,
+    "buffer_rgb_or_labels": false,
+    "allowed_after_model_6000_is_sealed": ["confirmation RGB inference input", "confirmation ground-truth evaluation"]
+  },
+  "protocol": "docs/experiments/sem397_boundary_dice_protocol.md"
+}

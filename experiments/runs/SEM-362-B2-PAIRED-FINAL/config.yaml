@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-362-B2-PAIRED-FINAL",
+  "parent_experiment": "SEM-336-SCAFFOLD-PAIRED-DURATION,SEM-361-SELECTOR-FIT-VIEW-EXPANSION",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_001_scaffold_static_v1;sem_005_oof_spatial_v1",
+  "seed": 20260805,
+  "protocol": "experiments/runs/QUAL-001-FOUNDATION/config.yaml",
+  "label_manifest": "experiments/runs/SEM-001/label_manifest.json",
+  "labels": "r2/sem_001/labels",
+  "resolution": [
+    1320,
+    989
+  ],
+  "pixel_space": "PINHOLE",
+  "model": {
+    "architecture": "SegFormer-B2",
+    "model_id": "nvidia/mit-b2",
+    "revision": "3bb39e8739149c3777d0325349b2a6c32c6413db",
+    "relative_weights": "r2/sem_005/third_party/nvidia_mit_b2_3bb39e8",
+    "license": "NVIDIA SegFormer non-commercial research/evaluation; inherited source record"
+  },
+  "experts": {
+    "fiveclass": {
+      "class_ids": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "crop": 768,
+      "stride": 512
+    },
+    "deck": {
+      "class_ids": [
+        0,
+        1
+      ],
+      "positive_class": 1,
+      "crop": 960,
+      "stride": 480
+    },
+    "stay_cable": {
+      "class_ids": [
+        0,
+        1
+      ],
+      "positive_class": 2,
+      "crop": 960,
+      "stride": 480
+    }
+  },
+  "training": {
+    "steps": 6000,
+    "smoke_steps": 8,
+    "optimizer": "AdamW",
+    "learning_rate": 6e-05,
+    "weight_decay": 0.01,
+    "batch_size": 1,
+    "gradient_accumulation": 1,
+    "augment": "uniform native crop + horizontal flip p=.5",
+    "weights": "median frequency inverse count clipped [.05,20], training partition only",
+    "amp": "bf16 if supported else fp16",
+    "checkpoint_selection": "final only; no early stopping",
+    "rgb_frozen": true
+  },
+  "partitions": [
+    "development"
+  ],
+  "oof_scope": "shared RGB screening, not independent reconstruction validation",
+  "outputs": "float32 native probabilities and uint8 class predictions; no target labels read in fitting",
+  "calibration": "historically reused 108/111 training-side OOF only; no 74-view threshold selection",
+  "allowed_rgb_parents": [
+    "RGB-110-SCAFFOLD-CTRL"
+  ],
+  "quality_claim": null,
+  "study": {
+    "baseline_config": "experiments/runs/SEM-331-QUALITY-EXPERTS/config.yaml",
+    "baseline_config_sha256": "fb7d1ba976e295b73e4da05e05b939c73737e3bec970c6f377fa485cc5905488",
+    "baseline_trainer": "scripts/run_quality_expert.py",
+    "baseline_trainer_sha256": "375ba4643dca4f2001ec0b43ff2011a792584aa00194b60b39b4b518d81127f3",
+    "baseline_fusion": "outputs/quality/queues/dualline-20260909-r1/fusion-Scaffold",
+    "baseline_fusion_sha256": "d177769b70e8d4c8bc12f8b9864b64915938a5d9a3d98bba8d84779632c323ed",
+    "rgb_run": "outputs/quality/runs/RGB-110-SCAFFOLD-CTRL-full-r1",
+    "rendered_root": "outputs/quality/expert_inputs/Scaffold-training-dualline-r1",
+    "expert": "fiveclass",
+    "comparison_steps": [
+      3000,
+      6000
+    ],
+    "prefix_requirement": "Save a matched3000-step checkpoint from this same training trajectory, then continue to6000 without model reload/inference or RNG changes. Historical SEM331 is an additional reference, not an asserted identical control.",
+    "single_changed_variable": "Final all219 training role only; exact SEM336 model, optimizer, crop, seed recipe and paired endpoints unchanged.",
+    "evaluation": "No GT74 scoring in SEM362; fixed74 paired endpoints for SEM363. No prefix equality claim with historical3k.",
+    "promotion": "Report per-class IoU precision recall, per-view/fold deltas and corrected/harmed/wrong-to-wrong pixels. Quality tradeoffs are human-reviewed, not an invented weighted score. The historical95%floor does not automatically reject this distinct duration comparison.",
+    "source_scope": "shared303-RGB screening only, not independently rebuilt spatial validation or new blind test",
+    "minimum_free_gib": 0,
+    "estimated_new_output_gib_upper_bound": 4.5,
+    "automatic_promotion": false,
+    "automatic_development_fit": true,
+    "controls": {
+      "development": {
+        "run": "outputs/quality/experts/SEM-331-Scaffold-fiveclass-development-full-dualline-20260909-r1",
+        "sha256": "91c4090276a41db35e1ba46d8e166787d229695d6ffb6d8153a36261ae60bb8e",
+        "audit": "outputs/quality/audits/SEM-331-Scaffold-fiveclass_development-dualline-20260909-r1",
+        "audit_sha256": "4d104b4e42a3fb3266fb8c8114fb3e5ded472b74b6be1bb82373416c754f9291"
+      }
+    },
+    "endpoints": [
+      3000,
+      6000
+    ],
+    "parent_config": "experiments/runs/SEM-336-SCAFFOLD-PAIRED-DURATION/config.yaml",
+    "parent_config_sha256": "ceb0f72f66e8cc81d38b97a83adc12fab6f1f5b80d8c9a6192d9cf0624970859",
+    "target_root": "outputs/quality/expert_inputs/Scaffold-development-dualline-20260909-r1",
+    "budget": {
+      "aggregate_root": "outputs/quality/final_transfer",
+      "maximum_new_gib": 4.5,
+      "maximum_gpu_stage_seconds": 1800,
+      "maximum_cpu_stage_seconds": 900,
+      "gpu_target_gib": 6,
+      "cpu_threads": 4,
+      "cpu_target_ram_gib": 4,
+      "disk_reserve_gib": 0
+    },
+    "authorization": "User: 只要我们们的空间足够，不用预留。继续推进吧; approves prior final transfer scope and cancels100GiB reserve."
+  },
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c"
+}

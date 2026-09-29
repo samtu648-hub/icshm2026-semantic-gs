@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-161-DECK-BINARY-FINAL",
+  "title": "Frozen all-training deck binary one-way recovery final model",
+  "phase": "R2 specialised deck semantic developer candidate",
+  "status": "completed_developer_target_gate_passed",
+  "owner": "unassigned",
+  "parent_experiment": "SEM-160-DECK-BINARY-OOF,SEM-151-FOUNDATION-GATE-FINAL,SEM-141-CABLE-BINARY-FINAL,SEM-001,RGB-030-FULL",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_001_scaffold_static_v1; all 219 training views then explicitly reused 74-view developer audit",
+  "seed": 20260805,
+  "parent_evidence": {
+    "sem160_result_sha256": "1b805dba1bd114686825da448e1ac978471562b1d9d5258d9eaa84cfd5020fcb",
+    "sem160_status": "completed_oof_gate_passed",
+    "selected_threshold": 0.99,
+    "selection_rule": "SEM-160 selected 0.99 on calibration only and passed its independent check; final training or developer results may not alter it."
+  },
+  "data": {
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "semantic_split_sha256": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+    "label_manifest": "experiments/runs/SEM-001/label_manifest.json",
+    "training_images": 219,
+    "developer_validation_images": 74,
+    "access_sequence": "Train and reload one final checkpoint on all 219 frozen rendered training RGBs and labels. Freeze the result and checkpoint hashes into this audit record. Then infer and materialise all 74 predictions without labels before opening the explicitly reused developer labels once."
+  },
+  "inputs": {
+    "rendered_training_manifest_sha256": "a8e08740ac8fa30f115f26cb822b604addca2b2f4c0a316ac4914f1fdd9ceb67",
+    "rendered_validation_manifest_sha256": "a805ab84e367090b501b8dc813469dc7f609d0fd3b9ef80a2521abd236e87ec4",
+    "sem151_result_sha256": "e1d932db9264adf281f56ec03f62db9d6927f8120bf6220b13c18b85b5ed8d3f",
+    "sem151_prediction_manifest_sha256": "8443adc70cd7837c6ea83b4fb6f17015701799d55abab575d4f94a17950b33c1",
+    "sem141_prediction_manifest_sha256": "eae2885c225e77f72248be228b27f2754a4efc6027472d13416bcc79181d624a",
+    "sem151_external_rgb_sha256": "563e041da15e713f2acc3139f2b922d129b7db7910b18d18b8ac6489e3de10d3",
+    "sem151_external_semantic_sha256": "a013682584a36c30b88606b5cd0f376a72e6898c42674c7b1e66975c605ef23b",
+    "sem141_external_semantic_sha256": "46738443166ca52199e891c9509a460458560547546d047ea76ec040ff20ae40"
+  },
+  "final_evidence": {
+    "status": "completed_final_checkpoint_frozen",
+    "training_result_sha256": "abd6136f38c4641f7f1b7fa0f5ead08fa5bfd8bea7fe0cd363e88c589aa04213",
+    "checkpoint_sha256": "8e50ffca587412f2a015e01bc5ffc80ae3503e6c302cc5291d55c183d664628f",
+    "checkpoint_contract_sha256": "7bcdd9ccc6939f1e49514176a4bc6bb5935a6f60ec435786de9f6e45200a5c80"
+  },
+  "single_changed_variable": "Convert the qualified SEM-160 deck-binary OOF recipe into one all-219 final checkpoint, then apply its frozen 0.99 probability only as original-background to deck recovery over SEM-151.",
+  "model": {
+    "architecture": "SegFormer-B2",
+    "implementation": "huggingface/transformers==4.57.1",
+    "pretrained_model_id": "nvidia/mit-b2",
+    "pretrained_revision": "3bb39e8739149c3777d0325349b2a6c32c6413db",
+    "weight_license": "NVIDIA Source Code License for SegFormer; non-commercial research/evaluation only",
+    "classification_head": "reinitialized_for_two_classes_non_deck_and_deck"
+  },
+  "training": {
+    "seed": 20260805,
+    "all_training_views": true,
+    "iterations": 3000,
+    "crop_size": 960,
+    "native_pixel_scale": true,
+    "input_resize": false,
+    "batch_size": 1,
+    "gradient_accumulation": 1,
+    "optimizer": "AdamW",
+    "learning_rate": 0.00006,
+    "weight_decay": 0.01,
+    "loss": "two_class_cross_entropy_only",
+    "class_weight_rule": "all-219 inverse frequency median_count/count clipped to [0.05,20]",
+    "paired_augmentation": "uniform native 960 crop and horizontal flip p=0.5 only",
+    "amp": "bf16_if_supported_else_fp16",
+    "early_stopping": false,
+    "checkpoint_selection": "final_3000_only_no_validation_selection"
+  },
+  "inference": {
+    "crop_size": 960,
+    "stride": 480,
+    "overlap": 480,
+    "input_resize": false,
+    "output": "float16 deck probability plus protected official five-class PNG at 1320x989"
+  },
+  "fusion": {
+    "deck_threshold": 0.99,
+    "only_transition": "0_to_1",
+    "eligible_source": "SEM-151 is background and SEM-141 before foundation cleanup was also background",
+    "immutable_existing_predictions": true
+  },
+  "developer_target_gate": {
+    "baseline": "SEM-151 frozen 74-view developer candidate",
+    "minimum_mIoU_gain": 0.0,
+    "minimum_deck_iou_gain": 0.002,
+    "minimum_deck_recall_gain": 0.005,
+    "minimum_deck_precision": 0.94,
+    "maximum_background_to_deck_fp_ratio": 1.25,
+    "difficult_subset_drop_max": 0.005,
+    "oblique_158_161_minimum_deck_iou_gain": 0.0,
+    "protected_predictions_exact": true,
+    "claim_boundary": "Passing recommends hidden evaluation only; the reused 74-view result is developer-only."
+  },
+  "outputs": {
+    "final_training_root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_161/final_training/final-20260904-r1",
+    "developer_audit_root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_161/developer_audit/final-20260904-r1",
+    "validation_visual_samples": ["081.png", "159.png", "160.png", "161.png"],
+    "panel_order": ["frozen_rendered_RGB", "GT", "SEM-151", "SEM-161", "green_corrected_red_harmed"]
+  },
+  "budget": {"maximum_total_gpu_hours": 0.5},
+  "forbidden": [
+    "validation_access_before_final_checkpoint_freeze",
+    "validation_based_retraining",
+    "validation_based_threshold_or_checkpoint_selection",
+    "real_RGB_input",
+    "unlabeled_training",
+    "hidden_test_access",
+    "SEM151_SEM141_SEM001_or_RGB_change",
+    "relabel_rejected_foundation_pixels",
+    "existing_prediction_deletion",
+    "architecture_loss_crop_seed_or_checkpoint_search"
+  ],
+  "classes": {"0": "background", "1": "deck", "2": "stay_cable", "3": "tower", "4": "foundation"},
+  "fallback": "SEM-151 frozen developer candidate with SEM-141, SEM-111 and SEM-001 retained"
+}

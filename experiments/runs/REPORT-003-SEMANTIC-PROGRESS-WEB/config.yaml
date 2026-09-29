@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "experiment_id": "REPORT-003-SEMANTIC-PROGRESS-WEB",
+  "title": "2026-09-23全量重建与语义训练进展离线汇报网页",
+  "phase": "offline_research_presentation",
+  "parent_experiment": "REPORT-002-PROGRESS-WEB;RGB-170-IMPROVEDGS-BUDGET15M-H50K;SEM-437-RGB170-MASK2FORMER-CONTEXT50-LONG12K-ALL300;SEM-440-RGB170-WEAK-STRUCTURE-TAIL14K",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": null,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "presentation_mixed_roles_historical74_all300_all400_unlabeled100_trajectory144",
+  "status": "completed_offline_presentation",
+  "registered_date": "2026-09-23",
+  "completed_date": "2026-09-23",
+  "output_path": "outputs/semantic_progress_20260923",
+  "builder": "scripts/build_semantic_progress_web.py",
+  "audit": "scripts/audit_semantic_progress_web.py",
+  "scope": "Offline presentation only; no training, model selection, inference tuning, hidden-test claim, upload or deployment.",
+  "evidence_roles": {
+    "historical_74": "historical development comparison; not directly comparable to all300",
+    "all300": "semantic training fit; all labels were used for training",
+    "all400": "RGB reconstruction fit; all released images were used",
+    "spatial_v1_v2": "previously observed development validation; no longer blind",
+    "unlabeled_301_400": "no-GT visual review only",
+    "trajectory_144": "no-GT visual review only"
+  }
+}

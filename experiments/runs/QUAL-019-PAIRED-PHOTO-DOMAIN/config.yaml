@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "experiment_id": "QUAL-019-PAIRED-PHOTO-DOMAIN",
+  "title": "Matched paired-photo domain supervision audit and public100 review",
+  "phase": "quality_audit",
+  "parent_experiment": "SEM-432-PAIRED-RENDER-CONTROL;SEM-433-PAIRED-PHOTO-DOMAIN",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "spatial_confirmation_v1;released_unlabeled_301_400",
+  "main_variable": "No training: independently compare the sealed matched pair and run render-only qualitative inference on RGB140 views 301--400.",
+  "output_path": "outputs/quality/QUAL-019",
+  "quality_claim": null,
+  "scope": "Historically exposed 30-view score plus label-free 100-view qualitative review; not blind.",
+  "protocol": "docs/experiments/sem431_433_dual_domain_protocol.md"
+}
+

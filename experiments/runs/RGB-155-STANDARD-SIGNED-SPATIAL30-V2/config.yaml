@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-155-STANDARD-SIGNED-SPATIAL30-V2",
+  "title": "Original Standard control on disjoint spatial confirmation fold v2",
+  "phase": "reconstruction",
+  "parent_experiment": "RGB-153-STANDARD-SIGNED-SPATIAL30;RGB-154-ABSGRAD-SPATIAL30-V2",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "spatial_confirmation_v2",
+  "split_path": "experiments/splits/spatial_confirmation_v2.json",
+  "seed": 0,
+  "main_variable": "Original Standard signed-gradient densification replaces AbsGS on the identical spatial_confirmation_v2 scene and initialization.",
+  "data": {
+    "scene": "outputs/quality/RGB-154/scene",
+    "resolution": "1320x989",
+    "rgb_train_views": 349,
+    "rgb_confirmation_views": 30,
+    "buffer_excluded_views": 21,
+    "scene_views": 379,
+    "semantic_train_labeled_views": 255,
+    "official_cameras_fixed": true,
+    "initial_point_cloud_source": "Exact RGB154 training-only DLT initialization",
+    "initial_point_count": 81516,
+    "initial_ply_sha256": "26bfeb67ae36601ae17dfc095c71ad9d2eb79a0d9e052085af7515081be8516a",
+    "confirmation_used_for_initialization": false,
+    "buffer_used_for_initialization": false,
+    "use_semantics": false
+  },
+  "training": {
+    "iterations": 30000,
+    "seed": 0,
+    "densification": "original Standard 3DGS signed-gradient clone and split",
+    "densify_grad_threshold": 0.0002,
+    "densify_from_iter": 500,
+    "densify_until_iter": 15000,
+    "densification_interval": 100,
+    "opacity_reset_interval": 3000,
+    "source_relative_to_artifact_root": "r1/third_party/standard-3dgs",
+    "command": "python3 scripts/run_rgb155_spatial_standard_v2.py --artifact-root <artifact-root> --stage train",
+    "output": "outputs/quality/RGB-155/full-r1"
+  },
+  "evaluation": {
+    "protocol": "Separate full-resolution metrics for 349 train views, 30 confirmation views, and three fixed regions",
+    "metrics": ["PSNR", "SSIM", "LPIPS"],
+    "training_metrics_are_fit_results": true,
+    "claim": "disjoint historically exposed spatial development replication; not blind"
+  },
+  "output": {"root": "outputs/quality/RGB-155", "preserve_failures": true},
+  "protocol": "docs/experiments/spatial_confirmation_v2_backbone_protocol.md"
+}

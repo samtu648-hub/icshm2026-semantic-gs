@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "experiment_id": "__EXPERIMENT_ID__",
+  "title": "__TITLE__",
+  "phase": "__PHASE__",
+  "parent_experiment": "__PARENT__",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "not_set",
+  "seed": 0,
+  "backbone": "__BACKBONE__",
+  "change_from_parent": "Describe exactly one primary change.",
+  "data": {
+    "root_env": "ICSHM_DATA_ROOT",
+    "use_labeled_rgb": true,
+    "use_unlabeled_rgb": false,
+    "use_pseudo_labels": false
+  },
+  "training": {
+    "command": "not_set",
+    "budget": "not_set"
+  },
+  "evaluation": {
+    "protocol": "docs/experiments/protocol.md",
+    "metrics": "METRICS.md"
+  },
+  "output": {
+    "root": "experiments/runs/__EXPERIMENT_ID__/output"
+  }
+}
+

@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-173-IMPROVEDGS-RESPONSIBILITY-CLONE",
+  "title": "RGB170固定预算桥梁责任非对称克隆",
+  "phase": "reconstruction",
+  "parent_experiment": "RGB-170-IMPROVEDGS-BUDGET15M-H50K;RGB-172-IMPROVEDGS-EVIDENCE-DIRECTED-SPLIT;QUAL-024-BRIDGE-RESPONSIBILITY-CLONE-DIAG",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "seed": 0,
+  "data": {
+    "scene": "outputs/quality/all_data/RGB-120-r2/scene",
+    "labels": "outputs/quality/all_data/SEM-370-r1/labels",
+    "rgb_train_views": 400,
+    "semantic_localization_views": 300,
+    "official_cameras_fixed": true,
+    "initial_point_count": 72292,
+    "initial_ply_sha256": "10a88fb018c27530b3bbfa0f7000408693ba75228067f5311e7775e4755e68f2"
+  },
+  "training": {
+    "iterations": 50000,
+    "densify_from_iter": 500,
+    "densify_until_iter": 15000,
+    "densification_interval": 100,
+    "save_iterations": [15000, 20000, 30000, 40000, 50000],
+    "training_method": "improvedgs",
+    "budget": 1500000,
+    "use_eas": true,
+    "use_las": true,
+    "use_rap": true,
+    "use_mu": true,
+    "edge_sample_cams": 10,
+    "repair_iteration": 12400,
+    "repair_classes": ["deck", "stay_cable", "tower"],
+    "top_contributors_per_class_view": 16,
+    "minimum_cross_view_observations": 3,
+    "minimum_mixed_observation_fraction": 0.5,
+    "minimum_near_background_fraction": 0.35,
+    "maximum_tangent_residual_fraction": 0.05,
+    "minimum_tangent_eigengap_ratio": 4.0,
+    "transverse_scale_multiplier": 0.5,
+    "single_primary_variable": "For the same RGB172 evidence-directed fixed-budget parents, replace symmetric directional children with one exact-geometry context continuation and one centered tangent-aligned transverse-narrow bridge child using analytic alpha partition"
+  },
+  "controls_held_fixed": [
+    "all400 official cameras and real-photo RGB supervision",
+    "72,292-point initialization, seed 0 and camera sampler",
+    "50k horizon, 15k densification cutoff and 1.5M budget",
+    "EAS/LAS/RAP/MU, repair iteration and native split-slot count",
+    "RGB172 mixed-support evidence definition and direct slot access",
+    "ordinary non-evidence LAS split behavior",
+    "SH features; context child continues parent optimizer moments and bridge child starts fresh"
+  ],
+  "operator": {
+    "context_child": "same center, scale, rotation and SH as parent; parent Adam moments retained",
+    "bridge_child": "same center, real-photo multiview tangent alignment, transverse scale x0.5, fresh Adam moments",
+    "opacity": "a_context=1-(1-a)^(1-r), a_bridge=1-(1-a)^r where r is median bridge responsibility",
+    "center_alpha": "1-(1-a_context)(1-a_bridge)=a"
+  },
+  "evaluation_priority": "deck, stay_cable and tower structure first; background artifacts secondary; no unknown-view claim before spatial confirmation",
+  "output": "outputs/quality/RGB-173/full-r1",
+  "preserve_failures": true,
+  "semantic_training": false
+}

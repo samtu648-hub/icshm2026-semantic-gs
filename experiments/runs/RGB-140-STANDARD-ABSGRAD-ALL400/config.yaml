@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-140-STANDARD-ABSGRAD-ALL400",
+  "title": "Standard全400绝对梯度增密对照",
+  "phase": "reconstruction",
+  "parent_experiment": "RGB-130-STANDARD-ALL400",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "split_path": "outputs/quality/all_data/RGB-120-r2/split.json",
+  "seed": 0,
+  "backbone": "Standard 3DGS all400/30k with AbsGS homodirectional split-gradient densification",
+  "change_from_parent": "Only the large-Gaussian split eligibility statistic changes: native signed screen-space mean-gradient norm at threshold 0.0002 is replaced by the AbsGS per-pixel absolute (homodirectional) screen-space mean-gradient norm at threshold 0.0004. Small-Gaussian cloning remains native signed-gradient at 0.0002; all other RGB130 settings stay fixed.",
+  "method_source": {
+    "baseline_repo": "https://github.com/graphdeco-inria/gaussian-splatting.git",
+    "baseline_commit": "54c035f7834b564019656c3e3fcc3646292f727d",
+    "absgs_repo": "https://github.com/TY424/AbsGS.git",
+    "absgs_commit": "87d7a5aac21c0b237a6af9e715e3a0c7df4902d3",
+    "license": "Gaussian-Splatting research/evaluation license",
+    "adaptation_scope": "AbsGS absolute-gradient accumulation and split qualification only; no use_reduce, max-weight pruning, camera optimization, depth, semantic loss, or other upstream changes"
+  },
+  "data": {
+    "scene": "outputs/quality/all_data/RGB-120-r2/scene",
+    "resolution": "1320x989",
+    "rgb_train_views": 400,
+    "official_cameras_fixed": true,
+    "initial_point_cloud_source": "RGB130/RGB120 original 303-view COLMAP sparse point cloud",
+    "initial_point_count": 72292,
+    "initial_ply_sha256": "10a88fb018c27530b3bbfa0f7000408693ba75228067f5311e7775e4755e68f2",
+    "use_labeled_rgb": true,
+    "use_unlabeled_rgb": true,
+    "use_pseudo_labels": false,
+    "use_depth": false,
+    "use_semantics": false
+  },
+  "training": {
+    "iterations": 30000,
+    "seed": 0,
+    "signed_clone_threshold": 0.0002,
+    "absolute_split_threshold": 0.0004,
+    "densify_from_iter": 500,
+    "densify_until_iter": 15000,
+    "densification_interval": 100,
+    "opacity_reset_interval": 3000,
+    "command": "ICSHM_ARTIFACT_ROOT=<artifact-root> python3 scripts/run_rgb140_absgs_all400.py --run-name full-r2 --iterations 30000",
+    "output": "outputs/quality/rgb140/full-r2"
+  },
+  "evaluation": {
+    "protocol": "RGB130 matched all-400 training-view metrics, fixed-nine local crops, and fixed-144 external-camera trajectory",
+    "metrics": ["PSNR", "SSIM", "LPIPS"],
+    "baseline": "RGB-130-STANDARD-ALL400",
+    "training_metrics_are_fit_results": true,
+    "trajectory_has_ground_truth": false
+  },
+  "output": {
+    "root": "outputs/quality/rgb140",
+    "source": "outputs/quality/rgb140/source-r1",
+    "preserve_failures": true
+  }
+}

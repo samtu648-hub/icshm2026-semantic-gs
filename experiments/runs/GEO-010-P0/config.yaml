@@ -1,0 +1,35 @@
+{
+  "schema_version": 2,
+  "experiment_id": "GEO-010-P0",
+  "title": "MapAnything Apache P0 full training-side offline geometry",
+  "phase": "geometry_prior_offline_geometry_v2",
+  "status": "preregistered_ready_after_GEO-010-PF-R1",
+  "code_git_commit": "b6756f969f11b4ccac940508321262a11d327ca7",
+  "parent_experiment": "GEO-010-PF-R1,GEO-002",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1",
+  "seed": 0,
+  "backbone": "MapAnything-offline-P0-geometry-prior",
+  "protocol": "docs/experiments/geometry_prior_evaluation_v2.md",
+  "protocol_config": "configs/geometry/evaluation_v2.json",
+  "input_contract": {
+    "images": "303 primary train_rgb_400 only",
+    "window_size": 16,
+    "overlap": 4,
+    "window_construction": "official_COLMAP_shared_POINT3D graph; explicit spatial-chain restarts only when overlap would sacrifice coverage",
+    "pose": "official P0 CAMERA_FROM_WORLD converted to OpenCV cam2world",
+    "RGB": "prepared full-frame undistorted PINHOLE"
+  },
+  "source": {
+    "url": "https://github.com/facebookresearch/map-anything",
+    "commit": "9d1db2dd728bd8a10e74b15d2eb646e1bf933791",
+    "code_license": "Apache-2.0",
+    "checkpoint_name": "facebook/map-anything-apache",
+    "checkpoint_revision": "00f9c245bbcb60522d1ed7f9e9d88462c6e3f38a",
+    "checkpoint_sha256": "fa06c0fdccefc5048e072c85935d5789b1e36b307f3859033c17f9dcb9fd5201",
+    "checkpoint_license": "Apache-2.0"
+  },
+  "runtime": {"environment": "icshm-geometry", "minibatch_size": 1, "memory_efficient_inference": true, "amp_dtype": "bf16"},
+  "output_contract": "geometry_prior_npz_v2 per window/view plus hash manifest; all outputs external and Git ignored",
+  "next_gate": "P0 multi-view fusion and Scaffold initialization PLY must pass before GEO-010-10K"
+}

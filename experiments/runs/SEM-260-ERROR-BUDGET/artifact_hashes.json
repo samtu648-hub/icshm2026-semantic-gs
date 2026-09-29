@@ -1,0 +1,13 @@
+{
+  "experiment_id": "SEM-260-ERROR-BUDGET",
+  "files": [
+    {
+      "path": "outputs/sem260/full-20260907-r1/result.json",
+      "sha256": "3ac9fdf2e4d6ede7911734891a9ddb64ef93e608823bf0600d3f1f363746e82b"
+    },
+    {
+      "path": "experiments/runs/SEM-260-ERROR-BUDGET/config.yaml",
+      "sha256": "88f01b40a55a7cebedba778a883c3527632f096eeaa7304331560551f963bb80"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-138-STANDARD-SORT-DIAG",
+  "title": "RGB130 StopThePop排序渲染归因",
+  "phase": "reconstruction_diagnostic",
+  "parent_experiment": "RGB-130-STANDARD-ALL400",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "seed": 0,
+  "backbone": "Frozen RGB130 Standard 3DGS with StopThePop hierarchical renderer",
+  "change_from_parent": "render-only: original global z sort versus StopThePop hierarchical per-pixel depth sort; checkpoint, cameras and Gaussian parameters stay frozen",
+  "source": {
+    "repository": "https://github.com/r4dl/StopThePop.git",
+    "commit": "859b11bde9195e19a1c40536e1ab16765b64b365",
+    "rasterizer_commit": "d8cad09919ff49b11be3d693d1e71fa792f559bb",
+    "license": "Gaussian-Splatting License for the main implementation; MIT for StopThePop headers"
+  },
+  "data": {
+    "rgb": "all released 400 official views plus the fixed 144-pose trajectory",
+    "labels": "none",
+    "pseudo_labels": false
+  },
+  "model": {
+    "checkpoint": "outputs/quality/backbone_comparison/standard-full-r1/model/chkpnt30000.pth",
+    "point_cloud": "outputs/quality/backbone_comparison/standard-full-r1/model/point_cloud/iteration_30000/point_cloud.ply",
+    "camera_policy": "same official COLMAP reference cameras and fixed RGB130 trajectory",
+    "training": "none"
+  },
+  "renderer": {
+    "control": "RGB130 saved original global-z render",
+    "candidate_config": "configs/hierarchical.json",
+    "sort_mode": "HIER",
+    "sort_order": "PTD_MAX",
+    "proper_ewa_scaling": false,
+    "render_depth": false
+  },
+  "evaluation": {
+    "fixed_views": ["159.png", "160.png", "140.png", "146.png", "081.png", "057.png", "064.png", "054.png", "174.png"],
+    "trajectory_frames": 144,
+    "quality_scope": "rendering attribution only; trajectory has no GT",
+    "metrics": ["paired RGB delta on official views", "PoppingDetection if compatible", "fixed ROI visual comparison"]
+  },
+  "output": {"root": "outputs/quality/rgb138"}
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-396-RGB152-SPATIAL256",
+  "title": "Fresh SEM378-recipe Mask2Former spatial-confirmation baseline",
+  "phase": "semantic_segmentation",
+  "parent_experiment": "RGB-152-STANDARD-ABSGRAD-SPATIAL30;SEM-378-RGB140-ABSGRAD-ALL300",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "spatial_confirmation_v1",
+  "split_path": "experiments/splits/spatial_confirmation_v1.json",
+  "method": "mask2former",
+  "main_variable": "Evaluation protocol only: train the unchanged SEM378 Swin-L Mask2Former recipe from fresh ADE initialization using only 256 spatially retained labels rendered by RGB152.",
+  "causal_claim": null,
+  "iterations": 6000,
+  "crop": 768,
+  "sampling_trace_keys": ["name", "top", "left", "flip"],
+  "rgb_run": "outputs/quality/RGB-152/full-r2",
+  "rgb_evaluation": "outputs/quality/RGB-152/full-r2/evaluation",
+  "label_root": "outputs/quality/all_data/SEM-370-r1/labels",
+  "label_manifest": "outputs/quality/all_data/SEM-370-r1/label_manifest.json",
+  "semantic_train_views": 256,
+  "semantic_confirmation_views": 30,
+  "buffer_excluded_views": 17,
+  "output_path": "outputs/quality/SEM-396/r1",
+  "commands": {
+    "prepare": "python3 scripts/run_sem396_spatial.py --artifact-root <artifact-root> --stage prepare",
+    "train": "python3 scripts/run_sem396_spatial.py --artifact-root <artifact-root> --stage train",
+    "inference": "python3 scripts/run_sem396_spatial.py --artifact-root <artifact-root> --stage inference"
+  },
+  "quality_claim": null,
+  "scope": "256-view training fit and fixed 30-view spatial confirmation; historically exposed development split; single seed; not blind",
+  "confirmation_access": {
+    "rgb_during_semantic_training": false,
+    "labels_during_semantic_training": false,
+    "buffer_rgb_or_labels": false,
+    "allowed_after_model_6000_is_sealed": ["confirmation RGB inference input", "confirmation ground-truth evaluation"]
+  },
+  "protocol": "docs/experiments/spatial_confirmation_v1_protocol.md"
+}

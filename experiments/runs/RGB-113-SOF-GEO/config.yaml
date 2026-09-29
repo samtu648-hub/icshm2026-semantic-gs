@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-113-SOF-GEO",
+  "parent_experiment": "RGB-112-SOF-NVS",
+  "protocol": "experiments/runs/QUAL-001-FOUNDATION/config.yaml",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1",
+  "seed": 0,
+  "status": "registered_not_run",
+  "backbone": "sof",
+  "upstream_url": "https://github.com/r4dl/SOF",
+  "upstream_commit": "b9eb4170c843014f5f96d54924976161bd675469",
+  "single_changed_variable": "geometry regularization group only versus RGB112; NOT an exact TNT reproduction",
+  "training_arguments": ["--splatting_config", "configs/hierarchical.json", "--lambda_smoothness", "0.01", "--lambda_opacity_field", "0.004", "--lambda_extent", "0.1", "--lambda_distortion", "100"],
+  "license_status": "review pinned LICENSE/NOTICE and submodule licenses before execution"
+}

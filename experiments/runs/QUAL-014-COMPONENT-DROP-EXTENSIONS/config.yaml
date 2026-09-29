@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "experiment_id": "QUAL-014-COMPONENT-DROP-EXTENSIONS",
+  "parent_experiment": "QUAL-013-SPATIAL-V2-SEED-REPLICATION;SEM-416-COMPONENT-POINT-DIAG;RGB-156-ABSGS-DROP-CONTROL;RGB-157-ABSGS-DROP010",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "spatial_confirmation_v2;spatial_confirmation_v1",
+  "output_path": "outputs/quality/QUAL-014/r1",
+  "semantic_pair": ["SEM-417-COMPONENT-POINT-CTRL", "SEM-418-COMPONENT-POINT-QUOTA"],
+  "rgb_pair": ["RGB-156-ABSGS-DROP-CONTROL", "RGB-157-ABSGS-DROP010"],
+  "rgb_semantic_pair": ["SEM-419-RGB156-DROP-CONTROL", "SEM-420-RGB157-DROP010"],
+  "rgb_preflight_steps": 701,
+  "rgb_semantic_gate": {"psnr_delta_min": 0, "lpips_delta_max": 0, "require_one_strict": true, "max_region_psnr_loss_db": 0.3},
+  "semantic_retention_gate": {"foreground_delta_min": 0, "stay_cable_precision_delta_min": -0.001, "max_class_iou_loss": 0.005, "boundary_delta_min": 0},
+  "dropgaussian_reference": {"paper": "https://arxiv.org/abs/2504.00773", "year": 2025, "implementation": "Original local adaptation of opacity masking; no third-party code copied", "base_license": "Existing Gaussian-Splatting research/evaluation license retained"},
+  "resource_estimate": {"gpu_hours": [3, 5], "new_disk_gib": [10, 18]},
+  "protocol": "docs/experiments/component_sampling_dropgaussian_protocol.md",
+  "quality_claim": null
+}

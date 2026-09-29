@@ -1,0 +1,106 @@
+diff --git a/submodules/diff-gaussian-rasterization/cuda_rasterizer/rasterizer_impl.h b/submodules/diff-gaussian-rasterization/cuda_rasterizer/rasterizer_impl.h
+index 4daaa57..8c1c478 100644
+--- a/submodules/diff-gaussian-rasterization/cuda_rasterizer/rasterizer_impl.h
++++ b/submodules/diff-gaussian-rasterization/cuda_rasterizer/rasterizer_impl.h
+@@ -11,6 +11,8 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
++
+ #include <iostream>
+ #include <vector>
+ #include "rasterizer.h"
+@@ -174,4 +176,4 @@ namespace CudaRasterizer
+ 		}
+ 		void setActive(bool active)  { this->active = active; }
+ 	};
+-};
+\ No newline at end of file
++};
+diff --git a/submodules/diff-gaussian-rasterization/diff_gaussian_rasterization/__init__.py b/submodules/diff-gaussian-rasterization/diff_gaussian_rasterization/__init__.py
+index ef04638..3b8f8a1 100644
+--- a/submodules/diff-gaussian-rasterization/diff_gaussian_rasterization/__init__.py
++++ b/submodules/diff-gaussian-rasterization/diff_gaussian_rasterization/__init__.py
+@@ -11,7 +11,7 @@
+ 
+ import json
+ import dacite
+-from dataclasses import dataclass, asdict
++from dataclasses import dataclass, asdict, field
+ from typing import NamedTuple
+ import torch.nn as nn
+ import torch
+@@ -230,7 +230,7 @@ class SortQueueSizes:
+ 
+ @dataclass
+ class SortSettings:
+-    queue_sizes : SortQueueSizes = SortQueueSizes()
++    queue_sizes : SortQueueSizes = field(default_factory=SortQueueSizes)
+     sort_mode : SortMode = SortMode.GLOBAL
+     sort_order : GlobalSortOrder = GlobalSortOrder.Z_DEPTH
+     
+@@ -262,9 +262,9 @@ class MeshingSettings:
+ 
+ @dataclass
+ class ExtendedSettings:
+-    sort_settings : SortSettings = SortSettings()
+-    culling_settings : CullingSettings = CullingSettings()
+-    meshing_settings : MeshingSettings = MeshingSettings()
++    sort_settings : SortSettings = field(default_factory=SortSettings)
++    culling_settings : CullingSettings = field(default_factory=CullingSettings)
++    meshing_settings : MeshingSettings = field(default_factory=MeshingSettings)
+     load_balancing : bool = False
+     proper_ewa_scaling : bool = False
+     exact_depth : bool = True
+diff --git a/submodules/diff-gaussian-rasterization/setup.py b/submodules/diff-gaussian-rasterization/setup.py
+index 87049cf..fd45fb9 100644
+--- a/submodules/diff-gaussian-rasterization/setup.py
++++ b/submodules/diff-gaussian-rasterization/setup.py
+@@ -28,7 +28,8 @@ setup(
+             "cuda_rasterizer/utils.cu",
+             "ext.cpp"],
+             include_dirs = [os.path.join(os.path.dirname(os.path.abspath(__file__)), "third_party")],
+-            extra_compile_args={"nvcc": ["-I" + os.path.join(os.path.dirname(os.path.abspath(__file__)), "third_party/glm/"), "-w", "-lineinfo"]})
++            extra_compile_args={"nvcc": ["-I" + os.path.join(os.path.dirname(os.path.abspath(__file__)), "third_party/glm/"), "-w", "-lineinfo"] +
++                                [f"-gencode=arch=compute_{arch},code=sm_{arch}" for arch in os.environ.get("QUALITY_CUDA_ARCHS", "120").split(";")]})
+         ],
+     cmdclass={
+         'build_ext': BuildExtension
+diff --git a/train.py b/train.py
+index 44c26d7..bfba219 100644
+--- a/train.py
++++ b/train.py
+@@ -82,8 +82,13 @@ def training(dataset, opt, pipe : PipelineParams, mesh : MeshingParams, testing_
+     
+     gaussians.training_setup(opt, mesh, appearance_embedding)
+     if checkpoint:
+-        (model_params, first_iter, (_appearance_embedding, _appearance_net)) = torch.load(checkpoint)
+-        appearance_embedding.restore(_appearance_embedding, _appearance_net)
++        (model_params, first_iter, appearance_state) = torch.load(checkpoint, weights_only=False)
++        if appearance_embedding is not None:
++            if appearance_state is None:
++                raise ValueError("Appearance checkpoint missing for enabled appearance model")
++            appearance_embedding.restore(*appearance_state)
++        elif appearance_state is not None:
++            raise ValueError("Appearance checkpoint provided with appearance disabled")
+         gaussians.restore(model_params, opt, mesh, appearance_embedding)
+         
+ 
+@@ -278,7 +283,8 @@ def training(dataset, opt, pipe : PipelineParams, mesh : MeshingParams, testing_
+             
+             if (iteration in checkpoint_iterations):
+                 print("\n[ITER {}] Saving Checkpoint".format(iteration))
+-                torch.save((gaussians.capture(), iteration, appearance_embedding.capture()), scene.model_path + "/chkpnt" + str(iteration) + ".pth")
++                appearance_state = None if appearance_embedding is None else appearance_embedding.capture()
++                torch.save((gaussians.capture(), iteration, appearance_state), scene.model_path + "/chkpnt" + str(iteration) + ".pth")
+ 
+     end_event = time.time() 
+     
+
+diff --git a/submodules/simple-knn/simple_knn/__init__.py b/submodules/simple-knn/simple_knn/__init__.py
+new file mode 100644
+--- /dev/null
++++ b/submodules/simple-knn/simple_knn/__init__.py
+@@ -0,0 +1 @@
++"""Package marker for the upstream native simple_knn extension."""

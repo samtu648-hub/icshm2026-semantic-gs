@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "experiment_id": "GEO-020-3K-INT-R1",
+  "title": "DA3 P0 geometry initialization Scaffold engineering gate retry",
+  "phase": "geometry_prior_integration",
+  "status": "completed_drop_quality_gate",
+  "parent_experiment": "GEO-020-3K-INT",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1",
+  "seed": 0,
+  "backbone": "frozen-scaffold-gs-with-da3-p0-xyz-rgb-init",
+  "scaffold_commit": "59c833b56bbbf510f3f64d40f81721995caced66",
+  "da3_source_commit": "3d835ec1a5802d64a8b8b15f817a1ab54809bfe4",
+  "da3_checkpoint_sha256": "739905c423cf0d6ccaf9e61a8401d82ba1ac32d7f4d3ee6dca8f92b377633f64",
+  "init_ply_sha256": "5de866cfe1523b33c70dc8668f02def01dfcae092d7499b4d924113d8138d02f",
+  "training": {"iterations": 3000, "record_iterations": [1000, 3000], "from_iteration": 0, "resume": false, "status": "completed"},
+  "scene": "external_gitignored:ICSHM_OUTPUT_ROOT/geometry_prior/v2/scenes/scene_da3_p0",
+  "environment": {"name": "icshm2026-p2", "python": "3.11", "torch": "2.11.0+cu128", "cuda": "12.8", "extension_rebuild": "cp311 diff_gaussian_rasterization and simple_knn passed", "runtime_shim": "/tmp/icshm_wandb_stub"},
+  "command": "ICSHM_DATA_ROOT=... R1_ENV_ROOT=... R1_CUDA_HOME=... R1_THIRD_PARTY_ROOT=... R1_IMPORT_SHIM=/tmp/icshm_wandb_stub bash scripts/run_geometry_scaffold_screen.sh GEO-020-3K-INT-R1 $ICSHM_OUTPUT_ROOT/geometry_prior/v2/runs 3000",
+  "quality_claim": "3k matched-screen drop; engineering gate passed but retention gate failed",
+  "matched_control": {"experiment_id": "GEO-000-10K", "iteration": 3000, "PSNR_dB": 20.2007878556, "SSIM": 0.8390677327, "LPIPS_Alex": 0.3733865570},
+  "decision": {"keep_or_drop": "drop", "reason": "DA3 P0 is below matched 3k control: PSNR -1.21838 dB, SSIM -0.02802, LPIPS +0.10121; worst-10 PSNR -1.06612 dB. No GEO-020-10K."},
+  "output_root": "external_gitignored:ICSHM_OUTPUT_ROOT/geometry_prior/v2/runs/GEO-020-3K-INT-R1",
+  "artifacts": {
+    "checkpoint_1000_sha256": "f442d56143b13770829edc63abc4bd3e4c11836f71f20c0cc894b38e810491d2",
+    "checkpoint_3000_sha256": "08c30987094c67bf526befe8a884d14fc2e21a65fcad69d69d86c0120067c01c",
+    "metrics_1000": "external_gitignored:.../r1_metrics_summary_iteration_1000.json",
+    "metrics_3000": "external_gitignored:.../r1_metrics_summary_iteration_3000.json",
+    "run_metadata": "external_gitignored:.../run_metadata.json"
+  }
+}

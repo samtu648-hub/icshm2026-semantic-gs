@@ -1,0 +1,54 @@
+diff --git a/submodules/diff-plane-rasterization/cuda_rasterizer/rasterizer_impl.h b/submodules/diff-plane-rasterization/cuda_rasterizer/rasterizer_impl.h
+index bc3f0ec..299a481 100644
+--- a/submodules/diff-plane-rasterization/cuda_rasterizer/rasterizer_impl.h
++++ b/submodules/diff-plane-rasterization/cuda_rasterizer/rasterizer_impl.h
+@@ -11,6 +11,8 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
++
+ #include <iostream>
+ #include <vector>
+ #include "rasterizer.h"
+@@ -71,4 +73,4 @@ namespace CudaRasterizer
+ 		T::fromChunk(size, P);
+ 		return ((size_t)size) + 128;
+ 	}
+-};
+\ No newline at end of file
++};
+diff --git a/submodules/diff-plane-rasterization/setup.py b/submodules/diff-plane-rasterization/setup.py
+index d9b75eb..836335e 100644
+--- a/submodules/diff-plane-rasterization/setup.py
++++ b/submodules/diff-plane-rasterization/setup.py
+@@ -26,7 +26,8 @@ setup(
+             "cuda_rasterizer/backward.cu",
+             "rasterize_points.cu",
+             "ext.cpp"],
+-            extra_compile_args={"nvcc": ["-I" + os.path.join(os.path.dirname(os.path.abspath(__file__)), "third_party/glm/")]})
++            extra_compile_args={"nvcc": ["-I" + os.path.join(os.path.dirname(os.path.abspath(__file__)), "third_party/glm/")] +
++                                [f"-gencode=arch=compute_{arch},code=sm_{arch}" for arch in os.environ.get("QUALITY_CUDA_ARCHS", "120").split(";")]})
+         ],
+     cmdclass={
+         'build_ext': BuildExtension
+diff --git a/submodules/simple-knn/simple_knn.cu b/submodules/simple-knn/simple_knn.cu
+index e72e4c9..c989beb 100644
+--- a/submodules/simple-knn/simple_knn.cu
++++ b/submodules/simple-knn/simple_knn.cu
+@@ -11,6 +11,8 @@
+ 
+ #define BOX_SIZE 1024
+ 
++#include <cfloat>
++
+ #include "cuda_runtime.h"
+ #include "device_launch_parameters.h"
+ #include "simple_knn.h"
+@@ -218,4 +220,4 @@ void SimpleKNN::knn(int P, float3* points, float* meanDists)
+ 	boxMeanDist << <num_boxes, BOX_SIZE >> > (P, points, indices_sorted.data().get(), boxes.data().get(), meanDists);
+ 
+ 	cudaFree(result);
+-}
+\ No newline at end of file
++}

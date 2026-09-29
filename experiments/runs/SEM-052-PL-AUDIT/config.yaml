@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-052-PL-AUDIT",
+  "status": "completed_not_eligible_for_pseudo_labels",
+  "phase": "R2/U1-A",
+  "parent_experiment": "SEM-051-OOF",
+  "purpose": "Freeze class confidence thresholds from 219 OOF predictions, then perform one fixed 74-view read-only qualification audit",
+  "inputs": {
+    "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+    "parent_split_repo_path": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "oof_split": "experiments/splits/sem_005_oof_spatial_v1.json",
+    "label_manifest": "experiments/runs/SEM-001/label_manifest.json",
+    "SEM_001_reference": "external Git-ignored frozen result and validation predictions"
+  },
+  "training": {"seed": 20260805, "crop_size": 768},
+  "inference": {"stride": 512, "ensemble": "arithmetic mean of the three fixed fold-checkpoint probabilities"},
+  "thresholds": {
+    "source": "219 OOF predictions and ground truth only",
+    "grid_bins": 1001,
+    "target_precision": 0.95,
+    "selection": "lowest 0.001-grid threshold meeting precision, which maximizes accepted OOF pixels",
+    "frozen_before_fixed_validation": true,
+    "frozen_artifact_sha256": "e96fbb36f91d6faf3dd1e2c9b57ec81acadd014aea008fe39d92a6f677bf1b62",
+    "frozen_values": {"background": 0.0, "deck": 0.667, "stay_cable": 0.911, "tower": 0.942, "foundation": 0.999}
+  },
+  "qualification": {
+    "stay_cable_OOF_precision_min": 0.95,
+    "stay_cable_fixed_validation_precision_min": 0.95,
+    "stay_cable_OOF_recall_min": 0.10,
+    "stay_cable_fixed_validation_recall_min": 0.10,
+    "stay_cable_OOF_view_coverage_min": 0.50,
+    "deck_tower_foundation_fixed_validation_precision_min": 0.95,
+    "fixed_validation_mIoU_min": "SEM-001 mIoU with background",
+    "worst10_and_140_146_tolerance": "not below matched SEM-001 foreground mIoU by more than 0.01",
+    "remote_stay_cable_false_positive_share_max": 0.50,
+    "fold_consistency": "each fold must independently reach stay_cable precision 0.95 and recall 0.10 under the single global OOF threshold"
+  },
+  "outcomes": ["eligible_for_separate_sem005_3d_preregistration", "not_eligible_for_pseudo_labels"],
+  "automatic_3d_training": false
+}

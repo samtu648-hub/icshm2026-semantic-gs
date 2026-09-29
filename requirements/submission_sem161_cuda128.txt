@@ -1,0 +1,20 @@
+# Recorded runtime for SUBMIT-030 local audit (Linux, CUDA 12.8, Python 3.12).
+# The Scaffold CUDA extensions are built from the bundled source snapshot; do
+# not substitute the old upstream environment.yml, which pins an incompatible
+# Torch/CUDA stack. Resolve CUDA-specific Torch wheels from the matching index.
+torch==2.11.0+cu128
+torchvision==0.26.0+cu128
+transformers==5.5.3
+numpy==1.26.4
+Pillow==10.2.0
+opencv-python-headless==4.11.0.86
+plyfile==0.8.1
+scipy==1.17.1
+tqdm==4.67.3
+einops==0.8.2
+jaxtyping==0.3.11
+safetensors==0.7.0
+tokenizers==0.22.2
+PyYAML==6.0.3
+requests==2.33.1
+filelock==3.25.2

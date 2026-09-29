@@ -1,0 +1,5858 @@
+{
+  "class_mapping": {
+    "background": 0,
+    "deck": 1,
+    "foundation": 4,
+    "stay_cable": 2,
+    "tower": 3
+  },
+  "coordinate_alignment": "Each LabelMe polygon vertex is first accepted within a 1e-6 px closed-boundary tolerance, clipped to the valid source grid, mapped distorted-to-PINHOLE by cv2.undistortPoints(K, [k1,0,0,0,0], P=K), rounded to nearest pixel, then rasterized with cv2.fillPoly.",
+  "ignore_policy": "No released ignore/void labels; every pixel is evaluated as one of official IDs 0..4.",
+  "image_count": 293,
+  "label_manifest_id": "sem_001_label_manifest_v1",
+  "output_grid": "R1 full-frame PINHOLE, 1320x989, same K, no crop",
+  "overlap_rule": "LabelMe source-list z-order: each later polygon overwrites already-filled pixels.",
+  "pixel_counts_all": {
+    "0": 327093180,
+    "1": 19287929,
+    "2": 26909541,
+    "3": 6860813,
+    "4": 2354177
+  },
+  "pixel_counts_train": {
+    "0": 239361935,
+    "1": 15037817,
+    "2": 23862905,
+    "3": 5450542,
+    "4": 2186921
+  },
+  "pixel_counts_validation": {
+    "0": 87731245,
+    "1": 4250112,
+    "2": 3046636,
+    "3": 1410271,
+    "4": 167256
+  },
+  "records": [
+    {
+      "image": "001.png",
+      "label_png": "labels/001.png",
+      "label_png_sha256": "3d273135af56430ac72e8bf28ba736787ea8e0dcbb9c7ea6241393b59891ed15",
+      "pixel_counts": {
+        "0": 1114211,
+        "1": 55274,
+        "2": 53843,
+        "3": 43766,
+        "4": 38386
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 8,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/001.json",
+      "source_json_sha256": "ce46a557f7f45300e9090fbedb5ab4c0599ff712d59ab2290e079552c5d02949"
+    },
+    {
+      "image": "002.png",
+      "label_png": "labels/002.png",
+      "label_png_sha256": "11e084da40c9595e6af6ab31f692a3dd1e639cc66937b4b7992809dd93adcceb",
+      "pixel_counts": {
+        "0": 1169712,
+        "1": 75275,
+        "2": 10921,
+        "3": 11218,
+        "4": 38354
+      },
+      "shape_counts": {
+        "deck": 1,
+        "foundation": 10,
+        "stay_cable": 2,
+        "tower": 1
+      },
+      "source_json": "json/002.json",
+      "source_json_sha256": "86224d2d2bc05babdd3103ddb3192d7d27af2a52b48be1f8a97f519b526ea2bf"
+    },
+    {
+      "image": "003.png",
+      "label_png": "labels/003.png",
+      "label_png_sha256": "9df10c3a5596e1d0b14e3b806f94f1c79d984d1dbec5c163f8806b47cacfb54e",
+      "pixel_counts": {
+        "0": 982817,
+        "1": 97874,
+        "2": 86659,
+        "3": 94590,
+        "4": 43540
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 16,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/003.json",
+      "source_json_sha256": "b58a77bbf253a158e7c84ba89d12ac2bd2c104e757e48fc215472e3e5cfa860d"
+    },
+    {
+      "image": "004.png",
+      "label_png": "labels/004.png",
+      "label_png_sha256": "3bddb66d9385b50b03547fe377eedc72f72e959a08f6f01e044d059e6c83f58e",
+      "pixel_counts": {
+        "0": 892599,
+        "1": 96755,
+        "2": 202568,
+        "3": 78210,
+        "4": 35348
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 14,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/004.json",
+      "source_json_sha256": "c1dd69356dcf745cec3e11664308680b2ea9196b0d6ec1aeeebdb6f1a8be5319"
+    },
+    {
+      "image": "005.png",
+      "label_png": "labels/005.png",
+      "label_png_sha256": "4c7d71c4530fd4bb9f13a9b3158198d3bedb019b0325d4285d58fd5083f2eac5",
+      "pixel_counts": {
+        "0": 876069,
+        "1": 97560,
+        "2": 246746,
+        "3": 59084,
+        "4": 26021
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 9,
+        "stay_cable": 6,
+        "tower": 2
+      },
+      "source_json": "json/005.json",
+      "source_json_sha256": "5dca7a39d1cb6e10cff6e62ae5001b91c14dfcb500abee7e250c4011806ba45a"
+    },
+    {
+      "image": "006.png",
+      "label_png": "labels/006.png",
+      "label_png_sha256": "128e37a935c99884c6065acc657c0bc449bc89ad51fb6695999b3548c52d145f",
+      "pixel_counts": {
+        "0": 890701,
+        "1": 104898,
+        "2": 243033,
+        "3": 45992,
+        "4": 20856
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 8,
+        "stay_cable": 5,
+        "tower": 2
+      },
+      "source_json": "json/006.json",
+      "source_json_sha256": "d0978b31fd8ed4301fb80a3f228ac92cc3137be8d0200a84384b9b888e210fb2"
+    },
+    {
+      "image": "007.png",
+      "label_png": "labels/007.png",
+      "label_png_sha256": "b4dd4b1de885339ba0ccc4fb13be9efc2854927018fd540780546f4645e4b2fb",
+      "pixel_counts": {
+        "0": 961596,
+        "1": 87713,
+        "2": 205321,
+        "3": 33669,
+        "4": 17181
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 8,
+        "stay_cable": 5,
+        "tower": 2
+      },
+      "source_json": "json/007.json",
+      "source_json_sha256": "e9490a703611fa20c2b3bf0e828454720cecee229491a65e9564548adc4b0e0c"
+    },
+    {
+      "image": "008.png",
+      "label_png": "labels/008.png",
+      "label_png_sha256": "7db93588f91e0f3f47fd28387e4efb416ccae2c99838320737f29001c9ed2882",
+      "pixel_counts": {
+        "0": 993104,
+        "1": 84655,
+        "2": 187066,
+        "3": 29270,
+        "4": 11385
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 4,
+        "tower": 2
+      },
+      "source_json": "json/008.json",
+      "source_json_sha256": "8c50d131b333d53ba73e1bed4c321899423612020928ae5e5ff23692f8445536"
+    },
+    {
+      "image": "009.png",
+      "label_png": "labels/009.png",
+      "label_png_sha256": "efd856e10c37d1f39d11c848ff258e931933b97928a0ef7dd1b1ee15e7455d02",
+      "pixel_counts": {
+        "0": 1024129,
+        "1": 62710,
+        "2": 179532,
+        "3": 26780,
+        "4": 12329
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 5,
+        "tower": 2
+      },
+      "source_json": "json/009.json",
+      "source_json_sha256": "cba8634994fc5a286e709598ae93d7712555b48bf0feeb35a6b080c07c58acbc"
+    },
+    {
+      "image": "010.png",
+      "label_png": "labels/010.png",
+      "label_png_sha256": "1115c19d92a5d2d9f0dba3771825cb054b389cbdc29a4e3bf510f04b881a9f1e",
+      "pixel_counts": {
+        "0": 1001115,
+        "1": 57374,
+        "2": 206659,
+        "3": 30764,
+        "4": 9568
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 4,
+        "stay_cable": 4,
+        "tower": 2
+      },
+      "source_json": "json/010.json",
+      "source_json_sha256": "be97dee4f3c7aff7d139f7b421117de32d729eec07fdbe0672d66c6c1c25bb25"
+    },
+    {
+      "image": "011.png",
+      "label_png": "labels/011.png",
+      "label_png_sha256": "ea461cd11c154d60504bcd1aef123ed004ba319a34d201d1860ad21e5caa718a",
+      "pixel_counts": {
+        "0": 1105747,
+        "1": 52752,
+        "2": 104988,
+        "3": 30595,
+        "4": 11398
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/011.json",
+      "source_json_sha256": "6ddfce6ac12852a03b9c57c6394a256d6bd404592e7ef69017b05901d0d2b9e2"
+    },
+    {
+      "image": "012.png",
+      "label_png": "labels/012.png",
+      "label_png_sha256": "0b9dcd5c67b48107487465601195c096a0981cd3b5e21bbfd87802acabae2504",
+      "pixel_counts": {
+        "0": 928208,
+        "1": 59607,
+        "2": 266071,
+        "3": 37763,
+        "4": 13831
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 4,
+        "tower": 2
+      },
+      "source_json": "json/012.json",
+      "source_json_sha256": "f4da5fa7823199773aa1bf45567a5bea1c02f7c18eae16a78fa12d17ac0088b5"
+    },
+    {
+      "image": "013.png",
+      "label_png": "labels/013.png",
+      "label_png_sha256": "d7f234abab4d989db4729f4950fb37556ef617e1587bec308db4b94a5066c93c",
+      "pixel_counts": {
+        "0": 1225248,
+        "1": 37253,
+        "2": 35364,
+        "3": 5264,
+        "4": 2351
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 2,
+        "stay_cable": 4,
+        "tower": 2
+      },
+      "source_json": "json/013.json",
+      "source_json_sha256": "f5d5edd2840b4f96c05da71a0960d9d26e0f80b96f28cf9fe8ee7e2952f9e926"
+    },
+    {
+      "image": "014.png",
+      "label_png": "labels/014.png",
+      "label_png_sha256": "160e5743956f55fbcc91fd9b053027cdfa31f84167bf2e71e0bbaec1d5cdfc35",
+      "pixel_counts": {
+        "0": 1222898,
+        "1": 39738,
+        "2": 34185,
+        "3": 5740,
+        "4": 2919
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/014.json",
+      "source_json_sha256": "a9843ba5571b32350738f56e801e27b83640c5d3086967f0e36be1d8bb821bc2"
+    },
+    {
+      "image": "015.png",
+      "label_png": "labels/015.png",
+      "label_png_sha256": "cd608255fc64fb70260ee64a06a1dd8b0e7923469064fb7638db47715cfb19f6",
+      "pixel_counts": {
+        "0": 1213983,
+        "1": 42392,
+        "2": 38781,
+        "3": 7026,
+        "4": 3298
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/015.json",
+      "source_json_sha256": "50b3334c6ec89f2cc8dd8ef864055d4ae060badce326f79f9b13db251f4da058"
+    },
+    {
+      "image": "016.png",
+      "label_png": "labels/016.png",
+      "label_png_sha256": "7a4a3ddd643bd52c8fee97a4ccddab52619b6b738b690379818c7b80dbac0400",
+      "pixel_counts": {
+        "0": 1186709,
+        "1": 54482,
+        "2": 52181,
+        "3": 8381,
+        "4": 3727
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/016.json",
+      "source_json_sha256": "c075bfc0b467883b41e5490a97588a7318838e1fc833e0196926530455b2cac6"
+    },
+    {
+      "image": "017.png",
+      "label_png": "labels/017.png",
+      "label_png_sha256": "52b2f0ade354ed07325de69d60f6cac2707d0c5c242b94f5a524012d1cfd5fed",
+      "pixel_counts": {
+        "0": 1172386,
+        "1": 52124,
+        "2": 67895,
+        "3": 8911,
+        "4": 4164
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 4,
+        "stay_cable": 4,
+        "tower": 2
+      },
+      "source_json": "json/017.json",
+      "source_json_sha256": "b7147f2f2cb859f12f111f243893ecf1d6d4817ce8d988df7e9e0e87a88cadf8"
+    },
+    {
+      "image": "018.png",
+      "label_png": "labels/018.png",
+      "label_png_sha256": "f585c6330021e48d738f529aa6335bd018b4aff9c9eb7d30ae2c82c3d8cf1ffa",
+      "pixel_counts": {
+        "0": 1137844,
+        "1": 60094,
+        "2": 90489,
+        "3": 12224,
+        "4": 4829
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/018.json",
+      "source_json_sha256": "b84bbbccfd1e377b79df184b06ec809bc6598f416c23caa925416a611fe32ae8"
+    },
+    {
+      "image": "019.png",
+      "label_png": "labels/019.png",
+      "label_png_sha256": "497921af4967216c7f3fbd9d4f4fa4d6bc0bf4b4b70f3dd1ec5717baa68795ef",
+      "pixel_counts": {
+        "0": 1077820,
+        "1": 79150,
+        "2": 125839,
+        "3": 15697,
+        "4": 6974
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 2,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/019.json",
+      "source_json_sha256": "5dce79a9482ecbb54cb3618e9155922f828602419ea8bb8f0be5f139b08cbbe7"
+    },
+    {
+      "image": "020.png",
+      "label_png": "labels/020.png",
+      "label_png_sha256": "ad2da5821e5baa55ea51ebd0ee4746099827468e71c5fe9498ab769a22ffac69",
+      "pixel_counts": {
+        "0": 1087255,
+        "1": 59068,
+        "2": 130978,
+        "3": 18672,
+        "4": 9507
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 7,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/020.json",
+      "source_json_sha256": "b1cb5fc9c6102f6a00dde558d4f64fabb0639b3df90984efa3f2c320cb122ba1"
+    },
+    {
+      "image": "021.png",
+      "label_png": "labels/021.png",
+      "label_png_sha256": "d883be5b80d1bf05520f76d9928b7566beacd5aaff0a6e95740913b535f3950a",
+      "pixel_counts": {
+        "0": 1107649,
+        "1": 37010,
+        "2": 109146,
+        "3": 44478,
+        "4": 7197
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 3,
+        "stay_cable": 6,
+        "tower": 3
+      },
+      "source_json": "json/021.json",
+      "source_json_sha256": "5693aceea9d3b3b66d11b54dabeeb07998090549692fd1796c9cb0a74eb19e1b"
+    },
+    {
+      "image": "022.png",
+      "label_png": "labels/022.png",
+      "label_png_sha256": "48a49b6a1cb89ece189f43a5a63fa7133f4233003ead85a664ae3455a72909f8",
+      "pixel_counts": {
+        "0": 1104898,
+        "1": 48404,
+        "2": 125547,
+        "3": 18994,
+        "4": 7637
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/022.json",
+      "source_json_sha256": "af9e095345b5568263009dd33f6b1db63a4894a4d31b6c4ae7ee28b33cdb7328"
+    },
+    {
+      "image": "023.png",
+      "label_png": "labels/023.png",
+      "label_png_sha256": "360784e80e101b751b3ee4fca9c0a2b4ec4133ecb190798fadc3b527ae982975",
+      "pixel_counts": {
+        "0": 1133558,
+        "1": 95301,
+        "2": 61261,
+        "3": 10311,
+        "4": 5049
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 2,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/023.json",
+      "source_json_sha256": "c9e3f27775fed6636a157898f004c1628ae6693b74a816d88bc13bf7bd71dc47"
+    },
+    {
+      "image": "024.png",
+      "label_png": "labels/024.png",
+      "label_png_sha256": "2be8796223f9d786a65ef7fec82756a30fc3f05e15c05674eb5a6115e1cf619a",
+      "pixel_counts": {
+        "0": 1081206,
+        "1": 71830,
+        "2": 126696,
+        "3": 17171,
+        "4": 8577
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/024.json",
+      "source_json_sha256": "a3fc9cb12029d37f8970e2cfc085427313f907f23f9bb1bee77aea71df1b36e5"
+    },
+    {
+      "image": "025.png",
+      "label_png": "labels/025.png",
+      "label_png_sha256": "e706fae7143223e46563eeb6ade352ea3dbc606404a4d2fc388e71dc77f1f071",
+      "pixel_counts": {
+        "0": 1066431,
+        "1": 72916,
+        "2": 138993,
+        "3": 18109,
+        "4": 9031
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/025.json",
+      "source_json_sha256": "8b761f07e14b956aff26528b0d719cfae0a569f6b056785e845afdd125d720f8"
+    },
+    {
+      "image": "026.png",
+      "label_png": "labels/026.png",
+      "label_png_sha256": "03fa5bf820834e14e78bf59a2ff56a4a76d7750b9afcfeeb9cd5e80c2a16f286",
+      "pixel_counts": {
+        "0": 1012398,
+        "1": 84818,
+        "2": 174804,
+        "3": 23112,
+        "4": 10348
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/026.json",
+      "source_json_sha256": "6fc81ca6701170c06e4e9a9bad8e2799e0980796fc20f902ddfd26c056ab2a89"
+    },
+    {
+      "image": "027.png",
+      "label_png": "labels/027.png",
+      "label_png_sha256": "93e0c2155eb4d3815483db1fe75f6928fcbc6e61c631d3e68ea9b99e291c18ea",
+      "pixel_counts": {
+        "0": 1027272,
+        "1": 68356,
+        "2": 174429,
+        "3": 23964,
+        "4": 11459
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 7,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/027.json",
+      "source_json_sha256": "d57c0bccbf31ec462505ead36e4a2765da70a51701d3171500b47502b5add739"
+    },
+    {
+      "image": "028.png",
+      "label_png": "labels/028.png",
+      "label_png_sha256": "3091a2d43af85a6933e8d959cfbbf39283188ad6968f1bb7f5534674f3809923",
+      "pixel_counts": {
+        "0": 1036625,
+        "1": 66233,
+        "2": 166341,
+        "3": 24828,
+        "4": 11453
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 10,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/028.json",
+      "source_json_sha256": "3293da520d0e915c357fc68f8631949ecbf4b53542580e5332710cd2c67d20f4"
+    },
+    {
+      "image": "029.png",
+      "label_png": "labels/029.png",
+      "label_png_sha256": "8bf4f3c6e6079c13a32d05f93886edb17e3351ef3707a8b5761a80ff64d8c93c",
+      "pixel_counts": {
+        "0": 1067026,
+        "1": 51245,
+        "2": 148921,
+        "3": 23764,
+        "4": 14524
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 11,
+        "stay_cable": 5,
+        "tower": 1
+      },
+      "source_json": "json/029.json",
+      "source_json_sha256": "fa76e9dac09d27a9bb62535de63679b806d87031e04f9bff1b8fea5a814914ba"
+    },
+    {
+      "image": "030.png",
+      "label_png": "labels/030.png",
+      "label_png_sha256": "b2c4afa8af78340c332175092faaf8943dadd5fda57d9425f2d576d0cc4d1586",
+      "pixel_counts": {
+        "0": 1080337,
+        "1": 44898,
+        "2": 141471,
+        "3": 22948,
+        "4": 15826
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 12,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/030.json",
+      "source_json_sha256": "a920214ec165bcda4077a3f54178e266e8d8feeb3fbc346b9ebac3e458c63120"
+    },
+    {
+      "image": "031.png",
+      "label_png": "labels/031.png",
+      "label_png_sha256": "25b73bde81839076503fefc19d75e6661ab7fc4a7a10fae83ab53d1412e05c73",
+      "pixel_counts": {
+        "0": 1085293,
+        "1": 43641,
+        "2": 139730,
+        "3": 26082,
+        "4": 10734
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 8,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/031.json",
+      "source_json_sha256": "b57a6b432eeeba5fbdc74f312a96287653dcd942277aef59ba9e6f3e9d55714a"
+    },
+    {
+      "image": "032.png",
+      "label_png": "labels/032.png",
+      "label_png_sha256": "0db071193d8da1e235aa87440b55f5a1ad41983b721fe6f8724f8811344e3aee",
+      "pixel_counts": {
+        "0": 1071489,
+        "1": 45389,
+        "2": 150577,
+        "3": 33843,
+        "4": 4182
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 2,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/032.json",
+      "source_json_sha256": "63b26e6f0031dd9d6e319321e87341e9eafc9a8a35e4f0421847f33ec525463f"
+    },
+    {
+      "image": "033.png",
+      "label_png": "labels/033.png",
+      "label_png_sha256": "eb002bf0fffa506923c9fca4adec89b7aa469fe3fd05833816ea4ffe047e2ef1",
+      "pixel_counts": {
+        "0": 1033120,
+        "1": 56575,
+        "2": 174703,
+        "3": 31521,
+        "4": 9561
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 4,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/033.json",
+      "source_json_sha256": "d142a47a88b9203fc14fad7a4f69780059305e69a56f5e66356eef66d481f36e"
+    },
+    {
+      "image": "034.png",
+      "label_png": "labels/034.png",
+      "label_png_sha256": "d6f9c0eba0c20708f7afa48eb75fc6986abc5918035104c31dd80d85279723ff",
+      "pixel_counts": {
+        "0": 1040038,
+        "1": 56138,
+        "2": 174657,
+        "3": 25216,
+        "4": 9431
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 3,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/034.json",
+      "source_json_sha256": "bf5037ee51fb986e282833b5696485701db432174975279d59ee0c50053b3903"
+    },
+    {
+      "image": "035.png",
+      "label_png": "labels/035.png",
+      "label_png_sha256": "e62f043ed28ab9fbd6b5b38ea4a25affbadfe74aaa935ed20e5302d4c180aa53",
+      "pixel_counts": {
+        "0": 1060359,
+        "1": 59494,
+        "2": 139809,
+        "3": 35727,
+        "4": 10091
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 4,
+        "stay_cable": 2,
+        "tower": 1
+      },
+      "source_json": "json/035.json",
+      "source_json_sha256": "8e4b9a5fab1a1fcc3705b68c373ba6f0989df0dc42a31952d067ce7882bf123f"
+    },
+    {
+      "image": "036.png",
+      "label_png": "labels/036.png",
+      "label_png_sha256": "8de06b843597f68ec4aae8610177bc06768b2e69adc9408ae7f031489a158a92",
+      "pixel_counts": {
+        "0": 1086393,
+        "1": 60671,
+        "2": 111813,
+        "3": 40592,
+        "4": 6011
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 2,
+        "stay_cable": 2,
+        "tower": 2
+      },
+      "source_json": "json/036.json",
+      "source_json_sha256": "765edb325a1d3e8abf96412a3a8c7a9b623abf1eaf376a0f50de2924509cff68"
+    },
+    {
+      "image": "037.png",
+      "label_png": "labels/037.png",
+      "label_png_sha256": "0b60c9707a0da78bb4f3a8f554a9cf48bdf30f2093462bf49f44b1f80231b0bd",
+      "pixel_counts": {
+        "0": 1102078,
+        "1": 61532,
+        "2": 94819,
+        "3": 38586,
+        "4": 8465
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 2,
+        "stay_cable": 4,
+        "tower": 2
+      },
+      "source_json": "json/037.json",
+      "source_json_sha256": "b2691d94ad19c7dc2cd98a59d98776a4d0746e66a7fe0cf7a92b8697b906b189"
+    },
+    {
+      "image": "038.png",
+      "label_png": "labels/038.png",
+      "label_png_sha256": "1bb3504fb298d743ac9095aa243ccb9919de449e4a8d0f5515d41671cc74bd92",
+      "pixel_counts": {
+        "0": 1130398,
+        "1": 55933,
+        "2": 76182,
+        "3": 32101,
+        "4": 10866
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 4,
+        "stay_cable": 4,
+        "tower": 2
+      },
+      "source_json": "json/038.json",
+      "source_json_sha256": "76c10e31a09c58279a718f926340526ba87bb8bc1f95fe6643761e6475c45392"
+    },
+    {
+      "image": "039.png",
+      "label_png": "labels/039.png",
+      "label_png_sha256": "bde5e40c78ea7322bd1c8f3a24a921c4296a08d85fcb77560d07c804ab0c78ee",
+      "pixel_counts": {
+        "0": 1153383,
+        "1": 48432,
+        "2": 66631,
+        "3": 25635,
+        "4": 11399
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 4,
+        "tower": 2
+      },
+      "source_json": "json/039.json",
+      "source_json_sha256": "e8054280496452abababe046fb38101e093384378bc2da52d7cdf7657734de78"
+    },
+    {
+      "image": "040.png",
+      "label_png": "labels/040.png",
+      "label_png_sha256": "a2ac9a91bc704a3a4e8e9224251b76f2dfb57fc573dcea7c3a16abaee8b4f255",
+      "pixel_counts": {
+        "0": 1133066,
+        "1": 51784,
+        "2": 75681,
+        "3": 31002,
+        "4": 13947
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 5,
+        "tower": 2
+      },
+      "source_json": "json/040.json",
+      "source_json_sha256": "3ad8b7f245463c0a78524b2905902504220d4500023184253ae11f3f0632d671"
+    },
+    {
+      "image": "041.png",
+      "label_png": "labels/041.png",
+      "label_png_sha256": "f3c45fb9a460cca493e9d4947aa7da7d3187b80bbd11cb3059647b0d38d63e32",
+      "pixel_counts": {
+        "0": 1107695,
+        "1": 53001,
+        "2": 88589,
+        "3": 39487,
+        "4": 16708
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/041.json",
+      "source_json_sha256": "8fe7f87f5dd8367cad1d9d50cb6d584c331ae4b92c65e004de27382be03b5c9b"
+    },
+    {
+      "image": "042.png",
+      "label_png": "labels/042.png",
+      "label_png_sha256": "737df5e1efe14a782c1c66f21eb5505d4a99be3d207adb152b14628a0d5d769a",
+      "pixel_counts": {
+        "0": 1092760,
+        "1": 72314,
+        "2": 57336,
+        "3": 58226,
+        "4": 24844
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 8,
+        "stay_cable": 4,
+        "tower": 2
+      },
+      "source_json": "json/042.json",
+      "source_json_sha256": "182d6b78a0d5fcca2b81e3d9d19c5805fe1439e1736797aa3d35c1adbd130203"
+    },
+    {
+      "image": "043.png",
+      "label_png": "labels/043.png",
+      "label_png_sha256": "29d631b603c41dec00e1984930893bfb41f94abdd7c015ce919c25a4b1312620",
+      "pixel_counts": {
+        "0": 1108351,
+        "1": 58151,
+        "2": 76436,
+        "3": 41429,
+        "4": 21113
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 8,
+        "stay_cable": 7,
+        "tower": 3
+      },
+      "source_json": "json/043.json",
+      "source_json_sha256": "76bd5d18017d824f66fe91d0fe57c7f0132064815ed6643c49ae90b4fd5b042e"
+    },
+    {
+      "image": "044.png",
+      "label_png": "labels/044.png",
+      "label_png_sha256": "cf44f9e05d1684f21c650ef7d3eb80c991303239e77af73707e9eff666ac7a09",
+      "pixel_counts": {
+        "0": 1109165,
+        "1": 61968,
+        "2": 74215,
+        "3": 42428,
+        "4": 17704
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 6,
+        "stay_cable": 6,
+        "tower": 3
+      },
+      "source_json": "json/044.json",
+      "source_json_sha256": "f758ea232a06a0cc3618b4b056a3b162996b888b6d6ffdd5f2a18708b6c983b9"
+    },
+    {
+      "image": "045.png",
+      "label_png": "labels/045.png",
+      "label_png_sha256": "17b8bc69c4ed288b52d8580b9b671a4082f536426b59e948e00bc8bbc4116f11",
+      "pixel_counts": {
+        "0": 1115593,
+        "1": 60238,
+        "2": 69055,
+        "3": 42490,
+        "4": 18104
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 7,
+        "stay_cable": 6,
+        "tower": 4
+      },
+      "source_json": "json/045.json",
+      "source_json_sha256": "f26c5e91be112fe4f4389e208c9dd4ce0a3b68ff42aba5ba84a3d983b6728a47"
+    },
+    {
+      "image": "046.png",
+      "label_png": "labels/046.png",
+      "label_png_sha256": "08492c0b85ddfc964085b1bd8b34b8c79c468e2573739cafd62e239a86e1f9b1",
+      "pixel_counts": {
+        "0": 1097239,
+        "1": 75580,
+        "2": 70649,
+        "3": 50235,
+        "4": 11777
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 8,
+        "stay_cable": 7,
+        "tower": 3
+      },
+      "source_json": "json/046.json",
+      "source_json_sha256": "e702862ee7b5aa98ee61492eb07fb273b27f62bb362e987bb0929a7dde1d3db3"
+    },
+    {
+      "image": "047.png",
+      "label_png": "labels/047.png",
+      "label_png_sha256": "066739e35486d5f0934d3741e8181a805236b33501200cdbc7f386a505a7fa61",
+      "pixel_counts": {
+        "0": 1079402,
+        "1": 84884,
+        "2": 75347,
+        "3": 57542,
+        "4": 8305
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 4,
+        "stay_cable": 8,
+        "tower": 3
+      },
+      "source_json": "json/047.json",
+      "source_json_sha256": "6b9dcc42a142703cd2758eb95320459d8624931353946bc5af11fec9e8ff695d"
+    },
+    {
+      "image": "048.png",
+      "label_png": "labels/048.png",
+      "label_png_sha256": "bbdc843b91ff9a61b3be31f56345d595b7f67175e3ba680d946d883c6b4f79b7",
+      "pixel_counts": {
+        "0": 1089854,
+        "1": 74999,
+        "2": 70756,
+        "3": 63202,
+        "4": 6669
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 5,
+        "stay_cable": 5,
+        "tower": 3
+      },
+      "source_json": "json/048.json",
+      "source_json_sha256": "5a21c88571bb95fced51ea0adde047a1a655ab97bfdd392424f173647b256e43"
+    },
+    {
+      "image": "049.png",
+      "label_png": "labels/049.png",
+      "label_png_sha256": "1e7088612cb96db911c20b67d3822766fde9c26c0c924dc1176f0f090243f462",
+      "pixel_counts": {
+        "0": 1131457,
+        "1": 117017,
+        "2": 19298,
+        "4": 37708
+      },
+      "shape_counts": {
+        "deck": 1,
+        "foundation": 11,
+        "stay_cable": 2
+      },
+      "source_json": "json/049.json",
+      "source_json_sha256": "56aaa0ed346e4f95176eba88b1e974c14f2b4a38798ea3df50ce4df738d366d7"
+    },
+    {
+      "image": "050.png",
+      "label_png": "labels/050.png",
+      "label_png_sha256": "6ea71e5abb861c5156a936d41673408d1e3af5f88b074476ded477d48f2cd384",
+      "pixel_counts": {
+        "0": 1111497,
+        "1": 128771,
+        "2": 32005,
+        "4": 33207
+      },
+      "shape_counts": {
+        "deck": 1,
+        "foundation": 8,
+        "stay_cable": 1
+      },
+      "source_json": "json/050.json",
+      "source_json_sha256": "c34e7a0a3587bcff6183fed10994c19e60f46bb6df6247edfc7760b3be631b81"
+    },
+    {
+      "image": "051.png",
+      "label_png": "labels/051.png",
+      "label_png_sha256": "05dd32bbb8abce5c51f92a9c5f702294762b204e0ce499bde68a157e3daed6ca",
+      "pixel_counts": {
+        "0": 1087411,
+        "1": 133847,
+        "2": 30177,
+        "4": 54045
+      },
+      "shape_counts": {
+        "deck": 1,
+        "foundation": 7,
+        "stay_cable": 2
+      },
+      "source_json": "json/051.json",
+      "source_json_sha256": "d951e4d06b7c9c712ee78926a5eed94adb22fb0d37d8333cf14538ae8f4af6ac"
+    },
+    {
+      "image": "052.png",
+      "label_png": "labels/052.png",
+      "label_png_sha256": "19442d4e3a7e39d7ecb3fa232297243bae32b91c3aef79d3572f14469219352f",
+      "pixel_counts": {
+        "0": 1094778,
+        "1": 118562,
+        "2": 20853,
+        "4": 71287
+      },
+      "shape_counts": {
+        "deck": 1,
+        "foundation": 6,
+        "stay_cable": 2
+      },
+      "source_json": "json/052.json",
+      "source_json_sha256": "1a56e55dadb40459de265b1f6efa7ad0a9195145a9c05ebf10378f7bf40f5437"
+    },
+    {
+      "image": "053.png",
+      "label_png": "labels/053.png",
+      "label_png_sha256": "e80c0a5951d94dae118b06bb084e5f747039443ee51da804cd4d3b9fe0522fc2",
+      "pixel_counts": {
+        "0": 817568,
+        "1": 120676,
+        "2": 311049,
+        "3": 50258,
+        "4": 5929
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 2,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/053.json",
+      "source_json_sha256": "2c11a97d1edbf0d0cc6d64fd7bfe1a9be9d909d445472fe959a3f1f56b7cd41c"
+    },
+    {
+      "image": "054.png",
+      "label_png": "labels/054.png",
+      "label_png_sha256": "95cbc028defe95a71819abe1c73fb9b351f9b27e1ed25f6b030bf660f1c3d3b0",
+      "pixel_counts": {
+        "0": 1214381,
+        "1": 51991,
+        "2": 20374,
+        "3": 16727,
+        "4": 2007
+      },
+      "shape_counts": {
+        "deck": 4,
+        "foundation": 3,
+        "stay_cable": 4,
+        "tower": 2
+      },
+      "source_json": "json/054.json",
+      "source_json_sha256": "28345aca55336006b93b5f4c56917a84292fd9972727034df3d993f983d7b60d"
+    },
+    {
+      "image": "055.png",
+      "label_png": "labels/055.png",
+      "label_png_sha256": "5aa600454688269962ae52ccd918cbf379592a1e86cc722db4f071457d2e3521",
+      "pixel_counts": {
+        "0": 1224741,
+        "1": 51212,
+        "2": 11262,
+        "3": 16893,
+        "4": 1372
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 3,
+        "stay_cable": 6,
+        "tower": 2
+      },
+      "source_json": "json/055.json",
+      "source_json_sha256": "dfac0e6f031a9c967a6bdbeb8b38cf7a17411a48f715e65f22d3748d627670c3"
+    },
+    {
+      "image": "056.png",
+      "label_png": "labels/056.png",
+      "label_png_sha256": "56d5adaf9fd6644194534e76c0599864cbe4a0ea71d756c9076a4413522266dd",
+      "pixel_counts": {
+        "0": 1221940,
+        "1": 49593,
+        "2": 17041,
+        "3": 16287,
+        "4": 619
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 3,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/056.json",
+      "source_json_sha256": "db4e82c94f0575fbb9cc9d0247e2da230903f1c423c9cb67f7b77f37f39b63c9"
+    },
+    {
+      "image": "057.png",
+      "label_png": "labels/057.png",
+      "label_png_sha256": "fe344d445ebec5ebe53257a1df25fbac41f7fbe346064ad03c6c586c7981d254",
+      "pixel_counts": {
+        "0": 1232396,
+        "1": 49409,
+        "2": 7187,
+        "3": 16357,
+        "4": 131
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 1,
+        "stay_cable": 4,
+        "tower": 3
+      },
+      "source_json": "json/057.json",
+      "source_json_sha256": "73cbfd59da94a59e26dcfd443fc65412a4850b3b8e399a2f3674a57834fedc15"
+    },
+    {
+      "image": "058.png",
+      "label_png": "labels/058.png",
+      "label_png_sha256": "40799254d933dd71c7ac2ed9fc1664ee766ea568b91a593cea46d963e55de7fd",
+      "pixel_counts": {
+        "0": 1229305,
+        "1": 48856,
+        "2": 12038,
+        "3": 15182,
+        "4": 99
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 1,
+        "stay_cable": 4,
+        "tower": 3
+      },
+      "source_json": "json/058.json",
+      "source_json_sha256": "42ccdd8a76028370e507d6e1e7adcdf2f387fdefa5050a024302f7382e522d1a"
+    },
+    {
+      "image": "059.png",
+      "label_png": "labels/059.png",
+      "label_png_sha256": "98f46be729669c3f7c40a8ff604a312ed4c7ab6e5b37f79456ba1f0107c3b523",
+      "pixel_counts": {
+        "0": 1232278,
+        "1": 51156,
+        "2": 6396,
+        "3": 15650
+      },
+      "shape_counts": {
+        "deck": 2,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/059.json",
+      "source_json_sha256": "c376f6491d4cf67c0f2b4bee8f4b9e9542be078106fde501782b2ebe87c1f568"
+    },
+    {
+      "image": "060.png",
+      "label_png": "labels/060.png",
+      "label_png_sha256": "1aad0012c0194353b59326857209e5dd16c205a1989630bdf6c83b47bc4fd8c8",
+      "pixel_counts": {
+        "0": 1228542,
+        "1": 53504,
+        "2": 8424,
+        "3": 15010
+      },
+      "shape_counts": {
+        "deck": 2,
+        "stay_cable": 4,
+        "tower": 3
+      },
+      "source_json": "json/060.json",
+      "source_json_sha256": "1c23a73b6c4b9f052432f04096c7ac765c7b68d8dc789799cfa46f6b434bfb7c"
+    },
+    {
+      "image": "061.png",
+      "label_png": "labels/061.png",
+      "label_png_sha256": "461c8c399a90baf1e5d98519397e26f57e3bbf470d7e0f66fab1e9612dc1d7ab",
+      "pixel_counts": {
+        "0": 1229477,
+        "1": 52397,
+        "2": 8469,
+        "3": 15137
+      },
+      "shape_counts": {
+        "deck": 2,
+        "stay_cable": 3,
+        "tower": 3
+      },
+      "source_json": "json/061.json",
+      "source_json_sha256": "1ea8a8c468547c155ae911fdf74089aefd008ff497bcf381603ee74bd085e13b"
+    },
+    {
+      "image": "062.png",
+      "label_png": "labels/062.png",
+      "label_png_sha256": "cc4895c32b1a9b2c92b46e4cf89c9b4a2bb237c0a491e29149b1582915fbf458",
+      "pixel_counts": {
+        "0": 1230341,
+        "1": 49972,
+        "2": 10187,
+        "3": 14980
+      },
+      "shape_counts": {
+        "deck": 2,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/062.json",
+      "source_json_sha256": "e6fd50bef672b06f9ddae1866f81c66c783a131b1773e901550a99ccd9186f47"
+    },
+    {
+      "image": "063.png",
+      "label_png": "labels/063.png",
+      "label_png_sha256": "fafa3c06afb657aca85293bab8ddc6b616ec2dad5cbe95fa8639ef22e4472c8c",
+      "pixel_counts": {
+        "0": 1228243,
+        "1": 48255,
+        "2": 12574,
+        "3": 16273,
+        "4": 135
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 2,
+        "stay_cable": 4,
+        "tower": 3
+      },
+      "source_json": "json/063.json",
+      "source_json_sha256": "a7326660562788605f51fd5a8e6601d788e8e892e7e8326d1beee99b26816b0c"
+    },
+    {
+      "image": "064.png",
+      "label_png": "labels/064.png",
+      "label_png_sha256": "cdcab221b38b5e2cc8ea89fa8ae6cfb22485afb73053f39405e8bea172b35bf1",
+      "pixel_counts": {
+        "0": 1225452,
+        "1": 48857,
+        "2": 14945,
+        "3": 16104,
+        "4": 122
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 1,
+        "stay_cable": 4,
+        "tower": 2
+      },
+      "source_json": "json/064.json",
+      "source_json_sha256": "1c5a14f5e00064bbb3294e7eaba5885d6115415ac085a939c298eb8d6e5e9d7a"
+    },
+    {
+      "image": "065.png",
+      "label_png": "labels/065.png",
+      "label_png_sha256": "0bef0b3b7c378c9ec51eb749b82fc1dd29666854aba35101310db2ae191d34cb",
+      "pixel_counts": {
+        "0": 1230972,
+        "1": 50803,
+        "2": 6565,
+        "3": 16569,
+        "4": 571
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 2,
+        "stay_cable": 4,
+        "tower": 2
+      },
+      "source_json": "json/065.json",
+      "source_json_sha256": "1f477e0d20fd9e65431251a08846ae2d4a08a94b9e71e5eab42359b7b2eee7a8"
+    },
+    {
+      "image": "066.png",
+      "label_png": "labels/066.png",
+      "label_png_sha256": "946580edb1a4fe91ebb351c2705b148bd64622f43bd4dc746ada0a3be8edbd8a",
+      "pixel_counts": {
+        "0": 1216521,
+        "1": 50623,
+        "2": 19676,
+        "3": 17132,
+        "4": 1528
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 3,
+        "stay_cable": 4,
+        "tower": 2
+      },
+      "source_json": "json/066.json",
+      "source_json_sha256": "16643d68fbf4aa40e1ec1668d85a20c255399c66cb3f0d9a262b35f2d8fda007"
+    },
+    {
+      "image": "067.png",
+      "label_png": "labels/067.png",
+      "label_png_sha256": "e60326f51753a0b8e5b84639e00596c9e1ae98f21d05b9cb4908279021afd3f7",
+      "pixel_counts": {
+        "0": 1213436,
+        "1": 52483,
+        "2": 19943,
+        "3": 17414,
+        "4": 2204
+      },
+      "shape_counts": {
+        "deck": 4,
+        "foundation": 3,
+        "stay_cable": 4,
+        "tower": 2
+      },
+      "source_json": "json/067.json",
+      "source_json_sha256": "ff2232e4b5d1b89295dec502c801c98d5789141c2905194771411c4af487c423"
+    },
+    {
+      "image": "068.png",
+      "label_png": "labels/068.png",
+      "label_png_sha256": "497781d953f9e01a0069120c5c4e3c8788dc09c248b90039b98396cad02d1e93",
+      "pixel_counts": {
+        "0": 1208594,
+        "1": 53464,
+        "2": 23034,
+        "3": 17772,
+        "4": 2616
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 3,
+        "stay_cable": 4,
+        "tower": 3
+      },
+      "source_json": "json/068.json",
+      "source_json_sha256": "a5f34dbbef81a31fce760c30d20e3e57c63316e2e62409bdcc6b22ca7c8e0e61"
+    },
+    {
+      "image": "069.png",
+      "label_png": "labels/069.png",
+      "label_png_sha256": "0224cc240c5b815380beec6981b27b78b6b59c4645c0f83149e9469a87f4a5f9",
+      "pixel_counts": {
+        "0": 1203226,
+        "1": 55021,
+        "2": 26104,
+        "3": 18297,
+        "4": 2832
+      },
+      "shape_counts": {
+        "deck": 4,
+        "foundation": 3,
+        "stay_cable": 4,
+        "tower": 3
+      },
+      "source_json": "json/069.json",
+      "source_json_sha256": "1af8d125b0ed93ff84c890840f58dff5c376d442170849c32dbe13dddabcb9d4"
+    },
+    {
+      "image": "070.png",
+      "label_png": "labels/070.png",
+      "label_png_sha256": "3cce7f54449c524680bb5daeae8924c4d588e463d5b9d1ce7a7b03c3e54b2d50",
+      "pixel_counts": {
+        "0": 1202266,
+        "1": 55966,
+        "2": 24786,
+        "3": 19368,
+        "4": 3094
+      },
+      "shape_counts": {
+        "deck": 4,
+        "foundation": 4,
+        "stay_cable": 4,
+        "tower": 2
+      },
+      "source_json": "json/070.json",
+      "source_json_sha256": "357edae0d0c3c50d8842faa1304f941a53583a16a5145ec306ac38304b8ebbef"
+    },
+    {
+      "image": "071.png",
+      "label_png": "labels/071.png",
+      "label_png_sha256": "8309cc86f253e03abc56dfa15b653cc874aab919b226abf1def6d666db6a0dd7",
+      "pixel_counts": {
+        "0": 1196216,
+        "1": 57043,
+        "2": 28499,
+        "3": 20669,
+        "4": 3053
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 4,
+        "stay_cable": 4,
+        "tower": 3
+      },
+      "source_json": "json/071.json",
+      "source_json_sha256": "cf3f03dd3ff6e5776f8087732a5a0fef14066ee344593ed69f997e13dfff2def"
+    },
+    {
+      "image": "072.png",
+      "label_png": "labels/072.png",
+      "label_png_sha256": "473f681789ca6cf425fd7a4613f13a069d8619381f4a57d4c7be10fdb0b88167",
+      "pixel_counts": {
+        "0": 1191522,
+        "1": 58841,
+        "2": 30427,
+        "3": 21391,
+        "4": 3299
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 4,
+        "stay_cable": 4,
+        "tower": 3
+      },
+      "source_json": "json/072.json",
+      "source_json_sha256": "3a3a44e5218eb988064515523561cf01abcc75f4c235f08e9dbcaf93aa58fa04"
+    },
+    {
+      "image": "073.png",
+      "label_png": "labels/073.png",
+      "label_png_sha256": "7d1577687cecde74ced5ce72c5ec02dccb3fb7cf3591ded09463b425dff13123",
+      "pixel_counts": {
+        "0": 1185276,
+        "1": 59346,
+        "2": 35555,
+        "3": 21579,
+        "4": 3724
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 5,
+        "stay_cable": 5,
+        "tower": 3
+      },
+      "source_json": "json/073.json",
+      "source_json_sha256": "aeebac9387c811f419364301608f90a47c2be71027d55a4d2acd566c1ffc657d"
+    },
+    {
+      "image": "074.png",
+      "label_png": "labels/074.png",
+      "label_png_sha256": "2b5b3e5afbd66aea83cfcc6a8b6f1625bdfa7c74f98fab7e9df2f08838552983",
+      "pixel_counts": {
+        "0": 1182196,
+        "1": 60942,
+        "2": 36670,
+        "3": 21208,
+        "4": 4464
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 5,
+        "stay_cable": 5,
+        "tower": 3
+      },
+      "source_json": "json/074.json",
+      "source_json_sha256": "87a016a6457a5d6efd4a729c57cdd3711dc8f81c31e9d38a866c7ea41f39b67f"
+    },
+    {
+      "image": "075.png",
+      "label_png": "labels/075.png",
+      "label_png_sha256": "643317b8bab469a448750009660cd6aad42bdece77dc4b1121cbdd6147d5daa0",
+      "pixel_counts": {
+        "0": 1178715,
+        "1": 63147,
+        "2": 37592,
+        "3": 20892,
+        "4": 5134
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 5,
+        "stay_cable": 4,
+        "tower": 3
+      },
+      "source_json": "json/075.json",
+      "source_json_sha256": "30f2dccd0f8136ea5f2c6682096f2c5f2e114a4da96a9791edf78364e803c6d3"
+    },
+    {
+      "image": "076.png",
+      "label_png": "labels/076.png",
+      "label_png_sha256": "f3121a2df134aa1a9964131c19c7260bf8bea98b8ef67b20831af8f8da3cbae1",
+      "pixel_counts": {
+        "0": 1175730,
+        "1": 64600,
+        "2": 39178,
+        "3": 20298,
+        "4": 5674
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 9,
+        "stay_cable": 5,
+        "tower": 3
+      },
+      "source_json": "json/076.json",
+      "source_json_sha256": "9a3dd851b568437ac6f0698c9da0abb1f71040ca5d7ad0dcc22266017f617559"
+    },
+    {
+      "image": "077.png",
+      "label_png": "labels/077.png",
+      "label_png_sha256": "f5bc63ebc0452179cfbe79077558a9e80b7f00602aeffdcca2078fa8b36931c2",
+      "pixel_counts": {
+        "0": 1173413,
+        "1": 65299,
+        "2": 39493,
+        "3": 20022,
+        "4": 7253
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 10,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/077.json",
+      "source_json_sha256": "013a63ce9cdee1cee72a5b59492e9bc6d51471ce29cf735d7efd37800cc6a216"
+    },
+    {
+      "image": "078.png",
+      "label_png": "labels/078.png",
+      "label_png_sha256": "753e197a81b5ce8fb1eb131113ad66a12ee49a68177fee0365bde9a036f78f37",
+      "pixel_counts": {
+        "0": 1168326,
+        "1": 66448,
+        "2": 43195,
+        "3": 19540,
+        "4": 7971
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 10,
+        "stay_cable": 5,
+        "tower": 3
+      },
+      "source_json": "json/078.json",
+      "source_json_sha256": "0010600289680ad4a7b54be1747cf3595b95de870daa7eb8a4ddb51d7e77541c"
+    },
+    {
+      "image": "079.png",
+      "label_png": "labels/079.png",
+      "label_png_sha256": "d4168cc99e7061f0832f94165236dbccbd5a9b34129688799173690c52e6e755",
+      "pixel_counts": {
+        "0": 1166083,
+        "1": 67086,
+        "2": 45094,
+        "3": 19016,
+        "4": 8201
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 10,
+        "stay_cable": 5,
+        "tower": 3
+      },
+      "source_json": "json/079.json",
+      "source_json_sha256": "de6a9d2595d75e89a9eaa44a76fdeacdec2f92c7875f5f72d105254275fbccc4"
+    },
+    {
+      "image": "080.png",
+      "label_png": "labels/080.png",
+      "label_png_sha256": "92ae1e56a98980414b5f5ae2ee29aad36b716dba255fdd6dc1c7747a8554ba12",
+      "pixel_counts": {
+        "0": 1165985,
+        "1": 68600,
+        "2": 43212,
+        "3": 19086,
+        "4": 8597
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 11,
+        "stay_cable": 5,
+        "tower": 3
+      },
+      "source_json": "json/080.json",
+      "source_json_sha256": "213508c2c4ee4851ad7c44eca9460b29dd605c56b91b827d3ecfc3e328542eb4"
+    },
+    {
+      "image": "081.png",
+      "label_png": "labels/081.png",
+      "label_png_sha256": "a33370f84c70c5fede286675c6c0ce127d00110a00f0ba6fb88b7d6dad6331a9",
+      "pixel_counts": {
+        "0": 1163812,
+        "1": 69432,
+        "2": 43771,
+        "3": 18819,
+        "4": 9646
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 10,
+        "stay_cable": 5,
+        "tower": 3
+      },
+      "source_json": "json/081.json",
+      "source_json_sha256": "204c9e89d75a742ed33f1a938e4b174d6daa1d858927eb9565d53e1bb769ff2f"
+    },
+    {
+      "image": "082.png",
+      "label_png": "labels/082.png",
+      "label_png_sha256": "18f93f59b2b5d77e6386893a0b4296b295301f982ada6adfa6d3fc3f8a6a2f19",
+      "pixel_counts": {
+        "0": 1161290,
+        "1": 68716,
+        "2": 46472,
+        "3": 19061,
+        "4": 9941
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 12,
+        "stay_cable": 5,
+        "tower": 3
+      },
+      "source_json": "json/082.json",
+      "source_json_sha256": "afaadbac55e0a03e9db1ea5f1bf7394131e61e8fe9eb51a16597d2bc706ca067"
+    },
+    {
+      "image": "083.png",
+      "label_png": "labels/083.png",
+      "label_png_sha256": "3482fa0ce823526de8323bad0291ddf2e17aaea12abfdee39d48e0751c1d85b7",
+      "pixel_counts": {
+        "0": 1149887,
+        "1": 63383,
+        "2": 49021,
+        "3": 42393,
+        "4": 796
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 4,
+        "stay_cable": 7,
+        "tower": 3
+      },
+      "source_json": "json/083.json",
+      "source_json_sha256": "0817de3971c9d64187f0491b9e93890ac215a9c7d707bb6ac526611ad1ce3d41"
+    },
+    {
+      "image": "084.png",
+      "label_png": "labels/084.png",
+      "label_png_sha256": "c2eca4e665f412760b9d139d06020e667b1ed792933d188b66b4d4bb0c638cde",
+      "pixel_counts": {
+        "0": 1143978,
+        "1": 62752,
+        "2": 55245,
+        "3": 42810,
+        "4": 695
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 1,
+        "stay_cable": 8,
+        "tower": 4
+      },
+      "source_json": "json/084.json",
+      "source_json_sha256": "acf020fc2d93fb64485f725e2cbac7530f2eccc5aae958fd2db734e2cb57ad56"
+    },
+    {
+      "image": "085.png",
+      "label_png": "labels/085.png",
+      "label_png_sha256": "30fcfb85761f49b3f467b4315c9e492fc23473dedd9207d63a0707cf67e8bce9",
+      "pixel_counts": {
+        "0": 1127847,
+        "1": 64181,
+        "2": 70011,
+        "3": 42609,
+        "4": 832
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 1,
+        "stay_cable": 5,
+        "tower": 2
+      },
+      "source_json": "json/085.json",
+      "source_json_sha256": "94c7b94324b82afbdf4261c2397d2c854959cdab1b4b1c21391f765152f4f2a9"
+    },
+    {
+      "image": "086.png",
+      "label_png": "labels/086.png",
+      "label_png_sha256": "97e3523457c625a5464041de9d9ce411ed8c69e0d3e6dd458c8e3c08347cd8d9",
+      "pixel_counts": {
+        "0": 1125254,
+        "1": 69156,
+        "2": 89629,
+        "3": 20662,
+        "4": 779
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 3,
+        "stay_cable": 2,
+        "tower": 2
+      },
+      "source_json": "json/086.json",
+      "source_json_sha256": "05c973fa4388967fe9326c25dbff2cf8b6df01d916579b644c63a1345deabd76"
+    },
+    {
+      "image": "087.png",
+      "label_png": "labels/087.png",
+      "label_png_sha256": "02d3474433512e47f8524b7eaf226025cb74205886971e3681ab09a8818e4bc0",
+      "pixel_counts": {
+        "0": 1126522,
+        "1": 70347,
+        "2": 105765,
+        "3": 2076,
+        "4": 770
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 3,
+        "stay_cable": 2,
+        "tower": 1
+      },
+      "source_json": "json/087.json",
+      "source_json_sha256": "0373f04342c01ae1deb80f3f7ba5a844b7927284dd7c933edd595e4442c06808"
+    },
+    {
+      "image": "088.png",
+      "label_png": "labels/088.png",
+      "label_png_sha256": "40901e03cd3e3f32a3afa0bb54bcecd6fd639f535525df7d0d5a818d0e0fbd48",
+      "pixel_counts": {
+        "0": 1151825,
+        "1": 67656,
+        "2": 82765,
+        "3": 2176,
+        "4": 1058
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 4,
+        "stay_cable": 2,
+        "tower": 1
+      },
+      "source_json": "json/088.json",
+      "source_json_sha256": "34fc5617dea6516992409ca5564270262c6dd76c6e718758a0e273849d414dfb"
+    },
+    {
+      "image": "089.png",
+      "label_png": "labels/089.png",
+      "label_png_sha256": "2fc064764483312ab78a8d80a07a916bd679e4684fbaad5ca67291bb5bbe9033",
+      "pixel_counts": {
+        "0": 1172779,
+        "1": 67032,
+        "2": 62329,
+        "3": 2319,
+        "4": 1021
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 3,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/089.json",
+      "source_json_sha256": "190eea9a9fc7ffc5628131d8b375b32ecf25452a013d9200cb8c539f1e3a6ef8"
+    },
+    {
+      "image": "090.png",
+      "label_png": "labels/090.png",
+      "label_png_sha256": "18546740e41655faf9f4d00949c518024aec18532c6445ac9a5076e4ba996da8",
+      "pixel_counts": {
+        "0": 1130400,
+        "1": 73888,
+        "2": 97399,
+        "3": 2422,
+        "4": 1371
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/090.json",
+      "source_json_sha256": "dd2ab5d84e6e2d55056fe5e50fa4460dd20c4ccf93ca589de375c49a15d91816"
+    },
+    {
+      "image": "092.png",
+      "label_png": "labels/092.png",
+      "label_png_sha256": "ce62ac74e0fbb02a2b73f001819654b7b1e359be52232bd9807054bf6422aedc",
+      "pixel_counts": {
+        "0": 1161018,
+        "1": 76493,
+        "2": 63253,
+        "3": 3230,
+        "4": 1486
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/092.json",
+      "source_json_sha256": "1f6cda29ac5c04c884bf8dcc8666384d58ad3d49b6614d1239b74bd5f7a806ee"
+    },
+    {
+      "image": "093.png",
+      "label_png": "labels/093.png",
+      "label_png_sha256": "20a8c550b69cf30e99964bf751ec7d1e5bf6a84e434dc4b262339f099d197142",
+      "pixel_counts": {
+        "0": 1172312,
+        "1": 75257,
+        "2": 52870,
+        "3": 3364,
+        "4": 1677
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 3,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/093.json",
+      "source_json_sha256": "27b2238ef4a9d7490608274f5a1e340e3b07256ea5b91f6471564cf9d75d2d8f"
+    },
+    {
+      "image": "094.png",
+      "label_png": "labels/094.png",
+      "label_png_sha256": "69da05b5225cb836d8214f02ef8a0ee553183f2c4ad2e7730b744230274e1c3f",
+      "pixel_counts": {
+        "0": 1179671,
+        "1": 74916,
+        "2": 45676,
+        "3": 3551,
+        "4": 1666
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 4,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/094.json",
+      "source_json_sha256": "1e1d1c6e087a54af0c2311fdb5f8ef130f0dabfbd531eb79600493e9d9cd5370"
+    },
+    {
+      "image": "095.png",
+      "label_png": "labels/095.png",
+      "label_png_sha256": "61b2aa992596261441321c8ed7febfd5df804c9a94ccc3ab373a1a2cb94f7061",
+      "pixel_counts": {
+        "0": 1190547,
+        "1": 73675,
+        "2": 35509,
+        "3": 3882,
+        "4": 1867
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 7,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/095.json",
+      "source_json_sha256": "d4f5e64cf1c58cc4bdcb7f145b91626a2ec1a8e88a629bb5e27b2b557d1358d1"
+    },
+    {
+      "image": "096.png",
+      "label_png": "labels/096.png",
+      "label_png_sha256": "eb75ae14bf68d46828bbbfbf9a4204eedb3257f82bc2295717b030d419b0b279",
+      "pixel_counts": {
+        "0": 1196478,
+        "1": 73005,
+        "2": 29990,
+        "3": 4100,
+        "4": 1907
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 4,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/096.json",
+      "source_json_sha256": "73e0a7afdde7743a916af3192e60b08d8db02d2f6096637f6508211939d2a550"
+    },
+    {
+      "image": "097.png",
+      "label_png": "labels/097.png",
+      "label_png_sha256": "71961e78861eb49cda41ea28ea9edd1fbb6e1c531d698eddc57f3d8551a8e53a",
+      "pixel_counts": {
+        "0": 1195423,
+        "1": 74229,
+        "2": 29173,
+        "3": 4504,
+        "4": 2151
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 3,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/097.json",
+      "source_json_sha256": "8c670e679284d960ba359d1deb53e463faf32ba94b4b718085ab00b5978902c3"
+    },
+    {
+      "image": "098.png",
+      "label_png": "labels/098.png",
+      "label_png_sha256": "c8d88a6fc11960041215ff73039d3e93c61d71e2db41c9a8bdae0c2f3f87153d",
+      "pixel_counts": {
+        "0": 1195082,
+        "1": 74461,
+        "2": 28646,
+        "3": 5027,
+        "4": 2264
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 4,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/098.json",
+      "source_json_sha256": "83c7196fb814a525a0a30524a4a8faabb92929354e90f5d19e8cfef2cba65968"
+    },
+    {
+      "image": "099.png",
+      "label_png": "labels/099.png",
+      "label_png_sha256": "602e2031cd2dbc4d56321c9f88651e34f8f4088af8df6b142f40cc0b764eb286",
+      "pixel_counts": {
+        "0": 1195466,
+        "1": 72939,
+        "2": 29424,
+        "3": 5259,
+        "4": 2392
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 3,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/099.json",
+      "source_json_sha256": "4c53b1192c86ff6389a8ee9eb40922aa29cc222d2e27be3f587a5304ea143005"
+    },
+    {
+      "image": "100.png",
+      "label_png": "labels/100.png",
+      "label_png_sha256": "d4e71583019b3defd4831b82a32d22754a34c31d37f5eade492bfe8fc5f1a665",
+      "pixel_counts": {
+        "0": 1191341,
+        "1": 71701,
+        "2": 33954,
+        "3": 5886,
+        "4": 2598
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/100.json",
+      "source_json_sha256": "74c0c371bfc734c9530725b55174dbc505ed8122de5159e547501f7bda03e191"
+    },
+    {
+      "image": "101.png",
+      "label_png": "labels/101.png",
+      "label_png_sha256": "ced754f630fad7dd4d877e675572a93e4d501626bdf65bbb069b8a08b592434e",
+      "pixel_counts": {
+        "0": 1183750,
+        "1": 72823,
+        "2": 39308,
+        "3": 6578,
+        "4": 3021
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/101.json",
+      "source_json_sha256": "dcc39da5c2e295da6a350d23a52ce2bd8e5ec4c7f5552d5510d914f02e792532"
+    },
+    {
+      "image": "102.png",
+      "label_png": "labels/102.png",
+      "label_png_sha256": "58c057b08e774144eebdf12ed704e5c64b94a99919d0156f171ad500a9775475",
+      "pixel_counts": {
+        "0": 1176112,
+        "1": 73684,
+        "2": 45425,
+        "3": 7047,
+        "4": 3212
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/102.json",
+      "source_json_sha256": "3f5bf7776b70040c9fe43279cb25bc66bb0bfa6d8f2547e454cabb8beec36594"
+    },
+    {
+      "image": "103.png",
+      "label_png": "labels/103.png",
+      "label_png_sha256": "8f4015d1c0ac04037a278f2bd63682252f5ffe1695453bff88750f3ee958589f",
+      "pixel_counts": {
+        "0": 1170496,
+        "1": 71070,
+        "2": 52496,
+        "3": 8007,
+        "4": 3411
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/103.json",
+      "source_json_sha256": "4e9dab61d07fe82e0d94682f688796c8e2544ac9d7d9963408ecd4a96a324d57"
+    },
+    {
+      "image": "104.png",
+      "label_png": "labels/104.png",
+      "label_png_sha256": "5bea2c2287e435d024ec744536ce93393c1b9f7ae604433bf11c8fc05ce0b179",
+      "pixel_counts": {
+        "0": 1157102,
+        "1": 70859,
+        "2": 64624,
+        "3": 8945,
+        "4": 3950
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/104.json",
+      "source_json_sha256": "d3e5c59a4c0a819c97b51c09fd2396e597715d64045f5ec43545268ffdfe9183"
+    },
+    {
+      "image": "105.png",
+      "label_png": "labels/105.png",
+      "label_png_sha256": "ff22cbd9a4160d343db8925e39e72876b5f7ddf7e9b6cc8552b73924e22d8cc5",
+      "pixel_counts": {
+        "0": 1145909,
+        "1": 70295,
+        "2": 74951,
+        "3": 10090,
+        "4": 4235
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/105.json",
+      "source_json_sha256": "e4b3331cad103e6d5f40f04180c71932142b0d59f79fceabfdeef2e604392ce3"
+    },
+    {
+      "image": "106.png",
+      "label_png": "labels/106.png",
+      "label_png_sha256": "d27cf24b45c549eedc112908f6673e0ed0eef850cb3c319d8f9753932a9fdc81",
+      "pixel_counts": {
+        "0": 1132303,
+        "1": 68801,
+        "2": 88165,
+        "3": 11424,
+        "4": 4787
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/106.json",
+      "source_json_sha256": "9a4c0d2a196e96ae4840c1bdf346ab59d3d0b4e65ce911f311d77e97aab49f49"
+    },
+    {
+      "image": "107.png",
+      "label_png": "labels/107.png",
+      "label_png_sha256": "e21217d0a36b06f09c8f58412d0f1f87f0cb58ddef489ed4681c484c93113a55",
+      "pixel_counts": {
+        "0": 1119573,
+        "1": 67899,
+        "2": 99397,
+        "3": 13630,
+        "4": 4981
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/107.json",
+      "source_json_sha256": "460bd3f5eaac4eb1f145377af2e2f2827847c8aff679669966ec93de7f459467"
+    },
+    {
+      "image": "108.png",
+      "label_png": "labels/108.png",
+      "label_png_sha256": "afd2d593e7f768a9df7b977c3542f470d8962c117957fd1517356d1c6a41d76b",
+      "pixel_counts": {
+        "0": 1106230,
+        "1": 65540,
+        "2": 112604,
+        "3": 15653,
+        "4": 5453
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/108.json",
+      "source_json_sha256": "8a86543a1843ffd5a088e65da8bba0b2c8d65f4dd9227c60bfb71b92af786501"
+    },
+    {
+      "image": "109.png",
+      "label_png": "labels/109.png",
+      "label_png_sha256": "f1c0ed540652cf2d7ae996d35b639072ddf1d17a3910a5612306f777b4a23668",
+      "pixel_counts": {
+        "0": 1095824,
+        "1": 62510,
+        "2": 122956,
+        "3": 17852,
+        "4": 6338
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/109.json",
+      "source_json_sha256": "3f24ab18a2e8bbc85dad894c1af166f46dcbd2261639ed22cc62cac350c5c00f"
+    },
+    {
+      "image": "110.png",
+      "label_png": "labels/110.png",
+      "label_png_sha256": "169a2c9e095785221dd721347c67fcf338f252f3599435f73cae933f349a291b",
+      "pixel_counts": {
+        "0": 1087793,
+        "1": 62322,
+        "2": 125810,
+        "3": 21983,
+        "4": 7572
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 7,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/110.json",
+      "source_json_sha256": "330e55c70678acc1ff3ae1a2e9fd1a521efdf51565c661e464d14f3935a0990d"
+    },
+    {
+      "image": "111.png",
+      "label_png": "labels/111.png",
+      "label_png_sha256": "d7c593f1ba4ceef92c65763e5a13ef16f9f86829500408b8e27aeb33064444f6",
+      "pixel_counts": {
+        "0": 1074918,
+        "1": 60508,
+        "2": 136405,
+        "3": 25112,
+        "4": 8537
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 8,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/111.json",
+      "source_json_sha256": "4701c56ac6374ff00bb8a22c5580fca8356dd8e3812a2cdfaf5b6f07e5202715"
+    },
+    {
+      "image": "112.png",
+      "label_png": "labels/112.png",
+      "label_png_sha256": "f60df5dfe3dfdb06a50e6d364c6339d44c4226af78f71d7820756bce8ee10ccd",
+      "pixel_counts": {
+        "0": 1067037,
+        "1": 59480,
+        "2": 142689,
+        "3": 27867,
+        "4": 8407
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 7,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/112.json",
+      "source_json_sha256": "ed9ed0070d02cf18b6b16fa5d2198096ab8af2d6822b0a303286f19e311e590c"
+    },
+    {
+      "image": "113.png",
+      "label_png": "labels/113.png",
+      "label_png_sha256": "9411fba9ab5dd2fda5caea06b8e9935344531560227c90a1a5bc651ebe206b12",
+      "pixel_counts": {
+        "0": 1065402,
+        "1": 55435,
+        "2": 144506,
+        "3": 31562,
+        "4": 8575
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 8,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/113.json",
+      "source_json_sha256": "d78b705bb8cce888cfdec4dea00a158299f756f09634de86d2c6e5f41126b5c7"
+    },
+    {
+      "image": "114.png",
+      "label_png": "labels/114.png",
+      "label_png_sha256": "b115c16fbb5e3e2323e672767d2607403a5804209841bc82d7f7c3e6d71920ca",
+      "pixel_counts": {
+        "0": 1069152,
+        "1": 55101,
+        "2": 141460,
+        "3": 32099,
+        "4": 7668
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/114.json",
+      "source_json_sha256": "40d84f4273af87ae04e586647d5ca77fe5f11190aa334a5aac9fbcb218cd18eb"
+    },
+    {
+      "image": "115.png",
+      "label_png": "labels/115.png",
+      "label_png_sha256": "6da605a3781b87c7326914a21d942c98f5186abe1550a100b9ec2dbd97aa815a",
+      "pixel_counts": {
+        "0": 1084882,
+        "1": 53684,
+        "2": 131356,
+        "3": 29100,
+        "4": 6458
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/115.json",
+      "source_json_sha256": "4ce5c728f5062da0d1d6cdd69dd18a3c43aec6319b25cf28f89d39847915810c"
+    },
+    {
+      "image": "116.png",
+      "label_png": "labels/116.png",
+      "label_png_sha256": "e5b79bfe924274e35d0b667e41b1090de38834a1196bcb2cc75e80b47dea935f",
+      "pixel_counts": {
+        "0": 1098219,
+        "1": 55083,
+        "2": 121627,
+        "3": 24748,
+        "4": 5803
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/116.json",
+      "source_json_sha256": "a9e35e7dead43031c35e5d9a963df84aceeaa46d05946cda6439114a518fdf08"
+    },
+    {
+      "image": "117.png",
+      "label_png": "labels/117.png",
+      "label_png_sha256": "e98fad7bdccaa63373732896aac17d8efab3534b626954a859a3ee1d90fa1d3d",
+      "pixel_counts": {
+        "0": 1112268,
+        "1": 56671,
+        "2": 110700,
+        "3": 21028,
+        "4": 4813
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/117.json",
+      "source_json_sha256": "fea140fc199211dca234597253039a561d53b8201d39df37537eba92f3ce1a45"
+    },
+    {
+      "image": "118.png",
+      "label_png": "labels/118.png",
+      "label_png_sha256": "62aef26ae63e37bce1567bac7b6070e29730647453f2509d40411b16337a1eb3",
+      "pixel_counts": {
+        "0": 1129626,
+        "1": 57748,
+        "2": 96506,
+        "3": 17542,
+        "4": 4058
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 7,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/118.json",
+      "source_json_sha256": "a235b615c7ba09bfbabec97cfdeb6e5841d34c065f9679ed4e58b7df9f501dfa"
+    },
+    {
+      "image": "119.png",
+      "label_png": "labels/119.png",
+      "label_png_sha256": "131b693b3a858505d9bce1a6feebb3376dffce3274f703a5502666fc4a6a70a1",
+      "pixel_counts": {
+        "0": 1151994,
+        "1": 58942,
+        "2": 76603,
+        "3": 14769,
+        "4": 3172
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/119.json",
+      "source_json_sha256": "7e4bea73511293cefbd4c460ef7334fc0028eeaf17a81a174e6d2ff96c8db97e"
+    },
+    {
+      "image": "120.png",
+      "label_png": "labels/120.png",
+      "label_png_sha256": "a4f51d0556a9065a3638e200c80d8873b9f3b3989500d76422756a9de043b711",
+      "pixel_counts": {
+        "0": 1172384,
+        "1": 58560,
+        "2": 59145,
+        "3": 12890,
+        "4": 2501
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 3,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/120.json",
+      "source_json_sha256": "9e7d867b7a48451402310bbe714c4b051d8e0877d48e211a0b42cb20427b9520"
+    },
+    {
+      "image": "121.png",
+      "label_png": "labels/121.png",
+      "label_png_sha256": "a835849185979cefd080fc2cf980740c5f76ad536c5fbee012e9505546159559",
+      "pixel_counts": {
+        "0": 1183458,
+        "1": 58055,
+        "2": 50545,
+        "3": 11040,
+        "4": 2382
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 3,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/121.json",
+      "source_json_sha256": "06bf4851fa8c082bc2731358ea91367aef302225497577a1910128d3a30c9445"
+    },
+    {
+      "image": "122.png",
+      "label_png": "labels/122.png",
+      "label_png_sha256": "891e68601baf98dbc0dbd9e04c46d9ef478ea4e31aa85a3217ec0cf276fa67fa",
+      "pixel_counts": {
+        "0": 1188191,
+        "1": 58459,
+        "2": 47157,
+        "3": 9462,
+        "4": 2211
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 4,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/122.json",
+      "source_json_sha256": "099f36423e094ff55374c44179412a1fe65f45fc0502d6c4707ebb4660d82f9a"
+    },
+    {
+      "image": "123.png",
+      "label_png": "labels/123.png",
+      "label_png_sha256": "4d8d1b03543a5c0f8278fc70071b7874e11602d5268bccbaf4009636f5716b89",
+      "pixel_counts": {
+        "0": 1189606,
+        "1": 59260,
+        "2": 45717,
+        "3": 8718,
+        "4": 2179
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 4,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/123.json",
+      "source_json_sha256": "4a178000e9343081f657288458346fce6a2e8ff7cfdd67042e07755ceebd6410"
+    },
+    {
+      "image": "124.png",
+      "label_png": "labels/124.png",
+      "label_png_sha256": "728633b822b2887606b80e5bd6e2f69e5f24c4901aecd8429b5ed72556a7e1cd",
+      "pixel_counts": {
+        "0": 1192666,
+        "1": 61124,
+        "2": 41699,
+        "3": 7958,
+        "4": 2033
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 4,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/124.json",
+      "source_json_sha256": "bbd679fcf63994ef224b7b9adc12b84c4bcb8d49116d1d6039c013edb5c3f8be"
+    },
+    {
+      "image": "125.png",
+      "label_png": "labels/125.png",
+      "label_png_sha256": "92324ccfdb28a8a9c28928c5583a53bfa6763d38642838a62f773a0fb1c5c513",
+      "pixel_counts": {
+        "0": 1202745,
+        "1": 62999,
+        "2": 31119,
+        "3": 6894,
+        "4": 1723
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 2,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/125.json",
+      "source_json_sha256": "da3d26f980dbc3ce388dfed13c7d2a001438dea3e05a411b52fc9aa3445df1b0"
+    },
+    {
+      "image": "126.png",
+      "label_png": "labels/126.png",
+      "label_png_sha256": "e0d298cefa44f9803689d5cca37d084d4dd5f20603ee162c8e6fcd22d4b93149",
+      "pixel_counts": {
+        "0": 1212899,
+        "1": 64370,
+        "2": 20983,
+        "3": 6147,
+        "4": 1081
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 3,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/126.json",
+      "source_json_sha256": "53645d2f27a12d5e7200aa9f04c9d1e841c71527e24e467b4407010f785b3245"
+    },
+    {
+      "image": "127.png",
+      "label_png": "labels/127.png",
+      "label_png_sha256": "bf79dd60b4ef02e6173525cf5d280aa3b696623586cf943dd9ded8e001172710",
+      "pixel_counts": {
+        "0": 1218609,
+        "1": 63208,
+        "2": 17322,
+        "3": 5373,
+        "4": 968
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 1,
+        "stay_cable": 2,
+        "tower": 1
+      },
+      "source_json": "json/127.json",
+      "source_json_sha256": "b597df3e2352b40972c03bfc3bd4f95d1e334c585b3799595da0e7507bac9cb2"
+    },
+    {
+      "image": "128.png",
+      "label_png": "labels/128.png",
+      "label_png_sha256": "3dd63f580201358d7e951f5874f172555856c1020b3981aa0783c0f2c09bbe4c",
+      "pixel_counts": {
+        "0": 1220219,
+        "1": 62605,
+        "2": 16434,
+        "3": 5186,
+        "4": 1036
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 2,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/128.json",
+      "source_json_sha256": "8874e994a21778076118fe38c67d859ccbfeab188a551ce1a9006208a3de6b13"
+    },
+    {
+      "image": "129.png",
+      "label_png": "labels/129.png",
+      "label_png_sha256": "42a4383504a2f759fa0801ba0a395f7f54f93d56f8c17dbf0ff5607b881e89e6",
+      "pixel_counts": {
+        "0": 1221182,
+        "1": 62739,
+        "2": 15604,
+        "3": 4757,
+        "4": 1198
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 2,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/129.json",
+      "source_json_sha256": "3afb0d6e301e06b3b006ada3aa4bc4eca7452c50177e4602066c7911c9ef9b5d"
+    },
+    {
+      "image": "130.png",
+      "label_png": "labels/130.png",
+      "label_png_sha256": "342afbde78f8db6875f723d037761a6448ec86fcb7888e9e8ec25e16729d4df0",
+      "pixel_counts": {
+        "0": 1222731,
+        "1": 62437,
+        "2": 14790,
+        "3": 4418,
+        "4": 1104
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 2,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/130.json",
+      "source_json_sha256": "c49dfb2867dd4207e86658ff6ea9bcfe46a015d509023b631b69df204077ac4c"
+    },
+    {
+      "image": "131.png",
+      "label_png": "labels/131.png",
+      "label_png_sha256": "4cde0cb4430f5d4b2d8ea6f64a6778d4233ef72c5045c0b06a320bc3b729c2b1",
+      "pixel_counts": {
+        "0": 1223883,
+        "1": 63562,
+        "2": 13071,
+        "3": 3902,
+        "4": 1062
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 2,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/131.json",
+      "source_json_sha256": "6f963ef496098c4811b943ee9eca75eba0932181ed0b01ec3bedf62b85b8bbac"
+    },
+    {
+      "image": "132.png",
+      "label_png": "labels/132.png",
+      "label_png_sha256": "a68010de47ac15aa7a208cc7aa48e05cde1b73be2ff255bfd55365db50662929",
+      "pixel_counts": {
+        "0": 1226071,
+        "1": 63850,
+        "2": 11229,
+        "3": 3552,
+        "4": 778
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 2,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/132.json",
+      "source_json_sha256": "25f9968edbee991309d30314ac67c1223dd776fa5e080e4b16ed8c6b5d1dadb8"
+    },
+    {
+      "image": "133.png",
+      "label_png": "labels/133.png",
+      "label_png_sha256": "88abd2027994f7a37e9b2555253eaaf34a563a77228aab2d84aeb4e7f566425f",
+      "pixel_counts": {
+        "0": 1226742,
+        "1": 63634,
+        "2": 10485,
+        "3": 3762,
+        "4": 857
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 3,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/133.json",
+      "source_json_sha256": "26cc10b53cf9d7a9a1063265fa010d1c9d6a8fc022a6f0423cd5290982f9459f"
+    },
+    {
+      "image": "134.png",
+      "label_png": "labels/134.png",
+      "label_png_sha256": "bd85486df961e1306b329a54a1167a51d77c3f560daf62578e91f8ba25dce0d5",
+      "pixel_counts": {
+        "0": 1225426,
+        "1": 64136,
+        "2": 11753,
+        "3": 3260,
+        "4": 905
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 2,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/134.json",
+      "source_json_sha256": "3cf7d50bf2213a6ddff43aec5a166aea0dfd0b95c97aed271b47e6c3386451bf"
+    },
+    {
+      "image": "135.png",
+      "label_png": "labels/135.png",
+      "label_png_sha256": "32850e3f9d0f8f7b5cb26caef642a7473eea993b24fc6302cb268b7b76176ddb",
+      "pixel_counts": {
+        "0": 1224086,
+        "1": 64823,
+        "2": 12852,
+        "3": 2912,
+        "4": 807
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 2,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/135.json",
+      "source_json_sha256": "8ac35e0ecd27c8472f6970b6c6a5915cb37cfc655f8a39c0465a03dba9a0762c"
+    },
+    {
+      "image": "136.png",
+      "label_png": "labels/136.png",
+      "label_png_sha256": "6331b3a5c029a29950f7301cb76a36268768e95ce744018cec7f224984b5f89e",
+      "pixel_counts": {
+        "0": 1224867,
+        "1": 64396,
+        "2": 12445,
+        "3": 3040,
+        "4": 732
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 2,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/136.json",
+      "source_json_sha256": "f58d42e4d70065e3c4825f22ce1daf2d69f09eaf41307468d82c223823205f5a"
+    },
+    {
+      "image": "137.png",
+      "label_png": "labels/137.png",
+      "label_png_sha256": "c1fb88dbbf3f1fc8bb8e40b622996049f4166135465bbf15883b7c041b4c9f7f",
+      "pixel_counts": {
+        "0": 1224216,
+        "1": 64790,
+        "2": 12923,
+        "3": 2810,
+        "4": 741
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 2,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/137.json",
+      "source_json_sha256": "252aa0b61870b234af6c450666595a9c3c63711c93c1155348103d3601a6fdbd"
+    },
+    {
+      "image": "140.png",
+      "label_png": "labels/140.png",
+      "label_png_sha256": "2aa02051aab0779f69f5d8506008b207f406e58fae6182419d0d287d55be1be3",
+      "pixel_counts": {
+        "0": 1206549,
+        "1": 64322,
+        "2": 31295,
+        "3": 2601,
+        "4": 713
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 2,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/140.json",
+      "source_json_sha256": "e9b6efe7175cf4c6f3098d2c790fe072ec9c2a60892e9d395f5336d1ad504f76"
+    },
+    {
+      "image": "141.png",
+      "label_png": "labels/141.png",
+      "label_png_sha256": "61d615e684174fa7d501f4a19775bbd4cbe3445d4358fd7243a4a1299b50aa90",
+      "pixel_counts": {
+        "0": 1196014,
+        "1": 65230,
+        "2": 41427,
+        "3": 2196,
+        "4": 613
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 1,
+        "stay_cable": 2,
+        "tower": 1
+      },
+      "source_json": "json/141.json",
+      "source_json_sha256": "5f9998614e86b479832d363c24d09cbb13404ae6d48007ec161028358920c356"
+    },
+    {
+      "image": "142.png",
+      "label_png": "labels/142.png",
+      "label_png_sha256": "61627a36d551a5522d75b83fc22167a08bf9e3659d65361932809a1853f6de7e",
+      "pixel_counts": {
+        "0": 1184708,
+        "1": 66078,
+        "2": 51929,
+        "3": 2101,
+        "4": 664
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 2,
+        "stay_cable": 2,
+        "tower": 1
+      },
+      "source_json": "json/142.json",
+      "source_json_sha256": "b5940b3743d4655bd2ef5ef16aac7fe9647f462615e659b971481267f4343556"
+    },
+    {
+      "image": "143.png",
+      "label_png": "labels/143.png",
+      "label_png_sha256": "630d11e382b188cbfa7cbda0a226e782a53e3255b1ee7ac22956e047a2f75597",
+      "pixel_counts": {
+        "0": 1166939,
+        "1": 66782,
+        "2": 69025,
+        "3": 2153,
+        "4": 581
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 2,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/143.json",
+      "source_json_sha256": "f88af12dddc2894fe6ab4e5fc8a5c50e22d1d61f3ff14b6d5cd68d3e5aaa68df"
+    },
+    {
+      "image": "144.png",
+      "label_png": "labels/144.png",
+      "label_png_sha256": "b5810a2adfe85ef70f73fac99b9c9d6cd53eb1d83abf26987621257e4ce5ba21",
+      "pixel_counts": {
+        "0": 1148358,
+        "1": 66361,
+        "2": 88158,
+        "3": 2122,
+        "4": 481
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 2,
+        "stay_cable": 2,
+        "tower": 1
+      },
+      "source_json": "json/144.json",
+      "source_json_sha256": "54c6ec1e0265bd0b7c6c65be373b454bb75d2a8b469cfdcb035cf252a4d065c9"
+    },
+    {
+      "image": "145.png",
+      "label_png": "labels/145.png",
+      "label_png_sha256": "024383b66456c7ee3818d2c666146ec724c137de366132816680bf4e98def591",
+      "pixel_counts": {
+        "0": 1132693,
+        "1": 66504,
+        "2": 103846,
+        "3": 2046,
+        "4": 391
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 2,
+        "stay_cable": 2,
+        "tower": 1
+      },
+      "source_json": "json/145.json",
+      "source_json_sha256": "8b356d44884e0de7ce885385ed8423e77cc48c1155c75499917208b8c38d9565"
+    },
+    {
+      "image": "146.png",
+      "label_png": "labels/146.png",
+      "label_png_sha256": "87265b9faf15c300ba71ac5f4314d74b0ae3c8bef995268b92fc5a73b697b83a",
+      "pixel_counts": {
+        "0": 1129627,
+        "1": 65872,
+        "2": 79123,
+        "3": 30434,
+        "4": 424
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 2,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/146.json",
+      "source_json_sha256": "cf1ffd7be045f47ef17148b770da951c5c63712d3ae430db55398a9b0e4266cd"
+    },
+    {
+      "image": "147.png",
+      "label_png": "labels/147.png",
+      "label_png_sha256": "2fa4b875c0df1047adfef1f1237a0be0b4390fdc2fb73136ea16e6837371e952",
+      "pixel_counts": {
+        "0": 1137465,
+        "1": 63219,
+        "2": 58435,
+        "3": 45911,
+        "4": 450
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 2,
+        "stay_cable": 4,
+        "tower": 3
+      },
+      "source_json": "json/147.json",
+      "source_json_sha256": "eb756855beb94248d2e763ba46ba783f06b3c394b59150cf8ff669588264ef3b"
+    },
+    {
+      "image": "148.png",
+      "label_png": "labels/148.png",
+      "label_png_sha256": "1448642988916daf0eaffc4c963e78cbeeddf94b3f287aaefbf459f6b2e98809",
+      "pixel_counts": {
+        "0": 1132548,
+        "1": 59021,
+        "2": 65218,
+        "3": 48337,
+        "4": 356
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 1,
+        "stay_cable": 5,
+        "tower": 3
+      },
+      "source_json": "json/148.json",
+      "source_json_sha256": "e4b1525c3c91686cbb3d9a64f72231a017d9936b35112f4fef9710fcf9d84e3d"
+    },
+    {
+      "image": "149.png",
+      "label_png": "labels/149.png",
+      "label_png_sha256": "d067f53b8eb25bad7e3e4c8503945bccf08a82b0318605c31606abf3f4ffcc75",
+      "pixel_counts": {
+        "0": 1157022,
+        "1": 57206,
+        "2": 49982,
+        "3": 40912,
+        "4": 358
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 2,
+        "stay_cable": 5,
+        "tower": 3
+      },
+      "source_json": "json/149.json",
+      "source_json_sha256": "d39557ce48c4520df868515e93ee5a38ee4901e4495965a2c27022a44c6d0a7b"
+    },
+    {
+      "image": "150.png",
+      "label_png": "labels/150.png",
+      "label_png_sha256": "7a93be973f80dcbedf5fee0f04b9c708c5c37e6b5b26834a012b93d370722c4d",
+      "pixel_counts": {
+        "0": 1168730,
+        "1": 56213,
+        "2": 45509,
+        "3": 34704,
+        "4": 324
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 2,
+        "stay_cable": 5,
+        "tower": 3
+      },
+      "source_json": "json/150.json",
+      "source_json_sha256": "eced8daf836d0d93aee029ea78c10f7b74d95fa3818670c73a71b0e97280a789"
+    },
+    {
+      "image": "151.png",
+      "label_png": "labels/151.png",
+      "label_png_sha256": "667042823691e315664d6024eee7341d42862b7fd62b81a7e53a1bccfb98eb3d",
+      "pixel_counts": {
+        "0": 1174162,
+        "1": 55796,
+        "2": 40032,
+        "3": 35107,
+        "4": 383
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 2,
+        "stay_cable": 4,
+        "tower": 3
+      },
+      "source_json": "json/151.json",
+      "source_json_sha256": "e3d18fbcf899106bc9eabc62fddf008cecf9a8a467dba858a9f51aa6e7d0c199"
+    },
+    {
+      "image": "152.png",
+      "label_png": "labels/152.png",
+      "label_png_sha256": "cddc3de52c1ce1d70b186fe67e904e39a253875ee46db26f7c39e713a350c31d",
+      "pixel_counts": {
+        "0": 1177216,
+        "1": 56654,
+        "2": 40507,
+        "3": 29669,
+        "4": 1434
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 2,
+        "stay_cable": 5,
+        "tower": 3
+      },
+      "source_json": "json/152.json",
+      "source_json_sha256": "2b114ececffada3ba5d886eef472dc4e48c29a81cf2a93be8b63b6835d876f75"
+    },
+    {
+      "image": "153.png",
+      "label_png": "labels/153.png",
+      "label_png_sha256": "8af2dc0b351f36baf8e4dc87d5deeec6adac44e748b8d4d350fffca77e7abbbd",
+      "pixel_counts": {
+        "0": 1180337,
+        "1": 55520,
+        "2": 39525,
+        "3": 27654,
+        "4": 2444
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 3,
+        "stay_cable": 4,
+        "tower": 3
+      },
+      "source_json": "json/153.json",
+      "source_json_sha256": "5ac24efc5c3487c4b1270278aee3dbb3a386e63a448279df82e423a57b91b60e"
+    },
+    {
+      "image": "154.png",
+      "label_png": "labels/154.png",
+      "label_png_sha256": "94a07491fddd282ed25420c7325b437e7b05db05335a1c41eac9e0d342fc8a2c",
+      "pixel_counts": {
+        "0": 1188120,
+        "1": 56142,
+        "2": 35330,
+        "3": 23220,
+        "4": 2668
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 5,
+        "stay_cable": 4,
+        "tower": 3
+      },
+      "source_json": "json/154.json",
+      "source_json_sha256": "75c704ce86317f172053b9c5ab18731011ae4056febb1748f057d9690ecfc19d"
+    },
+    {
+      "image": "155.png",
+      "label_png": "labels/155.png",
+      "label_png_sha256": "14631ec3a356c1129ee9da9153b99bacd3fb585bb9b90c9cb6fcd8b2aa252000",
+      "pixel_counts": {
+        "0": 1197022,
+        "1": 56609,
+        "2": 29298,
+        "3": 19043,
+        "4": 3508
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 4,
+        "stay_cable": 5,
+        "tower": 2
+      },
+      "source_json": "json/155.json",
+      "source_json_sha256": "dddeb7a941940442283577b9a08ddf19bddc14dba10171982998bc8bdd9258b9"
+    },
+    {
+      "image": "156.png",
+      "label_png": "labels/156.png",
+      "label_png_sha256": "29e6dcd144c7c57d4b0b4b6c1698b4d24cfee4824d03585bfcae4be51b5ffe96",
+      "pixel_counts": {
+        "0": 1206862,
+        "1": 53986,
+        "2": 24849,
+        "3": 16284,
+        "4": 3499
+      },
+      "shape_counts": {
+        "deck": 4,
+        "foundation": 5,
+        "stay_cable": 4,
+        "tower": 3
+      },
+      "source_json": "json/156.json",
+      "source_json_sha256": "c23340c78596b5e7f3fe3e6aa12db323056da69cbf80ece6e5d51e80fa6fa58b"
+    },
+    {
+      "image": "157.png",
+      "label_png": "labels/157.png",
+      "label_png_sha256": "68c140452d07cf4e3d138ab2c423f7cee0a9cbffbb38db7552f0525160217701",
+      "pixel_counts": {
+        "0": 1196458,
+        "1": 64661,
+        "2": 24638,
+        "3": 14206,
+        "4": 5517
+      },
+      "shape_counts": {
+        "deck": 4,
+        "foundation": 6,
+        "stay_cable": 4,
+        "tower": 3
+      },
+      "source_json": "json/157.json",
+      "source_json_sha256": "f3b84ad6acddef73d0347c3b723d173a9f429569f48973a5fa1bd914bb9cd0a1"
+    },
+    {
+      "image": "158.png",
+      "label_png": "labels/158.png",
+      "label_png_sha256": "4ce989bd89c25d1712751fd4ab2bd0cb94f466d27d940fd8f384bb595d8e19da",
+      "pixel_counts": {
+        "0": 1192747,
+        "1": 68849,
+        "2": 24479,
+        "3": 13005,
+        "4": 6400
+      },
+      "shape_counts": {
+        "deck": 4,
+        "foundation": 7,
+        "stay_cable": 4,
+        "tower": 3
+      },
+      "source_json": "json/158.json",
+      "source_json_sha256": "59da49704264619c9a7058b3c88f786e57344267c8443ea32f9d64e4de19fca6"
+    },
+    {
+      "image": "159.png",
+      "label_png": "labels/159.png",
+      "label_png_sha256": "6ad3fd8144430c186f2db13e8319144176889e629747312f84f063bd249d4334",
+      "pixel_counts": {
+        "0": 1186956,
+        "1": 76160,
+        "2": 24231,
+        "3": 12052,
+        "4": 6081
+      },
+      "shape_counts": {
+        "deck": 4,
+        "foundation": 7,
+        "stay_cable": 4,
+        "tower": 3
+      },
+      "source_json": "json/159.json",
+      "source_json_sha256": "9379baa4c2f9e29f49e7430c663e89dce6ee72e0fbb820748db9351d0abd0dbd"
+    },
+    {
+      "image": "160.png",
+      "label_png": "labels/160.png",
+      "label_png_sha256": "9da168e941c972fd9680a1b688abf4a0ee0483aa01c987e0c68a47afc6b8161c",
+      "pixel_counts": {
+        "0": 1184448,
+        "1": 77161,
+        "2": 24809,
+        "3": 12706,
+        "4": 6356
+      },
+      "shape_counts": {
+        "deck": 4,
+        "foundation": 7,
+        "stay_cable": 4,
+        "tower": 3
+      },
+      "source_json": "json/160.json",
+      "source_json_sha256": "9ebc98c2cfd820dfe3dbadbf003fd85a77c80479ea8f081d9ce5d6b0210fe99a"
+    },
+    {
+      "image": "161.png",
+      "label_png": "labels/161.png",
+      "label_png_sha256": "4d5d0d7f9a07eee4cb0ef5c96e7666160395e0d34aa48ef9831192f6b50b970d",
+      "pixel_counts": {
+        "0": 1183327,
+        "1": 77225,
+        "2": 25538,
+        "3": 13108,
+        "4": 6282
+      },
+      "shape_counts": {
+        "deck": 4,
+        "foundation": 7,
+        "stay_cable": 4,
+        "tower": 3
+      },
+      "source_json": "json/161.json",
+      "source_json_sha256": "7c157089b9bffde7af9253b953ff0a33dcec5d5ab0b064aec7fee4c33c56ffb6"
+    },
+    {
+      "image": "162.png",
+      "label_png": "labels/162.png",
+      "label_png_sha256": "80234b47574ac9c890abb972cd321b5fddbd79c19e3d2d40d07e3f86d680d27d",
+      "pixel_counts": {
+        "0": 1001004,
+        "1": 126600,
+        "2": 63156,
+        "3": 73281,
+        "4": 41439
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 3,
+        "tower": 3
+      },
+      "source_json": "json/162.json",
+      "source_json_sha256": "89bb3a174f71c5885a4aae77404351dd79aa9cd2bf9327d7428ceda7e96f2736"
+    },
+    {
+      "image": "163.png",
+      "label_png": "labels/163.png",
+      "label_png_sha256": "7ce638faa22e34778a29da10abab166fb3df85447a10a56a3ceccd89677efb27",
+      "pixel_counts": {
+        "0": 1019683,
+        "1": 134920,
+        "2": 61975,
+        "3": 77277,
+        "4": 11625
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 4,
+        "stay_cable": 6,
+        "tower": 4
+      },
+      "source_json": "json/163.json",
+      "source_json_sha256": "b9d860412ab9e7e26ecb4a0280c636921f468f5ddabdedb0546e55f99f8b0914"
+    },
+    {
+      "image": "164.png",
+      "label_png": "labels/164.png",
+      "label_png_sha256": "57516602be0fb6c605c04d19f845bba995acffea5f5d1267106247aa19970ace",
+      "pixel_counts": {
+        "0": 1054277,
+        "1": 100999,
+        "2": 72055,
+        "3": 75446,
+        "4": 2703
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 3,
+        "stay_cable": 6,
+        "tower": 2
+      },
+      "source_json": "json/164.json",
+      "source_json_sha256": "5366246092a2e3d7260542d5f702c16936007dcd3b4ca29db1c4bd7576eb58ca"
+    },
+    {
+      "image": "165.png",
+      "label_png": "labels/165.png",
+      "label_png_sha256": "af7e8e9f1e6dc42e856aaddfaf30c9c5a9a41fce5de5bc7ecd024c425450f742",
+      "pixel_counts": {
+        "0": 1081182,
+        "1": 74360,
+        "2": 87055,
+        "3": 62715,
+        "4": 168
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 2,
+        "stay_cable": 6,
+        "tower": 3
+      },
+      "source_json": "json/165.json",
+      "source_json_sha256": "25235ba37c2b1322d2ff78b70e5869d694f34f7493388b36289e2d50c4192e31"
+    },
+    {
+      "image": "169.png",
+      "label_png": "labels/169.png",
+      "label_png_sha256": "3bc4987e0f04e9d0622eb4416b6860534120347b275b2d22879cf4ba397ee96b",
+      "pixel_counts": {
+        "0": 1105691,
+        "1": 55463,
+        "2": 87220,
+        "3": 56523,
+        "4": 583
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 2,
+        "stay_cable": 6,
+        "tower": 4
+      },
+      "source_json": "json/169.json",
+      "source_json_sha256": "b2d393868f4eb3ab741d583cb84fddbb26bed93f5a93ff5ba831a08183afa2d5"
+    },
+    {
+      "image": "170.png",
+      "label_png": "labels/170.png",
+      "label_png_sha256": "85d05949657d2987be33b0111efe663646774eef938347f19ed91acdb8dc3c57",
+      "pixel_counts": {
+        "0": 1155020,
+        "1": 46485,
+        "2": 51333,
+        "3": 52131,
+        "4": 511
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 3,
+        "stay_cable": 5,
+        "tower": 3
+      },
+      "source_json": "json/170.json",
+      "source_json_sha256": "eb5f15ec3ab1ed21e5db8cefdb807698e70a0a74812bd6d588e1a6e47c202180"
+    },
+    {
+      "image": "171.png",
+      "label_png": "labels/171.png",
+      "label_png_sha256": "9454a07414f5c1819dd1abe54e5ae73fd286f119134ba876cbadbc3a5af7227d",
+      "pixel_counts": {
+        "0": 1127258,
+        "1": 41002,
+        "2": 89778,
+        "3": 46805,
+        "4": 637
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 3,
+        "stay_cable": 5,
+        "tower": 3
+      },
+      "source_json": "json/171.json",
+      "source_json_sha256": "70599f7bc5f07791a057e25ce26b2a4213d2f2e356a407eb0b93466c1a35b3d7"
+    },
+    {
+      "image": "172.png",
+      "label_png": "labels/172.png",
+      "label_png_sha256": "d88fbb3bc3d146b1f6f5f15b8de6eb414b0aa4802e4ea302410745b7365140e4",
+      "pixel_counts": {
+        "0": 1165452,
+        "1": 39321,
+        "2": 52806,
+        "3": 47322,
+        "4": 579
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 3,
+        "stay_cable": 5,
+        "tower": 3
+      },
+      "source_json": "json/172.json",
+      "source_json_sha256": "4173ca2735d970f8966dcbd656cd548db8acb2f9e91b70db1cd4af0412ebe116"
+    },
+    {
+      "image": "173.png",
+      "label_png": "labels/173.png",
+      "label_png_sha256": "1726ebd03242ffef15c606424633d4c78e95fe31acfccb09a3b54daf76020440",
+      "pixel_counts": {
+        "0": 1149781,
+        "1": 41112,
+        "2": 65836,
+        "3": 48101,
+        "4": 650
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 3,
+        "stay_cable": 5,
+        "tower": 3
+      },
+      "source_json": "json/173.json",
+      "source_json_sha256": "b11bd907f23314d63b180b31dd60fa6fca46cc5c1dbd9b3db85186f0df67fddd"
+    },
+    {
+      "image": "174.png",
+      "label_png": "labels/174.png",
+      "label_png_sha256": "e43b0f981d224a57ed0fb4f8d8bce20284448528a5f5a0812016a917bf9bb04a",
+      "pixel_counts": {
+        "0": 1149938,
+        "1": 39538,
+        "2": 90849,
+        "3": 24411,
+        "4": 744
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 4,
+        "stay_cable": 4,
+        "tower": 2
+      },
+      "source_json": "json/174.json",
+      "source_json_sha256": "c37233fc9e81fd375f5a4d1ee7517638d6dd418e4727fc8f29abdad9523a667a"
+    },
+    {
+      "image": "175.png",
+      "label_png": "labels/175.png",
+      "label_png_sha256": "f4cf95e8af15b1945310a31c0c8302c68955146ca8ebb31ef380919074e101c5",
+      "pixel_counts": {
+        "0": 1215298,
+        "1": 31363,
+        "2": 56267,
+        "3": 1657,
+        "4": 895
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/175.json",
+      "source_json_sha256": "c0720c61fc72d74b9311b195ee03d463132c358c17044c5f7cc4a77e9280777c"
+    },
+    {
+      "image": "176.png",
+      "label_png": "labels/176.png",
+      "label_png_sha256": "88b2bb0e72246ceaa51c4a4cd41aca2db017bd4508f491d49cfbefe99b82d0e9",
+      "pixel_counts": {
+        "0": 1223891,
+        "1": 46020,
+        "2": 31851,
+        "3": 2506,
+        "4": 1212
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/176.json",
+      "source_json_sha256": "0d55360af50603a497b676017a0c64c6341897009421bb7aa94ba0da4da4c6ac"
+    },
+    {
+      "image": "177.png",
+      "label_png": "labels/177.png",
+      "label_png_sha256": "df4d94c1d28d33b38ad76c3cc935e787f6baf27614bf73b7646e630e817fdd84",
+      "pixel_counts": {
+        "0": 1220584,
+        "1": 46869,
+        "2": 34259,
+        "3": 2494,
+        "4": 1274
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/177.json",
+      "source_json_sha256": "f983efac401165794d638059fe9d637321f72eddf49b24aee175b6c87c45759d"
+    },
+    {
+      "image": "178.png",
+      "label_png": "labels/178.png",
+      "label_png_sha256": "60f366a2be6a725b8cd5294c897ab7b50334064d8aaef78778f9402fc85e9bad",
+      "pixel_counts": {
+        "0": 1223902,
+        "1": 47073,
+        "2": 30690,
+        "3": 2545,
+        "4": 1270
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/178.json",
+      "source_json_sha256": "76550ca92077d101d2eb7ce6551d25c6769f15591f20f662f8bc5605c2e0cd75"
+    },
+    {
+      "image": "179.png",
+      "label_png": "labels/179.png",
+      "label_png_sha256": "9e2a8f3d3568e5ad44771cf695224a9fe069a2d67dac960e246918ca0d787eb0",
+      "pixel_counts": {
+        "0": 1227773,
+        "1": 48202,
+        "2": 25280,
+        "3": 2813,
+        "4": 1412
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 7,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/179.json",
+      "source_json_sha256": "e34add107240333d659e09ed07338a87ab5224a86beb968e91161e83da0c8f57"
+    },
+    {
+      "image": "180.png",
+      "label_png": "labels/180.png",
+      "label_png_sha256": "4c92f553cc8640a5d0c26a397d29be700ea0e2506babfb1fa377734ca287c64d",
+      "pixel_counts": {
+        "0": 1231209,
+        "1": 48200,
+        "2": 21835,
+        "3": 2755,
+        "4": 1481
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 7,
+        "stay_cable": 2,
+        "tower": 2
+      },
+      "source_json": "json/180.json",
+      "source_json_sha256": "b9fd86ca845fc218505aa3fd8445d80fbad7b4350bb4690ba8b68f82eb96dfbc"
+    },
+    {
+      "image": "181.png",
+      "label_png": "labels/181.png",
+      "label_png_sha256": "88e5b5d1cce1144575b8d316ea44a67dc370728f821ca1bd54d0df852d276a99",
+      "pixel_counts": {
+        "0": 1232822,
+        "1": 47079,
+        "2": 20902,
+        "3": 3153,
+        "4": 1524
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 7,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/181.json",
+      "source_json_sha256": "12a79976aa38a77e9789a64b64a0a6714e3ab9af1a0ddbd50dcbe293172901e0"
+    },
+    {
+      "image": "182.png",
+      "label_png": "labels/182.png",
+      "label_png_sha256": "f013fb490d3eab66d0367c34b002738a7fc674807cfac336c49726f56bdb63e6",
+      "pixel_counts": {
+        "0": 1232821,
+        "1": 48195,
+        "2": 19992,
+        "3": 3386,
+        "4": 1086
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 3,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/182.json",
+      "source_json_sha256": "c4d94ae90fdbc9cd9261944f5a6960602f873063cdb57736bf8b0860c1ec2320"
+    },
+    {
+      "image": "183.png",
+      "label_png": "labels/183.png",
+      "label_png_sha256": "bf802b74494e682a5aee653a84f2e2a8bd6654a7753ed1b354ef9394290e07ac",
+      "pixel_counts": {
+        "0": 1232330,
+        "1": 47162,
+        "2": 20228,
+        "3": 3898,
+        "4": 1862
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 3,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/183.json",
+      "source_json_sha256": "18a57fab155b7b234a17ff37f1c79d9f95468efde4ed875c08c074ac34b8e4e6"
+    },
+    {
+      "image": "185.png",
+      "label_png": "labels/185.png",
+      "label_png_sha256": "9757cc878e9c6eee37076dc8ef15f4e204c9b8f2c196161885386d7922f058e4",
+      "pixel_counts": {
+        "0": 1222048,
+        "1": 50007,
+        "2": 26592,
+        "3": 4515,
+        "4": 2318
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 4,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/185.json",
+      "source_json_sha256": "c1f1e0c5693680bdeaec206f20ee89aba33e5ebec0397f5ed2a23dffafb5b583"
+    },
+    {
+      "image": "186.png",
+      "label_png": "labels/186.png",
+      "label_png_sha256": "791494258d635134d487a06b6cc64594dc9edd26354722b2a5dfe08142832f04",
+      "pixel_counts": {
+        "0": 1216297,
+        "1": 51106,
+        "2": 30217,
+        "3": 5075,
+        "4": 2785
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 4,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/186.json",
+      "source_json_sha256": "5feadc5b5743d2b8b10692c6b4863a4505e508ecb13e543d7e038c189b33c4ea"
+    },
+    {
+      "image": "187.png",
+      "label_png": "labels/187.png",
+      "label_png_sha256": "efa23fd5cf3be5de17f7e16c3c04d0a1d602198f8f739a21ca0fb2d66a5009cc",
+      "pixel_counts": {
+        "0": 1211389,
+        "1": 50488,
+        "2": 35057,
+        "3": 5546,
+        "4": 3000
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 7,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/187.json",
+      "source_json_sha256": "a8cae16f7741a1410da1eeba5a27f39dc422e01b5d36874cb9b969b431194c4c"
+    },
+    {
+      "image": "188.png",
+      "label_png": "labels/188.png",
+      "label_png_sha256": "b3b77e46ea26e8ed3bb1b3a57563671e129ef4eab752fe1516dc884bb639e65a",
+      "pixel_counts": {
+        "0": 1205745,
+        "1": 50998,
+        "2": 39679,
+        "3": 5888,
+        "4": 3170
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/188.json",
+      "source_json_sha256": "730b3c40b9a7e3ed04ab054015137e424198e2a2cb3897574a8452dbfb51c616"
+    },
+    {
+      "image": "189.png",
+      "label_png": "labels/189.png",
+      "label_png_sha256": "ff4acc2c8989b7afaae83a17a7d87d2b92a3ec73934a5b5b144bca5f349aaac2",
+      "pixel_counts": {
+        "0": 1198571,
+        "1": 51104,
+        "2": 45752,
+        "3": 6696,
+        "4": 3357
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/189.json",
+      "source_json_sha256": "3cd901b466a808a286faee6d32b4191416eb7a805adf83ae7cf92d2559db8f6d"
+    },
+    {
+      "image": "190.png",
+      "label_png": "labels/190.png",
+      "label_png_sha256": "e6a53ea1e46c14f1255b78d5d494528ae4e882c472e54a0fad76bfa24587b75e",
+      "pixel_counts": {
+        "0": 1192126,
+        "1": 50548,
+        "2": 51300,
+        "3": 7748,
+        "4": 3758
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/190.json",
+      "source_json_sha256": "75de6831e2b8fe9be7b57f30d0d9f1982f8148c03a557a5513bb54238b243ea4"
+    },
+    {
+      "image": "191.png",
+      "label_png": "labels/191.png",
+      "label_png_sha256": "be27a79f35e1163e851050a587ada3cc8eb5e2fcdcdd732ff388970cdee122d6",
+      "pixel_counts": {
+        "0": 1184473,
+        "1": 49590,
+        "2": 59239,
+        "3": 8152,
+        "4": 4026
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/191.json",
+      "source_json_sha256": "4631c863efab43af7cdaa5fa7d4158864f535a022be2c05e8697154f9831b4d7"
+    },
+    {
+      "image": "192.png",
+      "label_png": "labels/192.png",
+      "label_png_sha256": "9ae638f6629d638e699b82fda99d557aa154a354e6ca65c59eee0ba0138083cb",
+      "pixel_counts": {
+        "0": 1166719,
+        "1": 60082,
+        "2": 65810,
+        "3": 8696,
+        "4": 4173
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/192.json",
+      "source_json_sha256": "91dfcf197db397bce623e7ad1df2e3c80c3bf92fcd98602d3cdd657486be90e4"
+    },
+    {
+      "image": "193.png",
+      "label_png": "labels/193.png",
+      "label_png_sha256": "9498e9c53c3783b6cc9479041e0bcd9bc75881432baeaeecdd9c16de77136dd1",
+      "pixel_counts": {
+        "0": 1149564,
+        "1": 67976,
+        "2": 73550,
+        "3": 9851,
+        "4": 4539
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/193.json",
+      "source_json_sha256": "ee7cf10ea4ccccc2625607e1f72c3c18ac2f5187a5d2450df75c4702dc2d2faa"
+    },
+    {
+      "image": "194.png",
+      "label_png": "labels/194.png",
+      "label_png_sha256": "ee68c607d3347c415402419798ad1b504bd6412b52158438d20408041abd11d2",
+      "pixel_counts": {
+        "0": 1137667,
+        "1": 69367,
+        "2": 82508,
+        "3": 11140,
+        "4": 4798
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/194.json",
+      "source_json_sha256": "0c2fb8c99aa3e4676e13caa8339ef72d3c6d23a817f606c2c0b7796f05ef5dc6"
+    },
+    {
+      "image": "195.png",
+      "label_png": "labels/195.png",
+      "label_png_sha256": "480d17fc5fc0ff93c4dc25c2220d7d21c48a1a814435ae50c9c0e0b5c16ef57f",
+      "pixel_counts": {
+        "0": 1126596,
+        "1": 68966,
+        "2": 92372,
+        "3": 12284,
+        "4": 5262
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/195.json",
+      "source_json_sha256": "67b964be97167ebcd824c4103b8dc78118479c76180c7a1bccefad0fea447ea4"
+    },
+    {
+      "image": "196.png",
+      "label_png": "labels/196.png",
+      "label_png_sha256": "83c371611099ae9a67714f5307faa6af74dcd94b92a456493cb863f22d0b2883",
+      "pixel_counts": {
+        "0": 1114491,
+        "1": 68646,
+        "2": 102282,
+        "3": 14482,
+        "4": 5579
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/196.json",
+      "source_json_sha256": "c122e0b368a5fbe145273c28c6c99aa3d5057834bf463cf8f4223922331189e1"
+    },
+    {
+      "image": "197.png",
+      "label_png": "labels/197.png",
+      "label_png_sha256": "d773cbced767763cd058bac04931664608acbc26f0a4228c1276c0d1aa1dd44b",
+      "pixel_counts": {
+        "0": 1100714,
+        "1": 68695,
+        "2": 114129,
+        "3": 15949,
+        "4": 5993
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/197.json",
+      "source_json_sha256": "8d48843b99689595599983f74756906b53e03f7de2f32a5c46203c7d760781f8"
+    },
+    {
+      "image": "198.png",
+      "label_png": "labels/198.png",
+      "label_png_sha256": "0cdceebdfc0e8734b11eb4677cd168a42a9803d5563632f7808708e3bbf57849",
+      "pixel_counts": {
+        "0": 1074876,
+        "1": 84342,
+        "2": 124001,
+        "3": 16124,
+        "4": 6137
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/198.json",
+      "source_json_sha256": "163e04d8de0398fdfd0b18a27a406cc60d1be45b8361f6a197b90f2383674465"
+    },
+    {
+      "image": "199.png",
+      "label_png": "labels/199.png",
+      "label_png_sha256": "297d52f8a3bf4793ba743febcf1bf4930dc67e1299e5646051a1f5762e757303",
+      "pixel_counts": {
+        "0": 1060040,
+        "1": 96904,
+        "2": 125076,
+        "3": 17239,
+        "4": 6221
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/199.json",
+      "source_json_sha256": "7f62d5307ad0c37af0637f50a63ee8549db209030cb75b1ddc5a29be61aba19d"
+    },
+    {
+      "image": "200.png",
+      "label_png": "labels/200.png",
+      "label_png_sha256": "3214b0962750d87a13bbeffd0973ad1d5728bde537a7ca48cf749d6876d98a29",
+      "pixel_counts": {
+        "0": 1062212,
+        "1": 93778,
+        "2": 124829,
+        "3": 17770,
+        "4": 6891
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/200.json",
+      "source_json_sha256": "b02afc0c8f067deeef76393ae7428f59de3a717d6b6bad68ed7579877aa4cb73"
+    },
+    {
+      "image": "201.png",
+      "label_png": "labels/201.png",
+      "label_png_sha256": "5895b8061bf9c2c69a5004db48346c56b2f87189378bf4089890b8c26f1ca303",
+      "pixel_counts": {
+        "0": 1066062,
+        "1": 84393,
+        "2": 127629,
+        "3": 19750,
+        "4": 7646
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/201.json",
+      "source_json_sha256": "27bbcc1e07da9a55fde9cd6dfef58e3f88cb2bda083c4ec61afef92359d20ecc"
+    },
+    {
+      "image": "202.png",
+      "label_png": "labels/202.png",
+      "label_png_sha256": "9c986b51c11729a0ade0b1ea64d4ff29159a801816cf1277b459e75c30501779",
+      "pixel_counts": {
+        "0": 1054035,
+        "1": 86716,
+        "2": 133224,
+        "3": 22008,
+        "4": 9497
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 8,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/202.json",
+      "source_json_sha256": "cd6bac6edc79056afb5d057f9e526dc4984d6582b7ae685d42a90aa5398444ef"
+    },
+    {
+      "image": "203.png",
+      "label_png": "labels/203.png",
+      "label_png_sha256": "a341f6b2035bfb22ea0e8d9e59c78814953bfd2ed45a396b975c0c3658051b4d",
+      "pixel_counts": {
+        "0": 1044199,
+        "1": 86729,
+        "2": 137596,
+        "3": 25706,
+        "4": 11250
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 9,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/203.json",
+      "source_json_sha256": "3511a85524e607cf3e8fadc3ea0178cc7c80ab216de24f3c92299f71dc392644"
+    },
+    {
+      "image": "204.png",
+      "label_png": "labels/204.png",
+      "label_png_sha256": "0d92df82927a0898b88fd7ae91b982398edfc04ed3f90fba232963d2c0392c06",
+      "pixel_counts": {
+        "0": 1037576,
+        "1": 82666,
+        "2": 142349,
+        "3": 30360,
+        "4": 12529
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 10,
+        "stay_cable": 5,
+        "tower": 1
+      },
+      "source_json": "json/204.json",
+      "source_json_sha256": "b1bc40f9243201833a46c34babbb9e420448108d2771b4b54830483bb24d2a24"
+    },
+    {
+      "image": "205.png",
+      "label_png": "labels/205.png",
+      "label_png_sha256": "b165483a9a8393b6e4940eb56fb26155f9b716e52235c47c2d8dae8738235499",
+      "pixel_counts": {
+        "0": 976183,
+        "1": 114292,
+        "2": 168804,
+        "3": 33921,
+        "4": 12280
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 9,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/205.json",
+      "source_json_sha256": "226ede800a60b2d68863aff6779aab3019af8254f5308640cc27a0ef35bde0ee"
+    },
+    {
+      "image": "206.png",
+      "label_png": "labels/206.png",
+      "label_png_sha256": "4e4a4f1ccf8ab0e905a1339ae5f37b0180dd14ff4d66531112ed15f499cfb551",
+      "pixel_counts": {
+        "0": 1012181,
+        "1": 127420,
+        "2": 165879
+      },
+      "shape_counts": {
+        "deck": 1,
+        "stay_cable": 1
+      },
+      "source_json": "json/206.json",
+      "source_json_sha256": "6205c5a50f5b0258362d5339f8c463027ccb577b6826371ddc8747932c0f73d1"
+    },
+    {
+      "image": "207.png",
+      "label_png": "labels/207.png",
+      "label_png_sha256": "e6776991109c994c851da51bdfb430e3784aeca738472487ea1ed1ead6c25b0b",
+      "pixel_counts": {
+        "0": 1060245,
+        "1": 121295,
+        "2": 123940
+      },
+      "shape_counts": {
+        "deck": 1,
+        "stay_cable": 1
+      },
+      "source_json": "json/207.json",
+      "source_json_sha256": "e11456284331f9415c10331123298255ccf068bd5b129bbca5dffff18000886f"
+    },
+    {
+      "image": "208.png",
+      "label_png": "labels/208.png",
+      "label_png_sha256": "0c50d5d769be184f7facd4076b084f747b65c3bf7b3aac592276906ec3bad4f9",
+      "pixel_counts": {
+        "0": 1108345,
+        "1": 104762,
+        "2": 84373,
+        "3": 4878,
+        "4": 3122
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 9,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/208.json",
+      "source_json_sha256": "ea66c9e40122cf2a1244eae70f24f1f5eaae6fa406dfaa0c5aaead07ab8fecf6"
+    },
+    {
+      "image": "209.png",
+      "label_png": "labels/209.png",
+      "label_png_sha256": "672da974d3e91c80088fe519673b1a76f4e878768ed99af9ff8c6a389f9a1c2f",
+      "pixel_counts": {
+        "0": 1162227,
+        "1": 84716,
+        "2": 52335,
+        "3": 3834,
+        "4": 2368
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 3,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/209.json",
+      "source_json_sha256": "4a29de7d599808d11cfae079f12af3b28c87d1db6c1df1a9523fdba940083de8"
+    },
+    {
+      "image": "210.png",
+      "label_png": "labels/210.png",
+      "label_png_sha256": "da6749f5e8132fd957e9146d00d6563519e605cd96afa710b3ba16b117b55913",
+      "pixel_counts": {
+        "0": 1199690,
+        "1": 67648,
+        "2": 32711,
+        "3": 3398,
+        "4": 2033
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 3,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/210.json",
+      "source_json_sha256": "8942c6cc4652a41f543f04ca0066d75f223600cd9716ad81d627fe9ff3f8cf72"
+    },
+    {
+      "image": "211.png",
+      "label_png": "labels/211.png",
+      "label_png_sha256": "43ca00671e559d703f818b4d1766113fa5614c43a21fddd1dc28548a25f3a74f",
+      "pixel_counts": {
+        "0": 1205250,
+        "1": 65509,
+        "2": 28837,
+        "3": 3609,
+        "4": 2275
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 4,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/211.json",
+      "source_json_sha256": "17a01366ce836588dbd8157e1343c88774d2e9806ff362f2dae1a41f4bf092c6"
+    },
+    {
+      "image": "212.png",
+      "label_png": "labels/212.png",
+      "label_png_sha256": "48a7107d350847ae13dae35f57a35ea89e29a196631f03cfddbe508eb2c1b5fc",
+      "pixel_counts": {
+        "0": 1215006,
+        "1": 59074,
+        "2": 25183,
+        "3": 3875,
+        "4": 2342
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 3,
+        "stay_cable": 2,
+        "tower": 2
+      },
+      "source_json": "json/212.json",
+      "source_json_sha256": "a36585334fa0d145dde07f62536d0909fd1cef344a09ce9d4b7da71d07f305f8"
+    },
+    {
+      "image": "213.png",
+      "label_png": "labels/213.png",
+      "label_png_sha256": "669aa23e8ddf82b243e3bcfa3f5d5d51d296cf76098b9e02d047e4f178ae79a9",
+      "pixel_counts": {
+        "0": 1217696,
+        "1": 56059,
+        "2": 24974,
+        "3": 4287,
+        "4": 2464
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 4,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/213.json",
+      "source_json_sha256": "3c9c6f2a61d71aca37b9ebfbe9cbbcf68540d8406f3fc007a943f00efbee40ac"
+    },
+    {
+      "image": "214.png",
+      "label_png": "labels/214.png",
+      "label_png_sha256": "2c1f1bcdbb4fad41c00db9269913a0b4ba00fa61cd7f4ee0ea3b680ed0a66ec3",
+      "pixel_counts": {
+        "0": 1211576,
+        "1": 61014,
+        "2": 25742,
+        "3": 4605,
+        "4": 2543
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/214.json",
+      "source_json_sha256": "704aef6aaa3026b424f6379b4dad291e40f51045eee2b179e86d26443c6afc4b"
+    },
+    {
+      "image": "215.png",
+      "label_png": "labels/215.png",
+      "label_png_sha256": "1a7473e1a36e8f85adc33ff7d3327c0a0ba4779e28ed62d13f58b2e11f787adb",
+      "pixel_counts": {
+        "0": 1201467,
+        "1": 69592,
+        "2": 27032,
+        "3": 4759,
+        "4": 2630
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 3,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/215.json",
+      "source_json_sha256": "523af4981fef0153229e8c97b073b0ddee4d6f0604822b1df2d3992fe235cb4a"
+    },
+    {
+      "image": "216.png",
+      "label_png": "labels/216.png",
+      "label_png_sha256": "21b6e6b5547a496c5b5e728c7b463988785973d0bf34a52cd2c4f4c57458c9d7",
+      "pixel_counts": {
+        "0": 1195931,
+        "1": 73041,
+        "2": 28722,
+        "3": 5123,
+        "4": 2663
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 3,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/216.json",
+      "source_json_sha256": "0bfa23ee4ba7f4fb4b5c13a25c604592dc4bc9a52e9d1fa310abc0b585a56176"
+    },
+    {
+      "image": "217.png",
+      "label_png": "labels/217.png",
+      "label_png_sha256": "7225a9ff6d79cbfa2768bbc242b87df488ee181cd0dc7bd47bd12f14aa0f1d2c",
+      "pixel_counts": {
+        "0": 1192974,
+        "1": 70742,
+        "2": 32811,
+        "3": 5771,
+        "4": 3182
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 4,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/217.json",
+      "source_json_sha256": "15ce608e784df2b67c7267d25b132454dbc2ef68eb858cbd8c2b5b219663d11a"
+    },
+    {
+      "image": "218.png",
+      "label_png": "labels/218.png",
+      "label_png_sha256": "2c599eca8c5d6d00c49642f5cab92d4976dab3a56e23ca3ecd68f215a21b6923",
+      "pixel_counts": {
+        "0": 1190174,
+        "1": 67582,
+        "2": 38510,
+        "3": 6024,
+        "4": 3190
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/218.json",
+      "source_json_sha256": "246e44ceff5fac902af59f598684795f809b0a4085b617672571d0766f0bc3c1"
+    },
+    {
+      "image": "219.png",
+      "label_png": "labels/219.png",
+      "label_png_sha256": "080ad3373ac32fc849e5c19f80ccaca95f6c04905736bfcae26b30bbd99eb329",
+      "pixel_counts": {
+        "0": 1181235,
+        "1": 66524,
+        "2": 47107,
+        "3": 7012,
+        "4": 3602
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/219.json",
+      "source_json_sha256": "b73710003cbe675625de34d806ee6c38319259979936840cfd778434edf55af6"
+    },
+    {
+      "image": "220.png",
+      "label_png": "labels/220.png",
+      "label_png_sha256": "337367d93dffe2ff021b5e1eb8b906e93b5d6e2a304e585dcd775527d926a6dc",
+      "pixel_counts": {
+        "0": 1173078,
+        "1": 63076,
+        "2": 56992,
+        "3": 8313,
+        "4": 4021
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/220.json",
+      "source_json_sha256": "54fced291fc3a71a37de05c08d3518e26a2c7e1c5768e96c3bf6a715a8d29f01"
+    },
+    {
+      "image": "221.png",
+      "label_png": "labels/221.png",
+      "label_png_sha256": "dbf32d7cf498f2e89630c8149aaf4eb4a1eb0c50763461f07a1a6f9f5ab37e41",
+      "pixel_counts": {
+        "0": 1159581,
+        "1": 65416,
+        "2": 66480,
+        "3": 9575,
+        "4": 4428
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/221.json",
+      "source_json_sha256": "c2119b65c05bcd50e97059f2b7a521518b33352b1514f5f528ee64a84fa5f3db"
+    },
+    {
+      "image": "222.png",
+      "label_png": "labels/222.png",
+      "label_png_sha256": "ade876736869690d99c8f8c7636ac0793788d11356980da3ffd6e85d01ed35f5",
+      "pixel_counts": {
+        "0": 1142243,
+        "1": 65628,
+        "2": 81036,
+        "3": 11478,
+        "4": 5095
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 4,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/222.json",
+      "source_json_sha256": "40fd17c4c82f4394f00e9134163f88eda39156d6e77f3cbf304584c2ad15aada"
+    },
+    {
+      "image": "223.png",
+      "label_png": "labels/223.png",
+      "label_png_sha256": "59e8e87fd56e19ec9858c84ef171c34656a4cd6f3eb30f1a451495e45506c403",
+      "pixel_counts": {
+        "0": 1135708,
+        "1": 55081,
+        "2": 95837,
+        "3": 13355,
+        "4": 5499
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 3,
+        "tower": 3
+      },
+      "source_json": "json/223.json",
+      "source_json_sha256": "96630ee4af5ee55efea7c66085fb661ffb922f12f835e6ec1c20c1819898cfa4"
+    },
+    {
+      "image": "224.png",
+      "label_png": "labels/224.png",
+      "label_png_sha256": "f2a43a87ac70b1ac5c3b648bc99529cf916ddce1f6cf10f28773d2aeb32debe1",
+      "pixel_counts": {
+        "0": 1116164,
+        "1": 58863,
+        "2": 109017,
+        "3": 15310,
+        "4": 6126
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 3,
+        "tower": 3
+      },
+      "source_json": "json/224.json",
+      "source_json_sha256": "3d705e22aa9506912b8de22e7d01d2e9c3c311fdf975709d8d129955defe1197"
+    },
+    {
+      "image": "225.png",
+      "label_png": "labels/225.png",
+      "label_png_sha256": "8d30bfc93a458f2de496cf118ee9147049515ed6aef18f3582ef1d8b39b72496",
+      "pixel_counts": {
+        "0": 1108922,
+        "1": 56730,
+        "2": 116190,
+        "3": 17029,
+        "4": 6609
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 7,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/225.json",
+      "source_json_sha256": "12a4017d2f4271814934b7b1a373f2c3342b6824f42e7d2fa591dd7666ea4d84"
+    },
+    {
+      "image": "226.png",
+      "label_png": "labels/226.png",
+      "label_png_sha256": "ee6107044524784680965e1ba7aa5866c24cc9dcbf1656819f46945a5a028c88",
+      "pixel_counts": {
+        "0": 1100666,
+        "1": 52764,
+        "2": 126479,
+        "3": 18389,
+        "4": 7182
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 7,
+        "stay_cable": 3,
+        "tower": 3
+      },
+      "source_json": "json/226.json",
+      "source_json_sha256": "b14d89bab017a8f47e4f0f939a9d8ece2780954bbd21a37195ab7e59738d7db8"
+    },
+    {
+      "image": "227.png",
+      "label_png": "labels/227.png",
+      "label_png_sha256": "c897b8f600f1f12b44782f8b882513a81196bae84379a5cde833417b947629d3",
+      "pixel_counts": {
+        "0": 1101079,
+        "1": 46250,
+        "2": 131910,
+        "3": 18196,
+        "4": 8045
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 7,
+        "stay_cable": 3,
+        "tower": 3
+      },
+      "source_json": "json/227.json",
+      "source_json_sha256": "26a56cf641410ddb100a88b048b49d9898cc4b6746e72648dc4653969b96ec30"
+    },
+    {
+      "image": "228.png",
+      "label_png": "labels/228.png",
+      "label_png_sha256": "c76cd27093ae4e15126f386ea1b4da3ebbc23365a9bfcbe925cc1641daf31b76",
+      "pixel_counts": {
+        "0": 1062611,
+        "1": 57908,
+        "2": 152402,
+        "3": 24366,
+        "4": 8193
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 3,
+        "tower": 3
+      },
+      "source_json": "json/228.json",
+      "source_json_sha256": "92c55d34b7511d9a513188afc542aa0d7069ee0d6a17b20967750dda963588e9"
+    },
+    {
+      "image": "229.png",
+      "label_png": "labels/229.png",
+      "label_png_sha256": "4cbd3e18db7ba25569b90b2d575ab9cfe6670fe308de9a332b023e4f22030b7d",
+      "pixel_counts": {
+        "0": 1030221,
+        "1": 66196,
+        "2": 170368,
+        "3": 29633,
+        "4": 9062
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 3,
+        "tower": 3
+      },
+      "source_json": "json/229.json",
+      "source_json_sha256": "77058f8bce7a619c523374bd17a7ce4d1ed1cffacdf8a0ac83fce5cc6f54b024"
+    },
+    {
+      "image": "230.png",
+      "label_png": "labels/230.png",
+      "label_png_sha256": "e84269c39d6b144f49dd90a53c7990dcec61e1337da3a5bf36da247a8c09b298",
+      "pixel_counts": {
+        "0": 1018143,
+        "1": 58625,
+        "2": 181448,
+        "3": 36620,
+        "4": 10644
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 7,
+        "stay_cable": 3,
+        "tower": 3
+      },
+      "source_json": "json/230.json",
+      "source_json_sha256": "2ad0587f3927023914a0bda67bb5ad0baf95e408896967a475099669cd97db49"
+    },
+    {
+      "image": "231.png",
+      "label_png": "labels/231.png",
+      "label_png_sha256": "29b957d9d658ac66490e681d7c05901e21ebcd9650db3bb491a5d6a7b2c43e1a",
+      "pixel_counts": {
+        "0": 1037272,
+        "1": 41417,
+        "2": 171753,
+        "3": 42267,
+        "4": 12771
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 6,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/231.json",
+      "source_json_sha256": "cbf406f2ff86386dfd74728af9c4724781a328b5dbcf2d2eb8dd4d946df9f1b3"
+    },
+    {
+      "image": "232.png",
+      "label_png": "labels/232.png",
+      "label_png_sha256": "07113b5abc1c8dd634312d0fbfc7cdc2f27ac1317f0e9260c55efe9d0bc05251",
+      "pixel_counts": {
+        "0": 1087761,
+        "1": 35215,
+        "2": 107656,
+        "3": 59756,
+        "4": 15092
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 5,
+        "tower": 2
+      },
+      "source_json": "json/232.json",
+      "source_json_sha256": "8241bbd4778f447f52783cdacb87c9eb20eb2424e68d3c47964958faf456bba7"
+    },
+    {
+      "image": "233.png",
+      "label_png": "labels/233.png",
+      "label_png_sha256": "debadb1ec5d7cdde86d9269d6f53ae9a782427bbeeeeac156354963ae6075cf5",
+      "pixel_counts": {
+        "0": 1062272,
+        "1": 39523,
+        "2": 117766,
+        "3": 68516,
+        "4": 17403
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 8,
+        "stay_cable": 4,
+        "tower": 2
+      },
+      "source_json": "json/233.json",
+      "source_json_sha256": "4dc3ebb9c4ad9e30e843dfbf7787dfb899b860ec3692938e336dbf9cc544d94a"
+    },
+    {
+      "image": "234.png",
+      "label_png": "labels/234.png",
+      "label_png_sha256": "e9f46584d4f437acd8c852cbb70bc96eef26ad809230403befd980fc85efdd3f",
+      "pixel_counts": {
+        "0": 1179184,
+        "1": 36147,
+        "2": 45859,
+        "3": 20199,
+        "4": 24091
+      },
+      "shape_counts": {
+        "deck": 4,
+        "foundation": 14,
+        "stay_cable": 8,
+        "tower": 4
+      },
+      "source_json": "json/234.json",
+      "source_json_sha256": "8070ff27a3b54b908357e8c00eef1cb8782630f755bbbc145845978e68d229c0"
+    },
+    {
+      "image": "235.png",
+      "label_png": "labels/235.png",
+      "label_png_sha256": "a097fe165cb0a2811d0cc6df34d7ef0e9007dd59f13af6b1afefbf4df4874cc7",
+      "pixel_counts": {
+        "0": 1171671,
+        "1": 35057,
+        "2": 51891,
+        "3": 27736,
+        "4": 19125
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 9,
+        "stay_cable": 7,
+        "tower": 3
+      },
+      "source_json": "json/235.json",
+      "source_json_sha256": "c7329287ee5ee5662a0f6fb4893ed4c91ccd041b688b41152d76052bf9860714"
+    },
+    {
+      "image": "236.png",
+      "label_png": "labels/236.png",
+      "label_png_sha256": "cc9d9b70134e8de11455874c6dc81426372f85314a92be5a63bae90cb54a12f6",
+      "pixel_counts": {
+        "0": 1134912,
+        "1": 47909,
+        "2": 69115,
+        "3": 32647,
+        "4": 20897
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 10,
+        "stay_cable": 7,
+        "tower": 2
+      },
+      "source_json": "json/236.json",
+      "source_json_sha256": "67c52a8fbf13e2ae30ddef706a26b4c2339104c1c5de0d8058ee797d0cd4d76d"
+    },
+    {
+      "image": "237.png",
+      "label_png": "labels/237.png",
+      "label_png_sha256": "72e963fb0a8722053f94e68e8931a21bf0bdc2939fed795e9c40b57a54055041",
+      "pixel_counts": {
+        "0": 1133786,
+        "1": 44455,
+        "2": 67848,
+        "3": 41251,
+        "4": 18140
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 8,
+        "stay_cable": 7,
+        "tower": 3
+      },
+      "source_json": "json/237.json",
+      "source_json_sha256": "9be0bd628923119acd37cb7e4dda4f6ced2df99ac3c770a927b6705729ff842a"
+    },
+    {
+      "image": "238.png",
+      "label_png": "labels/238.png",
+      "label_png_sha256": "6f1394d652a0e10c96574705d2cc48328266aabf0cb4a15c935bc2277fdf0bec",
+      "pixel_counts": {
+        "0": 1116802,
+        "1": 32635,
+        "2": 79264,
+        "3": 67996,
+        "4": 8783
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 4,
+        "stay_cable": 7,
+        "tower": 3
+      },
+      "source_json": "json/238.json",
+      "source_json_sha256": "84bd52eda575b0694b06091d12d6f7e32ff080dd058394056decf3786c5a5bfa"
+    },
+    {
+      "image": "239.png",
+      "label_png": "labels/239.png",
+      "label_png_sha256": "61e5be7a0265d72f566aeaaa2d3922d447d9d5c264086cb8cc0e446eb9d7624c",
+      "pixel_counts": {
+        "0": 1041444,
+        "1": 82852,
+        "2": 103800,
+        "3": 56687,
+        "4": 20697
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 4,
+        "tower": 2
+      },
+      "source_json": "json/239.json",
+      "source_json_sha256": "4ef8ccd72d9c310368aebdd4e3fc751787714ca365ef2a4f749c6780239ca470"
+    },
+    {
+      "image": "240.png",
+      "label_png": "labels/240.png",
+      "label_png_sha256": "27d3960d41f27c9793e9abb52efd7248796ec4151f13f407aa1c01d682d80650",
+      "pixel_counts": {
+        "0": 1040854,
+        "1": 82036,
+        "2": 105212,
+        "3": 57371,
+        "4": 20007
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 4,
+        "tower": 2
+      },
+      "source_json": "json/240.json",
+      "source_json_sha256": "0924136d10b386ddc72801016c40d5f3d918bda9d49025a4703fccc52e4abcb0"
+    },
+    {
+      "image": "241.png",
+      "label_png": "labels/241.png",
+      "label_png_sha256": "499d0222424e891b51aee179d945952b517082addd83882e40e160ea13a8244c",
+      "pixel_counts": {
+        "0": 1029410,
+        "1": 86181,
+        "2": 86509,
+        "3": 77257,
+        "4": 26123
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 7,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/241.json",
+      "source_json_sha256": "468c6a09b65055a572ea6d7cfd695cf8ebeee51cc5a31917b505e7f8a737a13c"
+    },
+    {
+      "image": "242.png",
+      "label_png": "labels/242.png",
+      "label_png_sha256": "1010453bad45c4e8421605b789ad64a4d3f4c3553c8d6c33289b49cfb24bcc51",
+      "pixel_counts": {
+        "0": 1116670,
+        "1": 89299,
+        "2": 19541,
+        "3": 47604,
+        "4": 32366
+      },
+      "shape_counts": {
+        "deck": 1,
+        "foundation": 7,
+        "stay_cable": 2,
+        "tower": 3
+      },
+      "source_json": "json/242.json",
+      "source_json_sha256": "c6c215004be571ef3ae3622f1e1e843963c94e417122315d68d88645d7c44493"
+    },
+    {
+      "image": "243.png",
+      "label_png": "labels/243.png",
+      "label_png_sha256": "dbc755b65bf9ee82ee737e689e0357b3d4d37730fe518e705765509d007cc261",
+      "pixel_counts": {
+        "0": 976888,
+        "1": 80931,
+        "2": 152648,
+        "3": 75459,
+        "4": 19554
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 4,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/243.json",
+      "source_json_sha256": "5ae032c79efd080e4ee9316c7224d027c9bd3f1d415ad0851b2be174e5ef3cb6"
+    },
+    {
+      "image": "244.png",
+      "label_png": "labels/244.png",
+      "label_png_sha256": "da553738bbcc56c018f7499013360104d232a24ed989f4f563cea277d5b63454",
+      "pixel_counts": {
+        "0": 947048,
+        "1": 71185,
+        "2": 206764,
+        "3": 70678,
+        "4": 9805
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 2,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/244.json",
+      "source_json_sha256": "f493a0cda383afb47df49eb373f70e1d05bd0615fcf3671b9de7c59319308ffe"
+    },
+    {
+      "image": "245.png",
+      "label_png": "labels/245.png",
+      "label_png_sha256": "0b5d3ec59630317b90ddab6808f99cafa5230da1945bf8115ccc1e5aa17b3441",
+      "pixel_counts": {
+        "0": 957373,
+        "1": 55893,
+        "2": 225258,
+        "3": 66956
+      },
+      "shape_counts": {
+        "deck": 2,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/245.json",
+      "source_json_sha256": "5dca2303f4a583e52746e4c40bdc507d525b17f1c1235b1c03645338583ed0bb"
+    },
+    {
+      "image": "246.png",
+      "label_png": "labels/246.png",
+      "label_png_sha256": "25f4cf87b4077c4539e612c5dba4b722f8076b069acb5bea27a80bbd879b23b3",
+      "pixel_counts": {
+        "0": 968985,
+        "1": 63971,
+        "2": 218024,
+        "3": 37540,
+        "4": 16960
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/246.json",
+      "source_json_sha256": "e60c9e10eef1500a49bb4e9ddccebef9d5887a1141663dc7e839c01f50cdbf82"
+    },
+    {
+      "image": "247.png",
+      "label_png": "labels/247.png",
+      "label_png_sha256": "af26507b0fa80a7bb1ca7b3b3f1e2c1815e70e3344480176f33b2b232383304d",
+      "pixel_counts": {
+        "0": 978321,
+        "1": 61104,
+        "2": 179062,
+        "3": 55059,
+        "4": 31934
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 9,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/247.json",
+      "source_json_sha256": "171ca324dbc0849092742f4d5eeee9671ac07999d3a6c80997e4057a050d9736"
+    },
+    {
+      "image": "248.png",
+      "label_png": "labels/248.png",
+      "label_png_sha256": "1a4f0dabd0660cf32e6fa1f6dd2b7fda0ba3254a185b54e81835aee658b1eb6c",
+      "pixel_counts": {
+        "0": 893590,
+        "1": 71206,
+        "2": 246996,
+        "3": 68475,
+        "4": 25213
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 9,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/248.json",
+      "source_json_sha256": "362cf99fd1486d5dba21093edb728a2e18c459c167d4a64b7263852efa1e061a"
+    },
+    {
+      "image": "249.png",
+      "label_png": "labels/249.png",
+      "label_png_sha256": "27262f00658ac301d2dbfc7c260b11f33e6a428899d58e2768aaa8dc0812cbeb",
+      "pixel_counts": {
+        "0": 862553,
+        "1": 72617,
+        "2": 279457,
+        "3": 69091,
+        "4": 21762
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 7,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/249.json",
+      "source_json_sha256": "89c72bbb399c94147c2b41e882d350720daa135e3e22ae5e14844104f0d586c4"
+    },
+    {
+      "image": "250.png",
+      "label_png": "labels/250.png",
+      "label_png_sha256": "b412427f571a897e03fbf2c645c1a0542b2823f71a9983b29992ac61f0f16368",
+      "pixel_counts": {
+        "0": 910261,
+        "1": 64508,
+        "2": 243409,
+        "3": 59693,
+        "4": 27609
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 9,
+        "stay_cable": 4,
+        "tower": 2
+      },
+      "source_json": "json/250.json",
+      "source_json_sha256": "9c95d68f0acf21c3cd94c650f9818f86c0280e672589e3ff06a7461e5b460f65"
+    },
+    {
+      "image": "251.png",
+      "label_png": "labels/251.png",
+      "label_png_sha256": "19f800fd5cb098d9c09bfdabc911841071862090fe719567df2ab61fa28e41ff",
+      "pixel_counts": {
+        "0": 935978,
+        "1": 61122,
+        "2": 234700,
+        "3": 50380,
+        "4": 23300
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 9,
+        "stay_cable": 5,
+        "tower": 2
+      },
+      "source_json": "json/251.json",
+      "source_json_sha256": "b4085fc33375c65f74eb959c52e5126481143261bd03ecdaf23745263d7db220"
+    },
+    {
+      "image": "252.png",
+      "label_png": "labels/252.png",
+      "label_png_sha256": "fb58615e404e2895def81f4e71fba6917613778f2c07f8cf775bf64cfd1b6c27",
+      "pixel_counts": {
+        "0": 946494,
+        "1": 60444,
+        "2": 228592,
+        "3": 45451,
+        "4": 24499
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 8,
+        "stay_cable": 4,
+        "tower": 2
+      },
+      "source_json": "json/252.json",
+      "source_json_sha256": "4cf47078cca2e89af3f036012314ba0d8b4dcf3a53ce8bbd6810fb59cea72085"
+    },
+    {
+      "image": "253.png",
+      "label_png": "labels/253.png",
+      "label_png_sha256": "820225062c83f34a9a30de30a8bc1502efaed9c2b4bde38bf1af36d15c122fc3",
+      "pixel_counts": {
+        "0": 1018975,
+        "1": 43724,
+        "2": 182300,
+        "3": 42584,
+        "4": 17897
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 9,
+        "stay_cable": 5,
+        "tower": 1
+      },
+      "source_json": "json/253.json",
+      "source_json_sha256": "c140977bb92806664277b6e07513516b68fd23f199e571fe2b024de8894d3566"
+    },
+    {
+      "image": "254.png",
+      "label_png": "labels/254.png",
+      "label_png_sha256": "0fbf339c6bf04b347500cf16dc44d173f6571833a7d3a63a1a5478803afe26f5",
+      "pixel_counts": {
+        "0": 863252,
+        "1": 88473,
+        "2": 289105,
+        "3": 56515,
+        "4": 8135
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 3,
+        "stay_cable": 4,
+        "tower": 2
+      },
+      "source_json": "json/254.json",
+      "source_json_sha256": "017f98803a0e3c6046eb96236ed27ffed166d42d0b55b7316e2015f24ca4d6cc"
+    },
+    {
+      "image": "255.png",
+      "label_png": "labels/255.png",
+      "label_png_sha256": "da9d35304eff7f7316056a1336b657c09b9bbbc3b4fef7073f4d9fd14d372867",
+      "pixel_counts": {
+        "0": 1137040,
+        "1": 68079,
+        "2": 90710,
+        "3": 6700,
+        "4": 2951
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/255.json",
+      "source_json_sha256": "db4d0b32858b4370c6fbf0c94ebb9fcfce5785ea0cbe4573d4a30ebedec46af3"
+    },
+    {
+      "image": "256.png",
+      "label_png": "labels/256.png",
+      "label_png_sha256": "e91b726189c5e241e130b42a9666a054242aa614c13a40508337f74c69e2ce0f",
+      "pixel_counts": {
+        "0": 1148234,
+        "1": 65297,
+        "2": 81955,
+        "3": 6377,
+        "4": 3617
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/256.json",
+      "source_json_sha256": "c17f70cbeb5139870197acaf007d9281e98a675730b723e4b4996c4a82f04f36"
+    },
+    {
+      "image": "257.png",
+      "label_png": "labels/257.png",
+      "label_png_sha256": "e576f8429f9987984fcb8d190ad48d72b526e1b0492afbe335837828532b7c66",
+      "pixel_counts": {
+        "0": 1156827,
+        "1": 59432,
+        "2": 84781,
+        "3": 4080,
+        "4": 360
+      },
+      "shape_counts": {
+        "deck": 1,
+        "foundation": 1,
+        "stay_cable": 2,
+        "tower": 2
+      },
+      "source_json": "json/257.json",
+      "source_json_sha256": "82a44a5aa892810cf72c6d2cb1d40f0b1e4bbc26d1349ef98a6bca81100f3f96"
+    },
+    {
+      "image": "258.png",
+      "label_png": "labels/258.png",
+      "label_png_sha256": "16170091784512a57cf1cd8851db128d60369d538b7cc062c62c322f6a0c824a",
+      "pixel_counts": {
+        "0": 1143046,
+        "1": 65714,
+        "2": 96720
+      },
+      "shape_counts": {
+        "deck": 1,
+        "stay_cable": 1
+      },
+      "source_json": "json/258.json",
+      "source_json_sha256": "54b6d55d512930bd1108770b337092dfb9b5e340aabec97a5f6770d3b3a24887"
+    },
+    {
+      "image": "259.png",
+      "label_png": "labels/259.png",
+      "label_png_sha256": "8d5ff61d6ef8bbd9e47a0fbcaa8624cd52eee86cfa37da39ff7628ea70bcefcb",
+      "pixel_counts": {
+        "0": 1173006,
+        "1": 59400,
+        "2": 73074
+      },
+      "shape_counts": {
+        "deck": 1,
+        "stay_cable": 1
+      },
+      "source_json": "json/259.json",
+      "source_json_sha256": "052375db7f782ce44ab21dfd4d2e5f6655eeb8ca04ef9caf7dad3ee5c3771128"
+    },
+    {
+      "image": "260.png",
+      "label_png": "labels/260.png",
+      "label_png_sha256": "3c89b96dc2476b403b5cfcf79323ee9e1edc9c35e4836dd9a0ff61b5502c7c55",
+      "pixel_counts": {
+        "0": 1182586,
+        "1": 57435,
+        "2": 65459
+      },
+      "shape_counts": {
+        "deck": 1,
+        "stay_cable": 1
+      },
+      "source_json": "json/260.json",
+      "source_json_sha256": "9b0d43d1f066bba3eba0e6f2d2ac6a71f714e8810f3eee2c977bb70992faec12"
+    },
+    {
+      "image": "261.png",
+      "label_png": "labels/261.png",
+      "label_png_sha256": "1518487436e7e41a2f8e698f101cbf2cc3180de6dab7937da9a8b3e9eb412210",
+      "pixel_counts": {
+        "0": 1186158,
+        "1": 55260,
+        "2": 64062
+      },
+      "shape_counts": {
+        "deck": 1,
+        "stay_cable": 1
+      },
+      "source_json": "json/261.json",
+      "source_json_sha256": "befea6bd89c63aa30f9d07c4893481d52c7cccca6bd6c5f89b5525d2a1d13273"
+    },
+    {
+      "image": "262.png",
+      "label_png": "labels/262.png",
+      "label_png_sha256": "e66ae4952ba4e42994e9b7f8198602803a886f04d5d6590e78dd3a9b1625d057",
+      "pixel_counts": {
+        "0": 1188382,
+        "1": 44778,
+        "2": 61452,
+        "3": 9402,
+        "4": 1466
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 3,
+        "stay_cable": 4,
+        "tower": 3
+      },
+      "source_json": "json/262.json",
+      "source_json_sha256": "16fc5b285406dc4fdbf602fcb08c709143714ceff6e8dd6ede7a0689bf2602a8"
+    },
+    {
+      "image": "263.png",
+      "label_png": "labels/263.png",
+      "label_png_sha256": "43194e169bc631fb398f6d5cc9de6ecb77137bff6511acebeed61dc02f023a07",
+      "pixel_counts": {
+        "0": 1191973,
+        "1": 42720,
+        "2": 59716,
+        "3": 8998,
+        "4": 2073
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 4,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/263.json",
+      "source_json_sha256": "44893ed3f4c49c0b1faf94a73bc156c548b5d920b08269206cfac0bddf710a56"
+    },
+    {
+      "image": "264.png",
+      "label_png": "labels/264.png",
+      "label_png_sha256": "af5235b60c1c31086ad55b9a5463f757a1a2bb3ca39933266eba6abaa77960a3",
+      "pixel_counts": {
+        "0": 1186622,
+        "1": 46864,
+        "2": 58516,
+        "3": 10068,
+        "4": 3410
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/264.json",
+      "source_json_sha256": "30dde533dad25df06547288e7e9f9e17715caa63c8c7e6f193f7140c3e2d8617"
+    },
+    {
+      "image": "265.png",
+      "label_png": "labels/265.png",
+      "label_png_sha256": "521be35470a70cb56b27f1e5222b45bf73d049a8fb8c865856aaaf6bc066720e",
+      "pixel_counts": {
+        "0": 1188418,
+        "1": 46878,
+        "2": 55170,
+        "3": 9229,
+        "4": 5785
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 7,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/265.json",
+      "source_json_sha256": "aed3cd156ee31e9851e2dad2823f9d57ee124878547b9a45f71f56c1caa2a183"
+    },
+    {
+      "image": "266.png",
+      "label_png": "labels/266.png",
+      "label_png_sha256": "5e349f31300d4fcac3f08de517137748525c7107bd0c6213b2a20e2e43174629",
+      "pixel_counts": {
+        "0": 1189273,
+        "1": 43724,
+        "2": 56692,
+        "3": 10944,
+        "4": 4847
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/266.json",
+      "source_json_sha256": "090e2dc3e649403f7f3a6ef06071ae8f2e64f13383daa6e88e85b6f19dd53c2f"
+    },
+    {
+      "image": "267.png",
+      "label_png": "labels/267.png",
+      "label_png_sha256": "7415babeb48bce5b7dd4cffa33839df7d375e7636d1bd80e3a017ea42a7240fb",
+      "pixel_counts": {
+        "0": 1177240,
+        "1": 46665,
+        "2": 66229,
+        "3": 9623,
+        "4": 5723
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/267.json",
+      "source_json_sha256": "283d93dfef232739990ede12de94c512bcacce872e93ab0d337da6ab38dcd390"
+    },
+    {
+      "image": "268.png",
+      "label_png": "labels/268.png",
+      "label_png_sha256": "e348ec1a9975354f20389743b20d003621c31534fdbdb8e37332cb8bbb9722b4",
+      "pixel_counts": {
+        "0": 1158369,
+        "1": 52348,
+        "2": 77505,
+        "3": 11272,
+        "4": 5986
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 8,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/268.json",
+      "source_json_sha256": "4dd20a9f3153ce74ce3bf15171c2d4774b84aa8c84cbbca134a2d03e55e63227"
+    },
+    {
+      "image": "269.png",
+      "label_png": "labels/269.png",
+      "label_png_sha256": "f4b5ba9cbe8264ec93c13f7f31681ac0ee37769780e1f7933c165825d3805221",
+      "pixel_counts": {
+        "0": 1143492,
+        "1": 54282,
+        "2": 89338,
+        "3": 11934,
+        "4": 6434
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/269.json",
+      "source_json_sha256": "4bc1551476e558e162ad9aa5bad465e5b2bc6a21ee611b007eafff8e061ea6f6"
+    },
+    {
+      "image": "270.png",
+      "label_png": "labels/270.png",
+      "label_png_sha256": "293c464ccd33d40bc4b16844e31764c06027de4ca59d2b329637cd55375f1ecc",
+      "pixel_counts": {
+        "0": 1135143,
+        "1": 55703,
+        "2": 95122,
+        "3": 12603,
+        "4": 6909
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/270.json",
+      "source_json_sha256": "b5387e0a461c44e54f1c396e0b8d7570671eaf11d21a6ae3b543fcfd137758ea"
+    },
+    {
+      "image": "271.png",
+      "label_png": "labels/271.png",
+      "label_png_sha256": "38134e9dd41056d73704762a154ae59cfb85d188910cf59e85804d00fc5d40b1",
+      "pixel_counts": {
+        "0": 1123519,
+        "1": 61050,
+        "2": 100775,
+        "3": 13133,
+        "4": 7003
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 3,
+        "tower": 2
+      },
+      "source_json": "json/271.json",
+      "source_json_sha256": "cab43e31ae8d6d8318ea572c7bc06078f501aa49a2243cba7ee3ef6119dcc1ae"
+    },
+    {
+      "image": "272.png",
+      "label_png": "labels/272.png",
+      "label_png_sha256": "05279d9c9948ff28b73ba414f5713da2b433b19457e3fe53eb22a8b2a38c9d23",
+      "pixel_counts": {
+        "0": 1101564,
+        "1": 64565,
+        "2": 117380,
+        "3": 14622,
+        "4": 7349
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 7,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/272.json",
+      "source_json_sha256": "5a7cac69f1d7a06a548011a146cddb667a16972bce371d1ebf2969abb8b94f17"
+    },
+    {
+      "image": "273.png",
+      "label_png": "labels/273.png",
+      "label_png_sha256": "7f01622ec0ffff9de2227d0406edd3927203403d651774ed7328ecd2d8b66a78",
+      "pixel_counts": {
+        "0": 1086418,
+        "1": 62478,
+        "2": 132437,
+        "3": 16061,
+        "4": 8086
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 6,
+        "stay_cable": 3,
+        "tower": 3
+      },
+      "source_json": "json/273.json",
+      "source_json_sha256": "a26feb91a1c28426e695d5d43673fa8520825d98934d7ce34a2b81df9234a2a2"
+    },
+    {
+      "image": "274.png",
+      "label_png": "labels/274.png",
+      "label_png_sha256": "b821f0c11e70c62e8243f51bc0065d554f858fd5c5c880ed1bb8e2bfd88e7ae2",
+      "pixel_counts": {
+        "0": 997171,
+        "1": 96076,
+        "2": 180515,
+        "3": 22813,
+        "4": 8905
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 3,
+        "tower": 3
+      },
+      "source_json": "json/274.json",
+      "source_json_sha256": "86db19f45a8abdc60ccb6f8cfab1070f69bd738c805577f8794c685610d92d8e"
+    },
+    {
+      "image": "275.png",
+      "label_png": "labels/275.png",
+      "label_png_sha256": "31e4e8a0fd7627538ed4fc6930a383e32711e8ffc56d286d283a85526583cb84",
+      "pixel_counts": {
+        "0": 1135097,
+        "1": 96832,
+        "2": 66744,
+        "3": 5984,
+        "4": 823
+      },
+      "shape_counts": {
+        "deck": 1,
+        "foundation": 2,
+        "stay_cable": 2,
+        "tower": 2
+      },
+      "source_json": "json/275.json",
+      "source_json_sha256": "25b9ec3e2ba304d6885a30c96cabe0767d593642813114675ce0900e461e94e6"
+    },
+    {
+      "image": "276.png",
+      "label_png": "labels/276.png",
+      "label_png_sha256": "02b22370e576ee1f8a692af846ecae5d42884bba0d2e944813a3f3b25fd86239",
+      "pixel_counts": {
+        "0": 1128113,
+        "1": 103017,
+        "2": 68043,
+        "3": 5649,
+        "4": 658
+      },
+      "shape_counts": {
+        "deck": 1,
+        "foundation": 2,
+        "stay_cable": 2,
+        "tower": 3
+      },
+      "source_json": "json/276.json",
+      "source_json_sha256": "305651d63f7b9a91a88447a3b1db1889aec4bce22cec3d2131f5f2a7b2be2ede"
+    },
+    {
+      "image": "277.png",
+      "label_png": "labels/277.png",
+      "label_png_sha256": "386ac24b8ad182fc534b1d15e46699d2c6648b147a4e67c78d82288ac2320575",
+      "pixel_counts": {
+        "0": 1125093,
+        "1": 107091,
+        "2": 68470,
+        "3": 4826
+      },
+      "shape_counts": {
+        "deck": 1,
+        "stay_cable": 2,
+        "tower": 2
+      },
+      "source_json": "json/277.json",
+      "source_json_sha256": "d19c7aa57a78c3e0171f041284806b32afa9a74b28cb689b1ed5bf4d7f7b6d47"
+    },
+    {
+      "image": "278.png",
+      "label_png": "labels/278.png",
+      "label_png_sha256": "c800f13f90c52daab2b00d2e8d6b54e4866a391389e039782fa2d5bb81d324f5",
+      "pixel_counts": {
+        "0": 1129130,
+        "1": 99201,
+        "2": 72602,
+        "3": 4547
+      },
+      "shape_counts": {
+        "deck": 1,
+        "stay_cable": 2,
+        "tower": 2
+      },
+      "source_json": "json/278.json",
+      "source_json_sha256": "d9cfe264788c29b3619d86ff475b2a4c4395e6d055b9e4c77bf8572ad880b53e"
+    },
+    {
+      "image": "279.png",
+      "label_png": "labels/279.png",
+      "label_png_sha256": "aacfa7be9880e35a3610299302c46b36ccfcb2cc6a2df12367f6929e88972484",
+      "pixel_counts": {
+        "0": 1133131,
+        "1": 86529,
+        "2": 80795,
+        "3": 4591,
+        "4": 434
+      },
+      "shape_counts": {
+        "deck": 1,
+        "foundation": 1,
+        "stay_cable": 2,
+        "tower": 2
+      },
+      "source_json": "json/279.json",
+      "source_json_sha256": "3b03f4d6469d827a176fd9b2ff74bccf414742a31905e29f1474a1a855078ee3"
+    },
+    {
+      "image": "280.png",
+      "label_png": "labels/280.png",
+      "label_png_sha256": "71e98dbbdbaa1f9359a606e8b19b709665439cd0a2f3e1e80a347bd0d476b6c7",
+      "pixel_counts": {
+        "0": 1173045,
+        "1": 67872,
+        "2": 54802,
+        "3": 6603,
+        "4": 3158
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 4,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/280.json",
+      "source_json_sha256": "dd26f86d7b9480483b902f8b49997a3dcc1a061bd1b9883fcf82055635e993d1"
+    },
+    {
+      "image": "281.png",
+      "label_png": "labels/281.png",
+      "label_png_sha256": "2320e12ae9f19bc049df0843ffbfe6c40688aed88a40410209373f5bdce5b32b",
+      "pixel_counts": {
+        "0": 1202759,
+        "1": 53243,
+        "2": 41055,
+        "3": 5862,
+        "4": 2561
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 3,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/281.json",
+      "source_json_sha256": "2e5229c94608b55c1e9f53e6b15a545948e2e88dc3c56d7e6964ec5bee326e87"
+    },
+    {
+      "image": "282.png",
+      "label_png": "labels/282.png",
+      "label_png_sha256": "88d788b59b8a73412729f292fa2b8277e84814214f50d54bd20bc29bffd4d99a",
+      "pixel_counts": {
+        "0": 1124697,
+        "1": 98594,
+        "2": 82189
+      },
+      "shape_counts": {
+        "deck": 1,
+        "stay_cable": 1
+      },
+      "source_json": "json/282.json",
+      "source_json_sha256": "ab80340827b05608e3143ef64ec9e69b228b01a066796fab2a353b15018252f1"
+    },
+    {
+      "image": "283.png",
+      "label_png": "labels/283.png",
+      "label_png_sha256": "3a6fca71456324d0b059e6ac797d0b23e5d38372cb8d9f30966e802db64a5da9",
+      "pixel_counts": {
+        "0": 920289,
+        "1": 88018,
+        "2": 249686,
+        "3": 34984,
+        "4": 12503
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 4,
+        "tower": 1
+      },
+      "source_json": "json/283.json",
+      "source_json_sha256": "a4dcdda13da69c95c6d172513f1ec57d9e3179457227d8a94053785dac4c801e"
+    },
+    {
+      "image": "284.png",
+      "label_png": "labels/284.png",
+      "label_png_sha256": "1e0b5e563a7f1f56a2ed6942fd66c24da432da9d5dd9f9d58cd7780f1c5748bc",
+      "pixel_counts": {
+        "0": 939285,
+        "1": 81584,
+        "2": 235390,
+        "3": 35423,
+        "4": 13798
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 5,
+        "stay_cable": 5,
+        "tower": 2
+      },
+      "source_json": "json/284.json",
+      "source_json_sha256": "1e245d877e7cf712b24f437773e423742568651d0ebaf4009c26a2bd3aa3980a"
+    },
+    {
+      "image": "285.png",
+      "label_png": "labels/285.png",
+      "label_png_sha256": "3a351927652e702d71adf309919602e65a2490eac1be60c3e6423ff2352bbcc3",
+      "pixel_counts": {
+        "0": 946729,
+        "1": 74857,
+        "2": 232392,
+        "3": 36108,
+        "4": 15394
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 7,
+        "stay_cable": 5,
+        "tower": 2
+      },
+      "source_json": "json/285.json",
+      "source_json_sha256": "5a2b479bfac19b40a9817c7672a029887e11691770a7124e474165d33d3d2884"
+    },
+    {
+      "image": "286.png",
+      "label_png": "labels/286.png",
+      "label_png_sha256": "59637daf449c19e3462ce41142c18f3430bc5f856c7b95f26a2c4a2fa431b734",
+      "pixel_counts": {
+        "0": 938558,
+        "1": 74240,
+        "2": 238975,
+        "3": 37668,
+        "4": 16039
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 8,
+        "stay_cable": 4,
+        "tower": 2
+      },
+      "source_json": "json/286.json",
+      "source_json_sha256": "6fe258245d7e7c8083b6c0f86a7bab0eaba28678e67dba5f7a6f9b2f1fc535cf"
+    },
+    {
+      "image": "287.png",
+      "label_png": "labels/287.png",
+      "label_png_sha256": "0285bd02d557e1bb765ac45b155caaeba5eca7951d431180a05bf74233834998",
+      "pixel_counts": {
+        "0": 924841,
+        "1": 75113,
+        "2": 249105,
+        "3": 39624,
+        "4": 16797
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 8,
+        "stay_cable": 5,
+        "tower": 2
+      },
+      "source_json": "json/287.json",
+      "source_json_sha256": "ece6ac2bb93ba72b95fb51a006c87dd0057f766a6aca690c2c90e1a43bbc5d4c"
+    },
+    {
+      "image": "288.png",
+      "label_png": "labels/288.png",
+      "label_png_sha256": "a8d203c0c9bdd68d49c33036ca4cc9db40742bd9801795132264ebba4d4a87b9",
+      "pixel_counts": {
+        "0": 936851,
+        "1": 67457,
+        "2": 239683,
+        "3": 41093,
+        "4": 20396
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 10,
+        "stay_cable": 4,
+        "tower": 2
+      },
+      "source_json": "json/288.json",
+      "source_json_sha256": "f91008f53d61e17cbc9864f5a690eb3a01e639091813ac8751b63fadc57eb7fe"
+    },
+    {
+      "image": "289.png",
+      "label_png": "labels/289.png",
+      "label_png_sha256": "683e64eb5065a628bc303b4cb04dd86ce491241638fc8be07422f11e5dc0a90e",
+      "pixel_counts": {
+        "0": 962275,
+        "1": 58998,
+        "2": 219174,
+        "3": 42059,
+        "4": 22974
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 10,
+        "stay_cable": 5,
+        "tower": 1
+      },
+      "source_json": "json/289.json",
+      "source_json_sha256": "2115db26df9e41544b2c04585c1186dca41c57728e386c282afc0901728c9c09"
+    },
+    {
+      "image": "290.png",
+      "label_png": "labels/290.png",
+      "label_png_sha256": "639018598944e09920469f85a7fe7105b77e582fa2b6c9732ff075d592a9463d",
+      "pixel_counts": {
+        "0": 953709,
+        "1": 58627,
+        "2": 225147,
+        "3": 44742,
+        "4": 23255
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 9,
+        "stay_cable": 5,
+        "tower": 2
+      },
+      "source_json": "json/290.json",
+      "source_json_sha256": "f8943dbbbac5b1c81dffad7b9fd5492d9c1a3ed76fad1edc60de9461a187f961"
+    },
+    {
+      "image": "291.png",
+      "label_png": "labels/291.png",
+      "label_png_sha256": "c1acf40516d4ec52fed992beee4b4fa18393b3c9bb8c18f8670b35212e05dd39",
+      "pixel_counts": {
+        "0": 914343,
+        "1": 69475,
+        "2": 246829,
+        "3": 50720,
+        "4": 24113
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 10,
+        "stay_cable": 5,
+        "tower": 2
+      },
+      "source_json": "json/291.json",
+      "source_json_sha256": "738e87e2408ec40f600ed308a5886676f272d7bfa20d07dfb7459175ede8e55f"
+    },
+    {
+      "image": "292.png",
+      "label_png": "labels/292.png",
+      "label_png_sha256": "593919e13aa2d36d3bdc8eb6aaf4fe9463ec5d87e5da9b4d300e96f2cab049cf",
+      "pixel_counts": {
+        "0": 964897,
+        "1": 58593,
+        "2": 210785,
+        "3": 49729,
+        "4": 21476
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 10,
+        "stay_cable": 6,
+        "tower": 2
+      },
+      "source_json": "json/292.json",
+      "source_json_sha256": "8e552867d23547988038bf47da867c6d14f2ea03cd8ced401f6b3ef71e8df68b"
+    },
+    {
+      "image": "293.png",
+      "label_png": "labels/293.png",
+      "label_png_sha256": "0167e2365100572ba5a3d88ced73fe86e813fbe43d36a59050aa1d8fc1eba38a",
+      "pixel_counts": {
+        "0": 932553,
+        "1": 63359,
+        "2": 233134,
+        "3": 52826,
+        "4": 23608
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 10,
+        "stay_cable": 5,
+        "tower": 2
+      },
+      "source_json": "json/293.json",
+      "source_json_sha256": "f3c6e3b5a53c0c0556060025c850f9c53969fc687e0b4cb2942e9e5532f71c01"
+    },
+    {
+      "image": "294.png",
+      "label_png": "labels/294.png",
+      "label_png_sha256": "de28ec8d1508c0744fdf6a4e9368c8628c23f1289004c8ba1a5faf4e8ee41d41",
+      "pixel_counts": {
+        "0": 912416,
+        "1": 71980,
+        "2": 241257,
+        "3": 54183,
+        "4": 25644
+      },
+      "shape_counts": {
+        "deck": 3,
+        "foundation": 10,
+        "stay_cable": 5,
+        "tower": 2
+      },
+      "source_json": "json/294.json",
+      "source_json_sha256": "4205cd06f83fe712589739cc10ae6148549414126c9e55fcfbcabd62f6e639cd"
+    },
+    {
+      "image": "295.png",
+      "label_png": "labels/295.png",
+      "label_png_sha256": "f828d41e203f348283452dcd57071b48beddcfedc82473e0b7688d94b5ea6fd1",
+      "pixel_counts": {
+        "0": 780070,
+        "1": 92806,
+        "2": 344594,
+        "3": 73406,
+        "4": 14604
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 4,
+        "stay_cable": 4,
+        "tower": 2
+      },
+      "source_json": "json/295.json",
+      "source_json_sha256": "1dadcdc1d50e32f18d02efc02e1e3d6f5b1b99c79c0a39ac27f9cf6f67dee591"
+    },
+    {
+      "image": "296.png",
+      "label_png": "labels/296.png",
+      "label_png_sha256": "f12aa5c8388fcab4ba96738d21775952e200e574bf95c182450717c4e735b0e4",
+      "pixel_counts": {
+        "0": 812192,
+        "1": 86282,
+        "2": 320028,
+        "3": 66825,
+        "4": 20153
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 6,
+        "stay_cable": 5,
+        "tower": 2
+      },
+      "source_json": "json/296.json",
+      "source_json_sha256": "4c118a7fb12767e27937dbd1f78bcbfc37f9ca848770febf3427d0d1b78873a9"
+    },
+    {
+      "image": "297.png",
+      "label_png": "labels/297.png",
+      "label_png_sha256": "9a7ac8671e26f195a918a8b9e3b5a7157a44027865a0078ce9f11f1215d3b57c",
+      "pixel_counts": {
+        "0": 795557,
+        "1": 85195,
+        "2": 325321,
+        "3": 74835,
+        "4": 24572
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 8,
+        "stay_cable": 5,
+        "tower": 2
+      },
+      "source_json": "json/297.json",
+      "source_json_sha256": "ea31c8b23ab6aab4a7d499310aaec19d251ff8c182f997a594bd58f285d9888f"
+    },
+    {
+      "image": "298.png",
+      "label_png": "labels/298.png",
+      "label_png_sha256": "65bf374751b5806a7b4cd2dc27ce86dce46b352ab7e110b325612ae66b533da8",
+      "pixel_counts": {
+        "0": 801262,
+        "1": 87472,
+        "2": 307019,
+        "3": 82600,
+        "4": 27127
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 8,
+        "stay_cable": 5,
+        "tower": 1
+      },
+      "source_json": "json/298.json",
+      "source_json_sha256": "a885af6a6afdb1c086fd24ccef7c1d0912bf5703d579ddc360abdd42e39dd021"
+    },
+    {
+      "image": "299.png",
+      "label_png": "labels/299.png",
+      "label_png_sha256": "db93fd08d07e0db823ffa4b8280f1e88bf2a2263c7496ace203fff98de75d3be",
+      "pixel_counts": {
+        "0": 785478,
+        "1": 85594,
+        "2": 323050,
+        "3": 85247,
+        "4": 26111
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 8,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/299.json",
+      "source_json_sha256": "288206382eba2519212ced17072ba8de60a7de4f257e4cb167ae831c681fb009"
+    },
+    {
+      "image": "300.png",
+      "label_png": "labels/300.png",
+      "label_png_sha256": "2a24cc8d046c564c5decf7b9da49d10220978004fdba720dbce12a7c6ab8f2f5",
+      "pixel_counts": {
+        "0": 697339,
+        "1": 97855,
+        "2": 395497,
+        "3": 101506,
+        "4": 13283
+      },
+      "shape_counts": {
+        "deck": 2,
+        "foundation": 2,
+        "stay_cable": 3,
+        "tower": 1
+      },
+      "source_json": "json/300.json",
+      "source_json_sha256": "584b133b29b492e089f6e19d9c4aea11ce1ecf5fb26d7ba07e05991930d77c0a"
+    }
+  ],
+  "schema_version": 1,
+  "shape_counts": {
+    "deck": 642,
+    "foundation": 1481,
+    "stay_cable": 1081,
+    "tower": 528
+  },
+  "source_camera": "released camera_parameters/cameras.txt SIMPLE_RADIAL",
+  "source_rgb_used": false,
+  "split_id": "sem_001_scaffold_static_v1"
+}

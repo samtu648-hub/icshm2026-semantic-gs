@@ -1,0 +1,27 @@
+"""Extend the local reconstruction debugging deliverable for RGB134/135."""
+import html,json,os,subprocess
+from pathlib import Path
+from PIL import Image,ImageDraw
+ROOT=Path(__file__).resolve().parents[1]
+def read(p):return json.loads(p.read_text())
+def main():
+ c=read(ROOT/'experiments/runs/RGB-135-STANDARD-LOCAL-REPAIR/config.yaml');diag=ROOT/'outputs/quality/diagnostics/RGB-134-r2';run=ROOT/c['output'];r=read(run/'result.json');assert r['status']=='completed';d=read(diag/'result.json');base=ROOT/'outputs/quality/backbone_comparison';refs=base/'standard/export/images';out=run/'browser';out.mkdir(exist_ok=False);frames=out/'frames';frames.mkdir()
+ for i in range(144):
+  n=f'frame{i:04d}.png';s=Image.new('RGB',(2640,1016),'white');dr=ImageDraw.Draw(s)
+  for j,(label,path) in enumerate([('RGB130 original Standard',refs/n),('RGB135 fixed candidate',run/'images'/n)]):s.paste(Image.open(path),(1320*j,27));dr.text((1320*j+8,7),label,fill='black')
+  s.save(frames/n)
+ subprocess.run(['ffmpeg','-nostdin','-v','error','-n','-framerate','12','-i',str(frames/'frame%04d.png'),'-c:v','libx264','-threads','4','-crf','18','-pix_fmt','yuv420p','-movflags','+faststart',str(out/'before-after.mp4')],check=True)
+ views=[]
+ for n in sorted(k for k in r['image_hashes'] if not k.startswith('frame')):
+  paths=[ROOT/'outputs/quality/all_data/RGB-120-r2/scene/images'/n,refs/n,run/'images'/n]
+  regions=[dict(name=k+(f' box{j+1}' if len(reg['boxes'])>1 else ''),box=box) for k,reg in c['regions'].items() if reg['view']==n for j,box in enumerate(reg['boxes'])]
+  structure=read(ROOT/'experiments/runs/QUAL-004-CURRENT-BOTTLENECK/config.yaml')['crops']
+  if Path(n).stem in structure:regions.append(dict(name='既有桥体结构区域',box=structure[Path(n).stem]))
+  views.append(dict(name=n,paths=[os.path.relpath(p,out) for p in paths],regions=regions))
+ old=read(base/'standard/rgb-evaluation/result.json')['metrics'];delta={k:r['metrics'][k]-old[k] for k in old};(out/'data.json').write_text(json.dumps(dict(views=views,baseline=old,candidate=r['metrics'],deltas=delta,contribution=d['summary'],regions=r['regions']),ensure_ascii=False,indent=2)+'\n')
+ table='<table><tr><th>全400训练视角</th><th>RGB130原始</th><th>RGB135候选</th><th>差值</th></tr>'+''.join(f'<tr><td>{k}</td><td>{old[k]:.9f}</td><td>{r["metrics"][k]:.9f}</td><td>{delta[k]:+.9f}</td></tr>' for k in old)+'</table>'
+ attribution='<table><tr><th>高斯ID</th><th>有像素变化的视角</th><th>改善/退化视角</th><th>全400 MAE变化 /255</th></tr>'+''.join(f'<tr><td>{x["id"]}</td><td>{x["support_views"]}</td><td>{x["better_views"]}/{x["worse_views"]}</td><td>{x["mean_mae_delta_255"]:+.9f}</td></tr>' for x in d['summary'])+'</table>'
+ review=html.escape((run/'review.md').read_text())
+ page='''<!doctype html><meta charset="utf-8"><title>Standard贡献定位与单修复验证</title><style>body{font:15px/1.6 system-ui;margin:28px;background:#f6f7f9;color:#17202a}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.tile{background:white}.tile p{margin:5px}canvas,video{width:100%;display:block}select,button{padding:8px;margin:5px}table{border-collapse:collapse;background:white}td,th{padding:8px;border-bottom:1px solid #ddd;text-align:right}.review{white-space:pre-wrap;max-width:1150px}a{color:#075daf}</style><h1>Standard：贡献定位与单修复验证</h1><p>RGB134只读归因 → RGB135固定15点透明度拟合，对照未修改的RGB130。原生1320×989。全400均为训练视角，GT五类仅用于结构区域诊断；无GT轨迹只作视觉检查。</p><div class=review>__REVIEW__</div>__TABLE__<details><summary>诊断阶段：冻结候选集合的全400逐个移除证据</summary>__ATTR__<p>正一阶导数只用于固定集合，表中是有限移除后的实际变化；结构保护与收益见完整数据。不是独立测试集上的选模。</p></details><select id=view></select><select id=region></select><button id=full>完整原生画面</button><span id=box></span><div class=grid id=grid></div><h2>同144相机：左RGB130原始，右RGB135候选</h2><p>每幅1320×989，标题栏27像素，12fps便于检查；相机与旧轨迹完全相同。</p><video controls src=before-after.mp4></video><p><a href=data.json>完整同区域与贡献统计</a> · <a href=../../../backbone_comparison/browser-r1/index.html>三骨干原始对照</a></p><script>const V=__V__;let k=V.findIndex(v=>v.name==='159.png'),box=[0,0,1320,989],items=[],version=0;const v=document.querySelector('#view'),r=document.querySelector('#region');V.forEach((x,i)=>v.add(new Option(x.name,i)));v.value=k;function draw(){document.querySelector('#box').textContent=JSON.stringify(box);for(const {im,c} of items){c.width=box[2]-box[0];c.height=box[3]-box[1];c.getContext('2d').drawImage(im,box[0],box[1],c.width,c.height,0,0,c.width,c.height)}}function load(){version++;const token=version;items=[];r.replaceChildren();r.add(new Option('选择固定区域',''));V[k].regions.forEach((x,i)=>r.add(new Option(x.name,i)));document.querySelector('#grid').replaceChildren();V[k].paths.forEach((path,i)=>{const tile=document.createElement('div');tile.className='tile';const p=document.createElement('p');p.textContent=['真实照片','Standard RGB130 原始','Standard RGB135 候选'][i];const c=document.createElement('canvas'),a=document.createElement('a');a.href=path;a.textContent='原生图';a.target='_blank';tile.append(p,c,a);document.querySelector('#grid').append(tile);const im=new Image();im.onload=()=>{if(token===version){items.push({im,c});draw()}};im.src=path})}v.onchange=()=>{k=+v.value;box=[0,0,1320,989];load()};r.onchange=()=>{if(r.value!==''){box=V[k].regions[+r.value].box;draw()}};document.querySelector('#full').onclick=()=>{box=[0,0,1320,989];draw()};load();</script>'''
+ (out/'index.html').write_text(page.replace('__REVIEW__',review).replace('__TABLE__',table).replace('__ATTR__',attribution).replace('__V__',json.dumps(views)));print(out/'index.html')
+if __name__=='__main__':main()

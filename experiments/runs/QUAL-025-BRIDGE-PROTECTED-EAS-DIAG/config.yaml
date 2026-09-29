@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "experiment_id": "QUAL-025-BRIDGE-PROTECTED-EAS-DIAG",
+  "title": "RGB170桥梁硬保护与背景残差可靠性EAS诊断",
+  "phase": "diagnostic",
+  "parent_experiment": "RGB-170-IMPROVEDGS-BUDGET15M-H50K;QUAL-022-BRIDGE-GAUSSIAN-SUPPORT-DIAG",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "seed": 0,
+  "read_only": true,
+  "inputs": {
+    "photos": "outputs/quality/all_data/RGB-120-r2/scene/images",
+    "labels": "outputs/quality/all_data/SEM-370-r1/labels",
+    "rgb170_renders": "outputs/quality/RGB-170/full-r1/evaluation-r1/images/50000",
+    "rgb170_ply": "outputs/quality/RGB-170/full-r1/model/point_cloud/iteration_50000/point_cloud.ply"
+  },
+  "policy": {
+    "residual_sigma": 3.0,
+    "lower_quantile": 0.5,
+    "upper_quantile": 0.9,
+    "minimum_reliability": 0.25,
+    "bridge_dilation_pixels": 12,
+    "minimum_contributor_views": 3,
+    "projected_bridge_dilation_pixels": 12,
+    "unlabeled_bridge_protection": "project centers of QUAL022 true_like bridge contributors observed in at least three labeled views through each official camera",
+    "bridge_classes": ["deck", "stay_cable", "tower", "foundation"],
+    "application": "multiply only the fixed ImprovedGS EAS pixel edge weights; full real-photo RGB loss and gradient eligibility remain unchanged"
+  },
+  "interpretation": "RGB170 residual is a fixed parent reliability prior, not new RGB supervision. Labels only hard-protect 2D bridge evidence and never create or move 3D Gaussians.",
+  "output": "outputs/quality/QUAL-025/diagnostic-r2"
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-122-UNCERTAINTY-BAND-DIAG",
+  "title": "Read-only diagnosis of the hard-0.20 versus hard-0.30 cable uncertainty band",
+  "phase": "R2 semantic development optimisation",
+  "status": "completed_development_read_only_diagnostic",
+  "owner": "unassigned",
+  "parent_experiment": "SEM-120-DEV-THRESHOLD-SWEEP,VIS-004-DEV-THRESHOLD-FLYTHROUGH,SEM-121-CONTINUOUS-FUSION-OOF,SEM-111-PROTECTED-FUSION-FINAL,SEM-001,SEM-102-RENDERED-SEG-FINAL,RGB-030-FULL",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "seed": "not_applicable_deterministic_read_only_analysis",
+  "data": {
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "semantic_split_sha256": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+    "development_images": 74,
+    "access_rule": "The already-opened 74 semantic-validation views remain an explicitly reusable developer set. Validate all frozen input hashes before opening labels. This run may only read labels to analyse fixed 0.20 and 0.30 hard-fusion outputs; it must not write a changed class map, score a candidate, fit parameters, or make blind/formal claims. Real RGB, unlabelled images, hidden inputs and external-camera mode are prohibited."
+  },
+  "inputs": {
+    "sem001_result_sha256": "abd82b7c21820c26e7cea4fa0d7b7ce155d833107b0388e9783c78ba9b81900d",
+    "sem102_prediction_manifest_sha256": "8e44e34a2cb781a2a2fa814ceffc9f54a6d9fdf05a9fda977f70e77d9094a0c0",
+    "sem120_result_sha256": "2cc91b76d31c4915cc8775376700549f03bc469c327953fd6aad950a276f1798"
+  },
+  "frozen_rgb": {
+    "backbone": "Scaffold-GS",
+    "rgb_experiment": "RGB-030-FULL",
+    "iteration": 30000,
+    "geometry_color_opacity_checkpoint_unchanged": true,
+    "sem001_checkpoint_unchanged": true,
+    "sem102_checkpoint_unchanged": true,
+    "coordinate_frame": "official_colmap_reference",
+    "pose_convention": "CAMERA_FROM_WORLD"
+  },
+  "single_changed_variable": "No prediction or model variable is changed. The sole new operation is a fixed read-only measurement of the exact mutable hard-0.20 minus hard-0.30 stay_cable band, using only its frozen SEM-001 class prior, frozen teacher probability, connectivity to frozen hard-0.30 seeds, distance to those seeds, and the already-authorised developer labels.",
+  "diagnostic": {
+    "mode": "read_only_no_prediction_change",
+    "lower_threshold": 0.20,
+    "upper_threshold": 0.30,
+    "band_definition": "mutable SEM-001 pixel AND 0.20 <= frozen teacher p_stay_cable < 0.30; must be bit-identical to hard_0.20 stay_cable minus hard_0.30 stay_cable",
+    "probability_bin_edges": [0.20, 0.22, 0.24, 0.26, 0.28, 0.30],
+    "seed_connectivity": "8-connected band component touches a mutable hard-0.30 teacher seed after one 8-neighbour dilation",
+    "distance_bin_edges": [0.0, 1.0, 2.0, 4.0, 8.0, 16.0, 2048.0],
+    "interpretation_boundary": "The output only establishes whether these already-fixed descriptive signals correlate with GT stay_cable versus GT background. It does not select a rule, threshold, model, feature, or replacement. Any new inference mechanism requires a separate experiment ID and configuration."
+  },
+  "outputs": {
+    "root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_122/uncertainty_band_diag/full-20260903-r1",
+    "visual_samples": ["054.png", "140.png", "183.png"],
+    "panel_order": ["GT", "hard_0.30", "0.20_only_band_green_true_cable_red_background_orange_other", "hard_0.30_seed_yellow_band_blue"]
+  },
+  "forbidden": [
+    "SEM-001_checkpoint_change",
+    "SEM-102_checkpoint_change",
+    "RGB_checkpoint_change",
+    "Scaffold_training",
+    "SegFormer_training",
+    "class_map_write_or_postprocess",
+    "parameter_fitting",
+    "candidate_metric_selection",
+    "real_RGB_input",
+    "unlabeled_input",
+    "hidden_test_input",
+    "external_camera_mode",
+    "claiming_blind_or_formal_replacement_status"
+  ],
+  "classes": {"0": "background", "1": "deck", "2": "stay_cable", "3": "tower", "4": "foundation"},
+  "fallback": "RGB-030-FULL Scaffold-GS + SEM-001"
+}

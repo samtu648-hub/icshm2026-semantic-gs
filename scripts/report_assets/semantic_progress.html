@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>从全量训练到困难视角｜项目进展</title>
+  <link rel="stylesheet" href="semantic-progress.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#opening"><span class="mark"></span>SEMANTIC GS · 进展汇报</a>
+    <nav aria-label="章节导航">
+      <a href="#journey">演进</a><a href="#standard">骨干</a><a href="#horizon">训练时长</a><a href="#hard">困难视角</a><a href="#best">当前方案</a>
+    </nav>
+    <button id="present" type="button" title="全屏展示">全屏</button>
+  </header>
+
+  <main>
+    <section id="opening" class="hero snap">
+      <div class="eyebrow">2026.09.23 · 离线研究汇报</div>
+      <div class="hero-grid">
+        <div>
+          <h1>从全量训练，<br>走到一个<strong>可信的停止点</strong></h1>
+          <p class="lead">当前开发主方案：<b>RGB170 · ImprovedGS 50k</b> ＋ <b>SEM437 · Mask2Former 12k</b>。它是现有记录中最均衡的组合，但不是隐藏测试成绩。</p>
+          <div class="scope-line"><span>400 张 RGB 重建拟合</span><span>300 张有标注语义训练拟合</span><span class="warn">100 张无标注仅视觉审阅</span></div>
+        </div>
+        <div class="hero-result">
+          <div class="hero-kicker">当前结论</div>
+          <div class="hero-number">95.679<small>%</small></div>
+          <div class="hero-label">全 300 训练拟合 mIoU · SEM437-12k</div>
+          <div class="mini-grid">
+            <div><b>23.505</b><span>RGB170 PSNR</span></div>
+            <div><b>90.278%</b><span>2px 边界 F1</span></div>
+            <div><b>6.0 GB</b><span>语义峰值 reserved</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-note">一句话：重建从 30k 延长到 50k；语义从 6k 延长到 12k。继续到 13k/14k 没有解决 357，因此停止。</div>
+    </section>
+
+    <section id="roles" class="snap">
+      <div class="section-head"><div><span class="num">01</span><h2>先把证据口径说清楚</h2></div><p>本页同时展示三种不同性质的证据，不能互相替代。</p></div>
+      <div class="role-grid">
+        <article class="role train"><span>可计算指标</span><h3>001–300 · 有标注</h3><p>全部参与语义训练，所以 95.679% 是<strong>训练拟合</strong>。适合比较端点与检查类别代价，不代表未知视角泛化。</p></article>
+        <article class="role dev"><span>开发验证</span><h3>空间 fold v1 / v2</h3><p>曾用于比较 6k–12k 趋势。v1 在 8k 最好，v2 在 12k 最好；这些视角已被观察，不再是盲测。</p></article>
+        <article class="role visual"><span>无真值</span><h3>301–400 ＋ 144 帧</h3><p>只能看结构连续性、闪烁和明显错误。网页中的 344–358 改善与 100 张视频都属于<strong>视觉证据</strong>。</p></article>
+      </div>
+      <div class="data-flow"><div><b>400 RGB</b><span>重建训练</span></div><i>→</i><div><b>RGB170 50k</b><span>冻结渲染</span></div><i>→</i><div><b>300 标签</b><span>SEM437 训练</span></div><i>→</i><div><b>100＋144</b><span>无 GT 审阅</span></div></div>
+    </section>
+
+    <section id="journey" class="snap">
+      <div class="section-head"><div><span class="num">02</span><h2>全量训练之前，我们走过什么</h2></div><p>下列历史 74 图指标只描述早期开发轨迹，不与全 300 数值直接横比。</p></div>
+      <div class="media-layout">
+        <div class="video-shell">
+          <video id="journey-video" controls preload="metadata" poster="assets/posters/pre-sem001.jpg"><source src="assets/videos/pre-sem001.mp4" type="video/mp4"></video>
+          <div class="video-caption"><b id="journey-title">SEM001 · 冻结三维语义起点</b><span id="journey-note">桥面和桥塔可辨，但 stay_cable 误报明显。</span></div>
+        </div>
+        <div class="stage-list" data-video-target="journey-video">
+          <button class="stage active" data-src="assets/videos/pre-sem001.mp4" data-poster="assets/posters/pre-sem001.jpg" data-title="SEM001 · 冻结三维语义起点" data-note="桥面和桥塔可辨，但 stay_cable 误报明显。"><span>01</span><div><b>三维语义基线</b><small>历史 74 图 mIoU 61.61%</small></div></button>
+          <button class="stage" data-src="assets/videos/pre-sem161.mp4" data-poster="assets/posters/pre-sem161.jpg" data-title="SEM161 · 三维＋二维融合" data-note="加入二维证据后，历史 74 图 mIoU 提高到 83.39%。"><span>02</span><div><b>规则融合阶段</b><small>历史 74 图 mIoU 83.39%</small></div></button>
+          <button class="stage" data-src="assets/videos/pre-m2f.mp4" data-poster="assets/posters/pre-m2f.jpg" data-title="SEM349 · Mask2Former 原始输出" data-note="Swin-L 取代 B2，历史 74 图 mIoU 达到 86.51%。"><span>03</span><div><b>Mask2Former</b><small>历史 74 图 mIoU 86.51%</small></div></button>
+          <button class="stage" data-src="assets/videos/full-sem380.mp4" data-poster="assets/posters/full-sem380.jpg" data-title="SEM380 · 第一轮全量训练" data-note="400 RGB＋300 标签后，全 300 拟合 mIoU 达到 95.31%。"><span>04</span><div><b>全量训练</b><small>全 300 拟合 mIoU 95.31%</small></div></button>
+        </div>
+      </div>
+      <div class="gain-strip"><span>61.61%</span><i></i><span>83.39%</span><i></i><span>86.51%</span><i></i><strong>95.31%</strong><em>指标口径在此处从历史 74 图切换为全 300 训练拟合</em></div>
+    </section>
+
+    <section id="standard" class="snap">
+      <div class="section-head"><div><span class="num">03</span><h2>为什么选择 Standard 主线</h2></div><p>同为 30k 全量重建＋匹配 Mask2Former，Standard 的语义最强，结构更稳定。</p></div>
+      <div class="compare-grid">
+        <article><h3>Scaffold</h3><div class="metric">22.331 <small>dB</small></div><p>RGB PSNR</p><div class="metric alt">94.973%</div><p>全 300 语义拟合 mIoU</p><span class="tag">画面较平滑，细结构偏弱</span></article>
+        <article class="winner"><div class="ribbon">选择</div><h3>Standard</h3><div class="metric">23.218 <small>dB</small></div><p>RGB PSNR</p><div class="metric alt">95.266%</div><p>全 300 语义拟合 mIoU</p><span class="tag">stay_cable / tower / foundation 更均衡</span></article>
+        <article><h3>Mip</h3><div class="metric">23.224 <small>dB</small></div><p>RGB PSNR</p><div class="metric alt">95.162%</div><p>全 300 语义拟合 mIoU</p><span class="tag">RGB 略高，语义未超过 Standard</span></article>
+      </div>
+      <details class="wide-video"><summary>播放三种骨干的同轨迹重建对比</summary><video controls preload="metadata" poster="assets/posters/backbones.jpg"><source src="assets/videos/backbones.mp4" type="video/mp4"></video></details>
+      <p class="callout">选择逻辑不是“Standard 每个 RGB 指标都最高”，而是它在相同语义模型下提供了<strong>最好的结构语义拟合</strong>，并且后续 AbsGS / ImprovedGS 改进都能沿这条主线继续复用。</p>
+    </section>
+
+    <section id="horizon" class="snap">
+      <div class="section-head"><div><span class="num">04</span><h2>训练时长：为什么是 50k ＋ 12k</h2></div><p>端点来自完整曲线与停止实验，不是看到困难帧后临时挑选。</p></div>
+      <div class="horizon-grid">
+        <article class="horizon-card rgb">
+          <div class="card-title"><span>RGB 重建</span><b>30k → 50k</b></div>
+          <h3>在 Standard 系上增加 20k</h3>
+          <p>RGB170 从头训练到 50k，使用 1.5M Gaussian 预算；400 图拟合 PSNR 23.505 dB，桥区裁剪较 RGB166 提升 0.243 dB。</p>
+          <div class="rail"><i style="width:60%"></i><i class="selected" style="width:100%"></i><span>30k</span><strong>50k</strong></div>
+          <small>50k 是当前发布全 400 桥区拟合最强候选；未知视角重建泛化仍未证实。</small>
+        </article>
+        <article class="horizon-card sem">
+          <div class="card-title"><span>语义分割</span><b>6k → 12k</b></div>
+          <h3>6k 后用 0.1× 固定低学习率</h3>
+          <p>同一训练轨迹保存 6k / 8k / 10k / 12k；SEM437 在 12k 达到全 300 拟合与边界 F1 的共同最高点。</p>
+          <div class="rail four"><i style="width:50%"></i><i style="width:66.6%"></i><i style="width:83.3%"></i><i class="selected" style="width:100%"></i><span>6k</span><span>8k</span><span>10k</span><strong>12k</strong></div>
+          <small>13k / 14k 尾段未解决 357 且降低拟合，形成明确停止证据。</small>
+        </article>
+      </div>
+      <div class="curve-card">
+        <div class="curve-copy"><h3>SEM437 全 300 训练拟合曲线</h3><p>10k 有轻微回落；12k 同时达到 mIoU、前景 mIoU、stay_cable IoU 和边界 F1 的本轨迹最佳。</p><div class="legend"><span class="l1">五类 mIoU</span><span class="l2">2px 边界 F1</span></div></div>
+        <svg viewBox="0 0 720 250" role="img" aria-label="SEM437 6k到12k训练拟合曲线">
+          <g class="grid"><line x1="62" y1="30" x2="690" y2="30"/><line x1="62" y1="110" x2="690" y2="110"/><line x1="62" y1="190" x2="690" y2="190"/></g>
+          <polyline class="line miou" points="90,105 280,77 470,83 660,24"/><polyline class="line boundary" points="90,171 280,179 470,162 660,144"/>
+          <g class="dots miou"><circle cx="90" cy="105" r="6"/><circle cx="280" cy="77" r="6"/><circle cx="470" cy="83" r="6"/><circle cx="660" cy="24" r="8"/></g>
+          <g class="dots boundary"><circle cx="90" cy="171" r="6"/><circle cx="280" cy="179" r="6"/><circle cx="470" cy="162" r="6"/><circle cx="660" cy="144" r="8"/></g>
+          <g class="axis"><text x="78" y="230">6k</text><text x="268" y="230">8k</text><text x="452" y="230">10k</text><text x="642" y="230">12k</text></g>
+          <g class="values"><text x="72" y="91">95.497</text><text x="258" y="63">95.557</text><text x="447" y="69">95.545</text><text x="632" y="16">95.679</text><text x="68" y="162">89.694</text><text x="258" y="200">89.527</text><text x="448" y="154">89.901</text><text x="633" y="137">90.278</text></g>
+        </svg>
+      </div>
+      <div class="fold-note"><b>为什么不把 12k 写成“泛化最优”？</b><span>空间开发 fold v1：8k 最高 90.152%；fold v2：12k 最高 90.352%。两个 fold 趋势不同，说明训练时长与视角区域交互；12k 的选择是全量开发候选，不是最终盲测结论。</span></div>
+    </section>
+
+    <section id="hard" class="snap">
+      <div class="section-head"><div><span class="num">05</span><h2>困难视角 344–358：解决了多少</h2></div><p>主要瓶颈是模型缺少“无桥塔、远距离、细桥面、低对比度”的训练分布；RGB 模糊会放大问题。</p></div>
+      <div class="hard-summary"><div><b>350–353</b><span>部分解决</span><p>50% 全画面上下文训练恢复了更多连续 deck。</p></div><div><b>355–356</b><span>仅可选补救</span><p>多尺度 fallback 能添加极细 deck 候选，但没有 GT。</p></div><div class="bad"><b>357</b><span>仍未解决</span><p>12k、13k、14k 与 fallback 都没有可靠 deck。</p></div></div>
+      <div class="hard-gallery">
+        <article><h3>350 · 明显改善</h3><div class="pair"><figure><img src="assets/hard/350-rgb.jpg" alt="350 RGB170"><figcaption>RGB170</figcaption></figure><figure><img src="assets/hard/350-sem437.png" alt="350 SEM437"><figcaption>SEM437-12k</figcaption></figure></div><p>deck 像素从 SEM436 的 11,512 增至 18,902，视觉上由断裂转为较连续。</p></article>
+        <article><h3>353 · 从零恢复</h3><div class="pair"><figure><img src="assets/hard/353-rgb.jpg" alt="353 RGB170"><figcaption>RGB170</figcaption></figure><figure><img src="assets/hard/353-sem437.png" alt="353 SEM437"><figcaption>SEM437-12k</figcaption></figure></div><p>SEM436 为 0 deck 像素；SEM437 恢复 4,095 像素，但仍无 GT。</p></article>
+        <article><h3>356 · 可选 fallback</h3><div class="pair"><figure><img src="assets/hard/356-sem437.png" alt="356 native"><figcaption>默认 SEM437</figcaption></figure><figure><img src="assets/hard/356-sem439.png" alt="356 fallback"><figcaption>SEM439 fallback</figcaption></figure></div><p>fallback 增加 1,080 个极细 deck 候选；仅限开发展示，不替换默认方案。</p></article>
+        <article class="unresolved"><h3>357 · 停止点</h3><div class="pair"><figure><img src="assets/hard/357-rgb.jpg" alt="357 RGB170"><figcaption>RGB170</figcaption></figure><figure><img src="assets/hard/357-sem437.png" alt="357 SEM437"><figcaption>SEM437-12k</figcaption></figure></div><p>桥塔离开画面、桥面极细且重建变软。继续训练到 14k 仍为 0 deck，所以不再投入无真值调参。</p></article>
+      </div>
+      <p class="callout danger">结论：困难段得到<strong>部分改善</strong>，不是彻底解决。13k/14k 弱结构尾训同时降低全 300 拟合与边界 F1，未通过预注册停止门；因此保留 12k。</p>
+    </section>
+
+    <section id="examples" class="snap">
+      <div class="section-head"><div><span class="num">06</span><h2>当前方案：有标注视角示例</h2></div><p>真实照片、RGB170 重建、GT 与 SEM437-12k；这些图均属于训练集拟合展示。</p></div>
+      <div class="example-tabs" role="tablist">
+        <button class="active" data-view="049">049 · 无桥塔远景</button><button data-view="057">057 · 小尺度基础</button><button data-view="146">146 · 复杂边界</button><button data-view="159">159 · 大倾角近景</button>
+      </div>
+      <div class="example-grid" id="example-grid">
+        <figure><img data-kind="photo" src="assets/examples/049-photo.jpg" alt="真实照片"><figcaption>真实照片</figcaption></figure>
+        <figure><img data-kind="rgb" src="assets/examples/049-rgb.jpg" alt="RGB170 重建"><figcaption>RGB170 · 50k</figcaption></figure>
+        <figure><img data-kind="gt" src="assets/examples/049-gt.png" alt="GT"><figcaption>GT 标注</figcaption></figure>
+        <figure><img data-kind="pred" src="assets/examples/049-pred.png" alt="语义预测"><figcaption>SEM437 · 12k</figcaption></figure>
+      </div>
+      <div class="palette"><span class="deck">deck</span><span class="cable">stay_cable</span><span class="tower">tower</span><span class="foundation">foundation</span></div>
+    </section>
+
+    <section id="best" class="snap">
+      <div class="section-head"><div><span class="num">07</span><h2>当前最好方案：完整视频</h2></div><p>所有视频均已封装在网页目录内，无需联网。</p></div>
+      <div class="best-grid">
+        <article class="primary-video"><div class="video-label"><span>主展示</span><b>144 帧重建＋语义</b><small>RGB170 50k · SEM437 12k · 无 GT</small></div><video controls preload="metadata" poster="assets/posters/trajectory-best.jpg"><source src="assets/videos/trajectory-best.mp4" type="video/mp4"></video></article>
+        <article><div class="video-label"><span>100 张无标注</span><b>301–400 重建＋语义</b><small>仅视觉分析，不是准确率</small></div><video controls preload="metadata" poster="assets/posters/unlabeled-best.jpg"><source src="assets/videos/unlabeled-best.mp4" type="video/mp4"></video></article>
+        <article><div class="video-label"><span>语义单独播放</span><b>144 帧语义轨迹</b><small>观察连续性与闪烁</small></div><video controls preload="metadata" poster="assets/posters/trajectory-sem.jpg"><source src="assets/videos/trajectory-sem.mp4" type="video/mp4"></video></article>
+        <article><div class="video-label"><span>语义单独播放</span><b>100 张无标注语义</b><small>301–400，无 GT</small></div><video controls preload="metadata" poster="assets/posters/unlabeled-sem.jpg"><source src="assets/videos/unlabeled-sem.mp4" type="video/mp4"></video></article>
+      </div>
+    </section>
+
+    <section id="closing" class="closing snap">
+      <div class="eyebrow">最终结论</div>
+      <h2>现在最值得保留的是<strong>50k 重建＋12k 语义</strong></h2>
+      <div class="closing-grid">
+        <div><span>01</span><h3>已经确认</h3><p>全量训练显著提高训练拟合；Standard 是三骨干中最适合当前语义主线的起点；12k 是当前全量开发曲线最佳且有停止证据的端点。</p></div>
+        <div><span>02</span><h3>改善但未解决</h3><p>350–353 的细 deck 连续性变好；355–356 只有无 GT 的可选 fallback；357 仍失败，不应包装成成功。</p></div>
+        <div><span>03</span><h3>证据边界</h3><p>100 张无标注和 144 帧视频说明“看起来怎样”，不能说明“准确率提高多少”。真正的未知视角结论仍需要新真值或新的空间确认。</p></div>
+      </div>
+      <div class="final-answer"><b>展示版本</b><span>RGB170 · ImprovedGS · 50k</span><span>SEM437 · Mask2Former Swin-L · 12k</span><span>SEM439 仅作为 355/356 开发 fallback</span></div>
+      <footer>REPORT-003 · 所有素材来自已封存实验 · 页面可通过 file:// 完整离线运行</footer>
+    </section>
+  </main>
+  <button id="to-top" type="button" aria-label="返回顶部">↑</button>
+  <script src="semantic-progress.js"></script>
+</body>
+</html>

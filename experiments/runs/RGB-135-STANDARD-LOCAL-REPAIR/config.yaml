@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 0,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "views": [
+    "159.png",
+    "160.png",
+    "140.png",
+    "146.png",
+    "081.png",
+    "057.png",
+    "064.png",
+    "054.png",
+    "174.png"
+  ],
+  "experiment_id": "RGB-135-STANDARD-LOCAL-REPAIR",
+  "parent_experiment": "RGB-130-STANDARD-ALL400",
+  "main_variable": "refit only15 selected opacity logits from original RGB130, everything else frozen",
+  "output": "outputs/quality/diagnostics/RGB-135-r1",
+  "regions": {
+    "159-shore": {
+      "view": "159.png",
+      "boxes": [
+        [
+          20,
+          720,
+          290,
+          870
+        ],
+        [
+          920,
+          720,
+          1310,
+          860
+        ]
+      ]
+    },
+    "159-near": {
+      "view": "159.png",
+      "boxes": [
+        [
+          20,
+          890,
+          240,
+          985
+        ]
+      ]
+    },
+    "160-shore": {
+      "view": "160.png",
+      "boxes": [
+        [
+          20,
+          740,
+          285,
+          885
+        ],
+        [
+          920,
+          740,
+          1310,
+          875
+        ]
+      ]
+    },
+    "160-near": {
+      "view": "160.png",
+      "boxes": [
+        [
+          20,
+          905,
+          230,
+          985
+        ]
+      ]
+    },
+    "174-sky": {
+      "view": "174.png",
+      "boxes": [
+        [
+          0,
+          0,
+          1320,
+          380
+        ]
+      ]
+    }
+  },
+  "top_per_region": 4,
+  "selection": "top four positive d(ROI L1)/d(opacity logit) per fixed region, union frozen before all400; no thresholds or repeated searches",
+  "evaluation": "all400 training-view RGB and 300 GT class region impact; no semantic training; native1320x989",
+  "scope": "no GT labels in fitting; five-class masks only post-fit region evaluation; no M2F changes",
+  "resource_estimate": "3–6 GPU min fitting plus3–5min evaluation; native1320x989; <2GiB",
+  "conditional_retraining": "user authorized full400/30k retraining only if evidence supports benefit; register repair after attribution, preserve baseline and compare matched recipe",
+  "diagnostic_parent": "RGB-134-STANDARD-CONTRIBUTION-DIAG",
+  "repair": "refit_fixed_opacity",
+  "gaussian_ids": [
+    34295,
+    192364,
+    256028,
+    268416,
+    268453,
+    279577,
+    286613,
+    388045,
+    390281,
+    393926,
+    453836,
+    559707,
+    586822,
+    629797,
+    647756
+  ],
+  "iterations": 4000,
+  "epochs": 10,
+  "opacity_lr": 0.025,
+  "loss": "0.8 L1 + 0.2 DSSIM, same native RGB130 photometric formula",
+  "optimizer": "new Adam for15 opacity logits, lr0.025 eps1e-15 betas0.9/0.999; no other optimizer",
+  "sampling": "seed0 shuffle all400 once each epoch, ten epochs",
+  "selection_reason": "finite removal improves some target views but harms others; continuous opacity-only all400 fitting tests multi-view compromise instead of fixed deletion",
+  "fit_output": "outputs/quality/diagnostics/RGB-135-fit-r1"
+}

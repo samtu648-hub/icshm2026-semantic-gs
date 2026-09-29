@@ -1,0 +1,29 @@
+{
+  "experiment_id": "SEM-313-DINOV2-FOUNDATION-REVIEW-OOF",
+  "status": "preregistered_after_SEM312_diagnostic_before_candidate_export",
+  "parent_experiment": "SEM-312-DINOV2-COMPLEMENTARITY-DIAG,SEM-311-DINOV2-FROZEN-FEATURE-OOF,SEM-160-DECK-BINARY-OOF,SUBMIT-020-SEM161-FREEZE",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c plus sealed sources",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_005_oof_spatial_v1; reused108 calibration then conditional reused111 check; no74",
+  "seed": 20260805,
+  "parent_config": "experiments/runs/SEM-311-DINOV2-FROZEN-FEATURE-OOF/config.yaml",
+  "parent_config_sha256": "dcf810326c7ec9afc11402b75a8139faa7839f0d05253ba97181e82d7a77513e",
+  "parent_result_sha256": "568e476a36def2397182ca281eb913851780ca1e089b84257b25957fe718632a",
+  "freeze_manifest": "experiments/runs/SUBMIT-020-SEM161-FREEZE/frozen_manifest.json",
+  "single_changed_variable": "Review evidence source: fixed SEM311 DINOv2 vs fixed SEM311 MiT. Both use the SAME one-way review rule. Also compare with unchanged SEM160. No training or learned selector; existing heads retain their original fold isolation.",
+  "rule": "Set an existing SEM160 foundation pixel to background iff that arm's sealed foundation probability is strictly below0.5; all other pixels unchanged. No new foundation, radius, confidence scan, agreement selection or GT input. This new output-authority mechanism does not rescue SEM311 full-lane replacement.",
+  "threshold": 0.5,
+  "gates": {
+    "miou_gain": 0.003,
+    "foundation_iou_gain": 0.015,
+    "maximum_recall_drop": 0.02,
+    "recall_floor": 0.9,
+    "control_miou_gain": 0.001,
+    "control_foundation_iou_gain": 0.005,
+    "maximum_fold_foundation_iou_drop": 0.01,
+    "maximum_fold_miou_drop": 0.003
+  },
+  "evaluation": "Seal both arms'219 outputs before scoring. Independent438-file engineering audit, all6 inherited head native replays and actual4 official-camera review probes must pass before calibration. Only calibration pass permits ONE reused111 check. Rule was motivated by108, so calibration is explicitly selected-on development evidence, not independent validation. Inherited SEM001/RGB exposure and reused111 preclude full-chain blind claims.",
+  "budget": "ONE paired deterministic review, zero training; no thresholds, seeds, heads or checkpoints selected. No74, final fit, production change, deployment or uploads.",
+  "fallback": "RGB-030-FULL plus SEM161 stays frozen even if both quality partitions pass; promotion/final needs separate registration."
+}

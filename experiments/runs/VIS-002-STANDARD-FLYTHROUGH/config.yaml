@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "experiment_id": "VIS-002-STANDARD-FLYTHROUGH",
+  "title": "Frozen Standard-3DGS interpolated-camera flythrough",
+  "phase": "result visualization",
+  "parent_experiment": "RGB-011-R2-ALLOC,VIS-001-FLYTHROUGH",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "not_applicable_camera_metadata_visualization",
+  "seed": "not_applicable_deterministic_existing_trajectory",
+  "model": {
+    "rgb": "frozen Standard-3DGS RGB-011-R2-ALLOC",
+    "iteration": 30000,
+    "updates_parameters": false
+  },
+  "trajectory": {
+    "source": "VIS-001-FLYTHROUGH camera-only trajectory",
+    "frames": 144,
+    "fps": 24,
+    "duration_seconds": 6.0,
+    "coordinate_frame": "official_colmap_reference",
+    "pose_convention": "CAMERA_FROM_WORLD",
+    "uses_reference_rgb_or_labels": false
+  },
+  "outputs": {
+    "root": "external_gitignored:ICSHM_OUTPUT_ROOT/results/frozen_standard_rgb/flythrough_v1",
+    "rgb_video": "frozen_standard_rgb_flythrough.mp4",
+    "codec": "H.264 yuv420p CRF18"
+  }
+}

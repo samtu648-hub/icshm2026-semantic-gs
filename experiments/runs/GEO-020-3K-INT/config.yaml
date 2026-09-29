@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "experiment_id": "GEO-020-3K-INT",
+  "title": "DA3 P0 geometry initialization Scaffold engineering gate",
+  "phase": "geometry_prior_integration",
+  "status": "blocked_runtime_approval_after_environment_fix",
+  "parent_experiment": "GEO-020-PF-R2,GEO-000-10K,GEO-002",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1",
+  "seed": 0,
+  "backbone": "frozen-scaffold-gs-with-da3-p0-xyz-rgb-init",
+  "scaffold_commit": "59c833b56bbbf510f3f64d40f81721995caced66",
+  "da3_source_commit": "3d835ec1a5802d64a8b8b15f817a1ab54809bfe4",
+  "da3_checkpoint_sha256": "739905c423cf0d6ccaf9e61a8401d82ba1ac32d7f4d3ee6dca8f92b377633f64",
+  "init_ply_sha256": "5de866cfe1523b33c70dc8668f02def01dfcae092d7499b4d924113d8138d02f",
+  "training": {"iterations": 3000, "record_iterations": [1000, 3000], "from_iteration": 0, "resume": false, "status": "not_started"},
+  "scene": "external_gitignored:ICSHM_OUTPUT_ROOT/geometry_prior/v2/scenes/scene_da3_p0",
+  "environment": {"name": "icshm2026-p2", "python": "3.11", "torch": "2.11.0+cu128", "cuda": "12.8", "extension_rebuild": "cp311 diff_gaussian_rasterization and simple_knn passed"},
+  "attempts": [{"status": "failed_before_training", "reason": "R1 environment missing wandb import"}, {"status": "failed_before_training", "reason": "prebuilt Scaffold CUDA extension was cp312 but R1 Python was cp311"}, {"status": "not_executed", "reason": "GPU execution approval quota rejected command after extension rebuild"}],
+  "quality_claim": "none",
+  "output_root": "external_gitignored:ICSHM_OUTPUT_ROOT/geometry_prior/v2/runs/GEO-020-3K-INT"
+}

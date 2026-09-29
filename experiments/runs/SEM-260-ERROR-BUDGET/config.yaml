@@ -1,0 +1,15 @@
+{
+  "experiment_id": "SEM-260-ERROR-BUDGET",
+  "parent_experiment": "SEM-160-DECK-BINARY-OOF,SEM-161-DECK-BINARY-FINAL",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+  "split_id": "sem_005_oof_spatial_v1; reused 108 calibration diagnostic only",
+  "seed": 0,
+  "parents": {
+    "sem160": "r2/sem_160/deck_binary_oof_summary/full-20260904-r1",
+    "sem001": "r2/sem_110/sem001_training_predictions/full-20260902-r1",
+    "rgb": "r2/sem_101/rendered_training_rgb/full-20260902-r3"
+  },
+  "boundary_distances_px": [4, 8, 16],
+  "purpose": "Quantify mutable/protected five-class FP/FN and native boundary error; no model or threshold selection, no fresh validation claim."
+}

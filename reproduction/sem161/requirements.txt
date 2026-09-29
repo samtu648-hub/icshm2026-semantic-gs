@@ -1,0 +1,22 @@
+# Dedicated fresh-install recipe; the frozen submission bundle is not edited.
+# CUDA extensions are built separately from its bundled sources.
+torch==2.11.0+cu128
+torchvision==0.26.0+cu128
+transformers==5.5.3
+numpy==1.26.4
+Pillow==10.2.0
+opencv-python-headless==4.11.0.86
+plyfile==0.8.1
+scipy==1.17.1
+tqdm==4.67.3
+einops==0.8.2
+jaxtyping==0.3.11
+safetensors==0.7.0
+tokenizers==0.22.2
+PyYAML==6.0.3
+requests==2.33.1
+filelock==3.25.2
+ninja==1.13.0
+setuptools==80.9.0
+# Recorded installed binary source and digest; required by gaussian_model.py.
+torch-scatter @ https://data.pyg.org/whl/torch-2.11.0%2Bcu128/torch_scatter-2.1.2%2Bpt211cu128-cp312-cp312-linux_x86_64.whl#sha256=04f27281c6598a5747cab1e57e7e1ffd38e53ed11aee73499328094f14412c15

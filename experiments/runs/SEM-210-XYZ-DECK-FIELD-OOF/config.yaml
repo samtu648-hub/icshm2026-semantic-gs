@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-210-XYZ-DECK-FIELD-OOF",
+  "title": "Continuous world-coordinate deck field spatial-OOF qualification",
+  "phase": "new R2 bridge-geometry research line",
+  "status": "completed_calibration_gate_failed",
+  "owner": "unassigned",
+  "parent_experiment": "SEM-201-MV-DECK-INTERIOR-GEOMETRY-DIAG,SUBMIT-020-SEM161-FREEZE",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_001_scaffold_static_v1 plus sem_005_oof_spatial_v1; existing deterministic calibration/check; fixed 74-view unavailable",
+  "seed": 20260906,
+  "single_changed_variable": "Replace sparse cross-view source-pixel voting with one continuous view-independent classifier from frozen RGB-030-FULL visible-surface official-world XYZ to deck probability; the OOF split, frozen depth, baseline, one-way fusion and gates remain unchanged.",
+  "data": {
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "semantic_split_sha256": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+    "oof_split": "experiments/splits/sem_005_oof_spatial_v1.json",
+    "oof_split_sha256": "ce8a24e11d93df7634331a1ce33ae59385297cae90a0bd688b61769cf27f222c",
+    "training_views": 219,
+    "fixed_validation_views_opened": 0,
+    "target_input_at_submission": "external COLMAP camera plus frozen RGB-030-FULL depth only; no target RGB or target label"
+  },
+  "inputs": {
+    "sem200_depth_manifest_sha256": "fac12844189b627f128dcc6198b4a19166aa230dac3cbf93d1a5eaab09957a9d",
+    "sem201_result_sha256": "a20084f31ceab7ad48f6d65fd0b692dd4fb70e8d3a39c06e3b5dbe4f7a65f8c4"
+  },
+  "model": {
+    "input": "normalized official-world XYZ on RGB-030-FULL visible surface",
+    "fourier_levels": 6,
+    "width": 64,
+    "hidden_layers": 3,
+    "output": "binary non_deck versus deck logit"
+  },
+  "training": {
+    "folds": 3,
+    "iterations_per_fold": 2000,
+    "surface_stride_pixels": 8,
+    "minimum_foreground_mass": 0.5,
+    "batch_size": 32768,
+    "balanced_half_deck_half_non_deck": true,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.00001,
+    "checkpoint_selection": "final_2000_only"
+  },
+  "fusion": {
+    "baseline": "SEM-160 frozen selected OOF predictions at threshold 0.99",
+    "only_transition": "0_to_1",
+    "eligibility": "SEM-160 is background, SEM-150 is background, and the pre-foundation provenance is background",
+    "threshold_grid": [0.5, 0.7, 0.8, 0.9, 0.95, 0.97, 0.98, 0.99, 0.995],
+    "threshold_selection": "calibration passing candidates only; maximize deck IoU, then mIoU, then threshold",
+    "existing_deck_and_classes_2_3_4_exact": true
+  },
+  "gates": {
+    "calibration": {
+      "minimum_mIoU_gain": 0.0,
+      "minimum_deck_iou_gain": 0.001,
+      "minimum_deck_recall_gain": 0.002,
+      "minimum_deck_precision": 0.95,
+      "maximum_background_to_deck_ratio": 1.10
+    },
+    "check": {
+      "minimum_mIoU_gain": 0.0,
+      "minimum_deck_iou_gain": 0.001,
+      "minimum_deck_recall_gain": 0.002,
+      "minimum_deck_precision": 0.95,
+      "maximum_background_to_deck_ratio": 1.10
+    }
+  },
+  "visual_samples": [],
+  "outputs": {
+    "root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_210/xyz_deck_field_oof/full-20260906-r1"
+  },
+  "forbidden": [
+    "fixed_74_view_access",
+    "target_RGB_at_inference",
+    "target_label_in_prediction_function",
+    "architecture_loss_seed_or_iteration_scan",
+    "check_based_threshold_selection",
+    "existing_prediction_deletion",
+    "RGB_or_parent_semantic_mutation",
+    "final_model_training_before_both_gates_pass"
+  ],
+  "fallback": "SUBMIT-020 frozen RGB-030-FULL plus SEM-161"
+}

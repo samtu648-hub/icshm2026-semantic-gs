@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-221-RGBD-DECK-ARBITRATION-OOF",
+  "title": "Bidirectional deck arbitration with independent RGB-surface OOF probabilities",
+  "phase": "R2 early-fusion bridge research line",
+  "status": "completed_calibration_gate_failed",
+  "owner": "unassigned",
+  "parent_experiment": "SEM-220-RGBD-SURFACE-DECK-OOF,SEM-170-DECK-ARBITRATION-OOF,SUBMIT-020-SEM161-FREEZE",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_001_scaffold_static_v1 plus sem_005_oof_spatial_v1; deterministic 108 calibration then 111 check; fixed 74-view unavailable",
+  "seed": "not_applicable_frozen_SEM220_probability_arbitration",
+  "single_changed_variable": "Allow the independently trained SEM-220 RGB-surface OOF probability to arbitrate both directions of the otherwise protected background/deck lane; SEM-160 used the same direction with its own appearance probability in failed SEM-170.",
+  "data": {
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "semantic_split_sha256": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+    "training_images": 219,
+    "fixed_validation_views_opened": 0
+  },
+  "inputs": {
+    "sem160_prediction_manifest_sha256": "129d82d6ee46c85632f9bd393a36d7b3f719272d8fa537f93fe2541ff25b3444",
+    "sem220_probability_manifest_sha256": "62f052df0fb50534fab600ff8332ab8b54083ce29b6d0b3ddee01beb79363b73"
+  },
+  "arbitration": {
+    "mutable_pixels": "every SEM-160 deck pixel plus foundation-safe SEM-160 background",
+    "decision": "mutable pixel is deck exactly when frozen SEM-220 OOF probability is at least threshold",
+    "immutable_classes": [2, 3, 4],
+    "foundation_rejections_immutable": true,
+    "threshold_grid": [0.5, 0.6, 0.7, 0.8, 0.85, 0.9, 0.925, 0.95, 0.97, 0.98, 0.99, 0.995],
+    "selection": "calibration gate passers only; maximize deck IoU, then mIoU, then threshold"
+  },
+  "gates": {
+    "minimum_mIoU_gain": 0.0,
+    "minimum_deck_iou_gain": 0.002,
+    "minimum_deck_precision_gain": 0.001,
+    "minimum_deck_recall_gain": 0.0,
+    "maximum_background_to_deck_fp_ratio": 1.0,
+    "protected_predictions_exact": true
+  },
+  "visual_samples": ["001.png", "017.png", "093.png"],
+  "outputs": {
+    "root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_221/rgbd_deck_arbitration_oof/full-20260907-r1",
+    "panel_order": ["GT", "SEM-160", "SEM-221 diagnostic", "green_corrected_red_harmed"]
+  },
+  "forbidden": [
+    "fixed_74_view_access",
+    "network_retraining",
+    "target_label_in_prediction",
+    "class_2_3_4_or_foundation_rejection_change",
+    "check_based_threshold_selection",
+    "morphology_connected_components_view_ID_or_hand_drawn_ROI"
+  ],
+  "fallback": "SUBMIT-020 frozen RGB-030-FULL plus SEM-161"
+}

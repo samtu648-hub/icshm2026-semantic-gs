@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-336-SCAFFOLD-PAIRED-DURATION",
+  "parent_experiment": "SEM-335-SCAFFOLD-EXPERT-DURATION,SEM-331-QUALITY-EXPERTS",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_001_scaffold_static_v1;sem_005_oof_spatial_v1",
+  "seed": 20260805,
+  "protocol": "experiments/runs/QUAL-001-FOUNDATION/config.yaml",
+  "label_manifest": "experiments/runs/SEM-001/label_manifest.json",
+  "labels": "r2/sem_001/labels",
+  "resolution": [
+    1320,
+    989
+  ],
+  "pixel_space": "PINHOLE",
+  "model": {
+    "architecture": "SegFormer-B2",
+    "model_id": "nvidia/mit-b2",
+    "revision": "3bb39e8739149c3777d0325349b2a6c32c6413db",
+    "relative_weights": "r2/sem_005/third_party/nvidia_mit_b2_3bb39e8",
+    "license": "NVIDIA SegFormer non-commercial research/evaluation; inherited source record"
+  },
+  "experts": {
+    "fiveclass": {
+      "class_ids": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "crop": 768,
+      "stride": 512
+    },
+    "deck": {
+      "class_ids": [
+        0,
+        1
+      ],
+      "positive_class": 1,
+      "crop": 960,
+      "stride": 480
+    },
+    "stay_cable": {
+      "class_ids": [
+        0,
+        1
+      ],
+      "positive_class": 2,
+      "crop": 960,
+      "stride": 480
+    }
+  },
+  "training": {
+    "steps": 6000,
+    "smoke_steps": 8,
+    "optimizer": "AdamW",
+    "learning_rate": 0.00006,
+    "weight_decay": 0.01,
+    "batch_size": 1,
+    "gradient_accumulation": 1,
+    "augment": "uniform native crop + horizontal flip p=.5",
+    "weights": "median frequency inverse count clipped [.05,20], training partition only",
+    "amp": "bf16 if supported else fp16",
+    "checkpoint_selection": "final only; no early stopping",
+    "rgb_frozen": true
+  },
+  "partitions": [
+    "oof-0",
+    "oof-1",
+    "oof-2"
+  ],
+  "oof_scope": "shared RGB screening, not independent reconstruction validation",
+  "outputs": "float32 native probabilities and uint8 class predictions; no target labels read in fitting",
+  "calibration": "historically reused 108/111 training-side OOF only; no 74-view threshold selection",
+  "allowed_rgb_parents": [
+    "RGB-110-SCAFFOLD-CTRL"
+  ],
+  "quality_claim": null,
+  "study": {
+    "baseline_config": "experiments/runs/SEM-331-QUALITY-EXPERTS/config.yaml",
+    "baseline_config_sha256": "fb7d1ba976e295b73e4da05e05b939c73737e3bec970c6f377fa485cc5905488",
+    "baseline_trainer": "scripts/run_quality_expert.py",
+    "baseline_trainer_sha256": "375ba4643dca4f2001ec0b43ff2011a792584aa00194b60b39b4b518d81127f3",
+    "baseline_fusion": "outputs/quality/queues/dualline-20260909-r1/fusion-Scaffold",
+    "baseline_fusion_sha256": "d177769b70e8d4c8bc12f8b9864b64915938a5d9a3d98bba8d84779632c323ed",
+    "rgb_run": "outputs/quality/runs/RGB-110-SCAFFOLD-CTRL-full-r1",
+    "rendered_root": "outputs/quality/expert_inputs/Scaffold-training-dualline-r1",
+    "expert": "fiveclass",
+    "comparison_steps": [
+      3000,
+      6000
+    ],
+    "prefix_requirement": "Save a matched3000-step checkpoint from this same training trajectory, then continue to6000 without model reload/inference or RNG changes. Historical SEM331 is an additional reference, not an asserted identical control.",
+    "single_changed_variable": "Within one native rendered-RGB expert trajectory compare step3000 and step6000. Seed, architecture, data, crops, learning rate, optimizer and frozen fusion stay fixed. No new deterministic flags or relaxation of SEM335.",
+    "evaluation": "219 OOF only: paired3000 vs6000 raw and fixed fusion; historicalSEM331 is separately reported. Two independent native inference processes per endpoint. No threshold search,74 evaluation,automatic promotion or12000-step continuation.",
+    "promotion": "Report per-class IoU precision recall, per-view/fold deltas and corrected/harmed/wrong-to-wrong pixels. Quality tradeoffs are human-reviewed, not an invented weighted score. The historical95%floor does not automatically reject this distinct duration comparison.",
+    "source_scope": "shared303-RGB screening only, not independently rebuilt spatial validation or new blind test",
+    "minimum_free_gib": 100,
+    "estimated_new_output_gib_upper_bound": 10,
+    "automatic_promotion": false,
+    "automatic_development_fit": false,
+    "controls": {
+      "oof-0": {
+        "run": "outputs/quality/experts/SEM-331-Scaffold-fiveclass-oof0-full-r1",
+        "sha256": "a0577730f6a948798290b9b99194c8a0929a6b026cd83213335fe9ef917df0ab",
+        "audit": "outputs/quality/audits/SEM-331-Scaffold-fiveclass-oof0-first-r1",
+        "audit_sha256": "442e7fc729cd7ec179a7acafc0815a0e59aff8bac8fddb4395416d4b6be2c4e6"
+      },
+      "oof-1": {
+        "run": "outputs/quality/experts/SEM-331-Scaffold-fiveclass-oof-1-full-dualline-20260909-r1",
+        "sha256": "21e018e844236e6bf19391a8ac1b6dfe1578cfad6fd0802bacdd9077b972996b",
+        "audit": "outputs/quality/audits/SEM-331-Scaffold-fiveclass_oof1-dualline-20260909-r1",
+        "audit_sha256": "1c66cc83e4d17555f0d7da79f8aa2be3a017f2eda376406b931feb5e7e60ca4d"
+      },
+      "oof-2": {
+        "run": "outputs/quality/experts/SEM-331-Scaffold-fiveclass-oof-2-full-dualline-20260909-r1",
+        "sha256": "bb803b59dab3ce54e3f3f997866e78cabb422d7d4f3a02f1f3dd019f66f1178f",
+        "audit": "outputs/quality/audits/SEM-331-Scaffold-fiveclass_oof2-dualline-20260909-r1",
+        "audit_sha256": "d6374a7e633e9ec4b0b04e308a5ba4988fc2fc2c298ff70d5a341d71801d63e2"
+      }
+    },
+    "endpoints": [
+      3000,
+      6000
+    ]
+  }
+}

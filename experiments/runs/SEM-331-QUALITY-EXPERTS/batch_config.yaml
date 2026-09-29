@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-331-QUALITY-EXPERTS",
+  "parent_experiment": "QUAL-001-FOUNDATION,SEM-330-QUALITY-STATIC,QUAL-003-COVERAGE-INIT-DIAG",
+  "scope": "one-shot serial local first-round inputs and independent replays; fusion calibration and promotion are not implemented by this queue",
+  "arms": [
+    {
+      "name": "Scaffold",
+      "reuse_expert_audit": {"fiveclass_oof0": "outputs/quality/audits/SEM-331-Scaffold-fiveclass-oof0-first-r1"},
+      "reuse_coverage": "outputs/quality/diagnostics/QUAL-003-Scaffold-coverage-first-r1",
+      "experiment_id": "RGB-110-SCAFFOLD-CTRL",
+      "rgb_run": "outputs/quality/runs/RGB-110-SCAFFOLD-CTRL-full-r1",
+      "source": "artifact:r1/third_party/scaffold-gs",
+      "extra_sources": [],
+      "probe": "outputs/quality/probes/Scaffold-full-static-after-sof-20260909-r1",
+      "rgb_audit": "outputs/quality/audits/RGB-110-full-r1",
+      "reuse_static": "outputs/quality/semantic/SEM-330-Scaffold-development-full-static-after-sof-20260909-r1",
+      "reuse_static_audit": "outputs/quality/audits/SEM-330-Scaffold-development-r1",
+      "reuse_training_export": "outputs/quality/expert_inputs/Scaffold-training-dualline-r1",
+      "reuse_expert": {
+        "fiveclass_oof0": "outputs/quality/experts/SEM-331-Scaffold-fiveclass-oof0-full-r1"
+      }
+    },
+    {
+      "name": "PGSR",
+      "experiment_id": "RGB-115-PGSR-SAFE-CYCLE",
+      "rgb_run": "outputs/quality/runs/RGB-115-PGSR-SAFE-CYCLE-full-pgsr-safe-serial-20260909-r1",
+      "source": "repo:outputs/quality/source/pgsr-safe-cycle",
+      "extra_sources": [
+        "repo:outputs/quality/source/pytorch3d"
+      ],
+      "probe": "outputs/quality/probes/RGB-115-PGSR-SAFE-CYCLE-full-pgsr-safe-serial-20260909-r1",
+      "rgb_audit": "outputs/quality/audits/RGB-115-PGSR-SAFE-CYCLE-full-pgsr-safe-serial-20260909-r1",
+      "reuse_static": null,
+      "reuse_static_audit": null,
+      "reuse_training_export": null,
+      "reuse_expert": {}
+    },
+    {
+      "name": "SOF-NVS",
+      "reuse_coverage": "outputs/quality/diagnostics/QUAL-003-SOF-NVS-coverage-first-r1",
+      "experiment_id": "RGB-112-SOF-NVS",
+      "rgb_run": "outputs/quality/runs/RGB-112-SOF-NVS-full-sof-serial-20260909-r2",
+      "source": "repo:outputs/quality/source/sof",
+      "extra_sources": [
+        "repo:outputs/quality/source/fused-ssim",
+        "repo:outputs/quality/python-overlay"
+      ],
+      "probe": "outputs/quality/probes/RGB-112-SOF-NVS-full-sof-serial-20260909-r2",
+      "rgb_audit": "outputs/quality/audits/RGB-112-SOF-NVS-full-sof-serial-20260909-r2",
+      "reuse_static": "outputs/quality/semantic/SEM-330-RGB-112-SOF-NVS-full-sof-static-after-pgsr-20260909-r1",
+      "reuse_static_audit": "outputs/quality/audits/SEM-330-RGB-112-SOF-NVS-full-sof-static-after-pgsr-20260909-r1",
+      "reuse_training_export": null,
+      "reuse_expert": {}
+    },
+    {
+      "name": "SOF-GEO",
+      "reuse_coverage": "outputs/quality/diagnostics/QUAL-003-SOF-GEO-coverage-first-r1",
+      "experiment_id": "RGB-113-SOF-GEO",
+      "rgb_run": "outputs/quality/runs/RGB-113-SOF-GEO-full-sof-serial-20260909-r2",
+      "source": "repo:outputs/quality/source/sof",
+      "extra_sources": [
+        "repo:outputs/quality/source/fused-ssim",
+        "repo:outputs/quality/python-overlay"
+      ],
+      "probe": "outputs/quality/probes/RGB-113-SOF-GEO-full-sof-serial-20260909-r2",
+      "rgb_audit": "outputs/quality/audits/RGB-113-SOF-GEO-full-sof-serial-20260909-r2",
+      "reuse_static": "outputs/quality/semantic/SEM-330-RGB-113-SOF-GEO-full-sof-static-after-pgsr-20260909-r1",
+      "reuse_static_audit": "outputs/quality/audits/SEM-330-RGB-113-SOF-GEO-full-sof-static-after-pgsr-20260909-r1",
+      "reuse_training_export": null,
+      "reuse_expert": {}
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-350-FIXED-FINAL-COMPARISON",
+  "parent_experiment": "SEM-349-MASK2FORMER-FINAL,SEM-343-RAW-FOUNDATION-GATE,SEM-331-QUALITY-EXPERTS,SEM-161-DECK-BINARY-FINAL",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260805,
+  "registered_utc": "2026-09-13T03:48:43.281252+00:00",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "same historical74 developer views, all219 final semantic fits/shared303 RGB; fixed outputs only; no new blind or whole-chain spatial claim",
+  "main_variable": "evaluate frozen all219 Mask2Former method package on fixed74; preserve RGB110 and existing branch parameters; oldRGB030+SEM161 separately labeled whole-system reference",
+  "names": [
+    "054.png",
+    "055.png",
+    "056.png",
+    "057.png",
+    "058.png",
+    "059.png",
+    "060.png",
+    "061.png",
+    "062.png",
+    "063.png",
+    "064.png",
+    "065.png",
+    "066.png",
+    "067.png",
+    "068.png",
+    "069.png",
+    "070.png",
+    "071.png",
+    "072.png",
+    "073.png",
+    "074.png",
+    "075.png",
+    "076.png",
+    "077.png",
+    "078.png",
+    "079.png",
+    "080.png",
+    "081.png",
+    "082.png",
+    "083.png",
+    "084.png",
+    "085.png",
+    "086.png",
+    "087.png",
+    "088.png",
+    "089.png",
+    "090.png",
+    "140.png",
+    "141.png",
+    "142.png",
+    "143.png",
+    "144.png",
+    "145.png",
+    "146.png",
+    "147.png",
+    "148.png",
+    "149.png",
+    "150.png",
+    "151.png",
+    "152.png",
+    "153.png",
+    "154.png",
+    "155.png",
+    "156.png",
+    "157.png",
+    "158.png",
+    "159.png",
+    "160.png",
+    "161.png",
+    "169.png",
+    "170.png",
+    "171.png",
+    "172.png",
+    "173.png",
+    "174.png",
+    "175.png",
+    "176.png",
+    "177.png",
+    "178.png",
+    "179.png",
+    "180.png",
+    "181.png",
+    "182.png",
+    "183.png"
+  ],
+  "label_manifest": "experiments/runs/SEM-001/label_manifest.json",
+  "final_batch": "outputs/quality/mask2former/SEM-349-r1",
+  "old_sem161": "r2/sem_161/developer_audit/final-20260904-r1",
+  "fit": "outputs/quality/mask2former/SEM-349-r1/fit",
+  "static": "outputs/quality/semantic/SEM-330-Scaffold-development-full-static-after-sof-20260909-r1",
+  "deck": "outputs/quality/experts/SEM-331-Scaffold-deck-development-full-dualline-20260909-r1",
+  "new_b2": "outputs/quality/queues/dualline-20260909-r1/fusion-Scaffold",
+  "thresholds": {
+    "fiveclass_lane": 0.35,
+    "cable": null,
+    "foundation": 0.1,
+    "deck": 0.98
+  },
+  "margin": 0.05,
+  "groups": {
+    "challenge_140_146": [
+      "140.png",
+      "141.png",
+      "142.png",
+      "143.png",
+      "144.png",
+      "145.png",
+      "146.png"
+    ],
+    "oblique_158_161": [
+      "158.png",
+      "159.png",
+      "160.png",
+      "161.png"
+    ],
+    "near_079_082": [
+      "079.png",
+      "080.png",
+      "081.png",
+      "082.png"
+    ]
+  },
+  "pairs": [
+    [
+      "old_sem161",
+      "new_raw"
+    ],
+    [
+      "old_sem161",
+      "new_fused"
+    ],
+    [
+      "old_sem161",
+      "new_selected"
+    ],
+    [
+      "new_b2",
+      "new_raw"
+    ],
+    [
+      "new_b2",
+      "new_fused"
+    ],
+    [
+      "new_b2",
+      "new_selected"
+    ],
+    [
+      "new_raw",
+      "new_fused"
+    ],
+    [
+      "new_raw",
+      "new_selected"
+    ]
+  ],
+  "acceptance": "Separate predict invocation materializes all74 fixed arms and seals hashes before evaluate can decode74 GT; replay independently reconstructs fusion/0.05 and pixel-counts every confusion. Must exactly reproduce oldSEM161 and newScaffoldB2 historical matrices. Original293RGB/18 frozen before/after. No threshold/model/seed selection or automatic promotion.",
+  "report": "All classes IoU/precision/recall, per-view/three preregistered difficult groups,gt-old-new transitions corrected/harmed,background->stay_cable and cable false negatives. Preserve negative results. Input method/training budget differences and historical reuse explicit.",
+  "resource": {
+    "minimum_free_gib": 100,
+    "maximum_new_gib": 0.5,
+    "gpu_jobs": 0
+  },
+  "input_hashes": {
+    "outputs/quality/mask2former/SEM-349-r1/fit/result.json": "42ffcbc870190d52f45f06b6b672a132e637ec3d67108647794905a0fb279f68",
+    "outputs/quality/semantic/SEM-330-Scaffold-development-full-static-after-sof-20260909-r1/result.json": "2222a7c78e53b4a7dc6233dbcc5da5121a500a0b9aff1419e9bbf1fcaf38046e",
+    "outputs/quality/experts/SEM-331-Scaffold-deck-development-full-dualline-20260909-r1/result.json": "567c09a23c8e185ab83404101c47413f965ca57f486b5299367cd7998cd5b672",
+    "outputs/quality/queues/dualline-20260909-r1/fusion-Scaffold/result.json": "d177769b70e8d4c8bc12f8b9864b64915938a5d9a3d98bba8d84779632c323ed",
+    "experiments/runs/SEM-349-MASK2FORMER-FINAL/config.yaml": "6eaaadd86d407b5f2cd27295591c20808605a16e86de52183652827112f2520b",
+    "outputs/quality/mask2former/SEM-349-r1/queue/result.json": "583cbf7ad2c5c4c5e49a39d7ec418dad2d9e81051d26b7bdec5d1aeeed40cc38",
+    "outputs/quality/mask2former/SEM-349-r1/final-audit/result.json": "974dc00731ebf66a888c4fbb6c416ff2ddca8d4df27ddf8ab34c3a4a28d68732",
+    "experiments/runs/SEM-343-RAW-FOUNDATION-GATE/selection.json": "e44d2426764efa55645af4f92667b856d64c85af3c773747f29435d16203cec1",
+    "outputs/quality/mask2former/SEM-341-r1/comparison/result.json": "b80b03cf68e69f823cb86c9248fba9dd8e28393ea5dfb03efa2adadd1f382b08",
+    "experiments/runs/SEM-001/label_manifest.json": "62eb1cfca5b3096cccfe5dd6997d12677c7ab79726f3b860d2392b040b7ed057",
+    "experiments/runs/SEM-161-DECK-BINARY-FINAL/config.yaml": "30773ad89c7a7b5a6a023acc1b14604bf853ebe2a082b1c37619271a620f8306",
+    "outputs/quality/final_comparison/SEM-350-camera-preflight.json": "640addfcf9fa1a75439b63f5db59fa7660d65c0af5216c31b5d00288f273aee6",
+    "outputs/quality/runs/RGB-110-SCAFFOLD-CTRL-full-r1/scene/sparse/0/cameras.txt": "abb36a62aef44d724ea6a8db686f18c64d83604bac67689f9e2104adbe979d95",
+    "outputs/quality/runs/RGB-110-SCAFFOLD-CTRL-full-r1/scene/sparse/0/images.txt": "3e27cd08ebda38d29df8fefa28054447da4d6518721afa195cbfe0955a0e5331"
+  },
+  "artifact_hashes": {
+    "r2/sem_161/developer_audit/final-20260904-r1/result.json": "fbf3eb9999407fec83ce3c74577603ae06e96360004d51b555327c5dfb8ec5f2",
+    "r2/sem_161/developer_audit/final-20260904-r1/prediction_manifest.json": "c23ab7029463fe81d65a0f8ed624740c3e3bb411170270e85cd19f28d76e2c0e"
+  },
+  "code_sha256": {
+    "scripts/evaluate_quality_final_system.py": "84dfd148d5ed3d22bf535a11141c8a5cbe0a55933d53f630db561b62ade45b37",
+    "src/quality_protocol.py": "01f1f910bf4ae40f35a04935d970b0b41d13f36b5f02dcb79b362d64f9e32774",
+    "src/quality_fusion.py": "6df6fcae7668a0e31c144970618a479294b2ac6c0ae6dbe609ac1482ef4164be",
+    "src/quality_raw_foundation_gate.py": "3ed47199937e543ec9f20b30978066be80350a8da6bd5d14d7ba050cd164e0e2",
+    "src/quality_semantic_audit.py": "c1b7e3966846a5fb44e01c565f6eef118708d5388d063e3f31a7acefdf9db04e",
+    "src/quality_static_training.py": "0948a873faf991c20d51a3a9a1d5e620d961d0ade435f0effb85e1ab0f3ddcfd",
+    "src/quality_mask2former_final.py": "3127aa9239801c338ea27c3bfe025b5a86e46215382ae8e28d48a4c975c6a658",
+    "scripts/render_sem102_validation_rgb.py": "3074d61169ed68e565bc5dceda83a8d032a700fc070f5f95c52cf6c17494f694",
+    "scripts/run_sem001.py": "6f43c01691c82e3ae75fdba99a7d6ffacf622bbcd13c117d984697033abd267a",
+    "scripts/render_external_colmap_camera.py": "157ef94ab7396ee974d9806ca44ddf21c2ed1ea85d9f891cc61ca8539d51824f",
+    "src/quality_native_gaussian.py": "2a8671ece75c862b4c73153771b4bfb504e44dd42e49e8e99a55c7ffe5ca734a",
+    "scripts/export_quality_rgb_inputs.py": "8f62a0dae0f9909280c02e8b6e36d27df0d2b482ee436f16ba0f2afef77ed087"
+  }
+}

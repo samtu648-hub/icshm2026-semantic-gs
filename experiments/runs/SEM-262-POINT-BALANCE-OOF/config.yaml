@@ -1,0 +1,87 @@
+{
+  "experiment_id": "SEM-262-POINT-BALANCE-OOF",
+  "status": "preregistered",
+  "parent_experiment": "SEM-261-POINT-REFINEMENT-OOF,SEM-160-DECK-BINARY-OOF",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_005_oof_spatial_v1; incremental OOF; reused sem110-v1 108/111 development partition",
+  "seed": 20260805,
+  "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+  "semantic_split_sha256": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+  "oof_split": "experiments/splits/sem_005_oof_spatial_v1.json",
+  "oof_split_sha256": "ce8a24e11d93df7634331a1ce33ae59385297cae90a0bd688b61769cf27f222c",
+  "single_changed_variable": "Positive BCE weight from same-fold sampled training class counts versus unweighted BCE. Both arms have identical frozen fine/coarse features, points, initialization, head architecture, 3000-step budget, fixed zero threshold and bidirectional protection-aware fusion.",
+  "model_source": "PointRend-inspired independent point-MLP adaptation, not full adaptive subdivision; https://arxiv.org/abs/1912.08193",
+  "license": "Existing frozen SegFormer-B2 NVIDIA research/evaluation weights; no new external code or weights",
+  "parents": {
+    "rgb": "r2/sem_101/rendered_training_rgb/full-20260902-r3",
+    "sem001": "r2/sem_110/sem001_training_predictions/full-20260902-r1",
+    "sem160": "r2/sem_160/deck_binary_oof_summary/full-20260904-r1",
+    "deck_folds": "r2/sem_160/deck_binary_oof/full-20260904-r1",
+    "cable_folds": "r2/sem_140/cable_binary_oof/full-20260904-r1",
+    "five_folds": "r2/sem_101/rendered_segformer_oof/full-20260902-r3",
+    "model_config": "r2/sem_005/third_party/nvidia_mit_b2_3bb39e8"
+  },
+  "training": {
+    "iterations_per_fold": 3000,
+    "points_cached_per_view": 16384,
+    "points_per_step": 4096,
+    "boundary_sample_fraction": 0.5,
+    "predicted_boundary_radius_px": 16,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "head_channels": [
+      75,
+      64,
+      64,
+      1
+    ],
+    "loss": "Matched unweighted BCE versus positive-weighted BCE using per-fold sampled negative/positive count ratio; no fitted validation threshold",
+    "baseline_margin": 2.0,
+    "checkpoint": "final only; no early stopping, seed or threshold search",
+    "train_source": "same-fold train rendered RGB, same-fold frozen SEM-101/140/160 networks, inherited SEM-001 static map; no other-fold teacher features",
+    "frozen": [
+      "all parent networks",
+      "RGB",
+      "geometry",
+      "opacity",
+      "appearance",
+      "densification",
+      "cameras"
+    ]
+  },
+  "inference": {
+    "crop": 960,
+    "stride": 480,
+    "point_chunk": 65536,
+    "threshold": 0.0,
+    "both_bg_deck_directions": true,
+    "no_boundary_mask_restriction": true
+  },
+  "gates": {
+    "deck_iou_gain": 0.002,
+    "deck_recall_gain": 0.005,
+    "deck_precision": 0.94,
+    "miou_gain": 0.0,
+    "candidate_beats_matched_control_iou": true,
+    "rgb_exact": true,
+    "protected_exact": true
+  },
+  "evaluation": "Seal every OOF prediction before reading current-run 108 calibration targets; only if passed evaluate reused 111 check, then train a separate final head and audit reused 74 developer. Not full-chain OOF or a new blind test.",
+  "maximum_gpu_hours": 2.0,
+  "visual_samples": [
+    "028.png",
+    "295.png",
+    "162.png",
+    "283.png",
+    "282.png",
+    "268.png"
+  ],
+  "arm_names": [
+    "unweighted_control",
+    "balanced_candidate"
+  ],
+  "control_uses_fine_features": true,
+  "candidate_positive_weight": "sampled_train_negatives_over_positives"
+}

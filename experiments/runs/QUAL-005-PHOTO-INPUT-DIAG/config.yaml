@@ -1,0 +1,54 @@
+{
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_001_scaffold_static_v1; sem_005_oof_spatial_v1; historical development, shared303RGB single seed",
+  "authorization": "2026-09-15 user: 按照你的建议继续推进吧; three bounded diagnostic comparisons, no training",
+  "main_variable": "RGB110 input versus same-grid real photo, same final SEM349 model/native768 sliding inference",
+  "runtime_root": "outputs/quality/mask2former/SEM-340",
+  "upstream_config": "configs/ade20k/semantic-segmentation/swin/maskformer2_swin_large_IN21k_384_bs16_160k_res640.yaml",
+  "experiment_id": "QUAL-005-PHOTO-INPUT-DIAG",
+  "parent_experiment": "QUAL-004,SEM-349,RGB-110",
+  "names": [
+    "159.png",
+    "160.png",
+    "140.png",
+    "146.png",
+    "081.png",
+    "057.png",
+    "064.png",
+    "054.png",
+    "174.png"
+  ],
+  "run": "outputs/quality/mask2former/SEM-349-r1/fit",
+  "real_root": "outputs/quality/runs/RGB-110-SCAFFOLD-CTRL-full-r1/scene/images",
+  "render_root": "outputs/quality/expert_inputs/Scaffold-development-dualline-20260909-r1/images",
+  "output": "outputs/quality/diagnostics/QUAL-005-r1",
+  "estimated_resources": "18 forwards, 2-5 GPU minutes; no optimization; 0.1-0.3GiB",
+  "rois": {
+    "159": [
+      150,
+      620,
+      850,
+      989
+    ],
+    "160": [
+      150,
+      620,
+      850,
+      989
+    ],
+    "146": [
+      0,
+      620,
+      520,
+      989
+    ],
+    "174": [
+      0,
+      0,
+      1320,
+      380
+    ]
+  }
+}

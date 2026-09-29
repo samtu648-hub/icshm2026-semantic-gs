@@ -1,0 +1,36 @@
+{
+  "experiment_id": "SEM-327-SOURCE-BOUNDARY-DIAG",
+  "status": "preregistered",
+  "parent_experiment": "SEM-325-DENSE-FOUNDATION-REVIEW-OOF,SEM-326-DENSE-FOUNDATION-REVIEW-FINAL",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c plus sealed worktree sources",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_005_oof_spatial_v1; same105 calibration only; historically reused incremental OOF",
+  "parent_config": "experiments/runs/SEM-325-DENSE-FOUNDATION-REVIEW-OOF/config.yaml",
+  "parent_config_sha256": "836b45510e33a0c63040592074f4e6f3af293272f9c11602571403683bac6770",
+  "parent_prediction": "outputs/sem325/calibration-predict-20260908-r2/result.json",
+  "parent_prediction_sha256": "f6c50cf9ac1db51e8ac6f9fe54f4f3af22535d428e1abbbd80f247c3bcb720c5",
+  "parent_audit": "outputs/sem325/calibration-audit-20260908-r2/result.json",
+  "parent_audit_sha256": "b040fda7499f7400f1b145f0ebd6cc274187186bbba8f96e42e59b52a3e5c0eb",
+  "parent_quality": "outputs/sem325/calibration-score-20260908-r2/result.json",
+  "parent_quality_sha256": "6c9c6bdc70db1f9809c5d992a39f21c4c760acfec150da9625d79894c27ee1be",
+  "single_changed_variable": "Read-only diagnostic of source-label foundation-boundary proximity among sealed SEM3254-to0 changes. One preregistered2-source-native-pixel counterfactual, not a radius/threshold optimization sweep or exported candidate.",
+  "distance": "Euclidean distance from the sampled source PINHOLE label pixel CENTER to nearest foundation label pixel CENTER. Not polygon-edge or continuous-match-point distance. Same floor(edge-origin) label sampling as SEM325. No foundation in source means infinity.",
+  "distance_bin_upper_bounds_source_pixels": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32
+  ],
+  "fixed_counterfactual_radius_source_pixels": 2,
+  "radius_rationale": "Small initial two-pixel protection motivated by the existing native geometry tolerance scale, fixed before examining these distributions; source and target tolerances are not claimed equivalent or a rigorous error bound.",
+  "access_policy": "Read source-role labels from fixed same-fold train and target-role labels only for the same105 calibration; no111 target GT/74/guard. Some historical check names are allowed same-fold source roles; not a blind claim. No RGB decoding/model inference, semantic PNG export, changed source selection or parent edits.",
+  "audit": "Seal config/source/input hashes before any new label decode. Verify original105 baseline/dense confusions and transition counts against SEM325. Independently recompute dense geometry at every changed native pixel with Torch/radial inverse, and nearest-foundation distances with KD-tree against EDT; independently count bins. RGB bytes/18freeze remain exact.",
+  "next": "If fixed2px counterfactual improves recall without reducing mIoU or foundation IoU relative to SEM325 dense reviewer, register a separate actual-prediction105/111 experiment. Otherwise retain all counts/tradeoff and choose the next mechanism, not a rescue radius sweep. Original SEM326 gates remain historical internal acceptance rules, not criteria that erase positive research evidence.",
+  "resource_budget": {
+    "maximum_seconds_per_stage": 1800,
+    "minimum_free_disk_gib": 100
+  }
+}

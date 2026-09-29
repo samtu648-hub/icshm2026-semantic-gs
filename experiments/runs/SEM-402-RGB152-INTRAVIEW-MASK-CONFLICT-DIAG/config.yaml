@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-402-RGB152-INTRAVIEW-MASK-CONFLICT-DIAG",
+  "title": "Within-view stay-cable/non-cable Gaussian contribution-conflict diagnostic",
+  "phase": "joint_reconstruction_semantics",
+  "parent_experiment": "SEM-398-RGB152-BOUNDARY-SPLIT;SEM-401-RGB152-RESPONSIBILITY-IDENTIFIABILITY-DIAG",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260924,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "semantic_direction_refinement_v1",
+  "split_path": "experiments/splits/semantic_direction_refinement_v1.json",
+  "source": "outputs/quality/rgb140/source-r1",
+  "rgb_parent": "outputs/quality/RGB-152/full-r2/model",
+  "parent_export": "outputs/quality/RGB-152/full-r2/evaluation/images",
+  "scene": "outputs/quality/RGB-152/scene",
+  "labels": "outputs/quality/all_data/SEM-370-r1/labels",
+  "label_manifest": "outputs/quality/all_data/SEM-370-r1/label_manifest.json",
+  "semantic_common": "outputs/quality/SEM-400/common-r1/common.pt",
+  "output": "outputs/quality/SEM-402",
+  "role_counts": {"rgb_train": 292, "semantic_train": 201, "holdout": 30},
+  "class_names": ["background", "deck", "stay_cable", "tower", "foundation"],
+  "class_id_of_interest": 2,
+  "split_budget": 4096,
+  "contribution_visibility_epsilon": 1e-6,
+  "mask_signal_epsilon": 1e-8,
+  "mask_signal_threshold": 0.5,
+  "minimum_visible_views": 3,
+  "minimum_ambiguous_views": 3,
+  "gates": {
+    "qualified_parents_at_least": 512,
+    "median_visible_views_at_least": 10,
+    "different_full_budget_parents_at_least": 512,
+    "all_required": true
+  },
+  "main_variable": "None: read-only attribution diagnostic. For every frozen parent and training view, measure rasterized alpha-transmittance mass on stay_cable versus non-cable pixels before summing across views.",
+  "access_policy": {
+    "allowed": ["201 semantic training labels", "sealed SEM-400 eligibility and parent ranking", "frozen RGB152 geometry", "official training cameras"],
+    "forbidden": ["30 refinement confirmation labels", "buffer labels", "geometry or semantic parameter updates", "post-result threshold changes"]
+  },
+  "scope": "COB-GS-inspired, contribution-weighted adaptation. It tests within-view footprint conflict that SEM398's view-aggregated logit gradient and SEM401's child-centre projection did not measure.",
+  "protocol": "docs/experiments/sem402_intraview_mask_conflict_protocol.md"
+}

@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-394-RGB150-DEV270-SEED-ENSEMBLE",
+  "title": "Frozen dual-seed 0.5/0.5 probability ensemble of SEM384 and SEM392 on the fixed dev30 split",
+  "phase": "semantic_segmentation",
+  "parent_experiment": "SEM-384-RGB150-DEV270;SEM-392-RGB150-DEV270-SEED20260919-MEMORY",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "training": false,
+  "bootstrap_seed": 394,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "dev30_local_composition_v1",
+  "split_path": "experiments/splits/dev30_local_composition_v1.json",
+  "method": "mask2former_frozen_probability_ensemble",
+  "main_variable": "Fixed float64 probability average P_ensemble = 0.5 * P_SEM384 + 0.5 * P_SEM392 over all 400 frozen RGB150 views; no training, no alternative weights, no logit averaging, no confidence selection, no per-class weights, no thresholds, no TTA, and no post-processing.",
+  "causal_claim": null,
+  "rgb_run": "outputs/quality/RGB-150/full-r1",
+  "rgb_evaluation": "outputs/quality/RGB-150/full-r1/evaluation",
+  "label_root": "outputs/quality/all_data/SEM-370-r1/labels",
+  "label_manifest": "outputs/quality/all_data/SEM-370-r1/label_manifest.json",
+  "semantic_train_views": 270,
+  "semantic_holdout_views": 30,
+  "unlabeled_views": 100,
+  "parents": {
+    "SEM-384-RGB150-DEV270": {
+      "checkpoint": "outputs/quality/SEM-384/r1/mask2former/model-6000.pt",
+      "checkpoint_sha256": "d9373e3330e5fc06f6c914638c1cc948b07faf5514d8b4677322dd7310a5d8a0",
+      "inference_result": "outputs/quality/SEM-384/r1/inference/result.json",
+      "inference_result_sha256": "a61ba1471be8e3399935aa20c1330de6e7c648015823278990b8ac53a9c39f78",
+      "predictions": "outputs/quality/SEM-384/r1/inference/predictions",
+      "seed": 20260805
+    },
+    "SEM-392-RGB150-DEV270-SEED20260919-MEMORY": {
+      "checkpoint": "outputs/quality/SEM-392/r1/mask2former/model-6000.pt",
+      "checkpoint_sha256": "1763e203f02d9ac12c453abcd4f8d6521762af79232bb6bfa706b1f45a0e810a",
+      "inference_result": "outputs/quality/SEM-392/r1/inference/result.json",
+      "inference_result_sha256": "cab0712b74912242a79418b8d347e902556874d7acab4099d54a8eee30e7424f",
+      "predictions": "outputs/quality/SEM-392/r1/inference/predictions",
+      "seed": 20260919
+    }
+  },
+  "inference_protocol": {
+    "source_module": "src/quality_mask2former.py",
+    "source_sha256_in_both_parents": "debd14ba97e6e8b89db5e281ccc023b53159718a284b332fcce21813345a7d6e",
+    "function": "native_predict",
+    "window": 768,
+    "stride": 512,
+    "tile_probability_normalization": "per-tile five-class score normalization, float32 accumulation, per-pixel count division, final normalization",
+    "autocast": "cuda float16 as in the parent runs",
+    "tta": false,
+    "thresholds": false,
+    "class_weights": false,
+    "postprocessing": false,
+    "input_size": [989, 1320]
+  },
+  "ensemble_protocol": {
+    "formula": "P_ensemble = 0.5 * P_SEM384 + 0.5 * P_SEM392",
+    "arithmetic": "float64 average and float64 argmax",
+    "tie_rule": "smallest class ID wins (first-max argmax)",
+    "probability_storage": "lossless float32 NPZ for each parent; ensemble probabilities stored as float32 (documented precision) with a recorded check that the stored-precision argmax equals the float64 argmax on every view",
+    "order": "ensemble is computed only after all 400 single-model probabilities and predictions of both parents are complete and hash-sealed"
+  },
+  "evaluation_protocol": {
+    "label_access": "the 270 training and 30 holdout labels are read only after all 400 ensemble predictions are generated and hash-sealed; the 100 unlabeled views receive predictions only",
+    "metrics": ["train/holdout five-class and foreground mIoU", "per-class IoU/precision/recall", "stay_cable FP/FN and 2px boundary precision/recall/F1", "regular-local/oblique-local/distant-local groups", "per-view improvement/regression and corrected/damaged pixels versus both parents", "independent confusion recomputation for every labeled view of all three systems"],
+    "primary_baseline": "SEM-392-RGB150-DEV270-SEED20260919-MEMORY",
+    "secondary_baseline": "SEM-384-RGB150-DEV270",
+    "paired_bootstrap": {
+      "method": "paired view bootstrap with replacement over the 30 holdout views",
+      "draws": 10000,
+      "seed": 394,
+      "baseline": "SEM-392-RGB150-DEV270-SEED20260919-MEMORY",
+      "reported": ["five-class mIoU delta median", "95% percentile interval", "P(delta > 0)"]
+    },
+    "input_integrity_diagnostics": {
+      "description": "independent recomputation on the 30 holdout views of the SEM384/SEM392 disagreement statistics and the unreachable GT hard-oracle mIoU; reference read-only values: disagreement ~0.1633167%, only-SEM384-correct ~0.0605269%, only-SEM392-correct ~0.0994245%, both-wrong-among-disagreement ~0.0033653%, hard-oracle mIoU ~94.5300558%",
+      "oracle_role": "complementarity upper bound and input verification only; never a candidate score"
+    }
+  },
+  "promotion_gates": {
+    "g1_holdout_five_class_miou_vs_sem392_pp": ">= 0.10",
+    "g2_holdout_foreground_miou_vs_sem392_pp": ">= 0.0",
+    "g3_holdout_any_class_iou_drop_vs_sem392_pp": "<= 0.10",
+    "g4_holdout_any_group_five_class_miou_drop_vs_sem392_pp": "<= 0.15",
+    "g5_holdout_stay_cable_2px_boundary_f1_drop_vs_sem392_pp": "<= 0.10",
+    "g6_bootstrap_median_positive_and_p_delta_positive": "median > 0 and P(delta > 0) >= 0.95"
+  },
+  "outcome_rules": {
+    "all_gates_pass": "register SEM394 as worth training an RGB140 second seed for full-data ensemble validation; do not start that training and do not replace the current default pipeline",
+    "any_gate_fail": "close SEM394 with the negative result; no weight search, no remedial fusion, no rerun under the same ID",
+    "reproduction_fail": "if the parent argmax predictions cannot be reproduced exactly, locate the parent-bound source snapshot; if still unreproducible, stop and register SEM394 as an engineering failure without modifying parent predictions, checkpoints, or the fusion formula"
+  },
+  "output_path": "outputs/quality/SEM-394/r1",
+  "commands": {
+    "reproduce_sem384": "python3 scripts/run_sem394_seed_ensemble.py --artifact-root <artifact-root> --stage reproduce --parent sem384",
+    "reproduce_sem392": "python3 scripts/run_sem394_seed_ensemble.py --artifact-root <artifact-root> --stage reproduce --parent sem392",
+    "ensemble": "python3 scripts/run_sem394_seed_ensemble.py --artifact-root <artifact-root> --stage ensemble",
+    "evaluate": "python3 scripts/run_sem394_seed_ensemble.py --artifact-root <artifact-root> --stage evaluate"
+  },
+  "quality_claim": null,
+  "scope": "read-only frozen-checkpoint ensemble on the fixed dev30 split; single split, two frozen seeds; not blind and not a system replacement",
+  "holdout_access": {
+    "rgb_during_reproduction_and_ensembling": "frozen RGB150 evaluation renders only",
+    "labels_before_ensemble_sealed": false,
+    "allowed_after_ensemble_predictions_sealed": ["ground-truth evaluation of the 270 train and 30 holdout labels", "input-integrity diagnostics"]
+  }
+}

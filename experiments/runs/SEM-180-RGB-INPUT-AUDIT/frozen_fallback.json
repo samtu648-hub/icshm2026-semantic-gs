@@ -1,0 +1,15 @@
+{
+  "result": {
+    "path": "r2/sem_161/developer_audit/final-20260904-r1/result.json",
+    "sha256": "fbf3eb9999407fec83ce3c74577603ae06e96360004d51b555327c5dfb8ec5f2"
+  },
+  "prediction_manifest": {
+    "path": "r2/sem_161/developer_audit/final-20260904-r1/prediction_manifest.json",
+    "sha256": "c23ab7029463fe81d65a0f8ed624740c3e3bb411170270e85cd19f28d76e2c0e"
+  },
+  "checkpoint": {
+    "path": "r2/sem_161/final_training/final-20260904-r1/checkpoints/deck_binary_final.pth",
+    "sha256": "8e50ffca587412f2a015e01bc5ffc80ae3503e6c302cc5291d55c183d664628f"
+  },
+  "frozen_rgb_directory": "r2/sem_102/validation_render/final-20260902-r1/images"
+}

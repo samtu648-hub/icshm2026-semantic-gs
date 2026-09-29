@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "experiment_id": "QUAL-011-SEMANTIC-SEED-REPLICATION-AUDIT",
+  "title": "Read-only two-seed audit of AbsGS versus Standard semantic backbones",
+  "phase": "quality_audit",
+  "parent_experiment": "SEM-396-RGB152-SPATIAL256;SEM-407-RGB153-SPATIAL256;SEM-410-RGB152-SPATIAL256-SEED20260919;SEM-411-RGB153-SPATIAL256-SEED20260919",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": null,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "spatial_confirmation_v1",
+  "method": "read_only_paired_audit",
+  "main_variable": "Read-only aggregation across two exactly paired semantic seeds; no model, data, prediction, threshold, or metric change.",
+  "inputs": {
+    "seed_20260805_absgs": "outputs/quality/SEM-396/r1/inference/result.json",
+    "seed_20260805_standard": "outputs/quality/SEM-407/r1/inference/result.json",
+    "seed_20260919_absgs": "outputs/quality/SEM-410/r1/inference/result.json",
+    "seed_20260919_standard": "outputs/quality/SEM-411/r1/inference/result.json"
+  },
+  "output_path": "outputs/quality/QUAL-011/r1",
+  "quality_claim": null,
+  "scope": "Two semantic seeds on one historically exposed spatial development split and one RGB seed; not blind",
+  "protocol": "docs/experiments/qual011_semantic_seed_replication_audit_protocol.md"
+}

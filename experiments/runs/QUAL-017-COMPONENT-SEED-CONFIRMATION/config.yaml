@@ -1,0 +1,10 @@
+{
+ "schema_version":1,"experiment_id":"QUAL-017-COMPONENT-SEED-CONFIRMATION",
+ "parent_experiment":"QUAL-015-COMPONENT-EXPLORATORY;SEM-423-COMPONENT-SEED2-CTRL;SEM-424-COMPONENT-SEED2-QUOTA",
+ "git_commit":"49cdcdb1c9915a9544d568754af95ea20a85ec9c","seed":20260919,
+ "dataset_manifest":"data/manifests/contest_dataset_v1.json","split_id":"spatial_confirmation_v2",
+ "pair":["SEM-423-COMPONENT-SEED2-CTRL","SEM-424-COMPONENT-SEED2-QUOTA"],
+ "output_path":"outputs/quality/QUAL-017/r1","first_seed_result":"outputs/quality/QUAL-015/r1/audit-result.json",
+ "quota":{"points_per_component":16,"area_max":1024,"fraction_cap":0.05,"seed":418},
+ "protocol":"docs/experiments/component_seed_confirmation_protocol.md","quality_claim":null
+}

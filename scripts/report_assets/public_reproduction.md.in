@@ -1,0 +1,51 @@
+# 环境、运行入口与复现边界
+
+## 阅读与源码检查
+
+阅读README、实验报告和在线可视化不需要CUDA、模型或比赛数据。源码仓库不包含原始数据和checkpoint。
+
+```bash
+git clone @@REPO@@.git
+cd icshm2026-semantic-gs
+cp .env.example .env
+python3 scripts/check_repo.py
+python3 scripts/scan_secrets.py
+python3 scripts/check_markdown_links.py
+python3 scripts/validate_configs.py
+```
+
+`.env`是本地配置示例，脚本不会自动加载它。使用终端环境变量或脚本提供的参数：
+
+```bash
+export ICSHM_DATA_ROOT='/path/to/authorized/data'
+export ICSHM_OUTPUT_ROOT='/path/to/experiment/artifacts'
+```
+
+公开副本中原先写死本机artifact根目录的脚本改为：显式`--artifact-root`优先，其次`ICSHM_OUTPUT_ROOT`，最后使用仓库内`outputs`。已有算法、指标、训练预算和实验数据角色保持原记录。
+
+## 完整健康检查
+
+```bash
+bash scripts/bootstrap_ubuntu.sh --check-only
+bash scripts/repo_health.sh
+```
+
+检查包含源码与配置、Markdown链接、Shell语法和单元测试。CPU检查所需基础库包括NumPy与Pillow；各模型的Torch、CUDA、rasterizer及其它依赖按对应实验要求安装。缺少可选训练环境或本地数据时，部分检查明确跳过。单元测试通过不代表已重新训练或验证全部模型。
+
+## 运行研究代码
+
+先选择`experiments/runs/`内的一个具体实验，读取其报告、配置和父实验依赖，核对manifest／split与输入资产。`scripts/`包含历史训练、评价、诊断和一次性审计入口，不能按文件顺序批量执行。
+
+上游仓库、commit、许可与必要补丁见[第三方来源](../third_party/README.md)。不同研究路线使用各自记录的依赖，公开仓库没有将它们伪装成一个已经验证的统一训练环境。
+
+历史RGB030＋SEM161的容器和复放入口保留在`reproduction/sem161/`，所需checkpoint与授权数据须另行提供。它的干净Ubuntu复放证据来自同宿主GPU，不能自动覆盖后期RGB170＋SEM437或跨GPU一致性。
+
+## 成绩与可视化如何生成
+
+Release提供的是已保存实验输出整理成的资料包。静态网站部署下载固定附件并验证SHA256，无需启动模型。`scripts/build_paper_handoff.py`保留研究环境中的完整材料构建过程；从原始保存输出重建需要相应本地资产，不等于任意源码克隆可重新生成全部图片。
+
+仓库的结果表、网页和实验记录分别说明历史74图、OOF、空间确认与全量拟合。公开过程不重新评分、不训练、不验证官方隐藏测试，也不交付正式比赛提交包。
+
+## 未随包文件
+
+历史报告保留某些本地运行目录作为来源记录。没有对应公开附件的文件明确标作“未随公开包提供”，不会用不存在的相对链接假装可以打开。第三方官方Word模板只记录名称与来源，未在本次源码发布中分发。

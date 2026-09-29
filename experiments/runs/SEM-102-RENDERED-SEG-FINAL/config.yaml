@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-102-RENDERED-SEG-FINAL",
+  "title": "Frozen rendered-RGB SegFormer-B2 final checkpoint and once-only 74-view audit",
+  "phase": "R2 rendered-domain final 2D candidate",
+  "status": "completed_formal_retention_gate_failed",
+  "owner": "unassigned",
+  "parent_experiment": "SEM-101-RENDERED-SEG-OOF,RGB-030-FULL,SEM-001",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "seed": 20260805,
+  "parent_evidence": {
+    "sem101_summary_result_sha256": "88fd816d8fa9d56c0a78dece570ca38ca02d43d66a801aee671e6c4de1681923",
+    "sem101_rendered_dataset_manifest_sha256": "a8e08740ac8fa30f115f26cb822b604addca2b2f4c0a316ac4914f1fdd9ceb67",
+    "sem101_oof_gate_passed": true,
+    "selection_rule": "SEM-101 passed all five pre-registered training-only OOF gates; no result-derived hyperparameter, threshold, seed, architecture, loss, crop, stride, checkpoint-selection or training-set change is permitted."
+  },
+  "frozen_rgb": {
+    "backbone": "Scaffold-GS",
+    "rgb_experiment": "RGB-030-FULL",
+    "iteration": 30000,
+    "train_camera_count": 303,
+    "n_offsets": 10,
+    "appearance_camera_id": 0,
+    "coordinate_frame": "official_colmap_reference",
+    "pose_convention": "CAMERA_FROM_WORLD",
+    "official_to_model_sim3": "identity",
+    "checkpoint_is_not_modified": true
+  },
+  "data": {
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "semantic_split_sha256": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+    "label_manifest": "experiments/runs/SEM-001/label_manifest.json",
+    "training_images": 219,
+    "validation_images": 74,
+    "training_rgb_source": "the completed SEM-101 frozen rendered training dataset only",
+    "real_training_rgb_forbidden": true,
+    "unlabeled_rgb_forbidden": true,
+    "access_sequence": "Train one final checkpoint only on the 219 pre-rendered SEM-101 frozen RGBs and authorised training labels. Verify checkpoint reload. Only then render the 74 fixed validation cameras from frozen RGB without labels, generate all 74 predictions, and only after the prediction manifest exists read fixed validation labels for one audit."
+  },
+  "single_changed_variable": "Convert the qualified SEM-101 three-fold OOF rendered-domain recipe into one all-219-training-view final-3,000 checkpoint, then perform its pre-registered once-only fixed-74-view and official external-camera audit. All SegFormer-B2, rendered RGB, seed, optimizer, loss, augmentation and sliding-inference settings are unchanged.",
+  "model": {
+    "architecture": "SegFormer-B2",
+    "implementation": "huggingface/transformers==4.57.1",
+    "pretrained_model_id": "nvidia/mit-b2",
+    "pretrained_revision": "3bb39e8739149c3777d0325349b2a6c32c6413db",
+    "weight_license": "NVIDIA Source Code License for SegFormer; non-commercial research/evaluation only",
+    "classification_head": "reinitialized_for_five_official_classes"
+  },
+  "training": {
+    "seed": 20260805,
+    "all_training_views": true,
+    "iterations": 3000,
+    "crop_size": 768,
+    "batch_size": 1,
+    "gradient_accumulation": 1,
+    "optimizer": "AdamW",
+    "learning_rate": 0.00006,
+    "weight_decay": 0.01,
+    "loss": "five_class_cross_entropy_only",
+    "class_weight_rule": "all 219 rendered-domain training labels only; median_count/count clipped to [0.05,20]",
+    "paired_augmentation": "uniform 768 crop and horizontal flip p=0.5 only",
+    "amp": "bf16_if_supported_else_fp16",
+    "early_stopping": false,
+    "checkpoint_selection": "final_3000_only_no_validation_selection"
+  },
+  "inference": {
+    "crop_size": 768,
+    "stride": 512,
+    "overlap": 256,
+    "output": "float16 five-class probabilities and uint8 0-4 class PNG at 1320x989 before official external SIMPLE_RADIAL remapping"
+  },
+  "baseline_sem001": {
+    "result_sha256": "abd82b7c21820c26e7cea4fa0d7b7ce155d833107b0388e9783c78ba9b81900d",
+    "mIoU_with_background": 0.6161030417847158,
+    "background_to_stay_cable_pixels": 13166331,
+    "worst_10_percent_mIoU_without_background": 0.4234398719211611,
+    "challenge_140_146_mIoU_without_background": 0.6012126147678796,
+    "per_class": {
+      "deck": {"iou": 0.900998934190137},
+      "stay_cable": {"iou": 0.06875938006716793, "recall": 0.36803608964116485},
+      "tower": {"iou": 0.8348696246112979},
+      "foundation": {"iou": 0.44871847315397023}
+    }
+  },
+  "formal_retention_gates": {
+    "mIoU_with_background_drop_max": 0.0,
+    "stay_cable_iou_drop_max": 0.0,
+    "stay_cable_recall_drop_max": 0.0,
+    "protected_classes": ["deck", "tower", "foundation"],
+    "protected_class_iou_drop_max": 0.005,
+    "background_to_stay_cable_reduction_min_fraction": 0.01,
+    "worst_10_percent_mIoU_without_background_drop_max": 0.005,
+    "challenge_140_146_mIoU_without_background_drop_max": 0.005,
+    "rgb_max_absolute_pixel_difference": 0,
+    "rgb_artifact_hashes_equal": true,
+    "checkpoint_reload": "passed",
+    "official_external_camera": "CAMERA_FROM_WORLD + SIMPLE_RADIAL, 1320x989 RGB + five logits + uint8 0-4 semantic PNG"
+  },
+  "external_camera": {
+    "image_name": "140.png",
+    "input_camera_model": "SIMPLE_RADIAL",
+    "pose_convention": "CAMERA_FROM_WORLD",
+    "output_size": [1320, 989],
+    "uses_reference_rgb_or_labels": false
+  },
+  "outputs": {
+    "final_training_root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_102/final_training/final-20260902-r1",
+    "validation_render_root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_102/validation_render/final-20260902-r1",
+    "validation_audit_root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_102/validation_audit/final-20260902-r1",
+    "external_camera_root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_102/external_camera/final-20260902-r1",
+    "summary_root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_102/summary/final-20260902-r1",
+    "validation_rgb_isolation_samples": ["054.png", "140.png", "183.png"],
+    "validation_visual_samples": ["054.png", "140.png", "183.png"],
+    "panel_order": ["frozen_rendered_RGB", "GT", "final_semantic", "error"]
+  },
+  "budget": {"maximum_total_gpu_hours": 1.0},
+  "forbidden": [
+    "real_RGB_input",
+    "validation_access_before_final_checkpoint_freeze",
+    "unlabeled_training",
+    "hidden_test_access",
+    "Scaffold_training",
+    "SEM-001_checkpoint_change",
+    "architecture_search",
+    "loss_search",
+    "threshold_search",
+    "validation_based_checkpoint_selection",
+    "retraining_after_74_view_audit"
+  ],
+  "classes": {"0": "background", "1": "deck", "2": "stay_cable", "3": "tower", "4": "foundation"},
+  "fallback": "RGB-030-FULL Scaffold-GS + SEM-001"
+}

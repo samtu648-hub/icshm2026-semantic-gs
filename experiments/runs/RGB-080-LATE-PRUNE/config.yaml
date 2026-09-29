@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-080-LATE-PRUNE",
+  "title": "Scaffold-GS late opacity-only native pruning",
+  "phase": "R2 reconstruction cleanup",
+  "parent_experiment": "RGB-030-FULL",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1",
+  "seed": 0,
+  "backbone": "scaffold-gs",
+  "change_from_parent": "Stop anchor growth at iteration 15000 as in RGB-030-FULL, but continue native opacity/visit accumulation and native anchor pruning every 100 iterations through iteration 29900; no growth gradients are collected after 15000.",
+  "data": {
+    "root_env": "ICSHM_DATA_ROOT",
+    "prepared_scene": "$R1_OUTPUT_ROOT/rgb_r1_spatial_v1/scene_400_eval",
+    "train_count": 303,
+    "validation_count": 74,
+    "manifest_sha256": "0a188d4b4cfa5ffc2a7f151018f1cb012782e8f9860a3338aed084478d675b3e",
+    "split_sha256": "141944ca14288536a73a55586763b3104493112069a536bc0dfcc2d9f0081847"
+  },
+  "camera": {
+    "source_coordinate_frame": "official_colmap_reference",
+    "pose_convention": "CAMERA_FROM_WORLD",
+    "distortion_policy": "Full-frame SIMPLE_RADIAL-to-PINHOLE using released K, no crop; explicit sparse/0/test.txt.",
+    "resolution": [1320, 989],
+    "initialization": "Training-only DLT point-track re-triangulation."
+  },
+  "training": {
+    "iterations": 30000,
+    "growth_until_exclusive": 15000,
+    "opacity_prune_until_exclusive": 30000,
+    "last_late_prune_iteration": 29900,
+    "prune_interval": 100,
+    "min_opacity": 0.005,
+    "success_threshold": 0.8,
+    "command": "R1_THIRD_PARTY_ROOT=$R1_OUTPUT_ROOT/r2/rgb_080/third_party scripts/run_r1_rgb_candidate.sh RGB-080-LATE-PRUNE scaffold-gs $R1_OUTPUT_ROOT/rgb_r1_spatial_v1/scene_400_eval 30000 30000",
+    "upstream_commit": "59c833b56bbbf510f3f64d40f81721995caced66",
+    "base_local_diff_sha256": "0030e06dd814742a1c1537c6ff6b4ec6067492861bf9ca56304db0de162141ac",
+    "experiment_patch": "experiments/runs/RGB-080-LATE-PRUNE/scaffold_late_prune.patch",
+    "experiment_patch_sha256": "a4a1a4b2bb9ef4d294a4099608ff5557a0e12ef55c304c3b22129483da631d77",
+    "patched_source_diff_sha256": "d5af1ccfa6d8b0d82d6705052965edcaa5cb68ab84b68752ec1e7343220dc7d9",
+    "repository_head_at_registration": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+    "budget": "One authorized full 30000-iteration run; no threshold sweep or second seed inside this experiment."
+  },
+  "evaluation": {
+    "entrypoint": "scripts/evaluate_rgb.py",
+    "protocol": "docs/experiments/protocol.md",
+    "metrics": "METRICS.md",
+    "views": "all 74 validation_labeled, worst 10 percent, 140.png through 146.png, and fixed original-resolution visual audit of 054/140/151/159/160/183",
+    "promotion_gate": "Visible streak/floater cleanup without cable/tower erosion, plus either mean PSNR >= RGB-030-FULL + 0.05 dB or mean LPIPS-Alex <= RGB-030-FULL - 0.003; mean SSIM may fall at most 0.001 and worst-10-percent/challenge PSNR at most 0.10 dB."
+  },
+  "output": {
+    "root": "$R1_OUTPUT_ROOT/r1/runs/RGB-080-LATE-PRUNE",
+    "isolated_source": "$R1_OUTPUT_ROOT/r2/rgb_080/third_party/scaffold-gs"
+  }
+}

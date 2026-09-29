@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-004",
+  "title": "Restricted anchor-local first-order observation-direction background/stay_cable residual",
+  "phase": "R2/S3 main-fold screen",
+  "status": "preregistered_not_run",
+  "parent_experiment": "SEM-001,SEM-004-DIAG,SEM-040-EQ,SEM-041-PF",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "data": {"split_id":"sem_001_scaffold_static_v1","semantic_split":"experiments/splits/sem_001_scaffold_static_v1.json","label_manifest":"experiments/runs/SEM-001/label_manifest.json","training_images":219,"validation_images":74,"uses_guard_band":false,"uses_unlabeled_rgb":false,"uses_validation_for_hyperparameter_or_mask_selection":false,"uses_hidden_test_rgb_or_labels":false},
+  "frozen_rgb": {"backbone":"Scaffold-GS","upstream_commit":"59c833b56bbbf510f3f64d40f81721995caced66","rgb_experiment":"RGB-030-FULL","iteration":30000,"train_camera_count":303,"n_offsets":10,"appearance_camera_id":0,"coordinate_frame":"official_colmap_reference","pose_convention":"CAMERA_FROM_WORLD","camera_model_adaptation":"SIMPLE_RADIAL to full-frame PINHOLE with unchanged K","official_to_model_sim3":"identity"},
+  "inputs": {"sem001_checkpoint_sha256":"8e3dbe30e17f67081a72380018fc281c155ec00eed83cd5a19b3285bf4fb8aa3","sem001_result_sha256":"abd82b7c21820c26e7cea4fa0d7b7ce155d833107b0388e9783c78ba9b81900d","sem001_per_view_sha256":"94510238614631a252f770f3d8e5eb4dc7b5a5cee7ec8bb0e21dd03051b3e089","sem004_diag_result_sha256":"2bd77c9b5ad8528891c40a238aa9f5efd15ce77136c7b7011114894ea5730a8e","sem004_diag_output_manifest_sha256":"c01476b8a0fe032d51335526a6cfb7d54b1672b331d5c0e60d911e7ba90ff064","direction_anchor_csv_sha256":"d550952048849c17a7c3c48f7e1f3eb244c15b91c76b03969f5b36b78d644b88"},
+  "residual": {"enabled_anchor_count":7069,"trainable_coefficients_per_anchor":3,"view_direction":"normalize(anchor_position - official_camera_center)","delta":"cap * tanh(dot(direction_coefficients, view_direction))","cap":1.0,"logit_transfer":{"background":"-delta","stay_cable":"+delta"},"directly_unchanged_logits":["deck","tower","foundation"],"initialization":"all direction coefficients exactly zero","mask_source":"authenticated SEM-004-DIAG training-only direction_reproducible_anchors.csv"},
+  "training": {"seed":20260731,"optimizer":"AdamW","learning_rate":0.01,"betas":[0.9,0.999],"epsilon":1e-8,"weight_decay":0.0,"l2_lambda":0.0001,"loss":"frozen SEM-001 weighted five-class NLL plus l2_lambda * mean(direction_coefficients^2)","sampling":"same numpy default_rng(seed) uniform training-view sampling order as SEM-001","trainable_parameter_allowlist":["direction_coefficients[7069,3]"]},
+  "equivalence": {"views":["001.png","054.png","140.png"],"max_probability_difference":1e-7,"class_png_must_be_bit_identical":true,"rgb_max_absolute_pixel_difference":0,"uses_validation_labels":false},
+  "preflight": {"iterations":16,"validation_views":3,"checkpoint_iterations":[],"log_every":1},
+  "full": {"iterations":10000,"validation_views":74,"checkpoint_iterations":[1000,3000,5000,10000],"log_every":100},
+  "keep_gate": {"minimum_mIoU_with_background_gain":0.01,"minimum_background_to_stay_cable_relative_reduction":0.01,"maximum_protected_class_IoU_drop":0.005,"maximum_worst_or_hard_mIoU_drop":0.005,"stay_cable_IoU_must_not_drop":true,"rgb_max_absolute_pixel_difference":0},
+  "isolation": {"views":["001.png","054.png","140.png"]},
+  "external_camera": {"image_name":"140.png","required_output":"RGB + five logits + single-channel uint8 IDs 0..4 at camera-specified size"}
+}

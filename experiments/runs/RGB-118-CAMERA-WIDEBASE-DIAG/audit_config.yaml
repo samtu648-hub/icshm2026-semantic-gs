@@ -1,0 +1,9 @@
+{
+  "experiment_id": "RGB-118-CAMERA-WIDEBASE-DIAG",
+  "purpose": "supplement initial all-pair replay whose six evenly-spaced samples were all abstentions; explicitly validate the scored branch",
+  "seed": 20260909,
+  "scored_pair_replays": 6,
+  "selection": "evenly-spaced indices including endpoints in sorted completed-crossfit pairs; no error magnitude or candidate selection",
+  "all_scored_pairs": "recompute every saved official and image-F Sampson error using independent coordinate expansion, atol1e-8 rtol1e-9; verify all summaries/support",
+  "does_not": "change matching, baseline, estimator, thresholds, image access, cameras or quality conclusions"
+}

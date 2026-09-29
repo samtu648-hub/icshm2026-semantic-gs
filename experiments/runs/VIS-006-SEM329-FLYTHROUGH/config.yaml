@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "experiment_id": "VIS-006-SEM329-FLYTHROUGH",
+  "status": "preregistered",
+  "phase": "result visualization",
+  "parent_experiment": "VIS-001-FLYTHROUGH,RGB-030-FULL,SEM-161-DECK-BINARY-FINAL,SEM-326-DENSE-FOUNDATION-REVIEW-FINAL,SEM-329-SECOND-SOURCE-VETO-FINAL",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c plus separately sealed worktree sources",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "dataset_manifest_sha256": "0a188d4b4cfa5ffc2a7f151018f1cb012782e8f9860a3338aed084478d675b3e",
+  "split_id": "VIS001 144 novel camera poses; sem_001_scaffold_static_v1 train219 reference bank only",
+  "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+  "semantic_split_sha256": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+  "trajectory": "results/frozen_scaffold_sem001/flythrough_v1/cameras",
+  "trajectory_hashes": {
+    "cameras.txt": "b1dba05dd15f76f41dccbe6adaf56201bff817ad49c4d108f573ad7ca18e4e51",
+    "images.txt": "ebadf102be6e8d94255b38049721e8c7d08b849d16219158419ff6cf5dd744b9",
+    "trajectory_manifest.json": "f5b9f43c93dcfa2a57238aac001571987fc60a04ca0a2a29acc7bf4b7fdde59e"
+  },
+  "frames": 144,
+  "fps": 24,
+  "probe_frames": ["frame0000.png", "frame0072.png", "frame0143.png"],
+  "rule": "Unchanged SEM161 renderer, SEM326 first passing pose source review, and SEM329 second-source veto. Batch model loading only; compare all three representative frames with original fresh single-frame entry point before full review.",
+  "access": "Novel target camera metadata and rendered RGB only. Real source RGB and PINHOLE source labels from fixed219 train bank. No target GT, target real RGB, training, parameter changes, temporal filtering or visual cleanup.",
+  "invariants": ["official COLMAP CAMERA_FROM_WORLD and SIMPLE_RADIAL", "RGB exact", "class1/2/3 exact between semantic arms", "18 frozen artifacts exact", "independent geometry and native review on every frame"],
+  "budget": {"maximum_seconds": 3600, "minimum_free_disk_gib": 100},
+  "output": "outputs/vis006/full-20260908-r1",
+  "claim_boundary": "Visualization and engineering evidence only; no new quality scores or deployment promotion. Retain all failures and previous videos."
+}

@@ -1,0 +1,23 @@
+{
+  "experiment_id": "SEM-325-DENSE-FOUNDATION-REVIEW-OOF",
+  "stage": "fixed_check111_matching",
+  "seed": 20260805,
+  "native_config": "experiments/runs/SEM-325-DENSE-FOUNDATION-REVIEW-OOF/config.yaml",
+  "native_config_sha256": "836b45510e33a0c63040592074f4e6f3af293272f9c11602571403683bac6770",
+  "calibration_result": "outputs/sem325/calibration-score-20260908-r2/result.json",
+  "calibration_result_sha256": "6c9c6bdc70db1f9809c5d992a39f21c4c760acfec150da9625d79894c27ee1be",
+  "parent_config": "experiments/runs/SEM-320-ROMAV2-DENSE-PREFLIGHT/config.yaml",
+  "parent_config_sha256": "3dcefab61d0c4d1aa30bbe0df1ab6e21f1bb7a60a9e86eecab4191de90307c3f",
+  "geometry_config": "experiments/runs/SEM-321-ROMAV2-DENSE-GEOMETRY-DIAG/config.yaml",
+  "geometry_config_sha256": "23672a35c19139ca6000598ac4cb29fad9140ea5e0af080a0962685a9b15d9cc",
+  "retrieval": {
+    "candidates_per_target": 3,
+    "maximum_optical_axis_angle_degrees": 60
+  },
+  "resource_budget": {
+    "maximum_total_seconds": 1800,
+    "minimum_free_disk_gib": 100
+  },
+  "access_policy": "Fixed111 historical check targets; rendered target RGB and same-fold real source RGB only. No labels in matching, no target tracks. Source selection/gates identical to SEM323. No target74/final.",
+  "interpretation": "Geometry stage passed means complete independent computation with abstention; no aggregate coverage cutoff or semantic quality claim. Native quality is separately fixed in main config."
+}

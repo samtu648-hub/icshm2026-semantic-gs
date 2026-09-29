@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "base_config": "experiments/runs/RGB-152-STANDARD-ABSGRAD-SPATIAL30/config.yaml",
+  "experiment_id": "RGB-161-ABSGS-SCREEN-PRUNE-CTRL",
+  "parent_experiment": "RGB-152-STANDARD-ABSGRAD-SPATIAL30;QUAL-018-ABSGS-DIVERGENCE-DIAG",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 0,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "spatial_confirmation_v1",
+  "main_variable": "Fresh paired native lifecycle control; no scientific recipe change",
+  "screen_radius_lifecycle": "native",
+  "training": {"output": "outputs/quality/RGB-161/full-r1"},
+  "output": {
+    "root": "outputs/quality/RGB-161",
+    "source": "outputs/quality/rgb140/source-r1",
+    "preserve_failures": true
+  },
+  "protocol": "docs/experiments/absgs_screen_prune_lifecycle_protocol.md"
+}

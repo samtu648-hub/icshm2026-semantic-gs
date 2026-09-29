@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "base_config": "experiments/runs/SEM-396-RGB152-SPATIAL256/config.yaml",
+  "experiment_id": "SEM-419-RGB156-DROP-CONTROL",
+  "parent_experiment": "RGB-156-ABSGS-DROP-CONTROL;SEM-396-RGB152-SPATIAL256",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "spatial_confirmation_v1",
+  "rgb_run": "outputs/quality/RGB-156/full-r1",
+  "rgb_evaluation": "outputs/quality/RGB-156/full-r1/evaluation",
+  "output_path": "outputs/quality/SEM-419/r1",
+  "protocol": "docs/experiments/component_sampling_dropgaussian_protocol.md"
+}

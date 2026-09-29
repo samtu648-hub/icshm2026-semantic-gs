@@ -1,0 +1,33 @@
+{
+  "experiment_id": "SEM-321-ROMAV2-DENSE-GEOMETRY-DIAG",
+  "status": "preregistered",
+  "parent_experiment": "SEM-320-ROMAV2-DENSE-PREFLIGHT,SUBMIT-020-SEM161-FREEZE",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c plus sealed sources",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_005_oof_spatial_v1; same3 calibration target pairs; no labels",
+  "parent_config": "experiments/runs/SEM-320-ROMAV2-DENSE-PREFLIGHT/config.yaml",
+  "parent_config_sha256": "3dcefab61d0c4d1aa30bbe0df1ab6e21f1bb7a60a9e86eecab4191de90307c3f",
+  "prepare": "outputs/sem320/prepare-20260908-r1/result.json",
+  "prepare_sha256": "f9ca2db679d8c2982ff0c9ee786c33e407dfc7fc203b147629db0042cdc53755",
+  "runtime": "outputs/sem320/runtime-20260908-r1/result.json",
+  "runtime_sha256": "4ee4df293e06bd2faa252cbb3794c6bdb88789bd59306e20cec6c1a75a3000bc",
+  "replay": "outputs/sem320/replay-20260908-r1/result.json",
+  "replay_sha256": "201d6abb0875e76f14c4b7f06683a190d30fc723d0e7d7f547e072dadc07d624",
+  "freeze_manifest": "experiments/runs/SUBMIT-020-SEM161-FREEZE/frozen_manifest.json",
+  "single_changed_variable": "Read-only geometric reliability and coverage audit of the same3 sealed RoMa dense pairs; no inference, training, labels, semantic fusion or threshold search.",
+  "pixel_policy": "RoMa normalized coordinates map to edge-origin native pixel centers (first=.5); subtract .5 only for array interpolation. Bilinear sample backward warp and overlap at forward source positions, align_corners=False. Cycle distance uses native1320x989 target dimensions, not512 square units.",
+  "camera_policy": "Official COLMAP world-to-camera poses. Target frozen render is pinhole with official intrinsics; source RGB is SIMPLE_RADIAL, so undistort source coordinates before ideal-pinhole symmetric epipolar distance. No camera normalization, ground-truth pose fitting or RANSAC.",
+  "filters": {"overlap_each_direction_minimum":0.5,"cycle_maximum_native_pixels":2.0,"epipolar_maximum_native_pixels":2.0},
+  "geometry_screen": {
+    "minimum_reliable_grid_fraction_each_pair":0.01,
+    "minimum_epipolar_inlier_fraction_after_cycle_each_pair":0.80,
+    "minimum_pairs_beating_identity_median_by_factor2":2,
+    "meaning":"Only a prospective small-sample geometric screen for whether to consider larger/source-label diagnostics; not semantic precision, not a deployable fusion gate, no new label access automatically authorized."
+  },
+  "identity_control": "Same normalized image-coordinate mapping evaluated on the identical cycle/overlap support; no-correspondence camera-geometry sanity control, not another learned model.",
+  "outputs": "Per-pair counts, coverage, cycle/epipolar distributions, identity comparison and fixed4x4 reliable-support grid; no semantic predictions or label maps.",
+  "access_policy": "No new RGB decoding. Only6 sealed warp/overlap arrays, original camera metadata and contracts. Targets017/001/032 are calibration; sources015/046/029 are same-fold train.046/029 historically have check identifiers but are source observations, not check targets. No labels, new111 targets,74 developer, guard or unlabeled inputs. Preserve SEM320's original wording deviation, do not claim111 source images were never accessed.",
+  "failure": "Preserve result, do not scan overlap/cycle/epipolar limits, rescale inference or transfer labels to rescue this screen. No SEM161 change.",
+  "resource_budget": {"maximum_seconds":120,"minimum_free_disk_gib":100}
+}

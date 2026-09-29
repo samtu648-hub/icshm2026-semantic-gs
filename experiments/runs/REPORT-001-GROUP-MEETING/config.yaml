@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "experiment_id": "REPORT-001-GROUP-MEETING",
+  "parent_experiment": "VIS-006-SEM329-FLYTHROUGH;QUAL-007-BACKBONE-COMPARISON;SEM-376-CROSS-RGB-INFERENCE",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": "not_applicable_readonly_presentation",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "presentation_only; historical74 developer, OOF and released_all400_rgb_all300_sem_v1 kept separate",
+  "main_variable": "none: saved-result presentation only; no training or inference",
+  "output_path": "outputs/group_meeting_20260915",
+  "source_report": "outputs/research_report_20260908",
+  "date": "2026-09-15"
+}

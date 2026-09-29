@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-171-DECK-CONTINUITY-OOF",
+  "title": "Spatially closed additive deck-gap recovery with frozen OOF probabilities",
+  "phase": "R2 deck boundary and fragmentation refinement",
+  "status": "completed_calibration_gate_failed",
+  "owner": "unassigned",
+  "parent_experiment": "SEM-170-DECK-ARBITRATION-OOF,SEM-160-DECK-BINARY-OOF,SEM-150-FOUNDATION-GATE-OOF,SEM-140-CABLE-BINARY-OOF,SEM-001,RGB-030-FULL",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_001_scaffold_static_v1 with frozen sem_005_oof_spatial_v1 and sem110-v1 calibration/check partition",
+  "seed": "not_applicable_frozen_OOF_spatial_recovery",
+  "data": {
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "semantic_split_sha256": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+    "oof_split": "experiments/splits/sem_005_oof_spatial_v1.json",
+    "oof_split_sha256": "ce8a24e11d93df7634331a1ce33ae59385297cae90a0bd688b61769cf27f222c",
+    "label_manifest": "experiments/runs/SEM-001/label_manifest.json",
+    "training_images": 219,
+    "validation_images_opened": 0,
+    "access_rule": "Validate every frozen parent and OOF probability before labels. Select one radius/threshold pair on the existing label-independent 108-view calibration half, then open the 111-view check once. No 74-view, external camera, unlabelled or hidden input is available."
+  },
+  "inputs": {
+    "sem160_result_sha256": "1b805dba1bd114686825da448e1ac978471562b1d9d5258d9eaa84cfd5020fcb",
+    "sem160_prediction_manifest_sha256": "129d82d6ee46c85632f9bd393a36d7b3f719272d8fa537f93fe2541ff25b3444",
+    "sem150_result_sha256": "e29843e21f0f9097b6c78c6ccf3fa0d59b10605ca9abbd8cbaf5320984d991a0",
+    "sem150_prediction_manifest_sha256": "011b2ca0e71127fb7b6e2611f7277c57cdfcd004ba2831cb71202e3e3f1abeaa",
+    "sem001_training_manifest_sha256": "fc2b3008b38c6c2196cdd7cdeab6d369d771770552b01c7c7d6c51fba042ae9a",
+    "sem160_fold_result_sha256": [
+      "96c31067407c2b965316e9fedc08b1c8c0aa066274203dc662833460913f70c9",
+      "2548053f826ec3bdb4588a2f48184ce5bf01289db7c6f1aca44bfead670cbaf0",
+      "44f95eac651b3140d957e6337eef2f910de626a9b339f1df04cc69d5e2a66b27"
+    ],
+    "sem160_fold_prediction_manifest_sha256": [
+      "aadd04f7a9dfacb50e8d9915ad323f19ddaba85c7080485b9b04030181a15a6f",
+      "47418bcb1d9eaf388ffac29d7f283e938c9b0a1acaa322ae90eb91c194937205",
+      "cf38f4eba53a9da05a2e125081543b458d6d31b647ef5634d0233ea35be26d91"
+    ]
+  },
+  "single_changed_variable": "Keep every SEM-160 selected prediction fixed and permit extra background-to-deck recovery only where an elliptical closing of the existing deck mask encloses the pixel and the frozen deck OOF probability clears the registered threshold.",
+  "recovery": {
+    "baseline": "SEM-160 selected additive 0.99 OOF predictions",
+    "existing_deck_immutable": true,
+    "eligible_pixels": "SEM-160 background whose pre-foundation SEM-001 provenance is background",
+    "spatial_support": "OpenCV binary closing of the existing SEM-160 class-1 mask with an elliptical kernel of registered radius; only newly closed pixels may be considered",
+    "radius_grid_pixels": [3, 5, 9, 15],
+    "probability_threshold_grid": [0.5, 0.7, 0.8, 0.9, 0.95, 0.97, 0.98],
+    "selection_rule": "On calibration only, among candidates passing every gate maximise deck IoU, then total mIoU, deck recall, deck precision, smaller radius and higher probability threshold. Check cannot alter the selection."
+  },
+  "oof_gates": {
+    "calibration": {
+      "minimum_mIoU_gain": 0.0,
+      "minimum_deck_iou_gain": 0.001,
+      "minimum_deck_recall_gain": 0.002,
+      "minimum_deck_precision": 0.95,
+      "maximum_background_to_deck_fp_ratio": 1.10,
+      "existing_deck_predictions_exact": true,
+      "protected_predictions_exact": true
+    },
+    "check": {
+      "minimum_mIoU_gain": 0.0,
+      "minimum_deck_iou_gain": 0.001,
+      "minimum_deck_recall_gain": 0.002,
+      "minimum_deck_precision": 0.95,
+      "maximum_background_to_deck_fp_ratio": 1.10,
+      "existing_deck_predictions_exact": true,
+      "protected_predictions_exact": true
+    }
+  },
+  "outputs": {
+    "root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_171/deck_continuity_oof/full-20260906-r1",
+    "training_visual_samples": ["017.png", "206.png", "255.png"],
+    "panel_order": ["GT", "SEM-160", "continuity_recovery", "green_corrected_red_harmed"]
+  },
+  "budget": {"maximum_gpu_hours": 0.0},
+  "forbidden": [
+    "network_training_or_checkpoint_change",
+    "existing_deck_pixel_change",
+    "real_RGB_input",
+    "fixed_74_view_access",
+    "unlabeled_input",
+    "hidden_test_access",
+    "external_camera_mode",
+    "SEM160_SEM150_SEM140_SEM001_or_RGB_change",
+    "class_2_3_4_change",
+    "foundation_rejection_relabel",
+    "check_based_parameter_selection",
+    "view_ID_or_hand_drawn_ROI"
+  ],
+  "classes": {"0": "background", "1": "deck", "2": "stay_cable", "3": "tower", "4": "foundation"},
+  "fallback": "SEM-160 training OOF recipe and SEM-161 frozen developer candidate remain unchanged"
+}

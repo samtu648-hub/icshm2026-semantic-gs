@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "experiment_id": "GEO-011-3K",
+  "title": "MapAnything P0 additive hybrid-initialization stop-test",
+  "status": "completed_drop",
+  "code_git_commit": "848e5d8b3eea22c75ca8995fdfef7443d2297af7",
+  "parent_experiment": "GEO-000-10K,GEO-010-P0,GEO-010-10K",
+  "protocol_boundary": "A single bounded diagnostic. It does not modify GeometryPrior v2 ranking and cannot claim a 30k winner.",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1",
+  "primary_fold": "spatial-01",
+  "seed": 0,
+  "backbone": "frozen-scaffold-gs",
+  "training": {
+    "iterations": [1000, 3000],
+    "continuous_training": "single_process_0_to_3000_from_scratch",
+    "runner": "scripts/run_geometry_scaffold_screen.sh",
+    "control": "GEO-000-10K iteration_3000 only if its artifact hashes and common conditions verify"
+  },
+  "fixed_controls": [
+    "official P0 CAMERA_FROM_WORLD converted to OpenCV cam2world",
+    "SIMPLE_RADIAL to full-frame undistorted PINHOLE protocol",
+    "303 training RGB, 74 spatially isolated validation views, and guard band",
+    "seed 0, resolution 1320x989, frozen Scaffold source/minimal patch, and fixed local RGB evaluator"
+  ],
+  "mapanything_source": {
+    "upstream_commit": "9d1db2dd728bd8a10e74b15d2eb646e1bf933791",
+    "checkpoint_sha256": "fa06c0fdccefc5048e072c85935d5789b1e36b307f3859033c17f9dcb9fd5201",
+    "geometry_parent": "GEO-010-P0",
+    "fusion_ply_sha256": "f6a69c4d15bf49eaf8019a5c0cb31d4d796fd9261121a538c7110fd17832d889",
+    "fusion_points_sha256": "6de4d03f822f3427f6eb0a3bd8901cca4313aa673d2a122968fb5bf3eb940933"
+  },
+  "hybrid_initialization": {
+    "baseline_mode": "preserve_all_original_DLT_points_and_RGB_in_original_order",
+    "baseline_input_ply_sha256": "10a88fb018c27530b3bbfa0f7000408693ba75228067f5311e7775e4755e68f2",
+    "map_source": "GEO-010-P0 fused_points.npz",
+    "minimum_calibrated_confidence": 0.75,
+    "minimum_support_views": 3,
+    "allow_line_structure_exception": false,
+    "coverage_radius_r0": 1.5,
+    "map_voxel_size": "r0",
+    "maximum_added_points": 3000,
+    "scaffold_input": "XYZ plus raw RGB only; no Map depth, confidence, feature, opacity, or semantic data"
+  },
+  "commands": {
+    "build_hybrid": "python3 scripts/build_mapanything_hybrid_init.py --baseline-init-ply \"$ICSHM_OUTPUT_ROOT/geometry_prior/v2/runs/GEO-000-10K/input.ply\" --map-points-npz \"$ICSHM_OUTPUT_ROOT/geometry_prior/v2/runs/GEO-010-P0/attempt1/fusion_attempt2/fused_points.npz\" --map-fusion-manifest \"$ICSHM_OUTPUT_ROOT/geometry_prior/v2/runs/GEO-010-P0/attempt1/fusion_attempt2/fusion_manifest.json\" --output-ply \"$ICSHM_OUTPUT_ROOT/geometry_prior/hybrid_screen/GEO-011-3K/scaffold_init_mapanything_hybrid.ply\" --output-manifest \"$ICSHM_OUTPUT_ROOT/geometry_prior/hybrid_screen/GEO-011-3K/hybrid_manifest.json\" --minimum-confidence 0.75 --minimum-support 3 --coverage-radius-r0 1.5 --maximum-added-points 3000",
+    "build_scene": "python3 scripts/build_scaffold_init_scene.py --source-scene \"$ICSHM_OUTPUT_ROOT/rgb_r1_spatial_v1/scene_400_eval\" --init-ply \"$ICSHM_OUTPUT_ROOT/geometry_prior/hybrid_screen/GEO-011-3K/scaffold_init_mapanything_hybrid.ply\" --destination \"$ICSHM_OUTPUT_ROOT/geometry_prior/hybrid_screen/scenes/scene_mapanything_hybrid\"",
+    "train": "scripts/run_geometry_scaffold_screen.sh GEO-011-3K \"$ICSHM_OUTPUT_ROOT/geometry_prior/hybrid_screen/scenes/scene_mapanything_hybrid\" \"$ICSHM_OUTPUT_ROOT/geometry_prior/hybrid_screen/runs\" 3000"
+  },
+  "pre_registered_gate": {
+    "keep_for_new_10k_candidate_if": "PSNR_dB_mean >= control + 0.2 OR LPIPS_Alex <= control - 0.01; worst_10_percent and hard_140_146 must not materially regress; checkpoint reload and external official camera gates must pass",
+    "drop_if": "Any quality/engineering gate fails; no MapAnything 10k or 30k run from this recipe"
+  },
+  "realized_run": {
+    "execution_git_commit": "37903ebf12e0a44151011d1138414e3ca51a6dda",
+    "start_time": "2026-08-04T11:51:10+08:00",
+    "end_time": "2026-08-04T11:55:40+08:00",
+    "continuous_training": "single_process_0_to_3000_from_scratch",
+    "recorded_iterations": [1000, 3000],
+    "checkpoint_3000_sha256": "b40339644c86c50bb7195ead3c2eaaa98ce87c212fcdabb35c1b1b1fda956d7b",
+    "checkpoint_reload": "passed",
+    "external_official_camera": "passed_CAMERA_FROM_WORLD_to_1320x989_RGB_without_reference_RGB_or_labels",
+    "decision": "drop_no_10k_or_30k_for_this_recipe"
+  },
+  "output_root": "external_gitignored:ICSHM_OUTPUT_ROOT/geometry_prior/hybrid_screen/GEO-011-3K"
+}

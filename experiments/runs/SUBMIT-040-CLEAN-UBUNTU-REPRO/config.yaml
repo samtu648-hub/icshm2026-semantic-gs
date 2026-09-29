@@ -1,0 +1,14 @@
+{
+  "experiment_id": "SUBMIT-040-CLEAN-UBUNTU-REPRO",
+  "parent_experiment": "SUBMIT-030-SEM161-BUNDLE",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 0,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "official camera metadata only, 140 native and 320x240",
+  "base_image": "nvidia/cuda:12.8.1-base-ubuntu24.04",
+  "recipe": "reproduction/sem161/Dockerfile",
+  "requirements": "reproduction/sem161/requirements.txt",
+  "verification": "Fresh Python dependencies and freshly compiled bundled CUDA extension copies; no old .so/build cache, no host Python mount, read-only frozen bundle and external compiler, no network during verification",
+  "gates": ["two fresh process RGB/semantic frozen replay", "320x240 RGB/semantic frozen replay", "nonempty output rejection", "2161 bundle files unchanged", "fresh extension module paths verified"],
+  "scope_limitations": ["same physical GPU and host kernel", "external read-only pinned CUDA compiler", "no official submission or hidden quality metric"]
+}

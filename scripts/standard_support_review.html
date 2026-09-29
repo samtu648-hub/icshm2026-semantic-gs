@@ -1,0 +1,38 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>Standard 跨视角支撑增密对照</title>
+<style>body{font:15px/1.6 system-ui;margin:24px;color:#172b3a;background:#f4f6f7}h1{font-size:24px}h2{font-size:19px;margin-top:30px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.tile{background:white;padding:8px}canvas,video{width:100%}canvas{cursor:crosshair}button,select{padding:7px;margin:4px}table{border-collapse:collapse;background:white;width:100%}th,td{padding:6px 12px;text-align:right;border-bottom:1px solid #ddd}th:first-child,td:first-child{text-align:left}a{color:#086a89}.scroll{max-height:450px;overflow:auto}tr:hover{background:#e7f0f3}code{font-size:13px}</style>
+<h1>Standard 跨视角支撑引导增密</h1>
+<p>RGB142 是预算受限的新绝对梯度控制；RGB143 只改变大高斯分裂排序。RGB140 为历史参考。相同全400 RGB、官方相机、初始化、seed0、30k；全400指标是训练拟合，144帧轨迹无真值。支撑来自遮挡感知的光度边际导数，不是真实几何证明。</p>
+<!-- REVIEW_START --><p>视觉复核结论待登记；下方是已完成的原始对照产物。</p><!-- REVIEW_END -->
+<div id=metrics></div><h2>同位置 RGB 对照</h2>
+<select id=view></select><select id=roi><option value=full>完整图</option></select><button id=reset>重置</button><span id=coords></span>
+<p>可在任一图上拖选区域，四幅图同步裁剪。选择轨迹帧时只显示三模型。</p><div class=grid id=grid></div>
+<h2>同一144帧轨迹 · 仅定性检查</h2><input id=frame type=range min=0 max=143 value=0 style="width:75%"><span id=frameLabel>0</span>
+<video controls preload=metadata src=trajectory-rgb140-rgb142-rgb143.mp4></video>
+<h2>局部 RGB MAE · 0–255，越低越好</h2><div id=regions></div>
+<h2>已有标签区域的 RGB MAE · 非语义准确率</h2><p>在300张已有标签图上，先逐图求该类RGB MAE，再对存在该类的图等权平均；不是全像素池化。</p><div id=classes></div>
+<details><summary>训练前的 RGB141 只读诊断：支撑信息的来源与限制</summary>
+<p>在冻结 RGB140 的159图选出8个贡献者，记录400视角的原生opacity边际导数和逐个有限去除效果。正、负效果可以同时出现在真实细索与水面贡献者上；这不是几何真值或伪影分类。全400诊断权重与训练的100视角窗口权重也不相同。</p>
+<img src="../diagnostic-r1/159-residual.png" alt="159照片、冻结RGB140与RGB残差" style="width:100%">
+<img src="../diagnostic-r1/cross-view-evidence.png" alt="8个贡献者的跨视角边际导数与有限去除效果" style="max-width:100%;width:1200px">
+<p>来源：<a href="../diagnostic-r1/result.json">RGB141原始诊断</a>。残差图用保存的8bit PNG；诊断原始ROI残差来自浮点渲染，二者口径不可直接混用。</p></details>
+<h2>资源与预算</h2><div id=resources></div>
+<p>另外保留一次执行中断：首个候选在约20,830步遭来源未确认的外部SIGTERM，无训练checkpoint；最后采样对应约27.54分钟额外训练和27.77分钟排队。当前候选按完全相同科学配方从0重跑，控制未重跑。失败成本未计入上表成功模型的训练分钟。</p>
+<img src=budget-and-ranking.png alt="两臂高斯数量、数量差与候选累计改选数量曲线" style="max-width:100%;width:1050px">
+<p>来源：两臂numeric.jsonl（每100步、增密事件前的数量）与候选densification.jsonl；累计改选按事件计数，不是最终独立高斯ID数。两臂均为seed0全400训练拟合。</p>
+<h2>全400逐图变化 · RGB143 − RGB142</h2><p>点击图名查看原位置；按PSNR变化升序，最差在前。<a href=per_view.csv>下载逐图CSV</a> · <a href=data.json>完整数据与增密事件</a></p><div class=scroll id=perview></div>
+<script>
+const D=__DATA__, F=(x,n=6)=>Number(x).toFixed(n), models=['RGB140','RGB142','RGB143'];
+function table(headers,rows){return '<table><thead><tr>'+headers.map(h=>'<th>'+h+'</th>').join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map(c=>'<td>'+c+'</td>').join('')+'</tr>').join('')+'</tbody></table>'}
+metrics.innerHTML=table(['模型','PSNR ↑ (dB)','SSIM ↑','LPIPS ↓'],models.map(k=>[k,...['PSNR','SSIM','LPIPS'].map(m=>F(D.metrics[k][m]))]));
+regions.innerHTML=table(['固定区域','RGB140','RGB142','RGB143'],D.regions.map(r=>[r.region,...models.map(k=>F(r[k],4))]));
+classes.innerHTML=table(['真实标签区域','RGB140','RGB142','RGB143'],Object.entries(D.class_rgb_mae_255).map(([k,r])=>[k,...models.map(m=>F(r[m],4))]));
+resources.innerHTML=table(['模型','高斯数','训练分钟（不含排队）','峰值allocated MiB','模型MiB','固定九图GPU渲染ms','改选父点/事件累计'],Object.entries(D.resources).map(([k,r])=>[k,r.final_gaussians,F(r.training_wall_seconds/60,2),F(r.peak_allocated_mib,1),F(r.model_mib,2),F(r.fixed9_cuda_render_median_ms,3),r.ranking_changed_parents]));
+perview.innerHTML=table(['图','ΔPSNR (dB)','ΔSSIM','ΔLPIPS'],[...D.rows].sort((a,b)=>a.RGB143_minus_RGB142_PSNR-b.RGB143_minus_RGB142_PSNR).map(r=>['<a href="#" data-view="'+r.name+'">'+r.name+'</a>',...['PSNR','SSIM','LPIPS'].map(m=>F(r['RGB143_minus_RGB142_'+m]))]));
+const ordered=[...D.fixed.views,...D.names.filter(n=>!D.fixed.views.includes(n)),...D.trajectory];ordered.forEach(n=>view.add(new Option(n,n)));
+Object.entries(D.fixed.regions).forEach(([key,r])=>r.boxes.forEach((b,i)=>roi.add(new Option(key+' #'+i,JSON.stringify({view:r.view,box:b})))));
+Object.entries(D.inherited_structure_crops).forEach(([stem,b])=>roi.add(new Option(stem+' 既有塔索/桥面局部',JSON.stringify({view:stem+'.png',box:b}))));
+let box=[0,0,1320,989],items=[],generation=0,drag=null;
+function draw(){coords.textContent=box.join(', ');items.forEach(({im,c})=>{c.width=box[2]-box[0];c.height=box[3]-box[1];c.getContext('2d').drawImage(im,...box.slice(0,2),c.width,c.height,0,0,c.width,c.height)})}
+function load(){const idx=D.trajectory.indexOf(view.value);if(idx>=0){frame.value=idx;frameLabel.textContent=idx}else{frameLabel.textContent='当前为训练图；拖动切换轨迹'}const z=++generation;items=[];grid.replaceChildren();const ts=D.names.includes(view.value)?D.tiles:D.tiles.slice(1);grid.style.gridTemplateColumns='repeat('+ts.length+',minmax(0,1fr))';ts.forEach(t=>{let d=document.createElement('div');d.className='tile';let c=document.createElement('canvas'),a=document.createElement('a');a.href=t.path+'/'+view.value;a.textContent=t.label+' · 原生PNG';d.append(a,c);grid.append(d);let im=new Image();im.onload=()=>{if(z===generation){items.push({im,c});draw()}};im.src=a.href;c.onpointerdown=e=>{let r=c.getBoundingClientRect();drag=[box[0]+(e.clientX-r.left)/r.width*(box[2]-box[0]),box[1]+(e.clientY-r.top)/r.height*(box[3]-box[1])];c.setPointerCapture(e.pointerId)};c.onpointerup=e=>{if(!drag)return;let r=c.getBoundingClientRect(),x=box[0]+(e.clientX-r.left)/r.width*(box[2]-box[0]),y=box[1]+(e.clientY-r.top)/r.height*(box[3]-box[1]);let b=[Math.max(0,Math.floor(Math.min(x,drag[0]))),Math.max(0,Math.floor(Math.min(y,drag[1]))),Math.min(1320,Math.ceil(Math.max(x,drag[0]))),Math.min(989,Math.ceil(Math.max(y,drag[1])))];drag=null;if(b[2]-b[0]>5&&b[3]-b[1]>5){box=b;draw()}}})}
+view.onchange=()=>{box=[0,0,1320,989];roi.value='full';load()};reset.onclick=()=>{box=[0,0,1320,989];roi.value='full';draw()};roi.onchange=()=>{if(roi.value==='full'){box=[0,0,1320,989];draw();return}let r=JSON.parse(roi.value);view.value=r.view;box=r.box;load()};frame.oninput=()=>{roi.value='full';view.value=D.trajectory[+frame.value];frameLabel.textContent=frame.value;box=[0,0,1320,989];load()};perview.onclick=e=>{if(e.target.dataset.view){e.preventDefault();roi.value='full';view.value=e.target.dataset.view;box=[0,0,1320,989];load();grid.scrollIntoView({behavior:'smooth'})}};load();
+</script></html>

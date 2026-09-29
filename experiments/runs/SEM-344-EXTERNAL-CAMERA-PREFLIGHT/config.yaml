@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-344-EXTERNAL-CAMERA-PREFLIGHT",
+  "parent_experiment": "SEM-343-RAW-FOUNDATION-GATE,SEM-341-MASK2FORMER-OOF,RGB-110-SCAFFOLD-CTRL,VIS-001-FLYTHROUGH",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "registered_utc": "2026-09-11T07:18:11.841396+00:00",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "existing three semantic OOF partitions sharing frozen303 RGB; no new target labels; metadata-only novel trajectory",
+  "main_variable": "evaluation camera domain only; frozen raw, selected0.05 and calibrated fusion; no fitting or selection",
+  "rgb_run": "outputs/quality/runs/RGB-110-SCAFFOLD-CTRL-full-r1",
+  "scaffold_source": "r1/third_party/scaffold-gs",
+  "batch": "outputs/quality/mask2former/SEM-341-r1",
+  "static_pattern": "outputs/quality/semantic/SEM-330-Scaffold-oof-{fold}-full-dualline-20260909-r1",
+  "deck_pattern": "outputs/quality/experts/SEM-331-Scaffold-deck-oof-{fold}-full-dualline-20260909-r1",
+  "official_metadata": "camera_parameters",
+  "trajectory": "results/frozen_scaffold_sem001/flythrough_v1/cameras",
+  "closure_names": [
+    "017.png",
+    "001.png",
+    "031.png"
+  ],
+  "probe_novel_names": [
+    "frame0000.png",
+    "frame0071.png",
+    "frame0143.png"
+  ],
+  "trajectory_names": [
+    "frame0060.png",
+    "frame0061.png",
+    "frame0062.png",
+    "frame0063.png",
+    "frame0064.png",
+    "frame0065.png",
+    "frame0066.png",
+    "frame0067.png",
+    "frame0068.png",
+    "frame0069.png",
+    "frame0070.png",
+    "frame0071.png",
+    "frame0072.png",
+    "frame0073.png",
+    "frame0074.png",
+    "frame0075.png",
+    "frame0076.png",
+    "frame0077.png",
+    "frame0078.png",
+    "frame0079.png",
+    "frame0080.png",
+    "frame0081.png",
+    "frame0082.png",
+    "frame0083.png"
+  ],
+  "camera_selection": "first sorted saved prediction per fold for closure; existing144-frame trajectory first/middle/last probes; fixed central24 consecutive frames only after fresh probe passes; no prediction/GT-informed view selection",
+  "resolution": [
+    1320,
+    989
+  ],
+  "arms": [
+    "raw",
+    "selected0.05",
+    "calibrated_fusion"
+  ],
+  "maximum_margin": 0.05,
+  "thresholds": {
+    "fiveclass_lane": 0.35,
+    "cable": null,
+    "foundation": 0.1,
+    "deck": 0.98
+  },
+  "output_contract": "native PINHOLE expert prediction and gating first, class-ID nearest-neighbour redistortion to official SIMPLE_RADIAL; RGB float bilinear redistortion then uint8. No soft-logits interface or automatic deployment promotion.",
+  "acceptance": "all three fold models separately; native closure RGB/static/five/deck exact against original saved own-fold artifacts; RGB before/after semantic exact; fresh-process probe RGB/static/five/deck/all label outputs exact; official pose/K closure and independent point projection; protected raw class sets in both grids; no labels/photos; original219RGB/18 frozen hashes before/after",
+  "trajectory_diagnostic": "no GT, no mIoU; native and official change/class area counts; unaligned adjacent changes are motion-confounded and are not temporal quality scores. All folds reported, no averaging/picking.",
+  "resource": {
+    "minimum_free_gib": 100,
+    "maximum_new_gib": 4,
+    "max_gpu_tasks": 1,
+    "maximum_seconds_per_stage": 1800
+  },
+  "no_new_training": true,
+  "no_recalibration": true,
+  "no_automatic_promotion": true,
+  "input_hashes": {
+    "data/manifests/contest_dataset_v1.json": "0a188d4b4cfa5ffc2a7f151018f1cb012782e8f9860a3338aed084478d675b3e",
+    "experiments/splits/sem_001_scaffold_static_v1.json": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+    "experiments/splits/sem_005_oof_spatial_v1.json": "ce8a24e11d93df7634331a1ce33ae59385297cae90a0bd688b61769cf27f222c",
+    "experiments/runs/SEM-343-RAW-FOUNDATION-GATE/selection.json": "e44d2426764efa55645af4f92667b856d64c85af3c773747f29435d16203cec1",
+    "experiments/runs/SEM-343-RAW-FOUNDATION-GATE/audit_config.yaml": "f5d62a016aa9fed23c34d4d52b021ea3a6f7c90ede698ce95193ce2566fb553b",
+    "outputs/quality/runs/RGB-110-SCAFFOLD-CTRL-full-r1/result.json": "46bd0fc62d97c7c6088134747ed2ab60e7e6cff2c968b07c43d712edebff18d5",
+    "outputs/quality/mask2former/SEM-341-r1/full-oof-0/result.json": "627da1cbbd87aaf3b004300f33bb0b4b621fe571cfa9c8d414c2071cc6be268e",
+    "outputs/quality/semantic/SEM-330-Scaffold-oof-0-full-dualline-20260909-r1/result.json": "10e37258f3eae08847a25f843fc3aef6f1193e87d263e37026542e5498882083",
+    "outputs/quality/experts/SEM-331-Scaffold-deck-oof-0-full-dualline-20260909-r1/result.json": "fb818e04087cc30fdbee1d2abb411d9176e711f037b55f2f43ee32faec6a986f",
+    "outputs/quality/mask2former/SEM-341-r1/full-oof-1/result.json": "1255a6fc5e24c2b864ffc2eaab8c1d47fee86b225587164bf29a2ecca2d16580",
+    "outputs/quality/semantic/SEM-330-Scaffold-oof-1-full-dualline-20260909-r1/result.json": "fae23a4ab0500c063e0e64f3cfb0fdb582f80ecdea1aa209bfd57675e288b8d8",
+    "outputs/quality/experts/SEM-331-Scaffold-deck-oof-1-full-dualline-20260909-r1/result.json": "1fdb324ce1b4be2b97de52ba08271fbcef0f49f6241a2cecf336f4ad9b8018d0",
+    "outputs/quality/mask2former/SEM-341-r1/full-oof-2/result.json": "9b7306f0ddfa69c38a4b04c0a482312329c159426135bc49bee0ae450883cbdd",
+    "outputs/quality/semantic/SEM-330-Scaffold-oof-2-full-dualline-20260909-r1/result.json": "3c18967e1ab40fdc4920c777bfc9b3251597d826b975b49b34f568e21de3c4dc",
+    "outputs/quality/experts/SEM-331-Scaffold-deck-oof-2-full-dualline-20260909-r1/result.json": "b5486e37ccfbc89844a9081ff8874bc2c16f2a9113fc1def45a3284c24796db5"
+  },
+  "artifact_metadata_hashes": {
+    "results/frozen_scaffold_sem001/flythrough_v1/cameras/cameras.txt": "b1dba05dd15f76f41dccbe6adaf56201bff817ad49c4d108f573ad7ca18e4e51",
+    "results/frozen_scaffold_sem001/flythrough_v1/cameras/images.txt": "ebadf102be6e8d94255b38049721e8c7d08b849d16219158419ff6cf5dd744b9",
+    "results/frozen_scaffold_sem001/flythrough_v1/cameras/trajectory_manifest.json": "f5b9f43c93dcfa2a57238aac001571987fc60a04ca0a2a29acc7bf4b7fdde59e"
+  },
+  "data_metadata_hashes": {
+    "camera_parameters/cameras.txt": "b1dba05dd15f76f41dccbe6adaf56201bff817ad49c4d108f573ad7ca18e4e51",
+    "camera_parameters/images.txt": "617ce90de602aba692ed1f719ca94f1e7e5c46d358f9d7c45adc05fb703ef58b"
+  }
+}

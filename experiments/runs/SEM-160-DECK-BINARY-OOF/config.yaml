@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-160-DECK-BINARY-OOF",
+  "title": "Native-resolution deck binary one-way recovery spatial OOF",
+  "phase": "R2 specialised deck semantic development",
+  "status": "completed_oof_gate_passed",
+  "owner": "unassigned",
+  "parent_experiment": "SEM-151-FOUNDATION-GATE-FINAL,SEM-150-FOUNDATION-GATE-OOF,SEM-141-CABLE-BINARY-FINAL,SEM-140-CABLE-BINARY-OOF,SEM-001,RGB-030-FULL",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_001_scaffold_static_v1 with frozen sem_005_oof_spatial_v1 and sem110-v1 calibration/check partition",
+  "seed": 20260805,
+  "data": {
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "semantic_split_sha256": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+    "oof_split": "experiments/splits/sem_005_oof_spatial_v1.json",
+    "oof_split_sha256": "ce8a24e11d93df7634331a1ce33ae59385297cae90a0bd688b61769cf27f222c",
+    "label_manifest": "experiments/runs/SEM-001/label_manifest.json",
+    "training_images": 219,
+    "validation_images_opened": 0,
+    "access_rule": "Train and infer only on 219 frozen rendered-RGB training views under the existing spatial OOF split. Select one threshold on the label-independent 108-view calibration half, then open the 111-view check once. No 74-view, unlabelled, real RGB, hidden input or external camera is available."
+  },
+  "inputs": {
+    "rendered_training_manifest_sha256": "a8e08740ac8fa30f115f26cb822b604addca2b2f4c0a316ac4914f1fdd9ceb67",
+    "sem150_result_sha256": "e29843e21f0f9097b6c78c6ccf3fa0d59b10605ca9abbd8cbaf5320984d991a0",
+    "sem150_prediction_manifest_sha256": "011b2ca0e71127fb7b6e2611f7277c57cdfcd004ba2831cb71202e3e3f1abeaa",
+    "sem001_training_manifest_sha256": "fc2b3008b38c6c2196cdd7cdeab6d369d771770552b01c7c7d6c51fba042ae9a",
+    "rendered_rgb_domain": "RGB-030-FULL same-camera frozen renderings qualified by SEM-101"
+  },
+  "single_changed_variable": "Train a specialised native-resolution non_deck versus deck branch and use it only to recover deck from pixels that were background before the frozen foundation gate; no existing class prediction may change.",
+  "model": {
+    "architecture": "SegFormer-B2",
+    "implementation": "huggingface/transformers==4.57.1",
+    "pretrained_model_id": "nvidia/mit-b2",
+    "pretrained_revision": "3bb39e8739149c3777d0325349b2a6c32c6413db",
+    "weight_license": "NVIDIA Source Code License for SegFormer; non-commercial research/evaluation only",
+    "classification_head": "reinitialized_for_two_classes_non_deck_and_deck"
+  },
+  "training": {
+    "seed": 20260805,
+    "folds": 3,
+    "iterations_per_fold": 3000,
+    "smoke_iterations": 8,
+    "crop_size": 960,
+    "native_pixel_scale": true,
+    "input_resize": false,
+    "batch_size": 1,
+    "gradient_accumulation": 1,
+    "optimizer": "AdamW",
+    "learning_rate": 0.00006,
+    "weight_decay": 0.01,
+    "loss": "two_class_cross_entropy_only",
+    "binary_target": "official deck ID 1 versus every other official class",
+    "class_weight_rule": "per-fold inverse frequency median_count/count clipped to [0.05,20]",
+    "paired_augmentation": "uniform native 960 crop and horizontal flip p=0.5 only",
+    "amp": "bf16_if_supported_else_fp16",
+    "early_stopping": false,
+    "checkpoint_selection": "final_3000_only_no_fold_selection"
+  },
+  "inference": {
+    "crop_size": 960,
+    "stride": 480,
+    "overlap": 480,
+    "input_resize": false,
+    "output": "float16 scalar deck probability at native 1320x989"
+  },
+  "fusion": {
+    "source_rule": "SEM-150 output is background and the corresponding pre-foundation SEM-140 output was also background",
+    "only_transition": "0_to_1",
+    "threshold_grid": [0.5, 0.6, 0.7, 0.8, 0.85, 0.9, 0.925, 0.95, 0.97, 0.98, 0.99, 0.995],
+    "selection_rule": "On calibration only, among thresholds passing every gate maximise deck IoU, then global mIoU, deck recall, deck precision and threshold. Check may not change the selection."
+  },
+  "oof_gates": {
+    "calibration": {
+      "minimum_mIoU_gain": 0.0,
+      "minimum_deck_iou_gain": 0.001,
+      "minimum_deck_recall_gain": 0.001,
+      "minimum_deck_precision": 0.95,
+      "maximum_background_to_deck_fp_ratio": 1.25,
+      "protected_predictions_exact": true
+    },
+    "check": {
+      "minimum_mIoU_gain": 0.0,
+      "minimum_deck_iou_gain": 0.001,
+      "minimum_deck_recall_gain": 0.001,
+      "minimum_deck_precision": 0.95,
+      "maximum_background_to_deck_fp_ratio": 1.25,
+      "protected_predictions_exact": true
+    }
+  },
+  "outputs": {
+    "rendered_training_root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_101/rendered_training_rgb/full-20260902-r3",
+    "fold_root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_160/deck_binary_oof/full-20260904-r1",
+    "summary_root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_160/deck_binary_oof_summary/full-20260904-r1",
+    "training_visual_samples": ["001.png", "017.png", "031.png"],
+    "panel_order": ["GT", "SEM-150", "deck_recovery", "green_corrected_red_harmed"]
+  },
+  "budget": {"maximum_total_gpu_hours": 1.0},
+  "forbidden": [
+    "real_RGB_input",
+    "fixed_74_view_access",
+    "unlabeled_training",
+    "hidden_test_access",
+    "external_camera_mode",
+    "SEM151_SEM150_SEM141_SEM001_or_RGB_change",
+    "relabel_rejected_foundation_pixels",
+    "existing_prediction_deletion",
+    "architecture_loss_crop_seed_or_checkpoint_search",
+    "check_based_threshold_selection"
+  ],
+  "classes": {"0": "background", "1": "deck", "2": "stay_cable", "3": "tower", "4": "foundation"},
+  "fallback": "SEM-151 frozen developer candidate with SEM-141, SEM-111 and SEM-001 retained"
+}

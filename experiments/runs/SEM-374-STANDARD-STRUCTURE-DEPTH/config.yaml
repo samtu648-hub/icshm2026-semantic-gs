@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-374-STANDARD-STRUCTURE-DEPTH",
+  "parent_experiment": "RGB-130-STANDARD-ALL400",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260915,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "split_path": "outputs/quality/all_data/RGB-120-r2/split.json",
+  "rgb_parent": "outputs/quality/backbone_comparison/standard-full-r1/model",
+  "scene": "outputs/quality/all_data/RGB-120-r2/scene",
+  "labels": "outputs/quality/all_data/SEM-370-r1/labels",
+  "label_manifest": "outputs/quality/all_data/SEM-370-r1/label_manifest.json",
+  "parent_export": "outputs/quality/backbone_comparison/standard/export/images",
+  "output": "outputs/quality/SEM-374",
+  "main_variable": "0.05 human-label-selected multiview sparse relative inverse-depth Huber into XYZ: control off, joint on",
+  "semantic_steps": 0,
+  "matched_steps": 2000,
+  "semantic_lr": 0.01,
+  "semantic_weight": 0.1,
+  "rgb_l1_weight": 0.8,
+  "rgb_dssim_weight": 0.2,
+  "geometry_parameters": [
+    "xyz"
+  ],
+  "rgb_parameters": [
+    "xyz",
+    "f_dc",
+    "f_rest"
+  ],
+  "frozen_parameters": [
+    "scaling",
+    "rotation",
+    "opacity",
+    "exposure"
+  ],
+  "densification": false,
+  "pruning": false,
+  "semantic_class_weights": [
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "class_names": [
+    "background",
+    "deck",
+    "stay_cable",
+    "tower",
+    "foundation"
+  ],
+  "semantic_background": [
+    1,
+    0,
+    0,
+    0,
+    0
+  ],
+  "semantic_init": "reuse SEM373 frozen6000 endpoint, no new branch training",
+  "semantic_render": "two native RGB-channel rasterizations with override probability colors; same opacity/transmittance; background probability in class0",
+  "resolution": [
+    1320,
+    989
+  ],
+  "budget_reason": "Reuse frozen SEM373 6000-step branch; two matched2000-step arms, five RGB epochs; one fixed recipe, no search",
+  "estimated_gpu_minutes": [
+    30,
+    50
+  ],
+  "estimated_new_gib": [
+    5,
+    8
+  ],
+  "evaluation": "all400 RGB training-view fit, all300 projected 3D-semantic training-view fit; no geometry GT or hidden-view claims",
+  "diagnostic_views": [
+    "159.png",
+    "160.png",
+    "140.png",
+    "146.png",
+    "081.png",
+    "057.png",
+    "064.png",
+    "054.png",
+    "174.png"
+  ],
+  "trajectory": "results/frozen_scaffold_sem001/flythrough_v1/cameras",
+  "semantic_checkpoint": "outputs/quality/SEM-373/semantic-r1/endpoint.pt",
+  "structure_weight": 0.05,
+  "structure_huber_beta": 0.05,
+  "structure_classes": [
+    1,
+    3,
+    4
+  ],
+  "track_min_views": 3,
+  "track_min_angle_degrees": 2.0,
+  "track_max_reprojection_px": 2.0,
+  "label_boundary_margin_px": 2,
+  "geometry_check_split": "point_id modulo5==0: depth-loss withheld, RGB and labels otherwise training data",
+  "structure_observations": "outputs/quality/SEM-374/tracks-r3/observations.json",
+  "sampling_coordinates": "COLMAP edge origin xy minus0.5 to array index, align_corners=True bilinear",
+  "track_duplicate_handling": "one observation per camera; minimum reprojection error; minimum3 distinct cameras"
+}

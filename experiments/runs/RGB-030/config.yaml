@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-030",
+  "title": "Scaffold-GS 400 RGB R1 screening",
+  "phase": "R1",
+  "parent_experiment": "RGB-001",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1",
+  "seed": 0,
+  "backbone": "scaffold-gs",
+  "change_from_parent": "Replace only the Standard 3DGS model with anchor-based Scaffold-GS while retaining the frozen 303/74 data, camera and metric contract.",
+  "data": {"root_env": "ICSHM_DATA_ROOT", "prepared_scene": "$R1_OUTPUT_ROOT/rgb_r1_spatial_v1/scene_400_eval", "train_count": 303, "validation_count": 74, "use_labeled_rgb": true, "use_unlabeled_rgb": true, "use_pseudo_labels": false},
+  "camera": {"source_coordinate_frame": "official_colmap_reference", "pose_convention": "CAMERA_FROM_WORLD", "distortion_policy": "Full-frame SIMPLE_RADIAL-to-PINHOLE using released K, no crop; explicit sparse/0/test.txt.", "resolution": [1320, 989], "initialization": "Training-only DLT point-track re-triangulation."},
+  "training": {"screening_iterations": 500, "full_iterations": 30000, "command": "scripts/run_r1_rgb_candidate.sh RGB-030 scaffold-gs $R1_OUTPUT_ROOT/rgb_r1_spatial_v1/scene_400_eval $R1_ITERATIONS", "budget": "One RTX 5070; record actual resource use and checkpoint-load evidence.", "upstream_commit": "59c833b56bbbf510f3f64d40f81721995caced66", "lod": 0},
+  "evaluation": {"protocol": "docs/experiments/protocol.md", "metrics": "METRICS.md", "entrypoint": "scripts/evaluate_rgb.py", "views": "all 74 validation_labeled, worst 10 percent, and 140.png through 146.png"},
+  "output": {"root": "$R1_OUTPUT_ROOT/r1/runs/RGB-030"}
+}

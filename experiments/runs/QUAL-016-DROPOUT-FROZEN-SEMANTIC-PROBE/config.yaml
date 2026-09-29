@@ -1,0 +1,16 @@
+{
+ "schema_version":1,"experiment_id":"QUAL-016-DROPOUT-FROZEN-SEMANTIC-PROBE",
+ "parent_experiment":"RGB-156-ABSGS-DROP-CONTROL;RGB-157-ABSGS-DROP010;SEM-396-RGB152-SPATIAL256;SEM-410-RGB152-SPATIAL256-SEED20260919",
+ "git_commit":"49cdcdb1c9915a9544d568754af95ea20a85ec9c","seed":null,
+ "dataset_manifest":"data/manifests/contest_dataset_v1.json","split_id":"spatial_confirmation_v1",
+ "split_path":"experiments/splits/spatial_confirmation_v1.json",
+ "semantic_models":{"20260805":"outputs/quality/SEM-396/r1/mask2former","20260919":"outputs/quality/SEM-410/r1/mask2former"},
+ "rgb_inputs":{"control":"outputs/quality/RGB-156/full-r1/evaluation","dropout":"outputs/quality/RGB-157/full-r1/evaluation"},
+ "label_root":"outputs/quality/all_data/SEM-370-r1/labels",
+ "label_manifest":"outputs/quality/all_data/SEM-370-r1/label_manifest.json",
+ "output_path":"outputs/quality/QUAL-016/r1",
+ "main_variable":"Only rendered RGB input changes under each frozen v1 semantic model; 120 predictions, no optimization or model selection",
+ "followup_rule":"Only discuss matched retraining if each frozen semantic model has positive foreground and nonnegative cable IoU differences. Otherwise close the dropout recipe; no rate adjustment.",
+ "scope":"Exploratory input counterfactual, not a matched semantic system or blind test",
+ "protocol":"docs/experiments/dropout_frozen_semantic_probe.md"
+}

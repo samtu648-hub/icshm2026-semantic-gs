@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-401-RGB152-RESPONSIBILITY-IDENTIFIABILITY-DIAG",
+  "title": "Projection-only child responsibility identifiability diagnostic",
+  "phase": "joint_reconstruction_semantics",
+  "parent_experiment": "SEM-400-RGB152-SEMANTIC-DIRECTION-SPLIT",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260923,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "semantic_direction_refinement_v1",
+  "split_path": "experiments/splits/semantic_direction_refinement_v1.json",
+  "rgb_parent_checkpoint": "outputs/quality/RGB-152/full-r2/model/chkpnt30000.pth",
+  "semantic_common": "outputs/quality/SEM-400/common-r1/common.pt",
+  "direction_evidence": "outputs/quality/SEM-400/common-r1/directions.pt",
+  "scene": "outputs/quality/RGB-152/scene",
+  "labels": "outputs/quality/all_data/SEM-370-r1/labels",
+  "label_manifest": "outputs/quality/all_data/SEM-370-r1/label_manifest.json",
+  "output": "outputs/quality/SEM-401",
+  "class_names": ["background", "deck", "stay_cable", "tower", "foundation"],
+  "class_id_of_interest": 2,
+  "selected_parent_count": 4096,
+  "minimum_resolvable_separation_px": 1.0,
+  "minimum_resolvable_views_per_parent": 3,
+  "differentiated_js_threshold": 0.02,
+  "minimum_cable_fraction_difference": 0.10,
+  "gates": {
+    "resolvable_parent_fraction_at_least": 0.50,
+    "differentiated_parent_fraction_of_all_at_least": 0.125,
+    "cable_separated_parent_fraction_of_all_at_least": 0.0625,
+    "all_required": true
+  },
+  "access_policy": {
+    "allowed": ["201 semantic training labels", "sealed SEM-400 common logits", "sealed SEM-400 semantic directions", "RGB152 parent geometry", "official training cameras"],
+    "forbidden": ["30 SEM-400 refinement confirmation labels", "buffer labels", "unlabeled withheld cameras for method selection"]
+  },
+  "scope": "Read-only projection diagnostic. It is an optimistic identifiability screen because it does not model opacity, occlusion, or rasterized per-child contribution.",
+  "protocol": "docs/experiments/sem401_responsibility_identifiability_protocol.md"
+}

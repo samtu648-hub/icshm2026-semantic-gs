@@ -1,0 +1,31 @@
+{
+  "schema_version": 2,
+  "experiment_id": "SEM-020-EQ",
+  "title": "SEM-002 disabled-gate equivalence check against SEM-001",
+  "phase": "R2/S1",
+  "parent_experiment": "SEM-001",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "data": {
+    "split_id": "sem_001_scaffold_static_v1",
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "label_manifest": "experiments/runs/SEM-001/label_manifest.json"
+  },
+  "frozen_rgb": {
+    "backbone": "Scaffold-GS",
+    "upstream_commit": "59c833b56bbbf510f3f64d40f81721995caced66",
+    "rgb_experiment": "RGB-030-FULL",
+    "iteration": 30000,
+    "train_camera_count": 303,
+    "n_offsets": 10,
+    "appearance_camera_id": 0,
+    "coordinate_frame": "official_colmap_reference",
+    "pose_convention": "CAMERA_FROM_WORLD",
+    "official_to_model_sim3": "identity"
+  },
+  "visibility_gate": {"name": "disabled", "reason": "SEM-020-EQ must reuse the byte-identical SEM-001 rasterizer path"},
+  "equivalence": {
+    "image_name": "001.png",
+    "custom_full_visibility_max_abs_tolerance": 0.00002,
+    "custom_full_visibility_note": "Cumulative threshold 1.0 is a numerical adapter cross-check only; it is not an S1 candidate."
+  }
+}

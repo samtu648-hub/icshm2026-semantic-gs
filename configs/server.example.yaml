@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "project_root": ".",
+  "data_root_env": "ICSHM_DATA_ROOT",
+  "dataset": {
+    "status": "already_present_on_ubuntu",
+    "verify_against": "data/manifests/contest_dataset_v1.json"
+  },
+  "output_root_env": "ICSHM_OUTPUT_ROOT",
+  "device_ids_env": "ICSHM_GPU_IDS",
+  "scheduler": {
+    "type": "none",
+    "note": "Set to slurm only after the actual HPC interface is documented."
+  },
+  "camera": {
+    "source_format": "colmap_text",
+    "coordinate_frame": "official_reference",
+    "distortion_policy": "to_be_frozen_with_rgb_backbone"
+  },
+  "environment": {
+    "python": "not_locked",
+    "pytorch": "not_locked",
+    "cuda": "not_locked"
+  }
+}

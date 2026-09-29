@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-137-STANDARD-ALL400-INIT400",
+  "parent_experiment": "RGB-130-STANDARD-ALL400;QUAL-003-COVERAGE-INIT-DIAG",
+  "seed": 0,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "main_variable": "initialization source: released all400 shared-track DLT versus RGB130's retained 303-view DLT point cloud",
+  "invariants": {"camera": "official COLMAP CAMERA_FROM_WORLD; same full-frame SIMPLE_RADIAL to PINHOLE conversion", "training": "Standard 3DGS native seed0, 1320x989, 30k, same optimizer and densification recipe", "extra_models": "none"},
+  "initialization": {"views": 400, "track_source": "released camera_parameters/images.txt POINT3D_ID observations", "max_mean_reprojection_error_px": 3.0, "new_filtering": "none", "camera_optimization": false, "monocular_depth": false, "semantic_constraint": false},
+  "output": "outputs/quality/rgb137",
+  "quality_claim": null
+}

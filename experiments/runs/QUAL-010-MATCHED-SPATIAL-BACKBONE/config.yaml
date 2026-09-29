@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "experiment_id": "QUAL-010-MATCHED-SPATIAL-BACKBONE",
+  "title": "Read-only matched AbsGS versus Standard spatial comparison",
+  "phase": "diagnostic",
+  "parent_experiment": "RGB-152-STANDARD-ABSGRAD-SPATIAL30;SEM-396-RGB152-SPATIAL256;RGB-153-STANDARD-SIGNED-SPATIAL30;SEM-407-RGB153-SPATIAL256",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": null,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "spatial_confirmation_v1",
+  "split_path": "experiments/splits/spatial_confirmation_v1.json",
+  "main_variable": "Read-only paired attribution of sealed AbsGS versus original-Standard reconstruction chains and their matched Mask2Former outputs.",
+  "inputs": {
+    "absgs_rgb_training": "outputs/quality/RGB-152/full-r2/result.json",
+    "absgs_rgb_evaluation": "outputs/quality/RGB-152/full-r2/evaluation/result.json",
+    "absgs_rgb_holdout_csv": "outputs/quality/RGB-152/full-r2/evaluation/holdout.csv",
+    "absgs_semantic": "outputs/quality/SEM-396/r1/inference/result.json",
+    "standard_rgb_training": "outputs/quality/RGB-153/full-r1/result.json",
+    "standard_rgb_evaluation": "outputs/quality/RGB-153/full-r1/evaluation/result.json",
+    "standard_rgb_holdout_csv": "outputs/quality/RGB-153/full-r1/evaluation/holdout.csv",
+    "standard_semantic": "outputs/quality/SEM-407/r1/inference/result.json"
+  },
+  "output_path": "outputs/quality/QUAL-010/r1",
+  "quality_claim": null,
+  "protocol": "docs/experiments/qual010_matched_spatial_backbone_protocol.md"
+}
+

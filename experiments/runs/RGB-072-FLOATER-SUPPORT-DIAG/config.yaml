@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-072-FLOATER-SUPPORT-DIAG",
+  "title": "Training-view support and residual audit for frozen Scaffold floaters",
+  "phase": "R2 frozen RGB geometry diagnostic",
+  "status": "completed_training_only_diagnostic",
+  "parent_experiment": "RGB-030-FULL,RGB-070-APPEARANCE-PF,RGB-071-SEMANTIC-COUPLING-DIAG",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1 training block only; 303 views",
+  "seed": "not_applicable_deterministic_frozen_inference",
+  "data": {
+    "split": "experiments/splits/rgb_r1_spatial_v1.json",
+    "training_count": 303,
+    "validation_RGB_opened": false,
+    "semantic_data_opened": false
+  },
+  "frozen_rgb": {
+    "experiment_id": "RGB-030-FULL",
+    "iteration": 30000,
+    "train_camera_count": 303,
+    "n_offsets": 10
+  },
+  "support_statistics": {
+    "dominant_mapping": "exact frozen rasterizer maximum marginal contribution generated-offset to anchor",
+    "minimum_dominant_pixels_per_view": 16,
+    "high_error_RGB_MAE_threshold": 0.15,
+    "minimum_pixels_for_ranked_residual_audit": 256,
+    "records_generated_scale_opacity_and_anisotropy": true
+  },
+  "decision_boundary": {
+    "writes_pruning_mask": false,
+    "renders_pruned_candidate": false,
+    "next_candidate_requires_new_experiment_id": true,
+    "rule_must_be_frozen_before_validation_RGB": true
+  },
+  "outputs": {
+    "root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/rgb_072/floater_support/full-20260903-r1"
+  }
+}

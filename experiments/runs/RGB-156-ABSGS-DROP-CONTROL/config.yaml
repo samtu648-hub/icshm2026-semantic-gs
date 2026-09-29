@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "base_config": "experiments/runs/RGB-152-STANDARD-ABSGRAD-SPATIAL30/config.yaml",
+  "experiment_id": "RGB-156-ABSGS-DROP-CONTROL",
+  "parent_experiment": "RGB-152-STANDARD-ABSGRAD-SPATIAL30",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 0,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "spatial_confirmation_v1",
+  "main_variable": "Fresh AbsGS control with audited disabled-dropout hook",
+  "dropout_max": 0.0,
+  "dropout_seed": 157,
+  "training": {"output": "outputs/quality/RGB-156/full-r1"},
+  "output": {"root": "outputs/quality/RGB-156", "source": "outputs/quality/rgb140/source-r1", "preserve_failures": true},
+  "protocol": "docs/experiments/component_sampling_dropgaussian_protocol.md"
+}

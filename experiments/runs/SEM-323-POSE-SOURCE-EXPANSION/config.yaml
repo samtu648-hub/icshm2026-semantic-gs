@@ -1,0 +1,23 @@
+{
+  "experiment_id":"SEM-323-POSE-SOURCE-EXPANSION",
+  "status":"preregistered",
+  "parent_experiment":"SEM-322-POSE-SOURCE-ACCESS,SUBMIT-020-SEM161-FREEZE",
+  "git_commit":"49cdcdb1c9915a9544d568754af95ea20a85ec9c plus sealed sources",
+  "seed":20260805,
+  "dataset_manifest":"data/manifests/contest_dataset_v1.json",
+  "split_id":"sem_005_oof_spatial_v1; all105 calibration targets excluding SEM322 three targets; no labels",
+  "parent_config":"experiments/runs/SEM-320-ROMAV2-DENSE-PREFLIGHT/config.yaml",
+  "parent_config_sha256":"3dcefab61d0c4d1aa30bbe0df1ab6e21f1bb7a60a9e86eecab4191de90307c3f",
+  "geometry_config":"experiments/runs/SEM-321-ROMAV2-DENSE-GEOMETRY-DIAG/config.yaml",
+  "geometry_config_sha256":"23672a35c19139ca6000598ac4cb29fad9140ea5e0af080a0962685a9b15d9cc",
+  "retrieval":{"candidates_per_target":3,"maximum_optical_axis_angle_degrees":60.0},
+  "single_changed_variable":"Expand evaluation from SEM322 first3 calibration targets to all remaining105 (fold counts45/41/19); no image/score-based subsampling. Same pose ranking, top3, first passing pair and fixed RoMa512/geometry filters.",
+  "selection":"Exclude the lexicographic first calibration target in each fold. Same-fold train sources, angle<=60deg, distance/angle/name ranking. Short candidate lists remain in denominator and may abstain; no extra sources or tuning.",
+  "summary":"Report all target/pair counts, rank1 versus top3, per-fold access fractions and coverage distributions including abstentions as zero. No multi-source union. Pair gates remain1% grid coverage and80% post-cycle epipolar retention. Identity factor2 remains descriptive sanity evidence.",
+  "followup_criterion":{"minimum_accessible_targets":35,"minimum_accessible_each_fold":5,"meaning":"Enough geographically distributed support to justify one separately registered class/label agreement diagnostic; not production promotion. An optional correction branch may abstain, so universal target success is not required."},
+  "access_policy":"Target inputs:105 frozen rendered calibration RGB only. Real RGB: up to315 selected same-fold train source observations; historical check IDs and names also targeted in other folds are allowed ONLY in their eligible source role. No real target-slot input, any labels,74/guard/unlabeled images or target track parsing. Official pose metadata only for selection.",
+  "runtime":"Reuse official local SEM320 sources/weight/Pillow overlay and fixed512 native Torch correlation. At most630 directional matches plus one first-forward new-process replay; no download, training or model/threshold change. Existing independent geometry formulas reused on all pairs.",
+  "freeze_policy":"Seal full target/source lists, config/project dependencies/input hashes before inference; verify18 frozen production artifacts and selected RGB bytes/arrays. Preserve SEM314/320/321/322 artifacts. No novel rendering or semantic exports.",
+  "resource_budget":{"maximum_total_seconds":1800,"minimum_free_disk_gib":100},
+  "stop":"Record every failed/empty pair and abstention, no K/angle/filter rescue sweep. If followup criterion met, separately register class coverage and source-target label agreement before reading labels; never tune retrieval with target labels. SEM161 remains unchanged."
+}

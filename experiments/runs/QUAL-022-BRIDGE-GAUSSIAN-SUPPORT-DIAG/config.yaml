@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "experiment_id": "QUAL-022-BRIDGE-GAUSSIAN-SUPPORT-DIAG",
+  "title": "RGB170桥梁Gaussian投影支撑与跨视角贡献诊断",
+  "phase": "reconstruction_diagnostic",
+  "parent_experiment": "RGB-170-IMPROVEDGS-BUDGET15M-H50K",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "seed": 0,
+  "inputs": {
+    "scene": "outputs/quality/all_data/RGB-120-r2/scene",
+    "labels": "outputs/quality/all_data/SEM-370-r1/labels",
+    "rgb166_model": "outputs/quality/RGB-166/full-r1/model/point_cloud/iteration_50000/point_cloud.ply",
+    "rgb170_model": "outputs/quality/RGB-170/full-r1/model/point_cloud/iteration_50000/point_cloud.ply",
+    "rgb166_renders": "outputs/quality/RGB-166/full-r1/evaluation-r1/images/50000",
+    "rgb170_renders": "outputs/quality/RGB-170/full-r1/evaluation-r1/images/50000"
+  },
+  "scope": {
+    "labeled_views": 300,
+    "classes": ["deck", "stay_cable", "tower", "foundation"],
+    "focus_groups": {
+      "bridge_159_160": ["159.png", "160.png"],
+      "bridge_235_245": ["235.png", "236.png", "237.png", "238.png", "239.png", "240.png", "241.png", "242.png", "243.png", "244.png", "245.png"],
+      "bridge_385_392": ["385.png", "386.png", "387.png", "388.png", "389.png", "390.png", "391.png", "392.png"]
+    },
+    "top_contributors_per_region": 48,
+    "near_background_ring_pixels": 6,
+    "projection_sigma": 3.0
+  },
+  "method": {
+    "read_only": true,
+    "native_raster_accumulated_weights": true,
+    "official_camera_projection": true,
+    "photo_rgb_supervision": true,
+    "label_use": "2D region, boundary and review localization only; never fabricate 3D coordinates",
+    "comparison": ["photo", "RGB166", "RGB170"]
+  },
+  "output": "outputs/quality/QUAL-022/diagnostic-r1",
+  "preserve_failures": true
+}

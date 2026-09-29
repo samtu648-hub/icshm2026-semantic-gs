@@ -1,0 +1,13 @@
+{
+  "experiment_id": "SEM-330-QUALITY-STATIC",
+  "parent_experiment": "SEM-330-QUALITY-STATIC,RGB-110-SCAFFOLD-CTRL",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_001_scaffold_static_v1;sem_005_oof_spatial_v1",
+  "protocol": "exactly two fresh native reloads before target label decoding",
+  "probability_replay": "float32 arrays exactly equal, plus stored argmax PNG equality",
+  "metrics": "full image pooled five-class confusion, per-class IoU precision recall, mean IoU including/excluding background, per-view metrics",
+  "label_policy": "only the completed parent's registered prediction targets; hash checked, no threshold search",
+  "historically_reused_data": true,
+  "quality_promotion": false
+}

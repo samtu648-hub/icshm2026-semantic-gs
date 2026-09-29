@@ -1,0 +1,54 @@
+{
+  "schema_version": 2,
+  "experiment_id": "GEO-010-PF-R1",
+  "title": "MapAnything Apache official-P0 real smoke retry",
+  "phase": "geometry_prior_preflight_v2",
+  "status": "preregistered_ready_for_gpu",
+  "code_git_commit": "b6756f969f11b4ccac940508321262a11d327ca7",
+  "parent_experiment": "GEO-010-PF,GEO-002",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1",
+  "seed": 0,
+  "backbone": "MapAnything-offline-P0-geometry-prior",
+  "protocol": "docs/experiments/geometry_prior_evaluation_v2.md",
+  "protocol_config": "configs/geometry/evaluation_v2.json",
+  "source": {
+    "url": "https://github.com/facebookresearch/map-anything",
+    "commit": "9d1db2dd728bd8a10e74b15d2eb646e1bf933791",
+    "code_license": "Apache-2.0",
+    "checkpoint_name": "facebook/map-anything-apache",
+    "checkpoint_revision": "00f9c245bbcb60522d1ed7f9e9d88462c6e3f38a",
+    "checkpoint_file": "model.safetensors",
+    "checkpoint_sha256": "fa06c0fdccefc5048e072c85935d5789b1e36b307f3859033c17f9dcb9fd5201",
+    "checkpoint_size_bytes": 4914062480,
+    "checkpoint_license": "Apache-2.0"
+  },
+  "input_contract": {
+    "scene": "prepared_full_frame_undistorted_PINHOLE_scene",
+    "pose": "P0 official COLMAP CAMERA_FROM_WORLD converted to OpenCV cam2world",
+    "images": "rgb_r1_spatial_v1 primary train_rgb_400 only; 303 cameras",
+    "window_size": 16,
+    "overlap": 4,
+    "smoke_windows": 2,
+    "raw_rgb": "full-frame undistorted RGB; no CLAHE or gamma",
+    "mapanything_predicted_pose": "diagnostic only; never replaces P0"
+  },
+  "runtime": {
+    "environment": "icshm-geometry isolated from frozen Scaffold environment",
+    "gpu": "RTX_5070_12GB",
+    "memory_efficient_inference": true,
+    "minibatch_size": 1,
+    "amp_attempt_order": ["bf16", "fp16"],
+    "model_supported_cpu_offload": "not_confirmed; do_not_claim_or_use_until_documented",
+    "oom_retry_order": ["record_unrelated_gpu_processes", "batch_1", "bf16_then_fp16", "reduce_window_16_to_12_to_8", "supported_cpu_offload", "fresh_process"],
+    "maximum_initial_memory_retries": 2
+  },
+  "output_contract": {
+    "schema": "geometry_prior_npz_v2",
+    "root": "external_gitignored:ICSHM_OUTPUT_ROOT/geometry_prior/v2/runs/GEO-010-PF-R1",
+    "arrays": ["depth", "confidence", "valid_mask", "world_points", "pinhole_intrinsics", "official_cam2world"],
+    "depth_scale": "per_view_median_official_sparse_depth_ratio with >=64 correspondences",
+    "p0_world_points": "reconstructed with official input cam2world, not MapAnything predicted pose"
+  },
+  "gates": ["local checkpoint hash", "true model load", "GPU memory", "finite depth/confidence", "P0 pose", "geometry_prior_npz_v2", "no validation-or-guard input"]
+}

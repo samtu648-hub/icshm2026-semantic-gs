@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "experiment_id": "QUAL-003-COVERAGE-INIT-DIAG",
+  "parent_experiment": "QUAL-001-FOUNDATION,RGB-117-CAMERA-CONSISTENCY-DIAG,RGB-118-CAMERA-WIDEBASE-DIAG,SEM-330-QUALITY-STATIC,RGB-116-SOF-CHECKPOINT-DIAG",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1;sem_001_scaffold_static_v1",
+  "seed": 20260909,
+  "protocol": "experiments/runs/QUAL-001-FOUNDATION/config.yaml",
+  "coverage": {
+    "views": "74 historical developer views; diagnostic only, no threshold choice",
+    "pixel_space": "PINHOLE",
+    "resolution": [
+      1320,
+      989
+    ],
+    "alpha_bins": [
+      0,
+      0.1,
+      0.25,
+      0.5,
+      0.75,
+      0.9,
+      1
+    ],
+    "maximum_compositing_error": 0.00002,
+    "mechanism": "native all-one channel; verify against sum of raw primitive class channels before residual background",
+    "mutate_probabilities": false
+  },
+  "initialization": {
+    "point_count": 72292,
+    "point_ply_sha256": "10a88fb018c27530b3bbfa0f7000408693ba75228067f5311e7775e4755e68f2",
+    "conditioning_parent": "outputs/quality/audits/RGB-117-camera-consistency-r1",
+    "angle_bins_deg": [
+      0,
+      0.1,
+      0.5,
+      1
+    ],
+    "large_error_px": 5,
+    "observations": "303 training observations only; formal region counts on 219 training labels only; no developer observations or labels",
+    "point_changes": false
+  },
+  "pgsr_checkpoints": [
+    7000,
+    15000,
+    30000
+  ],
+  "training_sample": "same 12 evenly spaced sorted train indices as RGB116",
+  "training": false,
+  "pose_changes": false,
+  "quality_claim": null
+}

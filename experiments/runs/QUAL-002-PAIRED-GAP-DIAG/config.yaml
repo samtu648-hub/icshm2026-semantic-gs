@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "experiment_id": "QUAL-002-PAIRED-GAP-DIAG",
+  "parent_experiment": "QUAL-001-FOUNDATION,RGB-030-FULL,SEM-161-DECK-BINARY-FINAL,SEM-329-SECOND-SOURCE-VETO-FINAL",
+  "seed": 0,
+  "seed_note": "deterministic diagnostic; parent component seeds remain bound to their original records",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1; six fixed historically reused developer views, not blind",
+  "views": ["054.png", "061.png", "081.png", "140.png", "159.png", "160.png"],
+  "selection": "fixed historical control and difficult views; no selection on this diagnostic's measurements",
+  "pixel_space": "PINHOLE",
+  "interpolation_view": false,
+  "paired_photos": "rgb_r1_spatial_v1/scene_400_eval/images",
+  "labels": "r2/sem_001/labels",
+  "rendered_rgb": "r2/sem_102/validation_render/final-20260902-r1/images",
+  "render_manifest": "r2/sem_102/validation_render/final-20260902-r1/rendered_validation_manifest.json",
+  "stages": [
+    ["SEM001_static", "artifact", "r2/sem_001/full/validation_semantic_png"],
+    ["SEM111_fiveclass_fusion", "artifact", "r2/sem_111/final_protected_fusion/full-20260902-r1/predictions"],
+    ["SEM141_stay_cable", "artifact", "r2/sem_141/developer_audit/final-20260904-r1/predictions"],
+    ["SEM151_foundation", "artifact", "r2/sem_151/foundation_gate_final/full-20260904-r1/predictions"],
+    ["SEM161_deck", "artifact", "r2/sem_161/developer_audit/final-20260904-r1/predictions"],
+    ["SEM326_dense_review", "repository", "outputs/sem326/predict-20260908-r1/predictions"],
+    ["SEM329_second_source", "repository", "outputs/sem329/developer-predict-20260908-r1/predictions"]
+  ],
+  "experts": [
+    ["fiveclass", "r2/sem_102/validation_audit/final-20260902-r1/probabilities", "probabilities"],
+    ["stay_cable", "r2/sem_141/developer_audit/final-20260904-r1/cable_probabilities", "cable_probability"],
+    ["deck", "r2/sem_161/developer_audit/final-20260904-r1/deck_probabilities", "deck_probability"]
+  ],
+  "single_changed_variable": "none: archived pixel-stage and probability diagnostics, no prediction changes",
+  "policy": "no tuning, no new geometry truth claim; archive originals and disjoint stage provenance masks"
+}

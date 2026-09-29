@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "experiment_id": "QUAL-007-BACKBONE-COMPARISON",
+  "parent_experiment": "RGB-120-ALL400;RGB-130-STANDARD-ALL400;RGB-131-MIP-ALL400;SEM-370-ALL300;SEM-371-STANDARD-ALL300;SEM-372-MIP-ALL300",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 0,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "split_path": "outputs/quality/all_data/RGB-120-r2/split.json",
+  "method": "comparison",
+  "main_variable": "reconstruction backbone; matched original five-class Mask2Former recipe",
+  "iterations": null,
+  "quality_claim": null
+}

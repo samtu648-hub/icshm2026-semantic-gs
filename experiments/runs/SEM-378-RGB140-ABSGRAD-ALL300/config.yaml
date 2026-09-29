@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-378-RGB140-ABSGRAD-ALL300",
+  "parent_experiment": "RGB-140-STANDARD-ABSGRAD-ALL400;SEM-371-STANDARD-ALL300",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "split_path": "outputs/quality/all_data/RGB-120-r2/split.json",
+  "method": "mask2former",
+  "main_variable": "RGB input domain only: frozen RGB140 absolute-gradient Standard rendering; unchanged SEM371 Mask2Former recipe",
+  "iterations": 6000,
+  "quality_claim": null,
+  "rgb_run": "outputs/quality/rgb140/full-r2",
+  "rgb_evaluation": "outputs/quality/rgb140/full-r2/evaluation",
+  "output_path": "outputs/quality/SEM-378/r1",
+  "evaluation_views": 544,
+  "semantic_train_views": 300,
+  "scope": "original five-class Mask2Former only; training-view fit, no independent holdout"
+}

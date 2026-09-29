@@ -1,0 +1,11 @@
+{
+ "schema_version":1,
+ "base_config":"experiments/runs/SEM-412-RGB154-SPATIAL255/config.yaml",
+ "experiment_id":"SEM-422-COMPONENT-EXPLORATORY-QUOTA",
+ "parent_experiment":"SEM-416-COMPONENT-POINT-DIAG;SEM-421-COMPONENT-EXPLORATORY-CTRL",
+ "git_commit":"49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+ "seed":20260805,"dataset_manifest":"data/manifests/contest_dataset_v1.json","split_id":"spatial_confirmation_v2",
+ "main_variable":"Exploratory effect of the original unchanged 16-point/5-percent component quota; not a diagnosis-supported prevalence claim",
+ "component_quota":true,"output_path":"outputs/quality/SEM-422/r1",
+ "protocol":"docs/experiments/component_exploratory_protocol.md"
+}

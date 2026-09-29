@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-100-RENDER-SEG-PF",
+  "title": "Training-only frozen Scaffold rendered-RGB semantic domain preflight",
+  "phase": "R2 render-to-segment feasibility preflight",
+  "status": "completed_preflight_not_quality_evidence",
+  "owner": "unassigned",
+  "parent_experiment": "RGB-030-FULL,SEM-051-OOF,SEM-052-PL-AUDIT,SEM-090-CABLE-NETWORK-DIAG",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_001_scaffold_static_v1",
+  "seed": 20260902,
+  "frozen_rgb": {
+    "backbone": "Scaffold-GS",
+    "rgb_experiment": "RGB-030-FULL",
+    "iteration": 30000,
+    "train_camera_count": 303,
+    "n_offsets": 10,
+    "appearance_camera_id": 0,
+    "coordinate_frame": "official_colmap_reference",
+    "pose_convention": "CAMERA_FROM_WORLD",
+    "official_to_model_sim3": "identity",
+    "checkpoint_is_not_modified": true
+  },
+  "frozen_teacher": {
+    "experiment": "SEM-051-OOF",
+    "architecture": "SegFormer-B2",
+    "implementation": "huggingface/transformers==4.57.1",
+    "model_source": "nvidia/mit-b2 revision 3bb39e8739149c3777d0325349b2a6c32c6413db",
+    "seed": 20260805,
+    "checkpoint_is_not_modified": true,
+    "fold_checkpoints_sha256": {
+      "0": "1d5312de9f69a97b1caf0c7e6e52afa7570853dc5914cbe990977f58a63de99a",
+      "1": "31fb4706428ab37b8e6c59fbb8586a6b6d6a7b686c0751bc35a1f796a72d08e0",
+      "2": "f6b7d2e36a49462c5f2d0963b756a11411d56b27e4b1db21b895f00428afe1e1"
+    },
+    "inference": {"crop_size": 768, "stride": 512, "output": "five-class simplex probabilities at 1320x989"}
+  },
+  "data": {
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "oof_split": "experiments/splits/sem_005_oof_spatial_v1.json",
+    "label_manifest": "experiments/runs/SEM-001/label_manifest.json",
+    "training_images": 219,
+    "fixed_validation_images_opened": 0,
+    "uses_unlabeled_rgb": false,
+    "uses_hidden_test_rgb_or_labels": false,
+    "access_rule": "Only fixed training-side OOF views may be opened. Stored real-RGB OOF probabilities and rendered-RGB predictions are completed before labels are read for authorised training metrics. The runner has no validation, unlabeled, hidden-test or external-camera mode."
+  },
+  "mechanism": {
+    "single_changed_variable": "replace the source RGB passed to the frozen OOF SegFormer from the real training image to the frozen Scaffold rendering at the same official camera",
+    "trains_new_parameters": false,
+    "changes_scaffold_geometry_color_opacity_or_checkpoint": false,
+    "changes_sem001_checkpoint": false,
+    "forbidden": ["pseudo-label generation", "threshold selection", "2D teacher retraining", "3D semantic training", "raw-semantic Hough filtering", "validation tuning"]
+  },
+  "runtime": {
+    "preflight_only": true,
+    "preflight_view_count": 8,
+    "preflight_oof_views_by_fold": {
+      "0": ["017.png", "018.png", "019.png"],
+      "1": ["001.png", "002.png", "003.png"],
+      "2": ["031.png", "032.png"]
+    },
+    "no_output_is_tracked_by_git": true
+  },
+  "isolation": {"training_views": ["001.png", "017.png", "031.png"]},
+  "outputs": {
+    "root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_100/render_seg_pf/preflight-20260902-r2",
+    "training_access": "training_only_access.json",
+    "rendered_rgb": "rendered_rgb",
+    "rendered_probabilities": "rendered_probabilities",
+    "training_visual_samples": ["001.png", "017.png", "031.png"],
+    "panel_order": ["real_RGB", "frozen_rendered_RGB", "GT", "real_RGB_OOF_semantic", "rendered_RGB_OOF_semantic"],
+    "result": "result.json"
+  },
+  "preflight_interpretation": {
+    "not_a_quality_candidate": true,
+    "pass_condition": "engineering, frozen-artifact, OOF-provenance and training-only access gates pass; the eight-view metric comparison is diagnostic evidence only",
+    "next_step_only_if_supported": "A separate SEM-101 must pre-register a rendered-domain 2D training recipe, training-only OOF selection, formal 74-view gates and official external-camera inference. It may not reuse SEM-005's failed pseudo-label threshold as an optimisation target."
+  },
+  "classes": {"0": "background", "1": "deck", "2": "stay_cable", "3": "tower", "4": "foundation"},
+  "fallback": "RGB-030-FULL Scaffold-GS + SEM-001"
+}

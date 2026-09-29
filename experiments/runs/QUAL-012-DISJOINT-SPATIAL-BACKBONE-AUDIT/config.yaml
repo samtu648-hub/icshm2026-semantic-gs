@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "experiment_id": "QUAL-012-DISJOINT-SPATIAL-BACKBONE-AUDIT",
+  "title": "Read-only cross-fold audit of AbsGS versus Standard",
+  "phase": "quality_audit",
+  "parent_experiment": "QUAL-011-SEMANTIC-SEED-REPLICATION-AUDIT;RGB-154-ABSGRAD-SPATIAL30-V2;RGB-155-STANDARD-SIGNED-SPATIAL30-V2;SEM-412-RGB154-SPATIAL255;SEM-413-RGB155-SPATIAL255",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": null,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "spatial_confirmation_v1;spatial_confirmation_v2",
+  "method": "read_only_cross_fold_audit",
+  "main_variable": "Read-only aggregation across two zero-overlap spatial confirmation folds; no model, prediction, threshold, or metric change.",
+  "inputs": {
+    "v1_rgb_absgs": "outputs/quality/RGB-152/full-r2/evaluation/result.json",
+    "v1_rgb_standard": "outputs/quality/RGB-153/full-r1/evaluation/result.json",
+    "v1_semantic_seed_audit": "outputs/quality/QUAL-011/r1/result.json",
+    "v2_rgb_absgs": "outputs/quality/RGB-154/full-r1/evaluation/result.json",
+    "v2_rgb_standard": "outputs/quality/RGB-155/full-r1/evaluation/result.json",
+    "v2_semantic_absgs": "outputs/quality/SEM-412/r1/inference/result.json",
+    "v2_semantic_standard": "outputs/quality/SEM-413/r1/inference/result.json",
+    "v2_rgb_absgs_train": "outputs/quality/RGB-154/full-r1/result.json",
+    "v2_rgb_standard_train": "outputs/quality/RGB-155/full-r1/result.json"
+  },
+  "output_path": "outputs/quality/QUAL-012/r1",
+  "quality_claim": null,
+  "scope": "Two zero-overlap historically exposed spatial development folds; v1 has two semantic seeds and v2 has one; not blind",
+  "protocol": "docs/experiments/qual012_disjoint_spatial_backbone_audit_protocol.md"
+}

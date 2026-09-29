@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-409-RGB153-SPATIAL256-SEED20260919",
+  "title": "Second-seed SEM407 replication on RGB153 Standard renders",
+  "phase": "semantic_segmentation",
+  "parent_experiment": "RGB-153-STANDARD-SIGNED-SPATIAL30;SEM-407-RGB153-SPATIAL256",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260919,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "spatial_confirmation_v1",
+  "split_path": "experiments/splits/spatial_confirmation_v1.json",
+  "method": "mask2former",
+  "main_variable": "RGB153 original-Standard renders replace RGB152 AbsGS renders in the paired second-seed semantic replication; all other variables remain fixed.",
+  "causal_claim": "semantic-seed replication of the matched reconstruction-backbone comparison on this spatial development split",
+  "iterations": 6000,
+  "crop": 768,
+  "sampling_trace_keys": ["name", "top", "left", "flip"],
+  "rgb_run": "outputs/quality/RGB-153/full-r1",
+  "rgb_evaluation": "outputs/quality/RGB-153/full-r1/evaluation",
+  "label_root": "outputs/quality/all_data/SEM-370-r1/labels",
+  "label_manifest": "outputs/quality/all_data/SEM-370-r1/label_manifest.json",
+  "semantic_train_views": 256,
+  "semantic_confirmation_views": 30,
+  "buffer_excluded_views": 17,
+  "output_path": "outputs/quality/SEM-409/r1",
+  "commands": {
+    "prepare": "python3 scripts/run_sem409_rgb153_spatial_seed20260919.py --artifact-root <artifact-root> --stage prepare",
+    "train": "python3 scripts/run_sem409_rgb153_spatial_seed20260919.py --artifact-root <artifact-root> --stage train",
+    "inference": "python3 scripts/run_sem409_rgb153_spatial_seed20260919.py --artifact-root <artifact-root> --stage inference"
+  },
+  "quality_claim": null,
+  "scope": "256-view training fit and fixed 30-view historically exposed spatial development confirmation; second semantic seed; not blind",
+  "confirmation_access": {
+    "rgb_during_semantic_training": false,
+    "labels_during_semantic_training": false,
+    "buffer_rgb_or_labels": false,
+    "allowed_after_both_models_6000_are_sealed": ["confirmation RGB inference input", "confirmation ground-truth evaluation"]
+  },
+  "protocol": "docs/experiments/sem408_sem409_spatial_seed_replication_protocol.md"
+}

@@ -1,0 +1,20 @@
+{
+  "experiment_id":"SEM-325-DENSE-FOUNDATION-REVIEW-OOF",
+  "status":"preregistered",
+  "parent_experiment":"SEM-324-DENSE-LABEL-AGREEMENT,SEM-323-POSE-SOURCE-EXPANSION,SEM-160-DECK-BINARY-OOF,SUBMIT-020-SEM161-FREEZE",
+  "git_commit":"49cdcdb1c9915a9544d568754af95ea20a85ec9c plus sealed source snapshot",
+  "seed":20260805,
+  "dataset_manifest":"data/manifests/contest_dataset_v1.json",
+  "split_id":"sem_005_oof_spatial_v1;105 calibration then fixed111 check if qualified; incremental reused OOF",
+  "parent_config":"experiments/runs/SEM-324-DENSE-LABEL-AGREEMENT/config.yaml",
+  "parent_config_sha256":"e2ae6b8a7c400e260d679b860065a46b4249e6eba9d17dde362fa4043daba44f",
+  "single_changed_variable":"Actual native-pixel foundation4 to background0 review using the frozen first-passing same-fold source and geometry rule; SEM160 is the paired baseline.",
+  "coordinates":"Evaluate bilinear RoMa512 forward warp/overlap at native target pixel centers; sample backward fields there and re-evaluate 2-native-pixel cycle and epipolar errors. Strict interpolation bounds abstain. Undistort real source coordinates with official SIMPLE_RADIAL before nearest-center source PINHOLE label sampling. Do not resize a binary512 support mask.",
+  "fusion":"Only baseline4 AND reliable geometry AND sampled source0 changes to0. All other pixels, class1/deck, class2/stay_cable, class3/tower masks and RGB remain exact. No source, invalid source label or invalid geometry means abstain. No target GT parameter in inference.",
+  "selection":"Reuse SEM323 calibration selection exactly. Check uses all111 targets with same-fold train pose-top3, angle<=60deg, first pair passing >=1%512-grid coverage and >=80% post-cycle epipolar retention. No target tracks, source reselection by labels, thresholds, K or matcher changes.",
+  "access_policy":"Prediction reads only baseline OOF PNGs and eligible same-fold source label roles. Seal predictions before target-role GT scoring. Historical check IDs may be eligible sources in other folds; no globally unread-label or blind claim. No74 developer or final fit in this ID.",
+  "quality_gates":{"minimum_miou_delta_pp":0.30,"minimum_foundation_iou_delta_pp":1.50,"maximum_foundation_recall_loss_pp":2.0,"minimum_foundation_recall":0.90,"minimum_improving_foundation_folds":2,"minimum_fold_foundation_iou_delta_pp":-1.0,"minimum_fold_miou_delta_pp":-0.30},
+  "audit":"All105 primary PNGs sealed, then independent CPU Torch bilinear sampling, radial fixed-point inverse and essential-matrix native geometry reconstruct every candidate exactly. Independent confusion counting, same-fold roles, baseline/source/renderedRGB hashes and18 frozen artifacts verified. No fresh RGB rendering claim; renderer/checkpoints untouched.",
+  "resource_budget":{"maximum_seconds_per_stage":1800,"minimum_free_disk_gib":100},
+  "stop":"Failed engineering or calibration quality is retained; no check if calibration fails. Qualified calibration goes straight to unchanged111 check in this experiment. Any final74/deployment remains separately registered. No posthoc rescue tuning. Formal SEM161 unchanged."
+}

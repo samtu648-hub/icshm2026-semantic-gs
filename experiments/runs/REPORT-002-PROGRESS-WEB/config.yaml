@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "experiment_id": "REPORT-002-PROGRESS-WEB",
+  "parent_experiment": "SEM-001;SEM-161-DECK-BINARY-FINAL;SEM-331-QUALITY-EXPERTS;SEM-349-MASK2FORMER-FINAL;SEM-380-RGB148-GT-REGION-RGB-ALL300;SEM-383-DINOV3-VITB-SPATIAL-SFP-ALL300",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": "inherited_from_each_frozen_source",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "presentation_only; historical74 development and all300 training fit kept separate; Dev30 footnote",
+  "main_variable": "none: offline presentation, frozen-model camera-only inference and saved B2 prediction recount",
+  "date": "2026-09-18",
+  "output_path": "outputs/project_progress_20260918",
+  "work_path": "outputs/progress_web_work/r1",
+  "trajectory": "results/frozen_scaffold_sem001/flythrough_v1/cameras",
+  "trajectory_frames": 144,
+  "fps": 12,
+  "best_display": "RGB148+SEM380; highest recorded all300 raw-fiveclass fit, not promoted",
+  "rgb110": "outputs/quality/runs/RGB-110-SCAFFOLD-CTRL-full-r1",
+  "b2": "outputs/quality/experts/SEM-331-Scaffold-fiveclass-development-full-dualline-20260909-r1",
+  "m2f": "outputs/quality/mask2former/SEM-349-r1/fit",
+  "difficult_views": ["159.png", "160.png", "146.png", "057.png"],
+  "novel_detail_frames": [96, 97, 98],
+  "authorization": "User approved this implementation plan, including frozen rendering/inference to fill missing 144-frame videos. No training or tuning."
+}

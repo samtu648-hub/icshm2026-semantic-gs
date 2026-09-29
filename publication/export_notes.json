@@ -1,0 +1,31 @@
+{
+  "excluded": [
+    {
+      "path": "docs/paper/IC-SHM-2026-Paper-Template.doc",
+      "reason": "third-party supplied document; source notice retained"
+    }
+  ],
+  "artifact_root_scripts": [
+    "scripts/preflight_standard_rgb_supervision.py",
+    "scripts/run_rgb164_rgb165_improvedgs_pair.py",
+    "scripts/run_rgb166_evaluation.py",
+    "scripts/run_rgb166_improvedgs_horizon.py",
+    "scripts/run_rgb166_trajectory.py",
+    "scripts/run_rgb167_evaluation.py",
+    "scripts/run_rgb167_scaffold_growth20k.py",
+    "scripts/run_rgb168_scaffold_horizon50k.py",
+    "scripts/run_rgb169_evaluation.py",
+    "scripts/run_rgb169_full_queue.py",
+    "scripts/run_rgb169_improvedgs_densify20k.py",
+    "scripts/run_rgb170_evaluation.py",
+    "scripts/run_rgb170_full_queue.py",
+    "scripts/run_rgb170_improvedgs_budget15m.py",
+    "scripts/run_rgb171_bridge_repair.py",
+    "scripts/run_rgb174_bridge_protected_eas.py",
+    "scripts/run_rgb174_evaluation.py",
+    "scripts/run_rgb175_rgb176_improvedgs_spatial_pair.py"
+  ],
+  "original_repository_history_published": false,
+  "raw_data_published": false,
+  "selected_media_authorized": true
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "dataset": "IC-SHM 2026 Project 2 released dataset",
+  "generated_at_utc": "2026-07-30T09:45:01+00:00",
+  "source_path_policy": "repository-relative layout only; no absolute path recorded",
+  "layout": {
+    "labeled_images": "images",
+    "annotations": "json",
+    "unlabeled_images": "unlabeled_Images",
+    "camera_parameters": "camera_parameters"
+  },
+  "counts": {
+    "labeled_images": 300,
+    "annotations": 300,
+    "unlabeled_images": 100
+  },
+  "image_resolutions": {
+    "1320x989": 400
+  },
+  "annotation_declared_resolutions": {
+    "1320x989": 300
+  },
+  "shape_label_counts": {
+    "deck": 656,
+    "foundation": 1504,
+    "stay_cable": 1109,
+    "tower": 542
+  },
+  "official_class_mapping": {
+    "0": "background",
+    "1": "deck",
+    "2": "stay_cable",
+    "3": "tower",
+    "4": "foundation"
+  },
+  "camera": {
+    "model": "SIMPLE_RADIAL",
+    "width": 1320,
+    "height": 989,
+    "pose_count": 400,
+    "files": {
+      "cameras.txt": {
+        "present": true,
+        "size_bytes": 197
+      },
+      "images.txt": {
+        "present": true,
+        "size_bytes": 69556209
+      },
+      "rigs.txt": {
+        "present": true,
+        "size_bytes": 222
+      },
+      "frames.txt": {
+        "present": true,
+        "size_bytes": 65953
+      }
+    },
+    "points3D_txt_present": false
+  },
+  "pairing": {
+    "missing_annotations": [],
+    "orphan_annotations": []
+  },
+  "validation_errors": [],
+  "aggregate_sha256": "902e78c3a37d4b516e65c20ba26c35d5be9823a5be0d129e653c81ae94c41148",
+  "fingerprinted_file_count": 704
+}

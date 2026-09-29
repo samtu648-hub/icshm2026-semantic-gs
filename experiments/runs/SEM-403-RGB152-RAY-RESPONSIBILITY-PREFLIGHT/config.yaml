@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-403-RGB152-RAY-RESPONSIBILITY-PREFLIGHT",
+  "title": "Native raster-buffer ray-responsibility replay preflight",
+  "phase": "joint_reconstruction_semantics",
+  "parent_experiment": "SEM-402-RGB152-INTRAVIEW-MASK-CONFLICT-DIAG",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260925,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "semantic_direction_refinement_v1",
+  "split_path": "experiments/splits/semantic_direction_refinement_v1.json",
+  "source": "outputs/quality/rgb140/source-r1",
+  "rgb_parent": "outputs/quality/RGB-152/full-r2/model",
+  "parent_export": "outputs/quality/RGB-152/full-r2/evaluation/images",
+  "scene": "outputs/quality/RGB-152/scene",
+  "labels": "outputs/quality/all_data/SEM-370-r1/labels",
+  "label_manifest": "outputs/quality/all_data/SEM-370-r1/label_manifest.json",
+  "output": "outputs/quality/SEM-403",
+  "role_counts": {"rgb_train": 292, "semantic_train": 201, "holdout": 30},
+  "preflight_views": ["001.png", "120.png", "300.png"],
+  "sample_grid_x": 16,
+  "sample_grid_y": 12,
+  "block_x": 16,
+  "block_y": 16,
+  "gates": {
+    "color_replay_max_abs_error_at_most": 0.00001,
+    "transmittance_replay_max_abs_error_at_most": 0.00001,
+    "inverse_depth_replay_max_abs_error_at_most": 0.00001,
+    "nonempty_trace_fraction_at_least": 0.90,
+    "depth_order_violation_count_at_most": 0,
+    "all_required": true
+  },
+  "main_variable": "None: unlabeled engineering preflight that decodes existing native raster buffers and replays sampled ray contributions without changing CUDA, checkpoints, or rendering equations.",
+  "access_policy": {
+    "allowed": ["three semantic-training cameras", "frozen RGB152 geometry and appearance", "native rasterizer buffers"],
+    "forbidden": ["all semantic labels", "confirmation and buffer cameras", "all parameter updates", "post-result gate changes"]
+  },
+  "scope": "Engineering feasibility only. Passing authorizes preregistration of a separate label-based ray/surface responsibility diagnostic; it is not semantic quality evidence.",
+  "protocol": "docs/experiments/sem403_ray_responsibility_preflight_protocol.md"
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-123-BAND-RECOVERY-DEV-SWEEP",
+  "title": "Selective developer recovery sweep inside the fixed hard-0.20 minus hard-0.30 band",
+  "phase": "R2 semantic development optimisation",
+  "status": "completed_development_sweep",
+  "owner": "unassigned",
+  "parent_experiment": "SEM-122-UNCERTAINTY-BAND-DIAG,SEM-120-DEV-THRESHOLD-SWEEP,VIS-004-DEV-THRESHOLD-FLYTHROUGH,SEM-121-CONTINUOUS-FUSION-OOF,SEM-111-PROTECTED-FUSION-FINAL,SEM-001,SEM-102-RENDERED-SEG-FINAL,RGB-030-FULL",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "seed": "not_applicable_deterministic_class_map_sweep",
+  "data": {
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "semantic_split_sha256": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+    "development_images": 74,
+    "access_rule": "The already-opened 74 semantic-validation views are an explicitly reusable development set. Validate frozen source hashes before labels. This experiment writes candidate class maps only from the fixed 0.20--0.30 band and can rank them for development; no real RGB, unlabelled image, hidden input, external camera, training or formal/blind claim is allowed."
+  },
+  "inputs": {
+    "sem001_result_sha256": "abd82b7c21820c26e7cea4fa0d7b7ce155d833107b0388e9783c78ba9b81900d",
+    "sem102_prediction_manifest_sha256": "8e44e34a2cb781a2a2fa814ceffc9f54a6d9fdf05a9fda977f70e77d9094a0c0",
+    "sem120_result_sha256": "2cc91b76d31c4915cc8775376700549f03bc469c327953fd6aad950a276f1798",
+    "sem122_result_sha256": "a89eda528810a0c746bf9699e3e5de48277b3b715960c001a04bb2fb706ec0a3"
+  },
+  "frozen_rgb": {
+    "backbone": "Scaffold-GS",
+    "rgb_experiment": "RGB-030-FULL",
+    "iteration": 30000,
+    "geometry_color_opacity_checkpoint_unchanged": true,
+    "sem001_checkpoint_unchanged": true,
+    "sem102_checkpoint_unchanged": true,
+    "coordinate_frame": "official_colmap_reference",
+    "pose_convention": "CAMERA_FROM_WORLD"
+  },
+  "single_changed_variable": "Replace the hard-0.30 background/stay_cable decision only by optionally recovering a registered subset of its fixed [0.20,0.30) teacher-probability band. The subset is the conjunction of one probability minimum, one maximum distance to an existing hard-0.30 seed, and one frozen SEM-001 prior mode. Deck, tower and foundation remain exact SEM-001 pixels; all geometry, RGB and model parameters remain frozen.",
+  "recovery_grid": {
+    "lower_threshold": 0.20,
+    "upper_threshold": 0.30,
+    "probability_minima": [0.20, 0.24, 0.28],
+    "maximum_seed_distances_px": [2.0, 4.0, 8.0],
+    "sem001_prior_modes": ["any", "sem001_stay_cable"],
+    "candidate_count_excluding_baseline": 18,
+    "baseline": "hard 0.30 protected fusion",
+    "selection": "Maximise 0.55*mIoU_with_background + 0.30*stay_cable_IoU + 0.15*stay_cable_recall. Ties prefer higher stay_cable IoU, fewer background-to-stay_cable pixels, then fewer recovered pixels. This is development-only ranking, not a formal selection."
+  },
+  "outputs": {
+    "root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_123/band_recovery_dev_sweep/full-20260903-r2",
+    "visual_samples": ["054.png", "140.png", "183.png"],
+    "panel_order": ["GT", "hard_0.30", "selected", "selected_additions_green_true_cable_red_background_orange_other"]
+  },
+  "forbidden": [
+    "SEM-001_checkpoint_change",
+    "SEM-102_checkpoint_change",
+    "RGB_checkpoint_change",
+    "Scaffold_training",
+    "SegFormer_training",
+    "real_RGB_input",
+    "unlabeled_input",
+    "hidden_test_input",
+    "external_camera_mode",
+    "check_or_hidden_refit",
+    "claiming_blind_or_formal_replacement_status"
+  ],
+  "classes": {"0": "background", "1": "deck", "2": "stay_cable", "3": "tower", "4": "foundation"},
+  "fallback": "RGB-030-FULL Scaffold-GS + SEM-001"
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "experiment_id": "VIS-003-POST-CLEAN",
+  "title": "SEM-001 raw versus SEM-070 cleaned semantic flythrough",
+  "phase": "result visualization",
+  "status": "completed_show_only_candidate_sem001_fallback",
+  "parent_experiment": "SEM-070-POST-CLEAN,VIS-001-FLYTHROUGH",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "not_applicable_camera_metadata_visualization",
+  "seed": "not_applicable_deterministic_existing_trajectory",
+  "model": {
+    "rgb": "frozen RGB-030-FULL Scaffold-GS",
+    "semantic_raw": "frozen SEM-001",
+    "semantic_cleaned": "SEM-070 postprocess_mask.npz",
+    "updates_parameters": false,
+    "same_filter_for_formal_and_visual": true
+  },
+  "trajectory": {
+    "source_experiment": "VIS-001-FLYTHROUGH",
+    "trajectory_id": "frozen_scaffold_sem001_bridge_flythrough_v1",
+    "frames": 144,
+    "fps": 24,
+    "duration_seconds": 6.0,
+    "coordinate_frame": "official_colmap_reference",
+    "pose_convention": "CAMERA_FROM_WORLD",
+    "input_camera_model": "SIMPLE_RADIAL",
+    "keyframe_inputs": "official camera metadata only",
+    "uses_reference_rgb_or_labels": false
+  },
+  "outputs": {
+    "root": "external_gitignored:ICSHM_OUTPUT_ROOT/results/frozen_scaffold_sem070_post_clean/flythrough_v1",
+    "comparison_video": "semantic_raw_vs_cleaned_side_by_side.mp4",
+    "codec": "H.264 yuv420p",
+    "resolution": [2640, 1032]
+  },
+  "contract": {
+    "class_names": ["background", "deck", "stay_cable", "tower", "foundation"],
+    "stay_cable_class_id": 2,
+    "no_extra_display_filter": true,
+    "official_external_camera_supported": true
+  }
+}

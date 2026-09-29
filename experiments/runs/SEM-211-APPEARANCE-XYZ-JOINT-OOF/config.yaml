@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-211-APPEARANCE-XYZ-JOINT-OOF",
+  "title": "Frozen rendered-appearance and continuous-XYZ deck conjunction",
+  "phase": "new R2 bridge-geometry research line",
+  "status": "completed_calibration_gate_failed",
+  "owner": "unassigned",
+  "parent_experiment": "SEM-160-DECK-BINARY-OOF,SEM-210-XYZ-DECK-FIELD-OOF,SUBMIT-020-SEM161-FREEZE",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_001_scaffold_static_v1 plus sem_005_oof_spatial_v1; existing deterministic calibration/check; fixed 74-view unavailable",
+  "seed": "not_applicable_frozen_probability_conjunction",
+  "single_changed_variable": "Require both the frozen SEM-160 rendered-appearance probability and the sealed SEM-210 spatial-OOF XYZ probability before an eligible background pixel may become deck.",
+  "data": {
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "semantic_split_sha256": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+    "training_views": 219,
+    "fixed_validation_views_opened": 0,
+    "target_input_at_submission": "external COLMAP camera, frozen RGB render, and frozen depth only; no target photograph or target label"
+  },
+  "inputs": {
+    "sem160_fold_probability_manifest_sha256": [
+      "aadd04f7a9dfacb50e8d9915ad323f19ddaba85c7080485b9b04030181a15a6f",
+      "47418bcb1d9eaf388ffac29d7f283e938c9b0a1acaa322ae90eb91c194937205",
+      "cf38f4eba53a9da05a2e125081543b458d6d31b647ef5634d0233ea35be26d91"
+    ],
+    "sem210_probability_manifest_sha256": "8200538ccb9a1c0456ed2a23e744d9e2c6d5e35f9b4c17537dfd2c4d3fb3fcda"
+  },
+  "fusion": {
+    "baseline": "SEM-160 frozen selected OOF predictions at threshold 0.99",
+    "only_transition": "0_to_1",
+    "eligibility": "SEM-160 is background, SEM-150 is background, and the pre-foundation provenance is background",
+    "evidence": "SEM-160 appearance probability >= appearance threshold AND SEM-210 XYZ probability >= XYZ threshold",
+    "appearance_threshold_grid": [0.9, 0.925, 0.95, 0.97, 0.98],
+    "xyz_threshold_grid": [0.9, 0.95, 0.97, 0.98, 0.99, 0.995],
+    "selection": "calibration gate passers only; maximize deck IoU, then mIoU, then appearance threshold, then XYZ threshold",
+    "existing_deck_and_classes_2_3_4_exact": true
+  },
+  "gates": {
+    "calibration": {
+      "minimum_mIoU_gain": 0.0,
+      "minimum_deck_iou_gain": 0.001,
+      "minimum_deck_recall_gain": 0.002,
+      "minimum_deck_precision": 0.95,
+      "maximum_background_to_deck_ratio": 1.10
+    },
+    "check": {
+      "minimum_mIoU_gain": 0.0,
+      "minimum_deck_iou_gain": 0.001,
+      "minimum_deck_recall_gain": 0.002,
+      "minimum_deck_precision": 0.95,
+      "maximum_background_to_deck_ratio": 1.10
+    }
+  },
+  "visual_samples": [],
+  "outputs": {
+    "root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_211/appearance_xyz_joint_oof/full-20260906-r1"
+  },
+  "forbidden": [
+    "fixed_74_view_access",
+    "target_photograph_or_label_at_inference",
+    "unregistered_probability_formula_or_threshold",
+    "architecture_or_parent_retraining",
+    "check_based_threshold_selection",
+    "existing_prediction_deletion",
+    "RGB_or_parent_semantic_mutation"
+  ],
+  "fallback": "SUBMIT-020 frozen RGB-030-FULL plus SEM-161"
+}

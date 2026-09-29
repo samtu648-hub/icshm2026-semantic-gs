@@ -1,0 +1,102 @@
+{
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_001_scaffold_static_v1; sem_005_oof_spatial_v1; historical development, shared303RGB single seed",
+  "authorization": "2026-09-15 user: 按照你的建议继续推进吧; three bounded diagnostic comparisons, no training",
+  "main_variable": "2x2 existing train768/864 checkpoint and infer768/864; two cross arms only plus one cached native equality per model",
+  "runtime_root": "outputs/quality/mask2former/SEM-340",
+  "upstream_config": "configs/ade20k/semantic-segmentation/swin/maskformer2_swin_large_IN21k_384_bs16_160k_res640.yaml",
+  "experiment_id": "SEM-369-SCALE-CROSS-INFERENCE",
+  "parent_experiment": "SEM-341,SEM-368,SEM-367,QUAL-004",
+  "views": {
+    "oof-0": [
+      "132.png",
+      "017.png",
+      "028.png",
+      "276.png"
+    ],
+    "oof-1": [
+      "001.png",
+      "247.png",
+      "002.png",
+      "258.png"
+    ],
+    "oof-2": [
+      "052.png",
+      "162.png",
+      "051.png",
+      "043.png"
+    ]
+  },
+  "selection": {
+    "132.png": {
+      "criterion": "cable_boundary_common",
+      "value": 2570
+    },
+    "017.png": {
+      "criterion": "foundation_deep_error",
+      "value": 0
+    },
+    "028.png": {
+      "criterion": "deck_error",
+      "value": 4537
+    },
+    "276.png": {
+      "criterion": "median_error_control",
+      "value": 5889
+    },
+    "001.png": {
+      "criterion": "cable_boundary_common",
+      "value": 4491
+    },
+    "247.png": {
+      "criterion": "foundation_deep_error",
+      "value": 81
+    },
+    "002.png": {
+      "criterion": "deck_error",
+      "value": 2868
+    },
+    "258.png": {
+      "criterion": "median_error_control",
+      "value": 8266
+    },
+    "052.png": {
+      "criterion": "cable_boundary_common",
+      "value": 9362
+    },
+    "162.png": {
+      "criterion": "foundation_deep_error",
+      "value": 3138
+    },
+    "051.png": {
+      "criterion": "deck_error",
+      "value": 6310
+    },
+    "043.png": {
+      "criterion": "median_error_control",
+      "value": 16357
+    }
+  },
+  "selection_source_sha256": "445419da690ff82dedaccb35ad01eff4fb45b339745a23042a416045f6f59e73",
+  "run768": "outputs/quality/mask2former/SEM-341-r1",
+  "run864": "outputs/quality/expert_scale/SEM-368-r2",
+  "render_root": "outputs/quality/expert_inputs/Scaffold-training-dualline-r1/images",
+  "output": "outputs/quality/diagnostics/SEM-369-r1",
+  "estimated_resources": "24 new cross forwards plus6 native equality, 3-8 GPU minutes, <0.5GiB; no training; no74",
+  "names": [
+    "132.png",
+    "017.png",
+    "028.png",
+    "276.png",
+    "001.png",
+    "247.png",
+    "002.png",
+    "258.png",
+    "052.png",
+    "162.png",
+    "051.png",
+    "043.png"
+  ]
+}

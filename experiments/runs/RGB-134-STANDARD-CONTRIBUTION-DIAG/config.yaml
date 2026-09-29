@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 0,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "views": [
+    "159.png",
+    "160.png",
+    "140.png",
+    "146.png",
+    "081.png",
+    "057.png",
+    "064.png",
+    "054.png",
+    "174.png"
+  ],
+  "experiment_id": "RGB-134-STANDARD-CONTRIBUTION-DIAG",
+  "parent_experiment": "RGB-130-STANDARD-ALL400",
+  "main_variable": "read-only opacity derivative ranking and individual zero-opacity counterfactuals; no saved model update",
+  "output": "outputs/quality/diagnostics/RGB-134-r2",
+  "regions": {
+    "159-shore": {
+      "view": "159.png",
+      "boxes": [
+        [
+          20,
+          720,
+          290,
+          870
+        ],
+        [
+          920,
+          720,
+          1310,
+          860
+        ]
+      ]
+    },
+    "159-near": {
+      "view": "159.png",
+      "boxes": [
+        [
+          20,
+          890,
+          240,
+          985
+        ]
+      ]
+    },
+    "160-shore": {
+      "view": "160.png",
+      "boxes": [
+        [
+          20,
+          740,
+          285,
+          885
+        ],
+        [
+          920,
+          740,
+          1310,
+          875
+        ]
+      ]
+    },
+    "160-near": {
+      "view": "160.png",
+      "boxes": [
+        [
+          20,
+          905,
+          230,
+          985
+        ]
+      ]
+    },
+    "174-sky": {
+      "view": "174.png",
+      "boxes": [
+        [
+          0,
+          0,
+          1320,
+          380
+        ]
+      ]
+    }
+  },
+  "top_per_region": 4,
+  "selection": "top four positive d(ROI L1)/d(opacity logit) per fixed region, union frozen before all400; no thresholds or repeated searches",
+  "evaluation": "all400 training-view RGB and 300 GT class region impact; no semantic training; native1320x989",
+  "scope": "RGB130 only; reuse RGB121-124/RGB133 negative evidence, do not repeat those recipes",
+  "resource_estimate": "5–10 GPU minutes, about1GiB; queue shared gpu.lock; no hard time/memory quality gate",
+  "conditional_retraining": "user authorized full400/30k retraining only if evidence supports benefit; register repair after attribution, preserve baseline and compare matched recipe",
+  "preserved_attempt": "RGB-134-r1 acquired released lock before prior CUDA process fully exited; zero GPU imports/updates; add process-drain wait, scientific recipe unchanged"
+}

@@ -1,0 +1,11 @@
+{
+  "experiment_id": "RGB-100-ENV-CTRL",
+  "status": "completed_matched_control",
+  "parent_experiment": "RGB-030-FULL",
+  "seed": 0,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1",
+  "shared_protocol": "experiments/runs/RGB-101-ENVIRONMENT/config.yaml",
+  "difference": "environment parameter table stays exactly zero; no environment optimizer group; all render computations otherwise identical",
+  "result": {"PSNR_dB": 20.5668970928, "SSIM": 0.8513587994, "LPIPS": 0.3202040004, "worst10_PSNR_dB": 17.3871848063, "challenge_140_146_PSNR_dB": 21.2214826952, "seconds": 3111.5674, "peak_cuda_allocated_mib": 6941.2256, "external_camera_reload": true}
+}

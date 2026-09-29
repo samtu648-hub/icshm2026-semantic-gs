@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-141-CABLE-BINARY-FINAL",
+  "title": "Frozen all-training native-resolution cable binary final model",
+  "phase": "R2 specialised cable semantic developer candidate",
+  "status": "completed_developer_target_gate_passed",
+  "owner": "unassigned",
+  "parent_experiment": "SEM-140-CABLE-BINARY-OOF,SEM-111-PROTECTED-FUSION-FINAL,SEM-001,RGB-030-FULL",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_001_scaffold_static_v1; all 219 training views then explicitly reused 74-view developer audit",
+  "seed": 20260805,
+  "parent_evidence": {
+    "sem140_result_sha256": "6ef7394c5e258e052004d59968a6f29ea850b402f588f853364efaf5f56674d1",
+    "sem140_status": "completed_oof_gate_passed",
+    "selected_threshold": 0.7,
+    "selection_rule": "SEM-140 selected 0.70 on calibration only and passed the independent check gate; no final-training or 74-view result may alter it."
+  },
+  "data": {
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "semantic_split_sha256": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+    "label_manifest": "experiments/runs/SEM-001/label_manifest.json",
+    "training_images": 219,
+    "developer_validation_images": 74,
+    "access_sequence": "Train and reload one final checkpoint using only all 219 frozen rendered training RGBs and labels. Freeze its hashes. Register a separate audit config, infer and materialise all 74 predictions without labels, then read the explicitly reused development labels once."
+  },
+  "inputs": {
+    "rendered_training_manifest_sha256": "a8e08740ac8fa30f115f26cb822b604addca2b2f4c0a316ac4914f1fdd9ceb67",
+    "sem001_checkpoint_sha256": "8e3dbe30e17f67081a72380018fc281c155ec00eed83cd5a19b3285bf4fb8aa3",
+    "sem111_result_sha256": "45d2aa9095815a086a8927c7233bd585f6bb2ebcfe9a1c8b936c3d57915757d9",
+    "rendered_validation_manifest_sha256": "a805ab84e367090b501b8dc813469dc7f609d0fd3b9ef80a2521abd236e87ec4"
+  },
+  "single_changed_variable": "Convert the qualified SEM-140 three-fold cable-binary OOF recipe into one all-219 final checkpoint; model, two-class target, seed, 960 native crop, optimiser, loss, 960/480 inference and protected fusion threshold 0.70 remain fixed.",
+  "model": {
+    "architecture": "SegFormer-B2",
+    "implementation": "huggingface/transformers==4.57.1",
+    "pretrained_model_id": "nvidia/mit-b2",
+    "pretrained_revision": "3bb39e8739149c3777d0325349b2a6c32c6413db",
+    "weight_license": "NVIDIA Source Code License for SegFormer; non-commercial research/evaluation only",
+    "classification_head": "reinitialized_for_two_classes_non_stay_cable_and_stay_cable"
+  },
+  "training": {
+    "seed": 20260805,
+    "all_training_views": true,
+    "iterations": 3000,
+    "crop_size": 960,
+    "native_pixel_scale": true,
+    "input_resize": false,
+    "batch_size": 1,
+    "gradient_accumulation": 1,
+    "optimizer": "AdamW",
+    "learning_rate": 0.00006,
+    "weight_decay": 0.01,
+    "loss": "two_class_cross_entropy_only",
+    "class_weight_rule": "all-219 inverse frequency median_count/count clipped to [0.05,20]",
+    "paired_augmentation": "uniform native 960 crop and horizontal flip p=0.5 only",
+    "amp": "bf16_if_supported_else_fp16",
+    "early_stopping": false,
+    "checkpoint_selection": "final_3000_only_no_validation_selection"
+  },
+  "inference": {
+    "crop_size": 960,
+    "stride": 480,
+    "overlap": 480,
+    "input_resize": false,
+    "output": "float16 scalar stay_cable probability plus protected official five-class PNG at 1320x989"
+  },
+  "fusion": {
+    "stay_cable_threshold": 0.7,
+    "protected_sem001_predicted_class_ids": [1, 3, 4],
+    "mutable_class_ids": [0, 2]
+  },
+  "developer_target_gate": {
+    "baseline": "SEM-111 74-view historical candidate",
+    "minimum_mIoU_gain": 0.0,
+    "minimum_stay_cable_iou_gain": 0.02,
+    "minimum_stay_cable_recall_gain": 0.03,
+    "maximum_background_false_positive_ratio": 1.5,
+    "difficult_subset_drop_max": 0.005,
+    "protected_predictions_exact": true,
+    "claim_boundary": "Passing recommends hidden evaluation only; the reused 74-view result is developer-only."
+  },
+  "outputs": {
+    "final_training_root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_141/final_training/final-20260904-r1",
+    "developer_audit_root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_141/developer_audit/final-20260904-r1",
+    "validation_visual_samples": ["054.png", "140.png", "183.png"],
+    "panel_order": ["frozen_rendered_RGB", "GT", "cable_binary_protected_fusion", "error"]
+  },
+  "budget": {"maximum_total_gpu_hours": 0.5},
+  "forbidden": [
+    "validation_access_before_final_checkpoint_freeze",
+    "validation_based_retraining",
+    "validation_based_threshold_selection",
+    "real_RGB_input",
+    "unlabeled_training",
+    "hidden_test_access",
+    "SEM-001_checkpoint_change",
+    "RGB_checkpoint_change",
+    "architecture_loss_crop_seed_or_checkpoint_search"
+  ],
+  "classes": {"0": "background", "1": "deck", "2": "stay_cable", "3": "tower", "4": "foundation"},
+  "fallback": "SEM-111 protected fusion candidate with independent SEM-001 fallback"
+}

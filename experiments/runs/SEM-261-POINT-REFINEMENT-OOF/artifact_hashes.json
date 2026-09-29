@@ -1,0 +1,57 @@
+{
+  "experiment_id": "SEM-261-POINT-REFINEMENT-OOF",
+  "files": [
+    {
+      "path": "outputs/sem261/full-20260907-r1/result.json",
+      "sha256": "b5ca773926c97920732e7d40de582809ea6660390c595d1a2e296fe302bfe654"
+    },
+    {
+      "path": "experiments/runs/SEM-261-POINT-REFINEMENT-OOF/config.yaml",
+      "sha256": "8e5e183b71d4c303b1180d70e67e2e7619f937a837b915f5071d50309a5537d1"
+    },
+    {
+      "path": "outputs/sem261/full-20260907-r1/prediction_manifest.json",
+      "sha256": "5074ca686c08e17140cc2c28715b5f903c958700434e11df10a9447f9a351e42"
+    },
+    {
+      "path": "outputs/sem261/full-20260907-r1/prediction_seal.json",
+      "sha256": "30e01ce71b87025471cc3465a58539dede5c0606eb0dde6e09d18a7b01afcde3"
+    },
+    {
+      "path": "outputs/sem261/full-20260907-r1/calibration_sealed.json",
+      "sha256": "fc77aded8eb22d4f7a15e22a7d62a019715ef3f6a12ab17855cef4aaa241ac47"
+    },
+    {
+      "path": "outputs/sem261/full-20260907-r1/fold0_coarse_control.pth",
+      "sha256": "91f48374903556496bd85f552392876efdbd49e00360bdeda8d2bbc669c23dd7"
+    },
+    {
+      "path": "outputs/sem261/full-20260907-r1/fold0_fine_candidate.pth",
+      "sha256": "b64887b63f9afd247439850dd9b9312ef30be1a811cf76b07275854af9dd01ca"
+    },
+    {
+      "path": "outputs/sem261/full-20260907-r1/fold1_coarse_control.pth",
+      "sha256": "bab504d6accbfeca96cc2b07747c0484a38e8b6ab35a49c1702da519d6adb788"
+    },
+    {
+      "path": "outputs/sem261/full-20260907-r1/fold1_fine_candidate.pth",
+      "sha256": "e22a6f5f7572283b779c602b6542cc04ed16ec4820a9e307df288d526a2a34ef"
+    },
+    {
+      "path": "outputs/sem261/full-20260907-r1/fold2_coarse_control.pth",
+      "sha256": "f0202871e6b40c92318feba6202a458509a206859de11f2299ab9c5c1f757778"
+    },
+    {
+      "path": "outputs/sem261/full-20260907-r1/fold2_fine_candidate.pth",
+      "sha256": "cd8415b45cf0a3b759870e1bc6e43367e797949362914104eed08aade33d4985"
+    },
+    {
+      "path": "outputs/sem261/external-20260907-r1/result.json",
+      "sha256": "ec4b029011f3fd7daea76ec698292c08157f2f33df12e2e5b855a09b971dd9e9"
+    },
+    {
+      "path": "outputs/sem261/closeups-20260907-r1/manifest.json",
+      "sha256": "14c9b49545e9be614684d09bf178b56665b31b286a025322154e4211954b65c7"
+    }
+  ]
+}

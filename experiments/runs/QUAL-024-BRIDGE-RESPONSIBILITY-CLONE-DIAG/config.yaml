@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "experiment_id": "QUAL-024-BRIDGE-RESPONSIBILITY-CLONE-DIAG",
+  "title": "RGB170桥梁与邻近背景双责任可分诊断",
+  "phase": "diagnostic",
+  "parent_experiment": "QUAL-022-BRIDGE-GAUSSIAN-SUPPORT-DIAG;QUAL-023-BRIDGE-DEFECT-MANIFEST;RGB-170-IMPROVEDGS-BUDGET15M-H50K",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "seed": 0,
+  "read_only": true,
+  "inputs": {
+    "contributors": "outputs/quality/QUAL-022/diagnostic-r1/contributors.jsonl.gz",
+    "mixed_gaussians": "outputs/quality/QUAL-023/manifest-r1/mixed-gaussians.jsonl.gz",
+    "rgb170_result": "outputs/quality/RGB-170/full-r1/result.json",
+    "rgb170_ply": "outputs/quality/RGB-170/full-r1/model/point_cloud/iteration_50000/point_cloud.ply",
+    "images": "outputs/quality/all_data/RGB-120-r2/scene/images"
+  },
+  "classification": {
+    "minimum_bridge_fraction": 0.15,
+    "maximum_bridge_fraction": 0.85,
+    "maximum_bridge_fraction_iqr": 0.30,
+    "minimum_stable_population": 800,
+    "minimum_stable_stay_cable_population": 240
+  },
+  "review_views": ["159.png", "160.png", "235.png", "240.png", "242.png", "245.png", "385.png", "386.png", "389.png", "392.png"],
+  "interpretation": "Labels only localize structure and adjacent rays. Responsibility is native RGB170 front-to-back alpha contribution mass; no 3D structure is created.",
+  "output": "outputs/quality/QUAL-024/responsibility-r1"
+}

@@ -1,0 +1,28 @@
+diff --git a/train.py b/train.py
+--- a/train.py
++++ b/train.py
+@@ -36,1 +36,2 @@
+ from utils.loss_utils import l1_loss, ssim
++from src.scaffold_transient import make_controller
+@@ -95,1 +96,2 @@
++    transient_controller = make_controller(scene)
+     iter_start = torch.cuda.Event(enable_timing = True)
+@@ -143,3 +145,7 @@
+-        Ll1 = l1_loss(image, gt_image)
+-
+-        ssim_loss = (1.0 - ssim(image, gt_image))
++        if transient_controller is None:
++            Ll1 = l1_loss(image, gt_image)
++            ssim_loss = (1.0 - ssim(image, gt_image))
++        else:
++            Ll1, ssim_loss = transient_controller.losses(
++                image, gt_image, viewpoint_cam.image_name, iteration)
++
+@@ -149,1 +155,3 @@
+         loss.backward()
++        if transient_controller is not None:
++            transient_controller.after_backward()
+@@ -189,1 +197,3 @@
+                 torch.save((gaussians.capture(), iteration), scene.model_path + "/chkpnt" + str(iteration) + ".pth")
++                if transient_controller is not None:
++                    transient_controller.save(iteration)

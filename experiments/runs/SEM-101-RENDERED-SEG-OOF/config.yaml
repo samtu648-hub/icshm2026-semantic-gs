@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-101-RENDERED-SEG-OOF",
+  "title": "Training-only rendered-RGB SegFormer-B2 spatial OOF study",
+  "phase": "R2 rendered-domain 2D qualification",
+  "status": "completed_oof_gate_passed",
+  "owner": "unassigned",
+  "parent_experiment": "SEM-100-RENDER-SEG-PF,SEM-051-OOF,RGB-030-FULL",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_001_scaffold_static_v1 with frozen sem_005_oof_spatial_v1",
+  "seed": 20260805,
+  "frozen_rgb": {
+    "backbone": "Scaffold-GS",
+    "rgb_experiment": "RGB-030-FULL",
+    "iteration": 30000,
+    "train_camera_count": 303,
+    "n_offsets": 10,
+    "appearance_camera_id": 0,
+    "coordinate_frame": "official_colmap_reference",
+    "pose_convention": "CAMERA_FROM_WORLD",
+    "official_to_model_sim3": "identity",
+    "checkpoint_is_not_modified": true
+  },
+  "data": {
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "oof_split": "experiments/splits/sem_005_oof_spatial_v1.json",
+    "label_manifest": "experiments/runs/SEM-001/label_manifest.json",
+    "training_images": 219,
+    "fixed_validation_images_opened_before_model_freeze": 0,
+    "uses_real_training_rgb": false,
+    "uses_unlabeled_rgb": false,
+    "uses_hidden_test_rgb_or_labels": false,
+    "access_rule": "First render exactly the 219 labelled SEM-001 training cameras from frozen RGB without opening RGB references or labels. Then train and OOF-evaluate only on those rendered images with labels authorized for training/OOF metrics. No 74-view, unlabeled, hidden or external-camera mode exists in this experiment."
+  },
+  "inputs": {
+    "parent_split_repo_path": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "rendered_rgb_only": true,
+    "real_rgb_input_forbidden": true
+  },
+  "single_changed_variable": "Replace SEM-051's real RGB training and OOF inference input with the same-camera frozen RGB-030-FULL Scaffold rendering; architecture, seed, spatial folds, labels, loss, optimizer, crop, sliding inference and iteration budget are unchanged.",
+  "model": {
+    "architecture": "SegFormer-B2",
+    "implementation": "huggingface/transformers==4.57.1",
+    "pretrained_model_id": "nvidia/mit-b2",
+    "pretrained_revision": "3bb39e8739149c3777d0325349b2a6c32c6413db",
+    "weight_license": "NVIDIA Source Code License for SegFormer; non-commercial research/evaluation only",
+    "classification_head": "reinitialized_for_five_official_classes"
+  },
+  "training": {
+    "seed": 20260805,
+    "folds": 3,
+    "iterations_per_fold": 3000,
+    "smoke_iterations": 16,
+    "crop_size": 768,
+    "batch_size": 1,
+    "gradient_accumulation": 1,
+    "optimizer": "AdamW",
+    "learning_rate": 0.00006,
+    "weight_decay": 0.01,
+    "loss": "five_class_cross_entropy_only",
+    "class_weight_rule": "per-fold rendered-domain training labels only; median_count/count clipped to [0.05,20]",
+    "paired_augmentation": "uniform 768 crop and horizontal flip p=0.5 only",
+    "amp": "bf16_if_supported_else_fp16",
+    "early_stopping": false,
+    "checkpoint_selection": "final_3000_only_no_fold_selection"
+  },
+  "inference": {
+    "crop_size": 768,
+    "stride": 512,
+    "overlap": 256,
+    "output": "float16 five-class probabilities and uint8 0-4 class PNG at 1320x989"
+  },
+  "oof_qualification_gate": {
+    "mIoU_with_background_min": 0.7,
+    "stay_cable_iou_min": 0.7,
+    "stay_cable_precision_min": 0.8,
+    "stay_cable_recall_min": 0.9,
+    "background_to_stay_cable_fraction_max": 0.02,
+    "selection_rule": "All five gates are required. No hyperparameter, seed, threshold or checkpoint may be changed based on these results. Gate failure stops before a final rendered-domain model or any 74-view evaluation."
+  },
+  "outputs": {
+    "rendered_training_root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_101/rendered_training_rgb/full-20260902-r3",
+    "fold_root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_101/rendered_segformer_oof/full-20260902-r3",
+    "summary_root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_101/rendered_segformer_oof_summary/full-20260902-r3",
+    "rgb_isolation_samples": ["001.png", "017.png", "031.png"],
+    "training_visual_samples": ["001.png", "017.png", "031.png"],
+    "panel_order": ["frozen_rendered_RGB", "GT", "rendered_RGB_OOF_semantic", "error"]
+  },
+  "budget": {"maximum_total_gpu_hours": 0.75},
+  "forbidden": [
+    "real_RGB_input",
+    "fixed_74_view_tuning_or_evaluation",
+    "unlabeled_training",
+    "hidden_test_access",
+    "external_camera_mode",
+    "Scaffold_training",
+    "SEM-001_checkpoint_change",
+    "architecture_search",
+    "loss_search",
+    "pseudo_label_threshold_reuse"
+  ],
+  "classes": {"0": "background", "1": "deck", "2": "stay_cable", "3": "tower", "4": "foundation"},
+  "fallback": "RGB-030-FULL Scaffold-GS + SEM-001"
+}

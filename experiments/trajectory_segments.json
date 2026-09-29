@@ -1,0 +1,4745 @@
+{
+  "schema_version": 1,
+  "ordering": "numeric image stem when available; only a weak prior, not a video claim",
+  "pose_convention": "CAMERA_FROM_WORLD; centers C=-R^T t",
+  "thresholds": {
+    "distance_multiplier": 4.0,
+    "median_step_distance": 0.2296347443250714,
+    "optical_axis_angle_degrees": 35.0,
+    "minimum_adjacent_overlap_ratio": 0.08,
+    "min_segment_size": 4
+  },
+  "image_count": 400,
+  "segment_count": 24,
+  "candidate_breakpoints": [
+    10,
+    11,
+    12,
+    20,
+    21,
+    22,
+    23,
+    32,
+    42,
+    48,
+    52,
+    53,
+    82,
+    161,
+    175,
+    205,
+    233,
+    238,
+    245,
+    254,
+    274,
+    282,
+    315,
+    324,
+    358,
+    365,
+    369,
+    370,
+    373,
+    376,
+    384,
+    392,
+    395
+  ],
+  "breakpoints": [
+    12,
+    23,
+    32,
+    42,
+    48,
+    52,
+    82,
+    161,
+    175,
+    205,
+    233,
+    238,
+    245,
+    254,
+    274,
+    282,
+    315,
+    324,
+    358,
+    365,
+    376,
+    384,
+    395
+  ],
+  "segments": [
+    {
+      "segment_id": "seg-001",
+      "start_index": 0,
+      "end_index_exclusive": 12,
+      "images": [
+        "001.png",
+        "002.png",
+        "003.png",
+        "004.png",
+        "005.png",
+        "006.png",
+        "007.png",
+        "008.png",
+        "009.png",
+        "010.png",
+        "011.png",
+        "012.png"
+      ]
+    },
+    {
+      "segment_id": "seg-002",
+      "start_index": 12,
+      "end_index_exclusive": 23,
+      "images": [
+        "013.png",
+        "014.png",
+        "015.png",
+        "016.png",
+        "017.png",
+        "018.png",
+        "019.png",
+        "020.png",
+        "021.png",
+        "022.png",
+        "023.png"
+      ]
+    },
+    {
+      "segment_id": "seg-003",
+      "start_index": 23,
+      "end_index_exclusive": 32,
+      "images": [
+        "024.png",
+        "025.png",
+        "026.png",
+        "027.png",
+        "028.png",
+        "029.png",
+        "030.png",
+        "031.png",
+        "032.png"
+      ]
+    },
+    {
+      "segment_id": "seg-004",
+      "start_index": 32,
+      "end_index_exclusive": 42,
+      "images": [
+        "033.png",
+        "034.png",
+        "035.png",
+        "036.png",
+        "037.png",
+        "038.png",
+        "039.png",
+        "040.png",
+        "041.png",
+        "042.png"
+      ]
+    },
+    {
+      "segment_id": "seg-005",
+      "start_index": 42,
+      "end_index_exclusive": 48,
+      "images": [
+        "043.png",
+        "044.png",
+        "045.png",
+        "046.png",
+        "047.png",
+        "048.png"
+      ]
+    },
+    {
+      "segment_id": "seg-006",
+      "start_index": 48,
+      "end_index_exclusive": 52,
+      "images": [
+        "049.png",
+        "050.png",
+        "051.png",
+        "052.png"
+      ]
+    },
+    {
+      "segment_id": "seg-007",
+      "start_index": 52,
+      "end_index_exclusive": 82,
+      "images": [
+        "053.png",
+        "054.png",
+        "055.png",
+        "056.png",
+        "057.png",
+        "058.png",
+        "059.png",
+        "060.png",
+        "061.png",
+        "062.png",
+        "063.png",
+        "064.png",
+        "065.png",
+        "066.png",
+        "067.png",
+        "068.png",
+        "069.png",
+        "070.png",
+        "071.png",
+        "072.png",
+        "073.png",
+        "074.png",
+        "075.png",
+        "076.png",
+        "077.png",
+        "078.png",
+        "079.png",
+        "080.png",
+        "081.png",
+        "082.png"
+      ]
+    },
+    {
+      "segment_id": "seg-008",
+      "start_index": 82,
+      "end_index_exclusive": 161,
+      "images": [
+        "083.png",
+        "084.png",
+        "085.png",
+        "086.png",
+        "087.png",
+        "088.png",
+        "089.png",
+        "090.png",
+        "091.png",
+        "092.png",
+        "093.png",
+        "094.png",
+        "095.png",
+        "096.png",
+        "097.png",
+        "098.png",
+        "099.png",
+        "100.png",
+        "101.png",
+        "102.png",
+        "103.png",
+        "104.png",
+        "105.png",
+        "106.png",
+        "107.png",
+        "108.png",
+        "109.png",
+        "110.png",
+        "111.png",
+        "112.png",
+        "113.png",
+        "114.png",
+        "115.png",
+        "116.png",
+        "117.png",
+        "118.png",
+        "119.png",
+        "120.png",
+        "121.png",
+        "122.png",
+        "123.png",
+        "124.png",
+        "125.png",
+        "126.png",
+        "127.png",
+        "128.png",
+        "129.png",
+        "130.png",
+        "131.png",
+        "132.png",
+        "133.png",
+        "134.png",
+        "135.png",
+        "136.png",
+        "137.png",
+        "138.png",
+        "139.png",
+        "140.png",
+        "141.png",
+        "142.png",
+        "143.png",
+        "144.png",
+        "145.png",
+        "146.png",
+        "147.png",
+        "148.png",
+        "149.png",
+        "150.png",
+        "151.png",
+        "152.png",
+        "153.png",
+        "154.png",
+        "155.png",
+        "156.png",
+        "157.png",
+        "158.png",
+        "159.png",
+        "160.png",
+        "161.png"
+      ]
+    },
+    {
+      "segment_id": "seg-009",
+      "start_index": 161,
+      "end_index_exclusive": 175,
+      "images": [
+        "162.png",
+        "163.png",
+        "164.png",
+        "165.png",
+        "166.png",
+        "167.png",
+        "168.png",
+        "169.png",
+        "170.png",
+        "171.png",
+        "172.png",
+        "173.png",
+        "174.png",
+        "175.png"
+      ]
+    },
+    {
+      "segment_id": "seg-010",
+      "start_index": 175,
+      "end_index_exclusive": 205,
+      "images": [
+        "176.png",
+        "177.png",
+        "178.png",
+        "179.png",
+        "180.png",
+        "181.png",
+        "182.png",
+        "183.png",
+        "184.png",
+        "185.png",
+        "186.png",
+        "187.png",
+        "188.png",
+        "189.png",
+        "190.png",
+        "191.png",
+        "192.png",
+        "193.png",
+        "194.png",
+        "195.png",
+        "196.png",
+        "197.png",
+        "198.png",
+        "199.png",
+        "200.png",
+        "201.png",
+        "202.png",
+        "203.png",
+        "204.png",
+        "205.png"
+      ]
+    },
+    {
+      "segment_id": "seg-011",
+      "start_index": 205,
+      "end_index_exclusive": 233,
+      "images": [
+        "206.png",
+        "207.png",
+        "208.png",
+        "209.png",
+        "210.png",
+        "211.png",
+        "212.png",
+        "213.png",
+        "214.png",
+        "215.png",
+        "216.png",
+        "217.png",
+        "218.png",
+        "219.png",
+        "220.png",
+        "221.png",
+        "222.png",
+        "223.png",
+        "224.png",
+        "225.png",
+        "226.png",
+        "227.png",
+        "228.png",
+        "229.png",
+        "230.png",
+        "231.png",
+        "232.png",
+        "233.png"
+      ]
+    },
+    {
+      "segment_id": "seg-012",
+      "start_index": 233,
+      "end_index_exclusive": 238,
+      "images": [
+        "234.png",
+        "235.png",
+        "236.png",
+        "237.png",
+        "238.png"
+      ]
+    },
+    {
+      "segment_id": "seg-013",
+      "start_index": 238,
+      "end_index_exclusive": 245,
+      "images": [
+        "239.png",
+        "240.png",
+        "241.png",
+        "242.png",
+        "243.png",
+        "244.png",
+        "245.png"
+      ]
+    },
+    {
+      "segment_id": "seg-014",
+      "start_index": 245,
+      "end_index_exclusive": 254,
+      "images": [
+        "246.png",
+        "247.png",
+        "248.png",
+        "249.png",
+        "250.png",
+        "251.png",
+        "252.png",
+        "253.png",
+        "254.png"
+      ]
+    },
+    {
+      "segment_id": "seg-015",
+      "start_index": 254,
+      "end_index_exclusive": 274,
+      "images": [
+        "255.png",
+        "256.png",
+        "257.png",
+        "258.png",
+        "259.png",
+        "260.png",
+        "261.png",
+        "262.png",
+        "263.png",
+        "264.png",
+        "265.png",
+        "266.png",
+        "267.png",
+        "268.png",
+        "269.png",
+        "270.png",
+        "271.png",
+        "272.png",
+        "273.png",
+        "274.png"
+      ]
+    },
+    {
+      "segment_id": "seg-016",
+      "start_index": 274,
+      "end_index_exclusive": 282,
+      "images": [
+        "275.png",
+        "276.png",
+        "277.png",
+        "278.png",
+        "279.png",
+        "280.png",
+        "281.png",
+        "282.png"
+      ]
+    },
+    {
+      "segment_id": "seg-017",
+      "start_index": 282,
+      "end_index_exclusive": 315,
+      "images": [
+        "283.png",
+        "284.png",
+        "285.png",
+        "286.png",
+        "287.png",
+        "288.png",
+        "289.png",
+        "290.png",
+        "291.png",
+        "292.png",
+        "293.png",
+        "294.png",
+        "295.png",
+        "296.png",
+        "297.png",
+        "298.png",
+        "299.png",
+        "300.png",
+        "301.png",
+        "302.png",
+        "303.png",
+        "304.png",
+        "305.png",
+        "306.png",
+        "307.png",
+        "308.png",
+        "309.png",
+        "310.png",
+        "311.png",
+        "312.png",
+        "313.png",
+        "314.png",
+        "315.png"
+      ]
+    },
+    {
+      "segment_id": "seg-018",
+      "start_index": 315,
+      "end_index_exclusive": 324,
+      "images": [
+        "316.png",
+        "317.png",
+        "318.png",
+        "319.png",
+        "320.png",
+        "321.png",
+        "322.png",
+        "323.png",
+        "324.png"
+      ]
+    },
+    {
+      "segment_id": "seg-019",
+      "start_index": 324,
+      "end_index_exclusive": 358,
+      "images": [
+        "325.png",
+        "326.png",
+        "327.png",
+        "328.png",
+        "329.png",
+        "330.png",
+        "331.png",
+        "332.png",
+        "333.png",
+        "334.png",
+        "335.png",
+        "336.png",
+        "337.png",
+        "338.png",
+        "339.png",
+        "340.png",
+        "341.png",
+        "342.png",
+        "343.png",
+        "344.png",
+        "345.png",
+        "346.png",
+        "347.png",
+        "348.png",
+        "349.png",
+        "350.png",
+        "351.png",
+        "352.png",
+        "353.png",
+        "354.png",
+        "355.png",
+        "356.png",
+        "357.png",
+        "358.png"
+      ]
+    },
+    {
+      "segment_id": "seg-020",
+      "start_index": 358,
+      "end_index_exclusive": 365,
+      "images": [
+        "359.png",
+        "360.png",
+        "361.png",
+        "362.png",
+        "363.png",
+        "364.png",
+        "365.png"
+      ]
+    },
+    {
+      "segment_id": "seg-021",
+      "start_index": 365,
+      "end_index_exclusive": 376,
+      "images": [
+        "366.png",
+        "367.png",
+        "368.png",
+        "369.png",
+        "370.png",
+        "371.png",
+        "372.png",
+        "373.png",
+        "374.png",
+        "375.png",
+        "376.png"
+      ]
+    },
+    {
+      "segment_id": "seg-022",
+      "start_index": 376,
+      "end_index_exclusive": 384,
+      "images": [
+        "377.png",
+        "378.png",
+        "379.png",
+        "380.png",
+        "381.png",
+        "382.png",
+        "383.png",
+        "384.png"
+      ]
+    },
+    {
+      "segment_id": "seg-023",
+      "start_index": 384,
+      "end_index_exclusive": 395,
+      "images": [
+        "385.png",
+        "386.png",
+        "387.png",
+        "388.png",
+        "389.png",
+        "390.png",
+        "391.png",
+        "392.png",
+        "393.png",
+        "394.png",
+        "395.png"
+      ]
+    },
+    {
+      "segment_id": "seg-024",
+      "start_index": 395,
+      "end_index_exclusive": 400,
+      "images": [
+        "396.png",
+        "397.png",
+        "398.png",
+        "399.png",
+        "400.png"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "before": "001.png",
+      "after": "002.png",
+      "center_distance": 1.3246223405255717,
+      "optical_axis_angle_deg": 36.380737184472004,
+      "shared_point3d": 89,
+      "overlap_ratio": 0.06334519572953737,
+      "break": true,
+      "reasons": [
+        "center_distance_jump",
+        "optical_axis_jump",
+        "low_adjacent_coview"
+      ]
+    },
+    {
+      "before": "002.png",
+      "after": "003.png",
+      "center_distance": 0.2331798924551963,
+      "optical_axis_angle_deg": 0.3383149562144443,
+      "shared_point3d": 1623,
+      "overlap_ratio": 0.8573692551505546,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "003.png",
+      "after": "004.png",
+      "center_distance": 0.3851572832703388,
+      "optical_axis_angle_deg": 1.1736812838019095,
+      "shared_point3d": 1428,
+      "overlap_ratio": 0.7208480565371025,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "004.png",
+      "after": "005.png",
+      "center_distance": 0.3981964266521628,
+      "optical_axis_angle_deg": 1.7409212206352969,
+      "shared_point3d": 1121,
+      "overlap_ratio": 0.6551724137931034,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "005.png",
+      "after": "006.png",
+      "center_distance": 0.40742915505953853,
+      "optical_axis_angle_deg": 1.024270181735064,
+      "shared_point3d": 890,
+      "overlap_ratio": 0.6009453072248481,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "006.png",
+      "after": "007.png",
+      "center_distance": 0.42349658476010843,
+      "optical_axis_angle_deg": 0.3354691347716532,
+      "shared_point3d": 881,
+      "overlap_ratio": 0.6430656934306569,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "007.png",
+      "after": "008.png",
+      "center_distance": 0.3614554917037602,
+      "optical_axis_angle_deg": 1.2271739343818426,
+      "shared_point3d": 672,
+      "overlap_ratio": 0.6262814538676608,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "008.png",
+      "after": "009.png",
+      "center_distance": 0.17246915481825678,
+      "optical_axis_angle_deg": 7.9608260653994005,
+      "shared_point3d": 574,
+      "overlap_ratio": 0.5349487418452936,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "009.png",
+      "after": "010.png",
+      "center_distance": 0.2563925727134039,
+      "optical_axis_angle_deg": 4.883529748471738,
+      "shared_point3d": 658,
+      "overlap_ratio": 0.670061099796334,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "010.png",
+      "after": "011.png",
+      "center_distance": 3.269094308017623,
+      "optical_axis_angle_deg": 66.12560161512667,
+      "shared_point3d": 0,
+      "overlap_ratio": 0.0,
+      "break": true,
+      "reasons": [
+        "center_distance_jump",
+        "optical_axis_jump",
+        "low_adjacent_coview"
+      ]
+    },
+    {
+      "before": "011.png",
+      "after": "012.png",
+      "center_distance": 3.1820707250961173,
+      "optical_axis_angle_deg": 67.54575098350841,
+      "shared_point3d": 0,
+      "overlap_ratio": 0.0,
+      "break": true,
+      "reasons": [
+        "center_distance_jump",
+        "optical_axis_jump",
+        "low_adjacent_coview"
+      ]
+    },
+    {
+      "before": "012.png",
+      "after": "013.png",
+      "center_distance": 0.05993503314827232,
+      "optical_axis_angle_deg": 114.95185316412099,
+      "shared_point3d": 0,
+      "overlap_ratio": 0.0,
+      "break": true,
+      "reasons": [
+        "optical_axis_jump",
+        "low_adjacent_coview"
+      ]
+    },
+    {
+      "before": "013.png",
+      "after": "014.png",
+      "center_distance": 0.38017773037036123,
+      "optical_axis_angle_deg": 0.8130055789497037,
+      "shared_point3d": 303,
+      "overlap_ratio": 0.8145161290322581,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "014.png",
+      "after": "015.png",
+      "center_distance": 0.4729060471303899,
+      "optical_axis_angle_deg": 0.4917820417957554,
+      "shared_point3d": 388,
+      "overlap_ratio": 0.7279549718574109,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "015.png",
+      "after": "016.png",
+      "center_distance": 0.4829401676437622,
+      "optical_axis_angle_deg": 2.421971916786267,
+      "shared_point3d": 467,
+      "overlap_ratio": 0.760586319218241,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "016.png",
+      "after": "017.png",
+      "center_distance": 0.47017901887956814,
+      "optical_axis_angle_deg": 8.428370426826383,
+      "shared_point3d": 478,
+      "overlap_ratio": 0.7242424242424242,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "017.png",
+      "after": "018.png",
+      "center_distance": 0.43335363849004765,
+      "optical_axis_angle_deg": 0.836462976500053,
+      "shared_point3d": 475,
+      "overlap_ratio": 0.7196969696969697,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "018.png",
+      "after": "019.png",
+      "center_distance": 0.3182448101803557,
+      "optical_axis_angle_deg": 16.737083133177233,
+      "shared_point3d": 322,
+      "overlap_ratio": 0.5659050966608085,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "019.png",
+      "after": "020.png",
+      "center_distance": 0.3553488102145807,
+      "optical_axis_angle_deg": 12.484364621467995,
+      "shared_point3d": 182,
+      "overlap_ratio": 0.4302600472813239,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "020.png",
+      "after": "021.png",
+      "center_distance": 5.609482644214158,
+      "optical_axis_angle_deg": 3.564750173708104,
+      "shared_point3d": 33,
+      "overlap_ratio": 0.07801418439716312,
+      "break": true,
+      "reasons": [
+        "center_distance_jump",
+        "low_adjacent_coview"
+      ]
+    },
+    {
+      "before": "021.png",
+      "after": "022.png",
+      "center_distance": 5.6080132403933405,
+      "optical_axis_angle_deg": 7.0716060210963745,
+      "shared_point3d": 28,
+      "overlap_ratio": 0.07865168539325842,
+      "break": true,
+      "reasons": [
+        "center_distance_jump",
+        "low_adjacent_coview"
+      ]
+    },
+    {
+      "before": "022.png",
+      "after": "023.png",
+      "center_distance": 0.4319040986295255,
+      "optical_axis_angle_deg": 86.73886056313805,
+      "shared_point3d": 0,
+      "overlap_ratio": 0.0,
+      "break": true,
+      "reasons": [
+        "optical_axis_jump",
+        "low_adjacent_coview"
+      ]
+    },
+    {
+      "before": "023.png",
+      "after": "024.png",
+      "center_distance": 0.2582826483430993,
+      "optical_axis_angle_deg": 93.37601885859955,
+      "shared_point3d": 0,
+      "overlap_ratio": 0.0,
+      "break": true,
+      "reasons": [
+        "optical_axis_jump",
+        "low_adjacent_coview"
+      ]
+    },
+    {
+      "before": "024.png",
+      "after": "025.png",
+      "center_distance": 0.2875657292847807,
+      "optical_axis_angle_deg": 9.037848103214877,
+      "shared_point3d": 546,
+      "overlap_ratio": 0.6666666666666666,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "025.png",
+      "after": "026.png",
+      "center_distance": 0.38372373008934174,
+      "optical_axis_angle_deg": 0.258022490344454,
+      "shared_point3d": 596,
+      "overlap_ratio": 0.6827033218785796,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "026.png",
+      "after": "027.png",
+      "center_distance": 0.281876690936118,
+      "optical_axis_angle_deg": 0.5282258129046129,
+      "shared_point3d": 591,
+      "overlap_ratio": 0.6581291759465479,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "027.png",
+      "after": "028.png",
+      "center_distance": 0.0798977690334085,
+      "optical_axis_angle_deg": 0.09323557528871028,
+      "shared_point3d": 747,
+      "overlap_ratio": 0.757606490872211,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "028.png",
+      "after": "029.png",
+      "center_distance": 0.32551288711967474,
+      "optical_axis_angle_deg": 7.535891784849989,
+      "shared_point3d": 516,
+      "overlap_ratio": 0.6907630522088354,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "029.png",
+      "after": "030.png",
+      "center_distance": 0.41727173446835114,
+      "optical_axis_angle_deg": 8.566933111698463,
+      "shared_point3d": 348,
+      "overlap_ratio": 0.6480446927374302,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "030.png",
+      "after": "031.png",
+      "center_distance": 0.4514341339547343,
+      "optical_axis_angle_deg": 13.224480765452716,
+      "shared_point3d": 237,
+      "overlap_ratio": 0.6124031007751938,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "031.png",
+      "after": "032.png",
+      "center_distance": 0.42798745215652,
+      "optical_axis_angle_deg": 19.7541726586656,
+      "shared_point3d": 154,
+      "overlap_ratio": 0.3979328165374677,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "032.png",
+      "after": "033.png",
+      "center_distance": 0.9286111502419621,
+      "optical_axis_angle_deg": 4.511518816885826,
+      "shared_point3d": 177,
+      "overlap_ratio": 0.34705882352941175,
+      "break": true,
+      "reasons": [
+        "center_distance_jump"
+      ]
+    },
+    {
+      "before": "033.png",
+      "after": "034.png",
+      "center_distance": 0.2732616432359636,
+      "optical_axis_angle_deg": 7.798235237961532,
+      "shared_point3d": 295,
+      "overlap_ratio": 0.5651340996168582,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "034.png",
+      "after": "035.png",
+      "center_distance": 0.43635430415610543,
+      "optical_axis_angle_deg": 0.7180708528538216,
+      "shared_point3d": 280,
+      "overlap_ratio": 0.4472843450479233,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "035.png",
+      "after": "036.png",
+      "center_distance": 0.42387704252985475,
+      "optical_axis_angle_deg": 17.331515105941207,
+      "shared_point3d": 252,
+      "overlap_ratio": 0.4019138755980861,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "036.png",
+      "after": "037.png",
+      "center_distance": 0.2546475935468586,
+      "optical_axis_angle_deg": 5.8914643572018335,
+      "shared_point3d": 465,
+      "overlap_ratio": 0.544496487119438,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "037.png",
+      "after": "038.png",
+      "center_distance": 0.28513756515674044,
+      "optical_axis_angle_deg": 0.8427519821695476,
+      "shared_point3d": 548,
+      "overlap_ratio": 0.5823591923485654,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "038.png",
+      "after": "039.png",
+      "center_distance": 0.369179922187576,
+      "optical_axis_angle_deg": 3.221886438807758,
+      "shared_point3d": 503,
+      "overlap_ratio": 0.5040080160320641,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "039.png",
+      "after": "040.png",
+      "center_distance": 0.24306799481906502,
+      "optical_axis_angle_deg": 0.41131916406900365,
+      "shared_point3d": 750,
+      "overlap_ratio": 0.6521739130434783,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "040.png",
+      "after": "041.png",
+      "center_distance": 0.2918359597040602,
+      "optical_axis_angle_deg": 0.13456639378148008,
+      "shared_point3d": 628,
+      "overlap_ratio": 0.5567375886524822,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "041.png",
+      "after": "042.png",
+      "center_distance": 0.09700922439405099,
+      "optical_axis_angle_deg": 29.201118120428976,
+      "shared_point3d": 472,
+      "overlap_ratio": 0.41843971631205673,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "042.png",
+      "after": "043.png",
+      "center_distance": 0.2606007082104303,
+      "optical_axis_angle_deg": 38.81001876204009,
+      "shared_point3d": 422,
+      "overlap_ratio": 0.3528428093645485,
+      "break": true,
+      "reasons": [
+        "optical_axis_jump"
+      ]
+    },
+    {
+      "before": "043.png",
+      "after": "044.png",
+      "center_distance": 0.3462471217005321,
+      "optical_axis_angle_deg": 15.334318443534121,
+      "shared_point3d": 438,
+      "overlap_ratio": 0.36622073578595316,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "044.png",
+      "after": "045.png",
+      "center_distance": 0.07866568515606452,
+      "optical_axis_angle_deg": 5.126871582216917,
+      "shared_point3d": 683,
+      "overlap_ratio": 0.6186594202898551,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "045.png",
+      "after": "046.png",
+      "center_distance": 0.37933569974199977,
+      "optical_axis_angle_deg": 11.714325710888199,
+      "shared_point3d": 458,
+      "overlap_ratio": 0.4148550724637681,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "046.png",
+      "after": "047.png",
+      "center_distance": 0.15993733462028678,
+      "optical_axis_angle_deg": 0.19296021283452044,
+      "shared_point3d": 720,
+      "overlap_ratio": 0.6463195691202872,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "047.png",
+      "after": "048.png",
+      "center_distance": 0.001201977194881695,
+      "optical_axis_angle_deg": 6.62656536848307,
+      "shared_point3d": 733,
+      "overlap_ratio": 0.6603603603603604,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "048.png",
+      "after": "049.png",
+      "center_distance": 0.22762943663005755,
+      "optical_axis_angle_deg": 71.53136429144061,
+      "shared_point3d": 0,
+      "overlap_ratio": 0.0,
+      "break": true,
+      "reasons": [
+        "optical_axis_jump",
+        "low_adjacent_coview"
+      ]
+    },
+    {
+      "before": "049.png",
+      "after": "050.png",
+      "center_distance": 0.19991719767122756,
+      "optical_axis_angle_deg": 0.13830155778235115,
+      "shared_point3d": 893,
+      "overlap_ratio": 0.7854001759014951,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "050.png",
+      "after": "051.png",
+      "center_distance": 0.26372511055004,
+      "optical_axis_angle_deg": 0.3936206892668532,
+      "shared_point3d": 898,
+      "overlap_ratio": 0.7870289219982471,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "051.png",
+      "after": "052.png",
+      "center_distance": 0.2556575155346055,
+      "optical_axis_angle_deg": 0.3223776733493403,
+      "shared_point3d": 650,
+      "overlap_ratio": 0.7985257985257985,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "052.png",
+      "after": "053.png",
+      "center_distance": 9.127976762384815,
+      "optical_axis_angle_deg": 3.1437783506452814,
+      "shared_point3d": 0,
+      "overlap_ratio": 0.0,
+      "break": true,
+      "reasons": [
+        "center_distance_jump",
+        "low_adjacent_coview"
+      ]
+    },
+    {
+      "before": "053.png",
+      "after": "054.png",
+      "center_distance": 10.555498860010259,
+      "optical_axis_angle_deg": 87.72424041647412,
+      "shared_point3d": 0,
+      "overlap_ratio": 0.0,
+      "break": true,
+      "reasons": [
+        "center_distance_jump",
+        "optical_axis_jump",
+        "low_adjacent_coview"
+      ]
+    },
+    {
+      "before": "054.png",
+      "after": "055.png",
+      "center_distance": 0.09468743481009351,
+      "optical_axis_angle_deg": 0.11594923024563718,
+      "shared_point3d": 1082,
+      "overlap_ratio": 0.6998706338939198,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "055.png",
+      "after": "056.png",
+      "center_distance": 0.09623535119546843,
+      "optical_axis_angle_deg": 0.9903988491780137,
+      "shared_point3d": 1083,
+      "overlap_ratio": 0.7005174644243208,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "056.png",
+      "after": "057.png",
+      "center_distance": 0.09381397099396191,
+      "optical_axis_angle_deg": 0.932442202632586,
+      "shared_point3d": 1064,
+      "overlap_ratio": 0.6811779769526248,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "057.png",
+      "after": "058.png",
+      "center_distance": 0.0954467626375473,
+      "optical_axis_angle_deg": 1.697625633599651,
+      "shared_point3d": 1062,
+      "overlap_ratio": 0.6923076923076923,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "058.png",
+      "after": "059.png",
+      "center_distance": 0.09328652015636187,
+      "optical_axis_angle_deg": 1.9437804975689146,
+      "shared_point3d": 1017,
+      "overlap_ratio": 0.6793587174348698,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "059.png",
+      "after": "060.png",
+      "center_distance": 0.09301096522697276,
+      "optical_axis_angle_deg": 2.160506148858081,
+      "shared_point3d": 961,
+      "overlap_ratio": 0.6449664429530201,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "060.png",
+      "after": "061.png",
+      "center_distance": 0.09581326306353458,
+      "optical_axis_angle_deg": 1.0793992034614954,
+      "shared_point3d": 1004,
+      "overlap_ratio": 0.6738255033557047,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "061.png",
+      "after": "062.png",
+      "center_distance": 0.09009916823783175,
+      "optical_axis_angle_deg": 2.0155816933581936,
+      "shared_point3d": 978,
+      "overlap_ratio": 0.6901905434015526,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "062.png",
+      "after": "063.png",
+      "center_distance": 0.09363275208203048,
+      "optical_axis_angle_deg": 2.3743500824017136,
+      "shared_point3d": 917,
+      "overlap_ratio": 0.6498936924167257,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "063.png",
+      "after": "064.png",
+      "center_distance": 0.09252709603081177,
+      "optical_axis_angle_deg": 1.5940403288614906,
+      "shared_point3d": 938,
+      "overlap_ratio": 0.664776754075124,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "064.png",
+      "after": "065.png",
+      "center_distance": 0.09407664326207488,
+      "optical_axis_angle_deg": 1.656714297313211,
+      "shared_point3d": 961,
+      "overlap_ratio": 0.6753338018271258,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "065.png",
+      "after": "066.png",
+      "center_distance": 0.09363208600658152,
+      "optical_axis_angle_deg": 1.3221617981697384,
+      "shared_point3d": 978,
+      "overlap_ratio": 0.6834381551362684,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "066.png",
+      "after": "067.png",
+      "center_distance": 0.09330744951259616,
+      "optical_axis_angle_deg": 2.3594219476708584,
+      "shared_point3d": 947,
+      "overlap_ratio": 0.6517549896765313,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "067.png",
+      "after": "068.png",
+      "center_distance": 0.09022187396013225,
+      "optical_axis_angle_deg": 1.7109252822671055,
+      "shared_point3d": 989,
+      "overlap_ratio": 0.6806607019958706,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "068.png",
+      "after": "069.png",
+      "center_distance": 0.0916030275980737,
+      "optical_axis_angle_deg": 1.8599555894075188,
+      "shared_point3d": 993,
+      "overlap_ratio": 0.6768916155419223,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "069.png",
+      "after": "070.png",
+      "center_distance": 0.09422936800998287,
+      "optical_axis_angle_deg": 1.7319952021364895,
+      "shared_point3d": 965,
+      "overlap_ratio": 0.6682825484764543,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "070.png",
+      "after": "071.png",
+      "center_distance": 0.09334565276810435,
+      "optical_axis_angle_deg": 2.4142410894504525,
+      "shared_point3d": 953,
+      "overlap_ratio": 0.6650383810188416,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "071.png",
+      "after": "072.png",
+      "center_distance": 0.08522820849040955,
+      "optical_axis_angle_deg": 4.056351084646977,
+      "shared_point3d": 925,
+      "overlap_ratio": 0.6454989532449407,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "072.png",
+      "after": "073.png",
+      "center_distance": 0.089822888610701,
+      "optical_axis_angle_deg": 0.2648673078335247,
+      "shared_point3d": 1004,
+      "overlap_ratio": 0.6981919332406119,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "073.png",
+      "after": "074.png",
+      "center_distance": 0.08908189710492549,
+      "optical_axis_angle_deg": 1.3090286776620437,
+      "shared_point3d": 969,
+      "overlap_ratio": 0.6646090534979424,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "074.png",
+      "after": "075.png",
+      "center_distance": 0.09259786527789397,
+      "optical_axis_angle_deg": 2.4241539828687353,
+      "shared_point3d": 963,
+      "overlap_ratio": 0.6595890410958904,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "075.png",
+      "after": "076.png",
+      "center_distance": 0.09218532515879851,
+      "optical_axis_angle_deg": 2.3094484974164415,
+      "shared_point3d": 1029,
+      "overlap_ratio": 0.6575079872204472,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "076.png",
+      "after": "077.png",
+      "center_distance": 0.093645899567142,
+      "optical_axis_angle_deg": 1.0958024522364092,
+      "shared_point3d": 1131,
+      "overlap_ratio": 0.6925903245560319,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "077.png",
+      "after": "078.png",
+      "center_distance": 0.09513855931525511,
+      "optical_axis_angle_deg": 1.3833256161438534,
+      "shared_point3d": 1167,
+      "overlap_ratio": 0.6921708185053381,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "078.png",
+      "after": "079.png",
+      "center_distance": 0.09689292128355109,
+      "optical_axis_angle_deg": 0.9023922512845207,
+      "shared_point3d": 1150,
+      "overlap_ratio": 0.6820877817319099,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "079.png",
+      "after": "080.png",
+      "center_distance": 0.0941492005673943,
+      "optical_axis_angle_deg": 1.0010776348876165,
+      "shared_point3d": 1150,
+      "overlap_ratio": 0.6733021077283372,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "080.png",
+      "after": "081.png",
+      "center_distance": 0.09357435585917599,
+      "optical_axis_angle_deg": 1.4468573223950785,
+      "shared_point3d": 1140,
+      "overlap_ratio": 0.6810035842293907,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "081.png",
+      "after": "082.png",
+      "center_distance": 0.09451460250249172,
+      "optical_axis_angle_deg": 0.8118027871689228,
+      "shared_point3d": 1111,
+      "overlap_ratio": 0.6757907542579076,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "082.png",
+      "after": "083.png",
+      "center_distance": 3.315048284455687,
+      "optical_axis_angle_deg": 51.024736914300924,
+      "shared_point3d": 0,
+      "overlap_ratio": 0.0,
+      "break": true,
+      "reasons": [
+        "center_distance_jump",
+        "optical_axis_jump",
+        "low_adjacent_coview"
+      ]
+    },
+    {
+      "before": "083.png",
+      "after": "084.png",
+      "center_distance": 0.12703397978174866,
+      "optical_axis_angle_deg": 0.2500751915273106,
+      "shared_point3d": 1316,
+      "overlap_ratio": 0.724669603524229,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "084.png",
+      "after": "085.png",
+      "center_distance": 0.21593352968774515,
+      "optical_axis_angle_deg": 3.9203178713265414,
+      "shared_point3d": 1206,
+      "overlap_ratio": 0.6438868126001068,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "085.png",
+      "after": "086.png",
+      "center_distance": 0.2646033339354501,
+      "optical_axis_angle_deg": 0.5126135848879028,
+      "shared_point3d": 1238,
+      "overlap_ratio": 0.6620320855614973,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "086.png",
+      "after": "087.png",
+      "center_distance": 0.2816074269039648,
+      "optical_axis_angle_deg": 0.26418427561760893,
+      "shared_point3d": 1294,
+      "overlap_ratio": 0.6919786096256685,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "087.png",
+      "after": "088.png",
+      "center_distance": 0.28130337785282006,
+      "optical_axis_angle_deg": 0.4928686411535634,
+      "shared_point3d": 1298,
+      "overlap_ratio": 0.6598881545500762,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "088.png",
+      "after": "089.png",
+      "center_distance": 0.28790642046413906,
+      "optical_axis_angle_deg": 0.8412158357455387,
+      "shared_point3d": 1307,
+      "overlap_ratio": 0.6518703241895262,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "089.png",
+      "after": "090.png",
+      "center_distance": 0.26683953155589624,
+      "optical_axis_angle_deg": 14.365992895513813,
+      "shared_point3d": 1082,
+      "overlap_ratio": 0.5242248062015504,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "090.png",
+      "after": "091.png",
+      "center_distance": 0.2802933133839797,
+      "optical_axis_angle_deg": 0.23585578930100803,
+      "shared_point3d": 1517,
+      "overlap_ratio": 0.6961909132629647,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "091.png",
+      "after": "092.png",
+      "center_distance": 0.29240348711180936,
+      "optical_axis_angle_deg": 0.27085438836569786,
+      "shared_point3d": 1585,
+      "overlap_ratio": 0.6921397379912664,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "092.png",
+      "after": "093.png",
+      "center_distance": 0.2901381350084817,
+      "optical_axis_angle_deg": 0.1844176675412861,
+      "shared_point3d": 1698,
+      "overlap_ratio": 0.7016528925619835,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "093.png",
+      "after": "094.png",
+      "center_distance": 0.29417677889802923,
+      "optical_axis_angle_deg": 0.050720314121662724,
+      "shared_point3d": 1774,
+      "overlap_ratio": 0.6962323390894819,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "094.png",
+      "after": "095.png",
+      "center_distance": 0.29426144902333123,
+      "optical_axis_angle_deg": 0.28411753878778756,
+      "shared_point3d": 1825,
+      "overlap_ratio": 0.680462341536167,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "095.png",
+      "after": "096.png",
+      "center_distance": 0.2874018726105442,
+      "optical_axis_angle_deg": 0.18306241874474016,
+      "shared_point3d": 1804,
+      "overlap_ratio": 0.6713807219947897,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "096.png",
+      "after": "097.png",
+      "center_distance": 0.28692711012301064,
+      "optical_axis_angle_deg": 0.287358273178788,
+      "shared_point3d": 1852,
+      "overlap_ratio": 0.6803820720058781,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "097.png",
+      "after": "098.png",
+      "center_distance": 0.27763014143582976,
+      "optical_axis_angle_deg": 0.24070525988000777,
+      "shared_point3d": 2051,
+      "overlap_ratio": 0.7104260478004849,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "098.png",
+      "after": "099.png",
+      "center_distance": 0.2779202798171889,
+      "optical_axis_angle_deg": 0.3573164186058161,
+      "shared_point3d": 2098,
+      "overlap_ratio": 0.6887721602101117,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "099.png",
+      "after": "100.png",
+      "center_distance": 0.2868845084309738,
+      "optical_axis_angle_deg": 0.20232067921500513,
+      "shared_point3d": 2072,
+      "overlap_ratio": 0.6753585397653195,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "100.png",
+      "after": "101.png",
+      "center_distance": 0.2840346948616609,
+      "optical_axis_angle_deg": 0.19193923247393394,
+      "shared_point3d": 2120,
+      "overlap_ratio": 0.6683480453972257,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "101.png",
+      "after": "102.png",
+      "center_distance": 0.27773066957195375,
+      "optical_axis_angle_deg": 0.43613983937734485,
+      "shared_point3d": 2220,
+      "overlap_ratio": 0.6996533249290892,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "102.png",
+      "after": "103.png",
+      "center_distance": 0.2775776590900358,
+      "optical_axis_angle_deg": 0.2676394252593573,
+      "shared_point3d": 2336,
+      "overlap_ratio": 0.7046757164404224,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "103.png",
+      "after": "104.png",
+      "center_distance": 0.2818650120484422,
+      "optical_axis_angle_deg": 0.08597783958674833,
+      "shared_point3d": 2309,
+      "overlap_ratio": 0.6751461988304094,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "104.png",
+      "after": "105.png",
+      "center_distance": 0.286712137736628,
+      "optical_axis_angle_deg": 0.15833105676924372,
+      "shared_point3d": 2382,
+      "overlap_ratio": 0.6964912280701754,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "105.png",
+      "after": "106.png",
+      "center_distance": 0.28420209704770244,
+      "optical_axis_angle_deg": 0.14803818239648522,
+      "shared_point3d": 2491,
+      "overlap_ratio": 0.70228361996053,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "106.png",
+      "after": "107.png",
+      "center_distance": 0.2785083821380398,
+      "optical_axis_angle_deg": 0.1545708530181054,
+      "shared_point3d": 2712,
+      "overlap_ratio": 0.7060661286123405,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "107.png",
+      "after": "108.png",
+      "center_distance": 0.28342066316530634,
+      "optical_axis_angle_deg": 0.26691587739785727,
+      "shared_point3d": 2812,
+      "overlap_ratio": 0.6977667493796526,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "108.png",
+      "after": "109.png",
+      "center_distance": 0.274591113961052,
+      "optical_axis_angle_deg": 0.3677902679427693,
+      "shared_point3d": 2990,
+      "overlap_ratio": 0.6903717386284922,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "109.png",
+      "after": "110.png",
+      "center_distance": 0.27380014345072445,
+      "optical_axis_angle_deg": 0.13513930382182007,
+      "shared_point3d": 3203,
+      "overlap_ratio": 0.6907483286607721,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "110.png",
+      "after": "111.png",
+      "center_distance": 0.2106966565675058,
+      "optical_axis_angle_deg": 0.24375870382968734,
+      "shared_point3d": 3591,
+      "overlap_ratio": 0.7360114777618364,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "111.png",
+      "after": "112.png",
+      "center_distance": 0.15164427295565958,
+      "optical_axis_angle_deg": 0.16000503177004072,
+      "shared_point3d": 3774,
+      "overlap_ratio": 0.7254901960784313,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "112.png",
+      "after": "113.png",
+      "center_distance": 0.1577903349525264,
+      "optical_axis_angle_deg": 2.852681580214894,
+      "shared_point3d": 3852,
+      "overlap_ratio": 0.7359572029040886,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "113.png",
+      "after": "114.png",
+      "center_distance": 0.1540927965951924,
+      "optical_axis_angle_deg": 0.10785546099629656,
+      "shared_point3d": 3799,
+      "overlap_ratio": 0.7383867832847425,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "114.png",
+      "after": "115.png",
+      "center_distance": 0.17004687530709803,
+      "optical_axis_angle_deg": 5.41260870342712,
+      "shared_point3d": 3500,
+      "overlap_ratio": 0.6802721088435374,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "115.png",
+      "after": "116.png",
+      "center_distance": 0.21170484454484514,
+      "optical_axis_angle_deg": 0.2311455715642467,
+      "shared_point3d": 3802,
+      "overlap_ratio": 0.7255725190839695,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "116.png",
+      "after": "117.png",
+      "center_distance": 0.23512463945111806,
+      "optical_axis_angle_deg": 2.100444075869408,
+      "shared_point3d": 3480,
+      "overlap_ratio": 0.6987951807228916,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "117.png",
+      "after": "118.png",
+      "center_distance": 0.2395127607751418,
+      "optical_axis_angle_deg": 4.288622967457154,
+      "shared_point3d": 3163,
+      "overlap_ratio": 0.6885067479320853,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "118.png",
+      "after": "119.png",
+      "center_distance": 0.25722763590717573,
+      "optical_axis_angle_deg": 0.8458660914631282,
+      "shared_point3d": 3074,
+      "overlap_ratio": 0.7127289589612799,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "119.png",
+      "after": "120.png",
+      "center_distance": 0.23721848916497146,
+      "optical_axis_angle_deg": 5.872437760159008,
+      "shared_point3d": 2710,
+      "overlap_ratio": 0.6603313840155945,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "120.png",
+      "after": "121.png",
+      "center_distance": 0.22501330498486105,
+      "optical_axis_angle_deg": 0.50886782018664,
+      "shared_point3d": 2917,
+      "overlap_ratio": 0.735687263556116,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "121.png",
+      "after": "122.png",
+      "center_distance": 0.23478240950983037,
+      "optical_axis_angle_deg": 0.30950576647426487,
+      "shared_point3d": 2800,
+      "overlap_ratio": 0.7263294422827496,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "122.png",
+      "after": "123.png",
+      "center_distance": 0.23893554201934009,
+      "optical_axis_angle_deg": 0.10465007045520563,
+      "shared_point3d": 2699,
+      "overlap_ratio": 0.7176282903483117,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "123.png",
+      "after": "124.png",
+      "center_distance": 0.23163765215529505,
+      "optical_axis_angle_deg": 0.33228488244780413,
+      "shared_point3d": 2635,
+      "overlap_ratio": 0.7272978194866133,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "124.png",
+      "after": "125.png",
+      "center_distance": 0.24184435717922384,
+      "optical_axis_angle_deg": 0.48093940029377485,
+      "shared_point3d": 2410,
+      "overlap_ratio": 0.709658421672556,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "125.png",
+      "after": "126.png",
+      "center_distance": 0.2512462079032508,
+      "optical_axis_angle_deg": 0.3777554230747898,
+      "shared_point3d": 2264,
+      "overlap_ratio": 0.6925665341082899,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "126.png",
+      "after": "127.png",
+      "center_distance": 0.22339108256267934,
+      "optical_axis_angle_deg": 0.44093417033741616,
+      "shared_point3d": 2300,
+      "overlap_ratio": 0.7180768029971901,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "127.png",
+      "after": "128.png",
+      "center_distance": 0.23776648841851397,
+      "optical_axis_angle_deg": 0.4248138398180871,
+      "shared_point3d": 2241,
+      "overlap_ratio": 0.7060491493383743,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "128.png",
+      "after": "129.png",
+      "center_distance": 0.23764846483802132,
+      "optical_axis_angle_deg": 0.21607245562025418,
+      "shared_point3d": 2174,
+      "overlap_ratio": 0.7053861129136924,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "129.png",
+      "after": "130.png",
+      "center_distance": 0.23793018591895956,
+      "optical_axis_angle_deg": 0.10558149970085261,
+      "shared_point3d": 2136,
+      "overlap_ratio": 0.7122374124708236,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "130.png",
+      "after": "131.png",
+      "center_distance": 0.23611564039545066,
+      "optical_axis_angle_deg": 0.14298322504829547,
+      "shared_point3d": 2063,
+      "overlap_ratio": 0.7163194444444444,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "131.png",
+      "after": "132.png",
+      "center_distance": 0.24010989387832538,
+      "optical_axis_angle_deg": 0.3565048482295246,
+      "shared_point3d": 1929,
+      "overlap_ratio": 0.6909025787965616,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "132.png",
+      "after": "133.png",
+      "center_distance": 0.23109377460466934,
+      "optical_axis_angle_deg": 0.33057261623719253,
+      "shared_point3d": 1907,
+      "overlap_ratio": 0.7044698928703361,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "133.png",
+      "after": "134.png",
+      "center_distance": 0.2358395316144857,
+      "optical_axis_angle_deg": 0.2353039202340837,
+      "shared_point3d": 1840,
+      "overlap_ratio": 0.6990881458966566,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "134.png",
+      "after": "135.png",
+      "center_distance": 0.2582747849237193,
+      "optical_axis_angle_deg": 0.13573673291818916,
+      "shared_point3d": 1789,
+      "overlap_ratio": 0.6969224776003117,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "135.png",
+      "after": "136.png",
+      "center_distance": 0.08090168966456784,
+      "optical_axis_angle_deg": 0.1347386844404364,
+      "shared_point3d": 1787,
+      "overlap_ratio": 0.7258326563769293,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "136.png",
+      "after": "137.png",
+      "center_distance": 0.15925616268538287,
+      "optical_axis_angle_deg": 0.02828613938715135,
+      "shared_point3d": 1721,
+      "overlap_ratio": 0.6990251827782291,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "137.png",
+      "after": "138.png",
+      "center_distance": 0.17494673753965542,
+      "optical_axis_angle_deg": 0.0743611087392385,
+      "shared_point3d": 1662,
+      "overlap_ratio": 0.7054329371816639,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "138.png",
+      "after": "139.png",
+      "center_distance": 0.21649371064491033,
+      "optical_axis_angle_deg": 0.05485946244795638,
+      "shared_point3d": 1598,
+      "overlap_ratio": 0.6981214504150284,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "139.png",
+      "after": "140.png",
+      "center_distance": 0.23440722343582823,
+      "optical_axis_angle_deg": 0.07438697330472707,
+      "shared_point3d": 1511,
+      "overlap_ratio": 0.6871305138699408,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "140.png",
+      "after": "141.png",
+      "center_distance": 0.23431583791918015,
+      "optical_axis_angle_deg": 0.08175818736630612,
+      "shared_point3d": 1489,
+      "overlap_ratio": 0.6915931258708778,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "141.png",
+      "after": "142.png",
+      "center_distance": 0.23977440664465757,
+      "optical_axis_angle_deg": 0.07720181244261654,
+      "shared_point3d": 1444,
+      "overlap_ratio": 0.696911196911197,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "142.png",
+      "after": "143.png",
+      "center_distance": 0.24835231725721427,
+      "optical_axis_angle_deg": 0.3132888742326171,
+      "shared_point3d": 1335,
+      "overlap_ratio": 0.6732223903177005,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "143.png",
+      "after": "144.png",
+      "center_distance": 0.23793983331817042,
+      "optical_axis_angle_deg": 0.15557493350903706,
+      "shared_point3d": 1296,
+      "overlap_ratio": 0.653555219364599,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "144.png",
+      "after": "145.png",
+      "center_distance": 0.22967564655963205,
+      "optical_axis_angle_deg": 0.22052586109261765,
+      "shared_point3d": 1282,
+      "overlap_ratio": 0.6918510523475445,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "145.png",
+      "after": "146.png",
+      "center_distance": 0.2355260902955056,
+      "optical_axis_angle_deg": 0.1406365004264609,
+      "shared_point3d": 1228,
+      "overlap_ratio": 0.6627091203453859,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "146.png",
+      "after": "147.png",
+      "center_distance": 0.23703590716793702,
+      "optical_axis_angle_deg": 0.2784638574499779,
+      "shared_point3d": 1228,
+      "overlap_ratio": 0.6652221018418202,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "147.png",
+      "after": "148.png",
+      "center_distance": 0.24119051526144852,
+      "optical_axis_angle_deg": 0.39540260272026667,
+      "shared_point3d": 1229,
+      "overlap_ratio": 0.6657638136511376,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "148.png",
+      "after": "149.png",
+      "center_distance": 0.22924286415609466,
+      "optical_axis_angle_deg": 0.3535256777417099,
+      "shared_point3d": 1169,
+      "overlap_ratio": 0.6563728242560359,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "149.png",
+      "after": "150.png",
+      "center_distance": 0.2296347443250714,
+      "optical_axis_angle_deg": 0.33384360141272645,
+      "shared_point3d": 1196,
+      "overlap_ratio": 0.6795454545454546,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "150.png",
+      "after": "151.png",
+      "center_distance": 0.24459022571229333,
+      "optical_axis_angle_deg": 0.14157509529685725,
+      "shared_point3d": 1141,
+      "overlap_ratio": 0.6482954545454546,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "151.png",
+      "after": "152.png",
+      "center_distance": 0.18517336283466088,
+      "optical_axis_angle_deg": 0.14518814278756376,
+      "shared_point3d": 1164,
+      "overlap_ratio": 0.6807017543859649,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "152.png",
+      "after": "153.png",
+      "center_distance": 0.1382635572311075,
+      "optical_axis_angle_deg": 0.04854745199151175,
+      "shared_point3d": 1144,
+      "overlap_ratio": 0.6733372572101236,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "153.png",
+      "after": "154.png",
+      "center_distance": 0.19960683849133615,
+      "optical_axis_angle_deg": 0.28089327749863235,
+      "shared_point3d": 1063,
+      "overlap_ratio": 0.6831619537275064,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "154.png",
+      "after": "155.png",
+      "center_distance": 0.24025949301478544,
+      "optical_axis_angle_deg": 0.5516639228057294,
+      "shared_point3d": 964,
+      "overlap_ratio": 0.6354647330257086,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "155.png",
+      "after": "156.png",
+      "center_distance": 0.23232086027152163,
+      "optical_axis_angle_deg": 0.3932819260836358,
+      "shared_point3d": 981,
+      "overlap_ratio": 0.6466710613052077,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "156.png",
+      "after": "157.png",
+      "center_distance": 0.24014286086043796,
+      "optical_axis_angle_deg": 5.105624637432018,
+      "shared_point3d": 1026,
+      "overlap_ratio": 0.6675341574495771,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "157.png",
+      "after": "158.png",
+      "center_distance": 0.2438213489104836,
+      "optical_axis_angle_deg": 1.919198389488128,
+      "shared_point3d": 1692,
+      "overlap_ratio": 0.6861313868613139,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "158.png",
+      "after": "159.png",
+      "center_distance": 0.13145997366623088,
+      "optical_axis_angle_deg": 15.215965854695048,
+      "shared_point3d": 1812,
+      "overlap_ratio": 0.5542979504435607,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "159.png",
+      "after": "160.png",
+      "center_distance": 0.107697224213388,
+      "optical_axis_angle_deg": 0.2200002178378637,
+      "shared_point3d": 2759,
+      "overlap_ratio": 0.782695035460993,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "160.png",
+      "after": "161.png",
+      "center_distance": 0.16179505638407252,
+      "optical_axis_angle_deg": 0.18709171154935736,
+      "shared_point3d": 2394,
+      "overlap_ratio": 0.7446345256609642,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "161.png",
+      "after": "162.png",
+      "center_distance": 2.4732632071638614,
+      "optical_axis_angle_deg": 35.52252214410643,
+      "shared_point3d": 0,
+      "overlap_ratio": 0.0,
+      "break": true,
+      "reasons": [
+        "center_distance_jump",
+        "optical_axis_jump",
+        "low_adjacent_coview"
+      ]
+    },
+    {
+      "before": "162.png",
+      "after": "163.png",
+      "center_distance": 0.1045970071312879,
+      "optical_axis_angle_deg": 0.05237666458602763,
+      "shared_point3d": 247,
+      "overlap_ratio": 0.8125,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "163.png",
+      "after": "164.png",
+      "center_distance": 0.11354268894115918,
+      "optical_axis_angle_deg": 0.018635198293172006,
+      "shared_point3d": 357,
+      "overlap_ratio": 0.7693965517241379,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "164.png",
+      "after": "165.png",
+      "center_distance": 0.1176782461164231,
+      "optical_axis_angle_deg": 0.2030828578656883,
+      "shared_point3d": 344,
+      "overlap_ratio": 0.6254545454545455,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "165.png",
+      "after": "166.png",
+      "center_distance": 0.1424596523174637,
+      "optical_axis_angle_deg": 0.2128530240959478,
+      "shared_point3d": 383,
+      "overlap_ratio": 0.6415410385259631,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "166.png",
+      "after": "167.png",
+      "center_distance": 0.0716034907684179,
+      "optical_axis_angle_deg": 0.39083090142429183,
+      "shared_point3d": 478,
+      "overlap_ratio": 0.6732394366197183,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "167.png",
+      "after": "168.png",
+      "center_distance": 0.13141487508565344,
+      "optical_axis_angle_deg": 0.15243763234268548,
+      "shared_point3d": 438,
+      "overlap_ratio": 0.5991792065663475,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "168.png",
+      "after": "169.png",
+      "center_distance": 0.2181361146980985,
+      "optical_axis_angle_deg": 0.38731648286274367,
+      "shared_point3d": 445,
+      "overlap_ratio": 0.6054421768707483,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "169.png",
+      "after": "170.png",
+      "center_distance": 0.1225788226587104,
+      "optical_axis_angle_deg": 0.41423722408606295,
+      "shared_point3d": 551,
+      "overlap_ratio": 0.6406976744186047,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "170.png",
+      "after": "171.png",
+      "center_distance": 0.12026339568738115,
+      "optical_axis_angle_deg": 0.25609305995682774,
+      "shared_point3d": 668,
+      "overlap_ratio": 0.6594274432379073,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "171.png",
+      "after": "172.png",
+      "center_distance": 0.0710390962782576,
+      "optical_axis_angle_deg": 0.2597519954991056,
+      "shared_point3d": 756,
+      "overlap_ratio": 0.6702127659574468,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "172.png",
+      "after": "173.png",
+      "center_distance": 0.17970123892830614,
+      "optical_axis_angle_deg": 0.24539253626177895,
+      "shared_point3d": 717,
+      "overlap_ratio": 0.6306068601583114,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "173.png",
+      "after": "174.png",
+      "center_distance": 0.21293021296433826,
+      "optical_axis_angle_deg": 0.16470793459836414,
+      "shared_point3d": 709,
+      "overlap_ratio": 0.587893864013267,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "174.png",
+      "after": "175.png",
+      "center_distance": 0.4930405507072276,
+      "optical_axis_angle_deg": 0.6591416554083249,
+      "shared_point3d": 731,
+      "overlap_ratio": 0.5605828220858896,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "175.png",
+      "after": "176.png",
+      "center_distance": 1.5519143562185231,
+      "optical_axis_angle_deg": 7.4158969985293535,
+      "shared_point3d": 782,
+      "overlap_ratio": 0.4654761904761905,
+      "break": true,
+      "reasons": [
+        "center_distance_jump"
+      ]
+    },
+    {
+      "before": "176.png",
+      "after": "177.png",
+      "center_distance": 0.2621067743732821,
+      "optical_axis_angle_deg": 0.5758746361730172,
+      "shared_point3d": 1187,
+      "overlap_ratio": 0.6587125416204217,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "177.png",
+      "after": "178.png",
+      "center_distance": 0.17747621239693231,
+      "optical_axis_angle_deg": 0.4027438829788198,
+      "shared_point3d": 1327,
+      "overlap_ratio": 0.7364039955604883,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "178.png",
+      "after": "179.png",
+      "center_distance": 0.23568071197583626,
+      "optical_axis_angle_deg": 0.3753427483050244,
+      "shared_point3d": 1340,
+      "overlap_ratio": 0.7101218865924749,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "179.png",
+      "after": "180.png",
+      "center_distance": 0.26052067872399043,
+      "optical_axis_angle_deg": 0.18911030987239624,
+      "shared_point3d": 1377,
+      "overlap_ratio": 0.6902255639097744,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "180.png",
+      "after": "181.png",
+      "center_distance": 0.28111446192761896,
+      "optical_axis_angle_deg": 0.12415286335100686,
+      "shared_point3d": 1377,
+      "overlap_ratio": 0.6944024205748865,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "181.png",
+      "after": "182.png",
+      "center_distance": 0.2522160588441383,
+      "optical_axis_angle_deg": 0.15943271861679262,
+      "shared_point3d": 1408,
+      "overlap_ratio": 0.7100353000504287,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "182.png",
+      "after": "183.png",
+      "center_distance": 0.2507605765856394,
+      "optical_axis_angle_deg": 0.09091864319561413,
+      "shared_point3d": 1446,
+      "overlap_ratio": 0.7091711623344776,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "183.png",
+      "after": "184.png",
+      "center_distance": 0.2665557758497174,
+      "optical_axis_angle_deg": 4.51420792593739,
+      "shared_point3d": 1349,
+      "overlap_ratio": 0.6792547834843907,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "184.png",
+      "after": "185.png",
+      "center_distance": 0.26187537183076515,
+      "optical_axis_angle_deg": 7.090336606634484,
+      "shared_point3d": 1195,
+      "overlap_ratio": 0.6194919647485744,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "185.png",
+      "after": "186.png",
+      "center_distance": 0.2726616789198383,
+      "optical_axis_angle_deg": 3.996187431831933,
+      "shared_point3d": 1209,
+      "overlap_ratio": 0.6296875,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "186.png",
+      "after": "187.png",
+      "center_distance": 0.27719976250862227,
+      "optical_axis_angle_deg": 0.08289732001609162,
+      "shared_point3d": 1312,
+      "overlap_ratio": 0.6833333333333333,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "187.png",
+      "after": "188.png",
+      "center_distance": 0.2703253339692469,
+      "optical_axis_angle_deg": 0.2005119577949246,
+      "shared_point3d": 1520,
+      "overlap_ratio": 0.7328833172613307,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "188.png",
+      "after": "189.png",
+      "center_distance": 0.2785032281931951,
+      "optical_axis_angle_deg": 0.05399399233363099,
+      "shared_point3d": 1634,
+      "overlap_ratio": 0.7207763564181738,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "189.png",
+      "after": "190.png",
+      "center_distance": 0.24362047770495715,
+      "optical_axis_angle_deg": 0.1573004752772651,
+      "shared_point3d": 1589,
+      "overlap_ratio": 0.6843238587424634,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "190.png",
+      "after": "191.png",
+      "center_distance": 0.24378063456983098,
+      "optical_axis_angle_deg": 0.09615792830605566,
+      "shared_point3d": 1654,
+      "overlap_ratio": 0.6829066886870355,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "191.png",
+      "after": "192.png",
+      "center_distance": 0.27308383197990765,
+      "optical_axis_angle_deg": 5.8128075232390835,
+      "shared_point3d": 1840,
+      "overlap_ratio": 0.731610337972167,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "192.png",
+      "after": "193.png",
+      "center_distance": 0.28216936192492287,
+      "optical_axis_angle_deg": 2.273659739001342,
+      "shared_point3d": 1978,
+      "overlap_ratio": 0.7130497476568133,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "193.png",
+      "after": "194.png",
+      "center_distance": 0.24018424121880066,
+      "optical_axis_angle_deg": 0.0941377812609161,
+      "shared_point3d": 2145,
+      "overlap_ratio": 0.7195571955719557,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "194.png",
+      "after": "195.png",
+      "center_distance": 0.226230339159209,
+      "optical_axis_angle_deg": 0.15254025000712357,
+      "shared_point3d": 2138,
+      "overlap_ratio": 0.6837224176527023,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "195.png",
+      "after": "196.png",
+      "center_distance": 0.24861701471615955,
+      "optical_axis_angle_deg": 0.3324073177145326,
+      "shared_point3d": 2348,
+      "overlap_ratio": 0.7121625720351835,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "196.png",
+      "after": "197.png",
+      "center_distance": 0.18936444031634933,
+      "optical_axis_angle_deg": 0.44705474656225536,
+      "shared_point3d": 2492,
+      "overlap_ratio": 0.7140401146131805,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "197.png",
+      "after": "198.png",
+      "center_distance": 0.13349278994206712,
+      "optical_axis_angle_deg": 5.8286071497482075,
+      "shared_point3d": 2348,
+      "overlap_ratio": 0.6839498980483542,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "198.png",
+      "after": "199.png",
+      "center_distance": 0.08110012561580707,
+      "optical_axis_angle_deg": 3.5943652742394354,
+      "shared_point3d": 2496,
+      "overlap_ratio": 0.7298245614035088,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "199.png",
+      "after": "200.png",
+      "center_distance": 0.1411765377556008,
+      "optical_axis_angle_deg": 0.40970982349307034,
+      "shared_point3d": 2500,
+      "overlap_ratio": 0.7309941520467836,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "200.png",
+      "after": "201.png",
+      "center_distance": 0.22541163239755338,
+      "optical_axis_angle_deg": 0.38722093853956807,
+      "shared_point3d": 2410,
+      "overlap_ratio": 0.6633636113404899,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "201.png",
+      "after": "202.png",
+      "center_distance": 0.258867873641392,
+      "optical_axis_angle_deg": 5.408931762633085,
+      "shared_point3d": 2269,
+      "overlap_ratio": 0.6462546283110225,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "202.png",
+      "after": "203.png",
+      "center_distance": 0.28062397979959525,
+      "optical_axis_angle_deg": 2.5693552003731117,
+      "shared_point3d": 2332,
+      "overlap_ratio": 0.7135862913096696,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "203.png",
+      "after": "204.png",
+      "center_distance": 0.28385109933906183,
+      "optical_axis_angle_deg": 0.6780703758105738,
+      "shared_point3d": 2387,
+      "overlap_ratio": 0.7727419876982843,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "204.png",
+      "after": "205.png",
+      "center_distance": 0.23511399406721795,
+      "optical_axis_angle_deg": 19.95302757414337,
+      "shared_point3d": 1273,
+      "overlap_ratio": 0.7307692307692307,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "205.png",
+      "after": "206.png",
+      "center_distance": 0.007113156039592487,
+      "optical_axis_angle_deg": 39.954032726128624,
+      "shared_point3d": 102,
+      "overlap_ratio": 0.19844357976653695,
+      "break": true,
+      "reasons": [
+        "optical_axis_jump"
+      ]
+    },
+    {
+      "before": "206.png",
+      "after": "207.png",
+      "center_distance": 0.00035521022433158457,
+      "optical_axis_angle_deg": 10.753402434049706,
+      "shared_point3d": 278,
+      "overlap_ratio": 0.5408560311284046,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "207.png",
+      "after": "208.png",
+      "center_distance": 8.420615718239235e-05,
+      "optical_axis_angle_deg": 16.275536164361682,
+      "shared_point3d": 468,
+      "overlap_ratio": 0.5318181818181819,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "208.png",
+      "after": "209.png",
+      "center_distance": 0.00024033869709088132,
+      "optical_axis_angle_deg": 11.50162044884676,
+      "shared_point3d": 826,
+      "overlap_ratio": 0.644808743169399,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "209.png",
+      "after": "210.png",
+      "center_distance": 0.03321114281090629,
+      "optical_axis_angle_deg": 9.691146166255313,
+      "shared_point3d": 1047,
+      "overlap_ratio": 0.6852094240837696,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "210.png",
+      "after": "211.png",
+      "center_distance": 0.1805875048471608,
+      "optical_axis_angle_deg": 1.4651393532481503,
+      "shared_point3d": 1397,
+      "overlap_ratio": 0.7383720930232558,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "211.png",
+      "after": "212.png",
+      "center_distance": 0.2452931508169114,
+      "optical_axis_angle_deg": 0.20368103323521194,
+      "shared_point3d": 1416,
+      "overlap_ratio": 0.6778362853039732,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "212.png",
+      "after": "213.png",
+      "center_distance": 0.2715651709692061,
+      "optical_axis_angle_deg": 0.23615052537228318,
+      "shared_point3d": 1508,
+      "overlap_ratio": 0.7208413001912046,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "213.png",
+      "after": "214.png",
+      "center_distance": 0.26687624991510484,
+      "optical_axis_angle_deg": 0.3312686815563914,
+      "shared_point3d": 1595,
+      "overlap_ratio": 0.7197653429602888,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "214.png",
+      "after": "215.png",
+      "center_distance": 0.2782418088303313,
+      "optical_axis_angle_deg": 2.0858458711012258,
+      "shared_point3d": 1552,
+      "overlap_ratio": 0.6876384581302614,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "215.png",
+      "after": "216.png",
+      "center_distance": 0.2522584348403945,
+      "optical_axis_angle_deg": 0.32953190102312013,
+      "shared_point3d": 1746,
+      "overlap_ratio": 0.7392040643522438,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "216.png",
+      "after": "217.png",
+      "center_distance": 0.26296220503111933,
+      "optical_axis_angle_deg": 1.9950893926965096,
+      "shared_point3d": 1673,
+      "overlap_ratio": 0.691036761668732,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "217.png",
+      "after": "218.png",
+      "center_distance": 0.2668397720428479,
+      "optical_axis_angle_deg": 1.793719629447091,
+      "shared_point3d": 1787,
+      "overlap_ratio": 0.7326773267732677,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "218.png",
+      "after": "219.png",
+      "center_distance": 0.3078897909544771,
+      "optical_axis_angle_deg": 0.2313175390309516,
+      "shared_point3d": 1820,
+      "overlap_ratio": 0.724233983286908,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "219.png",
+      "after": "220.png",
+      "center_distance": 0.3052385322387324,
+      "optical_axis_angle_deg": 1.816239656251769,
+      "shared_point3d": 1708,
+      "overlap_ratio": 0.6957230142566192,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "220.png",
+      "after": "221.png",
+      "center_distance": 0.30421872837099306,
+      "optical_axis_angle_deg": 0.10898303469517524,
+      "shared_point3d": 1647,
+      "overlap_ratio": 0.6876826722338205,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "221.png",
+      "after": "222.png",
+      "center_distance": 0.28349521585377524,
+      "optical_axis_angle_deg": 0.39456275739595,
+      "shared_point3d": 1532,
+      "overlap_ratio": 0.6848457755923111,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "222.png",
+      "after": "223.png",
+      "center_distance": 0.25995600307759686,
+      "optical_axis_angle_deg": 0.1283375805480611,
+      "shared_point3d": 1381,
+      "overlap_ratio": 0.6459307764265669,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "223.png",
+      "after": "224.png",
+      "center_distance": 0.26411313412918863,
+      "optical_axis_angle_deg": 0.3862696178208343,
+      "shared_point3d": 1441,
+      "overlap_ratio": 0.6739943872778298,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "224.png",
+      "after": "225.png",
+      "center_distance": 0.1609133661802479,
+      "optical_axis_angle_deg": 0.23848505919221438,
+      "shared_point3d": 1443,
+      "overlap_ratio": 0.6714751046998604,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "225.png",
+      "after": "226.png",
+      "center_distance": 0.12470096261774374,
+      "optical_axis_angle_deg": 0.5322936634850107,
+      "shared_point3d": 1346,
+      "overlap_ratio": 0.6521317829457365,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "226.png",
+      "after": "227.png",
+      "center_distance": 0.2351759753694004,
+      "optical_axis_angle_deg": 3.6318559261849286,
+      "shared_point3d": 1231,
+      "overlap_ratio": 0.660053619302949,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "227.png",
+      "after": "228.png",
+      "center_distance": 0.2626612995605101,
+      "optical_axis_angle_deg": 8.41526614074094,
+      "shared_point3d": 1236,
+      "overlap_ratio": 0.6627345844504021,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "228.png",
+      "after": "229.png",
+      "center_distance": 0.24556228887539153,
+      "optical_axis_angle_deg": 0.28245970754977523,
+      "shared_point3d": 1239,
+      "overlap_ratio": 0.6755725190839694,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "229.png",
+      "after": "230.png",
+      "center_distance": 0.22935390014418375,
+      "optical_axis_angle_deg": 1.4454387459873153,
+      "shared_point3d": 1159,
+      "overlap_ratio": 0.6389195148842337,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "230.png",
+      "after": "231.png",
+      "center_distance": 0.25544374467365766,
+      "optical_axis_angle_deg": 0.33446155177450726,
+      "shared_point3d": 921,
+      "overlap_ratio": 0.5752654590880699,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "231.png",
+      "after": "232.png",
+      "center_distance": 0.2148961577509479,
+      "optical_axis_angle_deg": 6.098794458246523,
+      "shared_point3d": 1022,
+      "overlap_ratio": 0.6383510306058713,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "232.png",
+      "after": "233.png",
+      "center_distance": 0.15784371068727954,
+      "optical_axis_angle_deg": 3.0171659456201154,
+      "shared_point3d": 1149,
+      "overlap_ratio": 0.6680232558139535,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "233.png",
+      "after": "234.png",
+      "center_distance": 5.090660232173719,
+      "optical_axis_angle_deg": 153.71358965553023,
+      "shared_point3d": 0,
+      "overlap_ratio": 0.0,
+      "break": true,
+      "reasons": [
+        "center_distance_jump",
+        "optical_axis_jump",
+        "low_adjacent_coview"
+      ]
+    },
+    {
+      "before": "234.png",
+      "after": "235.png",
+      "center_distance": 0.4740328647605089,
+      "optical_axis_angle_deg": 10.208589555021938,
+      "shared_point3d": 571,
+      "overlap_ratio": 0.5341440598690365,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "235.png",
+      "after": "236.png",
+      "center_distance": 0.26141324178133646,
+      "optical_axis_angle_deg": 8.617685476903118,
+      "shared_point3d": 634,
+      "overlap_ratio": 0.6891304347826087,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "236.png",
+      "after": "237.png",
+      "center_distance": 0.26724807162560893,
+      "optical_axis_angle_deg": 9.174586254409885,
+      "shared_point3d": 508,
+      "overlap_ratio": 0.5812356979405034,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "237.png",
+      "after": "238.png",
+      "center_distance": 0.2631219015506986,
+      "optical_axis_angle_deg": 13.45551980723429,
+      "shared_point3d": 382,
+      "overlap_ratio": 0.516914749661705,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "238.png",
+      "after": "239.png",
+      "center_distance": 0.14504768924747888,
+      "optical_axis_angle_deg": 35.442852851024305,
+      "shared_point3d": 406,
+      "overlap_ratio": 0.5493910690121786,
+      "break": true,
+      "reasons": [
+        "optical_axis_jump"
+      ]
+    },
+    {
+      "before": "239.png",
+      "after": "240.png",
+      "center_distance": 0.032137081522453106,
+      "optical_axis_angle_deg": 0.43780462451945285,
+      "shared_point3d": 925,
+      "overlap_ratio": 0.828853046594982,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "240.png",
+      "after": "241.png",
+      "center_distance": 0.17957138129215583,
+      "optical_axis_angle_deg": 23.73377153218844,
+      "shared_point3d": 705,
+      "overlap_ratio": 0.6222418358340689,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "241.png",
+      "after": "242.png",
+      "center_distance": 0.22981884660728427,
+      "optical_axis_angle_deg": 15.766748893900614,
+      "shared_point3d": 574,
+      "overlap_ratio": 0.7513089005235603,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "242.png",
+      "after": "243.png",
+      "center_distance": 0.2398918766450753,
+      "optical_axis_angle_deg": 15.321376277982308,
+      "shared_point3d": 426,
+      "overlap_ratio": 0.570281124497992,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "243.png",
+      "after": "244.png",
+      "center_distance": 0.24456326324142588,
+      "optical_axis_angle_deg": 8.294707507476181,
+      "shared_point3d": 350,
+      "overlap_ratio": 0.704225352112676,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "244.png",
+      "after": "245.png",
+      "center_distance": 0.2561180536396498,
+      "optical_axis_angle_deg": 10.496785267897604,
+      "shared_point3d": 168,
+      "overlap_ratio": 0.6640316205533597,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "245.png",
+      "after": "246.png",
+      "center_distance": 8.885837201168009,
+      "optical_axis_angle_deg": 146.16592807302447,
+      "shared_point3d": 0,
+      "overlap_ratio": 0.0,
+      "break": true,
+      "reasons": [
+        "center_distance_jump",
+        "optical_axis_jump",
+        "low_adjacent_coview"
+      ]
+    },
+    {
+      "before": "246.png",
+      "after": "247.png",
+      "center_distance": 0.24507523874973575,
+      "optical_axis_angle_deg": 21.598987685386696,
+      "shared_point3d": 633,
+      "overlap_ratio": 0.7834158415841584,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "247.png",
+      "after": "248.png",
+      "center_distance": 0.269935285072073,
+      "optical_axis_angle_deg": 0.23185344342816014,
+      "shared_point3d": 929,
+      "overlap_ratio": 0.7414205905826018,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "248.png",
+      "after": "249.png",
+      "center_distance": 0.27189894795181213,
+      "optical_axis_angle_deg": 0.28989303308657405,
+      "shared_point3d": 931,
+      "overlap_ratio": 0.6354948805460751,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "249.png",
+      "after": "250.png",
+      "center_distance": 0.19378029724057216,
+      "optical_axis_angle_deg": 9.093519537075213,
+      "shared_point3d": 994,
+      "overlap_ratio": 0.6662198391420912,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "250.png",
+      "after": "251.png",
+      "center_distance": 0.2483186778478214,
+      "optical_axis_angle_deg": 0.14290983927742673,
+      "shared_point3d": 1096,
+      "overlap_ratio": 0.7144719687092569,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "251.png",
+      "after": "252.png",
+      "center_distance": 0.25951892084525274,
+      "optical_axis_angle_deg": 4.465227562038723,
+      "shared_point3d": 950,
+      "overlap_ratio": 0.7084265473527218,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "252.png",
+      "after": "253.png",
+      "center_distance": 0.23963045895071566,
+      "optical_axis_angle_deg": 22.46797995545142,
+      "shared_point3d": 663,
+      "overlap_ratio": 0.5372771474878444,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "253.png",
+      "after": "254.png",
+      "center_distance": 0.08254557264030173,
+      "optical_axis_angle_deg": 30.481667832447467,
+      "shared_point3d": 412,
+      "overlap_ratio": 0.6032210834553441,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "254.png",
+      "after": "255.png",
+      "center_distance": 0.0178319055158725,
+      "optical_axis_angle_deg": 73.392629794283,
+      "shared_point3d": 0,
+      "overlap_ratio": 0.0,
+      "break": true,
+      "reasons": [
+        "optical_axis_jump",
+        "low_adjacent_coview"
+      ]
+    },
+    {
+      "before": "255.png",
+      "after": "256.png",
+      "center_distance": 0.08677047540218653,
+      "optical_axis_angle_deg": 0.16289336161411855,
+      "shared_point3d": 381,
+      "overlap_ratio": 0.7215909090909091,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "256.png",
+      "after": "257.png",
+      "center_distance": 0.20648003178704016,
+      "optical_axis_angle_deg": 5.965326623967508,
+      "shared_point3d": 318,
+      "overlap_ratio": 0.5628318584070796,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "257.png",
+      "after": "258.png",
+      "center_distance": 0.23448745498954462,
+      "optical_axis_angle_deg": 20.188266703813433,
+      "shared_point3d": 260,
+      "overlap_ratio": 0.47706422018348627,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "258.png",
+      "after": "259.png",
+      "center_distance": 0.10027787726871512,
+      "optical_axis_angle_deg": 7.305972442858815,
+      "shared_point3d": 348,
+      "overlap_ratio": 0.6385321100917432,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "259.png",
+      "after": "260.png",
+      "center_distance": 0.09118569468799345,
+      "optical_axis_angle_deg": 2.104901897135308,
+      "shared_point3d": 389,
+      "overlap_ratio": 0.6505016722408027,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "260.png",
+      "after": "261.png",
+      "center_distance": 0.11612531495397672,
+      "optical_axis_angle_deg": 3.7611997405527013,
+      "shared_point3d": 343,
+      "overlap_ratio": 0.618018018018018,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "261.png",
+      "after": "262.png",
+      "center_distance": 0.16561381592959218,
+      "optical_axis_angle_deg": 12.417073578654138,
+      "shared_point3d": 264,
+      "overlap_ratio": 0.4756756756756757,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "262.png",
+      "after": "263.png",
+      "center_distance": 0.22578775754291744,
+      "optical_axis_angle_deg": 0.2443974857426029,
+      "shared_point3d": 403,
+      "overlap_ratio": 0.6152671755725191,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "263.png",
+      "after": "264.png",
+      "center_distance": 0.2519048943925723,
+      "optical_axis_angle_deg": 2.142853721252287,
+      "shared_point3d": 437,
+      "overlap_ratio": 0.667175572519084,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "264.png",
+      "after": "265.png",
+      "center_distance": 0.2680020730102543,
+      "optical_axis_angle_deg": 6.775453960951192,
+      "shared_point3d": 460,
+      "overlap_ratio": 0.6258503401360545,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "265.png",
+      "after": "266.png",
+      "center_distance": 0.25834076534300265,
+      "optical_axis_angle_deg": 7.140305980914132,
+      "shared_point3d": 549,
+      "overlap_ratio": 0.6413551401869159,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "266.png",
+      "after": "267.png",
+      "center_distance": 0.2736609224220627,
+      "optical_axis_angle_deg": 0.17384852032129958,
+      "shared_point3d": 674,
+      "overlap_ratio": 0.6767068273092369,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "267.png",
+      "after": "268.png",
+      "center_distance": 0.2525541519012794,
+      "optical_axis_angle_deg": 0.07166871662351534,
+      "shared_point3d": 723,
+      "overlap_ratio": 0.6688251618871416,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "268.png",
+      "after": "269.png",
+      "center_distance": 0.2066015870272577,
+      "optical_axis_angle_deg": 0.23184989753164104,
+      "shared_point3d": 751,
+      "overlap_ratio": 0.6519097222222222,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "269.png",
+      "after": "270.png",
+      "center_distance": 0.09859293006765507,
+      "optical_axis_angle_deg": 0.20094907405372964,
+      "shared_point3d": 841,
+      "overlap_ratio": 0.6733386709367494,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "270.png",
+      "after": "271.png",
+      "center_distance": 0.13414730447256387,
+      "optical_axis_angle_deg": 0.1505516519832573,
+      "shared_point3d": 874,
+      "overlap_ratio": 0.696969696969697,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "271.png",
+      "after": "272.png",
+      "center_distance": 0.19256257108770924,
+      "optical_axis_angle_deg": 0.31843044023839345,
+      "shared_point3d": 796,
+      "overlap_ratio": 0.6347687400318979,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "272.png",
+      "after": "273.png",
+      "center_distance": 0.2130179036224091,
+      "optical_axis_angle_deg": 0.2640678627211193,
+      "shared_point3d": 774,
+      "overlap_ratio": 0.6167330677290837,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "273.png",
+      "after": "274.png",
+      "center_distance": 0.24304555770064173,
+      "optical_axis_angle_deg": 11.480587672857533,
+      "shared_point3d": 589,
+      "overlap_ratio": 0.5696324951644101,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "274.png",
+      "after": "275.png",
+      "center_distance": 0.07277297548840513,
+      "optical_axis_angle_deg": 87.06262563004708,
+      "shared_point3d": 0,
+      "overlap_ratio": 0.0,
+      "break": true,
+      "reasons": [
+        "optical_axis_jump",
+        "low_adjacent_coview"
+      ]
+    },
+    {
+      "before": "275.png",
+      "after": "276.png",
+      "center_distance": 0.06130849817835405,
+      "optical_axis_angle_deg": 0.220241014850763,
+      "shared_point3d": 416,
+      "overlap_ratio": 0.8172888015717092,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "276.png",
+      "after": "277.png",
+      "center_distance": 0.20185776136524303,
+      "optical_axis_angle_deg": 0.1491789893803233,
+      "shared_point3d": 368,
+      "overlap_ratio": 0.7159533073929961,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "277.png",
+      "after": "278.png",
+      "center_distance": 0.2425954945470715,
+      "optical_axis_angle_deg": 0.2117832999661697,
+      "shared_point3d": 326,
+      "overlap_ratio": 0.6342412451361867,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "278.png",
+      "after": "279.png",
+      "center_distance": 0.20649631180434858,
+      "optical_axis_angle_deg": 0.18861235428864245,
+      "shared_point3d": 361,
+      "overlap_ratio": 0.7616033755274262,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "279.png",
+      "after": "280.png",
+      "center_distance": 0.022480722889725604,
+      "optical_axis_angle_deg": 10.381888473976929,
+      "shared_point3d": 329,
+      "overlap_ratio": 0.6940928270042194,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "280.png",
+      "after": "281.png",
+      "center_distance": 0.002552201005127156,
+      "optical_axis_angle_deg": 8.678144125140046,
+      "shared_point3d": 379,
+      "overlap_ratio": 0.7191650853889943,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "281.png",
+      "after": "282.png",
+      "center_distance": 0.027894441687296656,
+      "optical_axis_angle_deg": 27.40544120789109,
+      "shared_point3d": 235,
+      "overlap_ratio": 0.5353075170842825,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "282.png",
+      "after": "283.png",
+      "center_distance": 0.004546775518077284,
+      "optical_axis_angle_deg": 76.71635770396593,
+      "shared_point3d": 0,
+      "overlap_ratio": 0.0,
+      "break": true,
+      "reasons": [
+        "optical_axis_jump",
+        "low_adjacent_coview"
+      ]
+    },
+    {
+      "before": "283.png",
+      "after": "284.png",
+      "center_distance": 0.07409260012162476,
+      "optical_axis_angle_deg": 0.1227007746941485,
+      "shared_point3d": 933,
+      "overlap_ratio": 0.643448275862069,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "284.png",
+      "after": "285.png",
+      "center_distance": 0.13344107031966954,
+      "optical_axis_angle_deg": 0.15024120514634154,
+      "shared_point3d": 909,
+      "overlap_ratio": 0.559040590405904,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "285.png",
+      "after": "286.png",
+      "center_distance": 0.08932628440298354,
+      "optical_axis_angle_deg": 0.2112359985587426,
+      "shared_point3d": 1100,
+      "overlap_ratio": 0.6242905788876277,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "286.png",
+      "after": "287.png",
+      "center_distance": 0.06587452162120226,
+      "optical_axis_angle_deg": 0.1672557348016484,
+      "shared_point3d": 1127,
+      "overlap_ratio": 0.6199119911991199,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "287.png",
+      "after": "288.png",
+      "center_distance": 0.14613854927535247,
+      "optical_axis_angle_deg": 0.18695536663021337,
+      "shared_point3d": 954,
+      "overlap_ratio": 0.5389830508474577,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "288.png",
+      "after": "289.png",
+      "center_distance": 0.1715410637794954,
+      "optical_axis_angle_deg": 0.20141120325323275,
+      "shared_point3d": 981,
+      "overlap_ratio": 0.5542372881355933,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "289.png",
+      "after": "290.png",
+      "center_distance": 0.0744959869605937,
+      "optical_axis_angle_deg": 0.18414569174157622,
+      "shared_point3d": 1311,
+      "overlap_ratio": 0.6878279118572928,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "290.png",
+      "after": "291.png",
+      "center_distance": 0.14188453596589276,
+      "optical_axis_angle_deg": 1.51574924174186,
+      "shared_point3d": 1290,
+      "overlap_ratio": 0.6508577194752775,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "291.png",
+      "after": "292.png",
+      "center_distance": 0.016867004656808106,
+      "optical_axis_angle_deg": 6.394790913603022,
+      "shared_point3d": 1414,
+      "overlap_ratio": 0.6471395881006865,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "292.png",
+      "after": "293.png",
+      "center_distance": 0.058427676360436116,
+      "optical_axis_angle_deg": 3.4490102825242626,
+      "shared_point3d": 1442,
+      "overlap_ratio": 0.659954233409611,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "293.png",
+      "after": "294.png",
+      "center_distance": 0.00244507975876185,
+      "optical_axis_angle_deg": 4.618912286290752,
+      "shared_point3d": 1608,
+      "overlap_ratio": 0.7207530255490812,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "294.png",
+      "after": "295.png",
+      "center_distance": 0.12809762786818268,
+      "optical_axis_angle_deg": 16.516517945262244,
+      "shared_point3d": 910,
+      "overlap_ratio": 0.558968058968059,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "295.png",
+      "after": "296.png",
+      "center_distance": 0.04183116917959272,
+      "optical_axis_angle_deg": 5.8537854531438125,
+      "shared_point3d": 986,
+      "overlap_ratio": 0.6056511056511057,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "296.png",
+      "after": "297.png",
+      "center_distance": 0.19297797541697842,
+      "optical_axis_angle_deg": 0.12188971720727411,
+      "shared_point3d": 967,
+      "overlap_ratio": 0.5484968803176404,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "297.png",
+      "after": "298.png",
+      "center_distance": 0.18600230121846342,
+      "optical_axis_angle_deg": 0.20255838471992788,
+      "shared_point3d": 939,
+      "overlap_ratio": 0.5825062034739454,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "298.png",
+      "after": "299.png",
+      "center_distance": 0.1557012826369053,
+      "optical_axis_angle_deg": 4.353368070659404,
+      "shared_point3d": 857,
+      "overlap_ratio": 0.5902203856749312,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "299.png",
+      "after": "300.png",
+      "center_distance": 0.1107701766525711,
+      "optical_axis_angle_deg": 22.27541859153702,
+      "shared_point3d": 468,
+      "overlap_ratio": 0.4941921858500528,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "300.png",
+      "after": "301.png",
+      "center_distance": 0.14618717739675277,
+      "optical_axis_angle_deg": 9.226097382420308,
+      "shared_point3d": 386,
+      "overlap_ratio": 0.5099075297225891,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "301.png",
+      "after": "302.png",
+      "center_distance": 0.20602178414265432,
+      "optical_axis_angle_deg": 0.26130159231739053,
+      "shared_point3d": 364,
+      "overlap_ratio": 0.4808454425363276,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "302.png",
+      "after": "303.png",
+      "center_distance": 0.20002719894300558,
+      "optical_axis_angle_deg": 24.69760780416912,
+      "shared_point3d": 202,
+      "overlap_ratio": 0.3613595706618962,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "303.png",
+      "after": "304.png",
+      "center_distance": 0.10192938289157256,
+      "optical_axis_angle_deg": 0.09198089865158716,
+      "shared_point3d": 339,
+      "overlap_ratio": 0.6324626865671642,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "304.png",
+      "after": "305.png",
+      "center_distance": 0.20945501626018534,
+      "optical_axis_angle_deg": 0.15189612210269438,
+      "shared_point3d": 284,
+      "overlap_ratio": 0.5472061657032755,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "305.png",
+      "after": "306.png",
+      "center_distance": 0.2565027391619664,
+      "optical_axis_angle_deg": 0.1951014091087369,
+      "shared_point3d": 280,
+      "overlap_ratio": 0.5447470817120622,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "306.png",
+      "after": "307.png",
+      "center_distance": 0.2576525945455422,
+      "optical_axis_angle_deg": 8.059149479236911,
+      "shared_point3d": 273,
+      "overlap_ratio": 0.5311284046692607,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "307.png",
+      "after": "308.png",
+      "center_distance": 0.25640276353443586,
+      "optical_axis_angle_deg": 7.789839743871459,
+      "shared_point3d": 307,
+      "overlap_ratio": 0.5376532399299475,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "308.png",
+      "after": "309.png",
+      "center_distance": 0.2675733669416911,
+      "optical_axis_angle_deg": 1.82283760636206,
+      "shared_point3d": 356,
+      "overlap_ratio": 0.6106346483704974,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "309.png",
+      "after": "310.png",
+      "center_distance": 0.2414838236006627,
+      "optical_axis_angle_deg": 4.388034473947389,
+      "shared_point3d": 403,
+      "overlap_ratio": 0.5952732644017725,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "310.png",
+      "after": "311.png",
+      "center_distance": 0.23239377749218584,
+      "optical_axis_angle_deg": 0.04233116496206312,
+      "shared_point3d": 462,
+      "overlap_ratio": 0.6047120418848168,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "311.png",
+      "after": "312.png",
+      "center_distance": 0.15305589801251404,
+      "optical_axis_angle_deg": 7.30216298849606,
+      "shared_point3d": 472,
+      "overlap_ratio": 0.6404341926729986,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "312.png",
+      "after": "313.png",
+      "center_distance": 0.1665250015749169,
+      "optical_axis_angle_deg": 0.13904760436029645,
+      "shared_point3d": 451,
+      "overlap_ratio": 0.6119402985074627,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "313.png",
+      "after": "314.png",
+      "center_distance": 0.13331879953456577,
+      "optical_axis_angle_deg": 0.03460475514526802,
+      "shared_point3d": 494,
+      "overlap_ratio": 0.7243401759530792,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "314.png",
+      "after": "315.png",
+      "center_distance": 0.10121670477745992,
+      "optical_axis_angle_deg": 12.844886589851118,
+      "shared_point3d": 407,
+      "overlap_ratio": 0.6166666666666667,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "315.png",
+      "after": "316.png",
+      "center_distance": 1.914983865027723,
+      "optical_axis_angle_deg": 66.51888881966498,
+      "shared_point3d": 0,
+      "overlap_ratio": 0.0,
+      "break": true,
+      "reasons": [
+        "center_distance_jump",
+        "optical_axis_jump",
+        "low_adjacent_coview"
+      ]
+    },
+    {
+      "before": "316.png",
+      "after": "317.png",
+      "center_distance": 0.0017598110411099544,
+      "optical_axis_angle_deg": 3.315627737322273,
+      "shared_point3d": 808,
+      "overlap_ratio": 0.7419651056014692,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "317.png",
+      "after": "318.png",
+      "center_distance": 0.0011360757925893607,
+      "optical_axis_angle_deg": 0.09103643131975803,
+      "shared_point3d": 790,
+      "overlap_ratio": 0.7287822878228782,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "318.png",
+      "after": "319.png",
+      "center_distance": 0.0014485013078065646,
+      "optical_axis_angle_deg": 0.5157429834559787,
+      "shared_point3d": 783,
+      "overlap_ratio": 0.7256719184430028,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "319.png",
+      "after": "320.png",
+      "center_distance": 0.4075503445093199,
+      "optical_axis_angle_deg": 1.8145871918267817,
+      "shared_point3d": 538,
+      "overlap_ratio": 0.4986098239110287,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "320.png",
+      "after": "321.png",
+      "center_distance": 0.16486630709949607,
+      "optical_axis_angle_deg": 1.4669456757036101,
+      "shared_point3d": 696,
+      "overlap_ratio": 0.5819397993311036,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "321.png",
+      "after": "322.png",
+      "center_distance": 0.16040356661232197,
+      "optical_axis_angle_deg": 1.4034891717642948,
+      "shared_point3d": 752,
+      "overlap_ratio": 0.5902668759811617,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "322.png",
+      "after": "323.png",
+      "center_distance": 0.16590031150980908,
+      "optical_axis_angle_deg": 1.4889279887909252,
+      "shared_point3d": 741,
+      "overlap_ratio": 0.5730858468677494,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "323.png",
+      "after": "324.png",
+      "center_distance": 0.16020672576672723,
+      "optical_axis_angle_deg": 1.4643902540928802,
+      "shared_point3d": 680,
+      "overlap_ratio": 0.5643153526970954,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "324.png",
+      "after": "325.png",
+      "center_distance": 1.0604393241097936,
+      "optical_axis_angle_deg": 3.4299036781761565,
+      "shared_point3d": 352,
+      "overlap_ratio": 0.3220494053064959,
+      "break": true,
+      "reasons": [
+        "center_distance_jump"
+      ]
+    },
+    {
+      "before": "325.png",
+      "after": "326.png",
+      "center_distance": 0.055663259115129385,
+      "optical_axis_angle_deg": 5.213663282894536,
+      "shared_point3d": 693,
+      "overlap_ratio": 0.6340347666971637,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "326.png",
+      "after": "327.png",
+      "center_distance": 0.16576935961447728,
+      "optical_axis_angle_deg": 1.6086148501388573,
+      "shared_point3d": 595,
+      "overlap_ratio": 0.5270150575730735,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "327.png",
+      "after": "328.png",
+      "center_distance": 0.16508145687567485,
+      "optical_axis_angle_deg": 1.6821683449505913,
+      "shared_point3d": 694,
+      "overlap_ratio": 0.6147032772364924,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "328.png",
+      "after": "329.png",
+      "center_distance": 0.16523786562377463,
+      "optical_axis_angle_deg": 1.7225256276594458,
+      "shared_point3d": 731,
+      "overlap_ratio": 0.5787806809184481,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "329.png",
+      "after": "330.png",
+      "center_distance": 0.1649910046041079,
+      "optical_axis_angle_deg": 1.7257423638466243,
+      "shared_point3d": 758,
+      "overlap_ratio": 0.563150074294205,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "330.png",
+      "after": "331.png",
+      "center_distance": 0.16513122491688048,
+      "optical_axis_angle_deg": 1.7626609206869117,
+      "shared_point3d": 738,
+      "overlap_ratio": 0.5561416729464959,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "331.png",
+      "after": "332.png",
+      "center_distance": 0.1643047209162305,
+      "optical_axis_angle_deg": 1.7259875415663375,
+      "shared_point3d": 652,
+      "overlap_ratio": 0.5228548516439455,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "332.png",
+      "after": "333.png",
+      "center_distance": 0.16390685082367054,
+      "optical_axis_angle_deg": 1.706482248015004,
+      "shared_point3d": 686,
+      "overlap_ratio": 0.5669421487603306,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "333.png",
+      "after": "334.png",
+      "center_distance": 0.16506448128446757,
+      "optical_axis_angle_deg": 1.6774044324255986,
+      "shared_point3d": 646,
+      "overlap_ratio": 0.5878070973612375,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "334.png",
+      "after": "335.png",
+      "center_distance": 0.16272478877594024,
+      "optical_axis_angle_deg": 1.6523467078567156,
+      "shared_point3d": 622,
+      "overlap_ratio": 0.5680365296803653,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "335.png",
+      "after": "336.png",
+      "center_distance": 0.16578442866779974,
+      "optical_axis_angle_deg": 1.6188457848062685,
+      "shared_point3d": 548,
+      "overlap_ratio": 0.5943600867678959,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "336.png",
+      "after": "337.png",
+      "center_distance": 0.16405968979504462,
+      "optical_axis_angle_deg": 1.5290904253191904,
+      "shared_point3d": 519,
+      "overlap_ratio": 0.5917901938426454,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "337.png",
+      "after": "338.png",
+      "center_distance": 0.1639583363279187,
+      "optical_axis_angle_deg": 1.546831542806214,
+      "shared_point3d": 487,
+      "overlap_ratio": 0.581145584725537,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "338.png",
+      "after": "339.png",
+      "center_distance": 0.16523032154425468,
+      "optical_axis_angle_deg": 1.6188902903087226,
+      "shared_point3d": 505,
+      "overlap_ratio": 0.6026252983293556,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "339.png",
+      "after": "340.png",
+      "center_distance": 0.16379279905700414,
+      "optical_axis_angle_deg": 1.6002797370476123,
+      "shared_point3d": 452,
+      "overlap_ratio": 0.5939553219448095,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "340.png",
+      "after": "341.png",
+      "center_distance": 0.16767088357118515,
+      "optical_axis_angle_deg": 1.6843094758272001,
+      "shared_point3d": 413,
+      "overlap_ratio": 0.5657534246575342,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "341.png",
+      "after": "342.png",
+      "center_distance": 0.16311254468051634,
+      "optical_axis_angle_deg": 1.6663034898840114,
+      "shared_point3d": 394,
+      "overlap_ratio": 0.5898203592814372,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "342.png",
+      "after": "343.png",
+      "center_distance": 0.16326733490648151,
+      "optical_axis_angle_deg": 1.6920948019051578,
+      "shared_point3d": 390,
+      "overlap_ratio": 0.5918057663125948,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "343.png",
+      "after": "344.png",
+      "center_distance": 0.16572706283960914,
+      "optical_axis_angle_deg": 1.6746265635772937,
+      "shared_point3d": 390,
+      "overlap_ratio": 0.5918057663125948,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "344.png",
+      "after": "345.png",
+      "center_distance": 0.16451003167917624,
+      "optical_axis_angle_deg": 1.6550705543459692,
+      "shared_point3d": 372,
+      "overlap_ratio": 0.5627836611195158,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "345.png",
+      "after": "346.png",
+      "center_distance": 0.16411206646261658,
+      "optical_axis_angle_deg": 1.6672631207521695,
+      "shared_point3d": 383,
+      "overlap_ratio": 0.5794251134644478,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "346.png",
+      "after": "347.png",
+      "center_distance": 0.16277873205279314,
+      "optical_axis_angle_deg": 1.6083253711389414,
+      "shared_point3d": 383,
+      "overlap_ratio": 0.5984375,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "347.png",
+      "after": "348.png",
+      "center_distance": 0.16500736720146672,
+      "optical_axis_angle_deg": 1.6420915700842138,
+      "shared_point3d": 388,
+      "overlap_ratio": 0.60625,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "348.png",
+      "after": "349.png",
+      "center_distance": 0.16249771868225973,
+      "optical_axis_angle_deg": 1.5944501457461715,
+      "shared_point3d": 405,
+      "overlap_ratio": 0.6259659969088099,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "349.png",
+      "after": "350.png",
+      "center_distance": 0.16277639807435554,
+      "optical_axis_angle_deg": 1.675371384258686,
+      "shared_point3d": 378,
+      "overlap_ratio": 0.5981012658227848,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "350.png",
+      "after": "351.png",
+      "center_distance": 0.17558490043321304,
+      "optical_axis_angle_deg": 1.7878815324603017,
+      "shared_point3d": 376,
+      "overlap_ratio": 0.5968253968253968,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "351.png",
+      "after": "352.png",
+      "center_distance": 0.16949083567153428,
+      "optical_axis_angle_deg": 1.7784763087117124,
+      "shared_point3d": 375,
+      "overlap_ratio": 0.6,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "352.png",
+      "after": "353.png",
+      "center_distance": 0.16649535180242586,
+      "optical_axis_angle_deg": 1.7767689339160473,
+      "shared_point3d": 380,
+      "overlap_ratio": 0.6365159128978225,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "353.png",
+      "after": "354.png",
+      "center_distance": 0.15162965316247456,
+      "optical_axis_angle_deg": 1.8160109834170057,
+      "shared_point3d": 354,
+      "overlap_ratio": 0.6310160427807486,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "354.png",
+      "after": "355.png",
+      "center_distance": 0.1531291814511066,
+      "optical_axis_angle_deg": 1.791594840583968,
+      "shared_point3d": 354,
+      "overlap_ratio": 0.6436363636363637,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "355.png",
+      "after": "356.png",
+      "center_distance": 0.14632653758098937,
+      "optical_axis_angle_deg": 1.7914578265991736,
+      "shared_point3d": 352,
+      "overlap_ratio": 0.7272727272727273,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "356.png",
+      "after": "357.png",
+      "center_distance": 0.14408929527604566,
+      "optical_axis_angle_deg": 1.8056667711599508,
+      "shared_point3d": 321,
+      "overlap_ratio": 0.7328767123287672,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "357.png",
+      "after": "358.png",
+      "center_distance": 0.13773544971652876,
+      "optical_axis_angle_deg": 1.713913956128844,
+      "shared_point3d": 252,
+      "overlap_ratio": 0.7019498607242339,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "358.png",
+      "after": "359.png",
+      "center_distance": 7.378308036535053,
+      "optical_axis_angle_deg": 61.626129417191315,
+      "shared_point3d": 0,
+      "overlap_ratio": 0.0,
+      "break": true,
+      "reasons": [
+        "center_distance_jump",
+        "optical_axis_jump",
+        "low_adjacent_coview"
+      ]
+    },
+    {
+      "before": "359.png",
+      "after": "360.png",
+      "center_distance": 0.24789551646486388,
+      "optical_axis_angle_deg": 4.810133131026083,
+      "shared_point3d": 545,
+      "overlap_ratio": 0.6082589285714286,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "360.png",
+      "after": "361.png",
+      "center_distance": 0.07538778496678293,
+      "optical_axis_angle_deg": 0.05054792895575787,
+      "shared_point3d": 686,
+      "overlap_ratio": 0.7958236658932715,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "361.png",
+      "after": "362.png",
+      "center_distance": 0.12101197581633089,
+      "optical_axis_angle_deg": 0.739450295313231,
+      "shared_point3d": 580,
+      "overlap_ratio": 0.6728538283062645,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "362.png",
+      "after": "363.png",
+      "center_distance": 0.18978480232200454,
+      "optical_axis_angle_deg": 0.06538758591045662,
+      "shared_point3d": 535,
+      "overlap_ratio": 0.6206496519721578,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "363.png",
+      "after": "364.png",
+      "center_distance": 0.0846720658525609,
+      "optical_axis_angle_deg": 14.888766025424044,
+      "shared_point3d": 535,
+      "overlap_ratio": 0.5905077262693157,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "364.png",
+      "after": "365.png",
+      "center_distance": 0.005856466339561978,
+      "optical_axis_angle_deg": 33.55758021164396,
+      "shared_point3d": 722,
+      "overlap_ratio": 0.6660516605166051,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "365.png",
+      "after": "366.png",
+      "center_distance": 0.43136283432816513,
+      "optical_axis_angle_deg": 56.33701787513342,
+      "shared_point3d": 178,
+      "overlap_ratio": 0.2717557251908397,
+      "break": true,
+      "reasons": [
+        "optical_axis_jump"
+      ]
+    },
+    {
+      "before": "366.png",
+      "after": "367.png",
+      "center_distance": 0.42033690638619203,
+      "optical_axis_angle_deg": 5.760662421219433,
+      "shared_point3d": 362,
+      "overlap_ratio": 0.6452762923351159,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "367.png",
+      "after": "368.png",
+      "center_distance": 0.2035185008333005,
+      "optical_axis_angle_deg": 6.436513176754055,
+      "shared_point3d": 379,
+      "overlap_ratio": 0.7625754527162978,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "368.png",
+      "after": "369.png",
+      "center_distance": 0.24320812143062323,
+      "optical_axis_angle_deg": 1.0415390762935668,
+      "shared_point3d": 380,
+      "overlap_ratio": 0.7966457023060797,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "369.png",
+      "after": "370.png",
+      "center_distance": 2.1929496780987314,
+      "optical_axis_angle_deg": 114.84726886612147,
+      "shared_point3d": 0,
+      "overlap_ratio": 0.0,
+      "break": true,
+      "reasons": [
+        "center_distance_jump",
+        "optical_axis_jump",
+        "low_adjacent_coview"
+      ]
+    },
+    {
+      "before": "370.png",
+      "after": "371.png",
+      "center_distance": 8.714837377054318,
+      "optical_axis_angle_deg": 75.12464020568126,
+      "shared_point3d": 0,
+      "overlap_ratio": 0.0,
+      "break": true,
+      "reasons": [
+        "center_distance_jump",
+        "optical_axis_jump",
+        "low_adjacent_coview"
+      ]
+    },
+    {
+      "before": "371.png",
+      "after": "372.png",
+      "center_distance": 0.1004524792336269,
+      "optical_axis_angle_deg": 0.1151112710335821,
+      "shared_point3d": 1097,
+      "overlap_ratio": 0.7207621550591328,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "372.png",
+      "after": "373.png",
+      "center_distance": 0.07102441529173509,
+      "optical_axis_angle_deg": 0.3309307205142171,
+      "shared_point3d": 1063,
+      "overlap_ratio": 0.7449194113524877,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "373.png",
+      "after": "374.png",
+      "center_distance": 3.2648423412420535,
+      "optical_axis_angle_deg": 40.005314737585756,
+      "shared_point3d": 0,
+      "overlap_ratio": 0.0,
+      "break": true,
+      "reasons": [
+        "center_distance_jump",
+        "optical_axis_jump",
+        "low_adjacent_coview"
+      ]
+    },
+    {
+      "before": "374.png",
+      "after": "375.png",
+      "center_distance": 0.0027090088567656274,
+      "optical_axis_angle_deg": 0.23429967453493863,
+      "shared_point3d": 2500,
+      "overlap_ratio": 0.8082767539605561,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "375.png",
+      "after": "376.png",
+      "center_distance": 0.0005766119336833184,
+      "optical_axis_angle_deg": 13.561252695637057,
+      "shared_point3d": 1978,
+      "overlap_ratio": 0.6271401395053899,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "376.png",
+      "after": "377.png",
+      "center_distance": 3.035724626328989,
+      "optical_axis_angle_deg": 34.57883682707335,
+      "shared_point3d": 0,
+      "overlap_ratio": 0.0,
+      "break": true,
+      "reasons": [
+        "center_distance_jump",
+        "low_adjacent_coview"
+      ]
+    },
+    {
+      "before": "377.png",
+      "after": "378.png",
+      "center_distance": 0.1296859111663235,
+      "optical_axis_angle_deg": 0.1517908696321089,
+      "shared_point3d": 1030,
+      "overlap_ratio": 0.7431457431457431,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "378.png",
+      "after": "379.png",
+      "center_distance": 0.18366558370539976,
+      "optical_axis_angle_deg": 0.267274827932337,
+      "shared_point3d": 1063,
+      "overlap_ratio": 0.6965923984272608,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "379.png",
+      "after": "380.png",
+      "center_distance": 0.4920472616701607,
+      "optical_axis_angle_deg": 0.18258879553459126,
+      "shared_point3d": 1068,
+      "overlap_ratio": 0.6763774540848638,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "380.png",
+      "after": "381.png",
+      "center_distance": 0.2767390216051207,
+      "optical_axis_angle_deg": 0.08998051844328184,
+      "shared_point3d": 1303,
+      "overlap_ratio": 0.7536148062463852,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "381.png",
+      "after": "382.png",
+      "center_distance": 0.26331172601591324,
+      "optical_axis_angle_deg": 0.24434878969336446,
+      "shared_point3d": 1317,
+      "overlap_ratio": 0.7188864628820961,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "382.png",
+      "after": "383.png",
+      "center_distance": 0.27303402831835527,
+      "optical_axis_angle_deg": 0.1130794481873903,
+      "shared_point3d": 1378,
+      "overlap_ratio": 0.7404621171413218,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "383.png",
+      "after": "384.png",
+      "center_distance": 0.28068778886789963,
+      "optical_axis_angle_deg": 0.4133202636160619,
+      "shared_point3d": 1432,
+      "overlap_ratio": 0.7517060367454068,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "384.png",
+      "after": "385.png",
+      "center_distance": 5.644213247524685,
+      "optical_axis_angle_deg": 19.53025562073705,
+      "shared_point3d": 0,
+      "overlap_ratio": 0.0,
+      "break": true,
+      "reasons": [
+        "center_distance_jump",
+        "low_adjacent_coview"
+      ]
+    },
+    {
+      "before": "385.png",
+      "after": "386.png",
+      "center_distance": 0.0005383310793822304,
+      "optical_axis_angle_deg": 0.10721462109264604,
+      "shared_point3d": 1633,
+      "overlap_ratio": 0.869542066027689,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "386.png",
+      "after": "387.png",
+      "center_distance": 0.001905943201072252,
+      "optical_axis_angle_deg": 0.09402668784787886,
+      "shared_point3d": 1618,
+      "overlap_ratio": 0.8615548455804047,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "387.png",
+      "after": "388.png",
+      "center_distance": 0.127525119837601,
+      "optical_axis_angle_deg": 10.084062550907078,
+      "shared_point3d": 1692,
+      "overlap_ratio": 0.8891224382553863,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "388.png",
+      "after": "389.png",
+      "center_distance": 0.21161314025873135,
+      "optical_axis_angle_deg": 9.846427435514103,
+      "shared_point3d": 1389,
+      "overlap_ratio": 0.7623490669593853,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "389.png",
+      "after": "390.png",
+      "center_distance": 0.4926014925788959,
+      "optical_axis_angle_deg": 33.971595496331105,
+      "shared_point3d": 612,
+      "overlap_ratio": 0.4434782608695652,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "390.png",
+      "after": "391.png",
+      "center_distance": 0.24480858593183522,
+      "optical_axis_angle_deg": 26.77019059624632,
+      "shared_point3d": 1075,
+      "overlap_ratio": 0.7789855072463768,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "391.png",
+      "after": "392.png",
+      "center_distance": 0.2376373230176842,
+      "optical_axis_angle_deg": 28.58150711089115,
+      "shared_point3d": 680,
+      "overlap_ratio": 0.62557497700092,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "392.png",
+      "after": "393.png",
+      "center_distance": 1.1076626956601567,
+      "optical_axis_angle_deg": 8.280040341597921,
+      "shared_point3d": 0,
+      "overlap_ratio": 0.0,
+      "break": true,
+      "reasons": [
+        "center_distance_jump",
+        "low_adjacent_coview"
+      ]
+    },
+    {
+      "before": "393.png",
+      "after": "394.png",
+      "center_distance": 0.0013350170274368882,
+      "optical_axis_angle_deg": 0.12223425722851727,
+      "shared_point3d": 839,
+      "overlap_ratio": 0.7841121495327102,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "394.png",
+      "after": "395.png",
+      "center_distance": 0.0010308025371274308,
+      "optical_axis_angle_deg": 0.08410464222258676,
+      "shared_point3d": 835,
+      "overlap_ratio": 0.780373831775701,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "395.png",
+      "after": "396.png",
+      "center_distance": 12.32556379447254,
+      "optical_axis_angle_deg": 114.90125368133066,
+      "shared_point3d": 0,
+      "overlap_ratio": 0.0,
+      "break": true,
+      "reasons": [
+        "center_distance_jump",
+        "optical_axis_jump",
+        "low_adjacent_coview"
+      ]
+    },
+    {
+      "before": "396.png",
+      "after": "397.png",
+      "center_distance": 0.22988086183377027,
+      "optical_axis_angle_deg": 0.2060363397239061,
+      "shared_point3d": 752,
+      "overlap_ratio": 0.8584474885844748,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "397.png",
+      "after": "398.png",
+      "center_distance": 0.276237255120667,
+      "optical_axis_angle_deg": 0.25019061845490703,
+      "shared_point3d": 811,
+      "overlap_ratio": 0.8053624627606752,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "398.png",
+      "after": "399.png",
+      "center_distance": 0.23795814349419844,
+      "optical_axis_angle_deg": 0.29813785693114875,
+      "shared_point3d": 685,
+      "overlap_ratio": 0.6742125984251969,
+      "break": false,
+      "reasons": []
+    },
+    {
+      "before": "399.png",
+      "after": "400.png",
+      "center_distance": 0.20292409479976803,
+      "optical_axis_angle_deg": 0.2553516058253392,
+      "shared_point3d": 641,
+      "overlap_ratio": 0.6840981856990395,
+      "break": false,
+      "reasons": []
+    }
+  ]
+}

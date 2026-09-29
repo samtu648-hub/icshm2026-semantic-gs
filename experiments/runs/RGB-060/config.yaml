@@ -1,0 +1,1 @@
+{"schema_version":1,"experiment_id":"RGB-060","title":"R1 RGB backbone freeze decision","phase":"R1","evidence":["RGB-010-FULL","RGB-011-FULL","RGB-011-R2-ALLOC","RGB-020-FULL","RGB-030-FULL","RGB-050-R2"],"decision":"freeze_scaffold_gs","standard_400_control":"RGB-011-R2-ALLOC completed unchanged protocol with allocator-only environment mitigation"}

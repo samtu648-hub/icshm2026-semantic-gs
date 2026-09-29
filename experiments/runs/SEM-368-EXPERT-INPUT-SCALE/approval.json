@@ -1,0 +1,7 @@
+{
+  "user_message": "确认",
+  "scope": "Approved proposed SEM368: one128-step training-side probe and three6000-step folds, two fresh replays each, fixed219 evaluation; no74/final/control retraining",
+  "protocol_sha256": "4eb6d6d20caca2304de52e053c29f0635e16c2ec8788aa98173ab92c4e90cc11",
+  "draft_sha256": "1cc32519fb016e305a32d5f75c8f1234cf669f8db1c7cfe500205b39259bed4c",
+  "config_sha256": "ec0332a42630ee3b0a7e7801d1629643212afa273e142946784f3c3fac0e95a5"
+}

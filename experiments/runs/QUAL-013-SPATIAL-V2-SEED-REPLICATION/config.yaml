@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "experiment_id": "QUAL-013-SPATIAL-V2-SEED-REPLICATION",
+  "title": "Paired second semantic seed and independent two-seed spatial v2 audit",
+  "phase": "quality_audit",
+  "parent_experiment": "QUAL-012-DISJOINT-SPATIAL-BACKBONE-AUDIT;SEM-412-RGB154-SPATIAL255;SEM-413-RGB155-SPATIAL255;SEM-414-RGB154-SPATIAL255-SEED20260919;SEM-415-RGB155-SPATIAL255-SEED20260919",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260919,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "spatial_confirmation_v2",
+  "split_path": "experiments/splits/spatial_confirmation_v2.json",
+  "main_variable": "One additional paired semantic seed on frozen RGB154/RGB155; no RGB optimization or method search.",
+  "arms": {
+    "absgs": {
+      "config": "experiments/runs/SEM-414-RGB154-SPATIAL255-SEED20260919/config.yaml",
+      "script": "scripts/run_sem414_rgb154_spatial_seed20260919.py",
+      "first_seed_result": "outputs/quality/SEM-412/r1/inference/result.json",
+      "rgb_source_root": "outputs/quality/rgb140/source-r1",
+      "rgb_source_base": "project"
+    },
+    "standard": {
+      "config": "experiments/runs/SEM-415-RGB155-SPATIAL255-SEED20260919/config.yaml",
+      "script": "scripts/run_sem415_rgb155_spatial_seed20260919.py",
+      "first_seed_result": "outputs/quality/SEM-413/r1/inference/result.json",
+      "rgb_source_root": "r1/third_party/standard-3dgs",
+      "rgb_source_base": "artifact"
+    }
+  },
+  "frozen_inputs": {
+    "data/manifests/contest_dataset_v1.json": "0a188d4b4cfa5ffc2a7f151018f1cb012782e8f9860a3338aed084478d675b3e",
+    "experiments/splits/spatial_confirmation_v2.json": "87136c723718a8f7e993a5a27cd5ed818a49daf71f963c174494fc610210e4d6",
+    "outputs/quality/SEM-392/r1/preflight/initialization-contract.json": "c43c9fcc05ec4e7940c04f6b8cc7fe6df4ec8fd0f76c9d8c27a2cde33fd37fcb",
+    "outputs/quality/RGB-154/full-r1/result.json": "2372eda320c25d36dc172e18db60a677e2f5ae811aabe77aea7937083be935c3",
+    "outputs/quality/RGB-155/full-r1/result.json": "34e41ad5cb72e4ad97c9ba7953271cc61d6bfea343847a07fb1b43abb5680dd1",
+    "outputs/quality/RGB-154/full-r1/evaluation/result.json": "8536da270e28be2fe688d59c198751d54c3f0f2b9a452373f99789d3a3ee16fd",
+    "outputs/quality/RGB-155/full-r1/evaluation/result.json": "9ebec70b3a968a2618d3caac85b3ef57d76e957d86192e75da0e90a15f63da3a",
+    "outputs/quality/SEM-412/r1/inference/result.json": "397c2b96b197ae9ca789f875a964c8b5a716736507206d113fe0cb841a49feae",
+    "outputs/quality/SEM-413/r1/inference/result.json": "0e7e9782d3311f2af67364bc71dc774a6f4a46db9ebb377fc6ed850613fe933d"
+  },
+  "preflight_updates_per_arm": 8,
+  "rgb_replay_training_views": ["001.png", "120.png", "300.png"],
+  "primary_metric": "foreground_miou",
+  "replication_rule": {
+    "each_seed_foreground_miou_delta_gt": 0.0,
+    "each_seed_stay_cable_iou_delta_ge": 0.0,
+    "each_seed_boundary_f1_delta_gt": 0.0,
+    "require_engineering_audit": true,
+    "other_classes_and_regions": "descriptive; report all gains and harms, not universal dominance"
+  },
+  "commands": {
+    "run": "python scripts/run_sem414_sem415_spatial_seed_pair.py --artifact-root <artifact-root> --stage run",
+    "audit": "python scripts/audit_qual013_spatial_v2_seed.py"
+  },
+  "output_path": "outputs/quality/QUAL-013/r1",
+  "pair_output_path": "outputs/quality/SEM-414-415/r1",
+  "resource_estimate": {"gpu_minutes": [70, 100], "new_disk_gib": [4, 6], "training_peak_reserved_mib": 8600},
+  "quality_claim": null,
+  "scope": "Two semantic seeds on the same historically exposed spatial v2 development split and frozen RGB seed 0; no blind or statistical-stability claim",
+  "protocol": "docs/experiments/sem414_sem415_spatial_v2_seed_protocol.md"
+}

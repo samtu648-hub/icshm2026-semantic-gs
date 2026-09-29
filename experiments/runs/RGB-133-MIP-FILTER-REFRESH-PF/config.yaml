@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 0,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "experiment_id": "RGB-133-MIP-FILTER-REFRESH-PF",
+  "parent_experiment": "RGB-131-MIP-ALL400",
+  "diagnostic_parent": "RGB-132-THREE-BACKBONE-DIAG",
+  "main_variable": "author compute_3D_filter refreshed once from unchanged final XYZ and same400 training camera metadata; no optimizer, geometry, SH, opacity or kernel change",
+  "output": "outputs/quality/diagnostics/RGB-133-r1",
+  "comparison": "own unmodified mip-full-r1 checkpoint and QUAL007 native exports",
+  "views": [
+    "159.png",
+    "160.png",
+    "140.png",
+    "146.png",
+    "081.png",
+    "057.png",
+    "064.png",
+    "054.png",
+    "174.png"
+  ],
+  "regions": {
+    "159-shore": {
+      "view": "159.png",
+      "boxes": [
+        [
+          20,
+          720,
+          290,
+          870
+        ],
+        [
+          920,
+          720,
+          1310,
+          860
+        ]
+      ]
+    },
+    "159-near": {
+      "view": "159.png",
+      "boxes": [
+        [
+          20,
+          890,
+          240,
+          985
+        ]
+      ]
+    },
+    "160-shore": {
+      "view": "160.png",
+      "boxes": [
+        [
+          20,
+          740,
+          285,
+          885
+        ],
+        [
+          920,
+          740,
+          1310,
+          875
+        ]
+      ]
+    },
+    "160-near": {
+      "view": "160.png",
+      "boxes": [
+        [
+          20,
+          905,
+          230,
+          985
+        ]
+      ]
+    },
+    "174-sky": {
+      "view": "174.png",
+      "boxes": [
+        [
+          0,
+          0,
+          1320,
+          380
+        ]
+      ]
+    },
+    "159-far-occlusion": {
+      "view": "159.png",
+      "boxes": [
+        [
+          850,
+          100,
+          1320,
+          340
+        ]
+      ]
+    },
+    "159-water-ghost": {
+      "view": "159.png",
+      "boxes": [
+        [
+          250,
+          350,
+          330,
+          620
+        ]
+      ]
+    }
+  },
+  "iterations": 0,
+  "kernel_size": 0.1,
+  "train_camera_count": 400,
+  "trajectory": "same144 official COLMAP reference cameras as QUAL007; PINHOLE",
+  "resource_estimate": "3–6 GPU minutes, <1GiB outputs; full1320x989, no quality early stop",
+  "selection_reason": "code stops filter updates at29800, positions update until29999; measured127 filter entries drift >10%, deterministic narrow hypothesis easier to falsify than Standard geometry cause",
+  "scope": "RGB only; all400 training fit; noGT144 visual; no semantic training or deployment"
+}

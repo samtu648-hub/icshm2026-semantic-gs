@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-010",
+  "title": "Standard 3DGS 300 RGB R1 screening",
+  "phase": "R1",
+  "parent_experiment": "RGB-001",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1",
+  "seed": 0,
+  "backbone": "standard-3dgs",
+  "change_from_parent": "Use only the 219 guarded labeled training views to measure the value of the 100 released unlabeled RGB views in the Standard 3DGS control.",
+  "data": {
+    "root_env": "ICSHM_DATA_ROOT",
+    "prepared_scene": "$R1_OUTPUT_ROOT/rgb_r1_spatial_v1/scene_300_eval",
+    "train_count": 219,
+    "validation_count": 74,
+    "use_labeled_rgb": true,
+    "use_unlabeled_rgb": false,
+    "use_pseudo_labels": false
+  },
+  "camera": {
+    "source_coordinate_frame": "official_colmap_reference",
+    "pose_convention": "CAMERA_FROM_WORLD",
+    "distortion_policy": "Full-frame SIMPLE_RADIAL-to-PINHOLE using released K, no crop; sparse/0/test.txt is the explicit held-out camera list.",
+    "resolution": [1320, 989],
+    "initialization": "Training-only DLT point-track re-triangulation; validation images do not initialize geometry."
+  },
+  "training": {
+    "screening_iterations": 500,
+    "full_iterations": 30000,
+    "command": "scripts/run_r1_rgb_candidate.sh RGB-010 standard-3dgs $R1_OUTPUT_ROOT/rgb_r1_spatial_v1/scene_300_eval $R1_ITERATIONS",
+    "budget": "One RTX 5070; R1 screening then authorized full run; record wall time, GPU hours, peak VRAM, output size and checkpoint load.",
+    "upstream_commit": "54c035f7834b564019656c3e3fcc3646292f727d"
+  },
+  "evaluation": {
+    "protocol": "docs/experiments/protocol.md",
+    "metrics": "METRICS.md",
+    "entrypoint": "scripts/evaluate_rgb.py",
+    "views": "all 74 validation_labeled, worst 10 percent, and 140.png through 146.png"
+  },
+  "output": {"root": "$R1_OUTPUT_ROOT/r1/runs/RGB-010"}
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-342-RAW-FUSION-DIAG",
+  "parent_experiment": "SEM-341-MASK2FORMER-OOF",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_001_scaffold_static_v1;sem_005_oof_spatial_v1;historically reused108 calibration/111 diagnostic;shared303 RGB",
+  "comparison": "outputs/quality/mask2former/SEM-341-r1/comparison",
+  "replay_result": "outputs/quality/mask2former/SEM-341-r1/comparison-replay/result.json",
+  "preflight_config": "experiments/runs/SEM-340-MASK2FORMER-PREFLIGHT/config.yaml",
+  "frozen_manifest": "experiments/runs/SUBMIT-020-SEM161-FREEZE/frozen_manifest.json",
+  "main_variable": "none; read-only diagnostic of existing raw versus sealed calibrated fusion",
+  "frozen_thresholds": {
+    "fiveclass_lane": 0.35,
+    "cable": null,
+    "foundation": 0.1,
+    "deck": 0.98
+  },
+  "descriptive_probability_bins": [
+    0,
+    0.5,
+    0.75,
+    0.9,
+    0.99,
+    1.000001
+  ],
+  "probability_bins_use": "descriptive only; no threshold or region selection",
+  "spatial_reporting": "original three OOF groups plus fixed3x3 image-coordinate tiles; not physical-world spatial validation",
+  "minimum_free_gib": 100,
+  "new_training": false,
+  "new_model_inference": false,
+  "threshold_selection": false,
+  "automatic_promotion": false,
+  "input_hashes": {
+    "outputs/quality/mask2former/SEM-341-r1/comparison/result.json": "b80b03cf68e69f823cb86c9248fba9dd8e28393ea5dfb03efa2adadd1f382b08",
+    "outputs/quality/mask2former/SEM-341-r1/comparison-replay/result.json": "64cb39eb5edcec3ad1349e4ee901bef9c5622e1ad397bb8681d23eeb248b8fd0",
+    "experiments/runs/SEM-340-MASK2FORMER-PREFLIGHT/config.yaml": "d0bee61014a21368a80f0f89d5c07f831965a9dbe3a9184579d0ccd35ea2b755",
+    "experiments/runs/SUBMIT-020-SEM161-FREEZE/frozen_manifest.json": "53ca7d469eed2666cd1a5d3bfd8c4374275daa6e173cddd62d88a4d410794815",
+    "data/manifests/contest_dataset_v1.json": "0a188d4b4cfa5ffc2a7f151018f1cb012782e8f9860a3338aed084478d675b3e",
+    "experiments/runs/SEM-341-MASK2FORMER-OOF/config.yaml": "60014afe5b2636719cbb2dbcbaf93b3d13fd8f2dcb16f57a22c82d25c2db835f",
+    "experiments/runs/SEM-001/label_manifest.json": "62eb1cfca5b3096cccfe5dd6997d12677c7ab79726f3b860d2392b040b7ed057",
+    "experiments/splits/sem_001_scaffold_static_v1.json": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+    "experiments/splits/sem_005_oof_spatial_v1.json": "ce8a24e11d93df7634331a1ce33ae59385297cae90a0bd688b61769cf27f222c"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-150-STANDARD-ABSGRAD-DEV30",
+  "title": "Standard AbsGS fixed 30-view development holdout baseline",
+  "phase": "reconstruction",
+  "parent_experiment": "RGB-140-STANDARD-ABSGRAD-ALL400",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "dev30_local_composition_v1",
+  "split_path": "experiments/splits/dev30_local_composition_v1.json",
+  "seed": 0,
+  "main_variable": "Evaluation protocol baseline: retrain the unchanged RGB140 Standard plus AbsGS recipe from scratch after excluding the fixed 30-view development holdout from RGB optimization and initialization observations.",
+  "causal_claim": null,
+  "data": {
+    "scene": "outputs/quality/RGB-150/scene",
+    "resolution": "1320x989",
+    "rgb_train_views": 370,
+    "rgb_holdout_views": 30,
+    "semantic_train_labeled_views": 270,
+    "official_cameras_fixed": true,
+    "initial_point_cloud_source": "Training-only DLT re-triangulation from 370-view released tracks after PINHOLE conversion",
+    "initial_point_count": 79630,
+    "initial_ply_sha256": "30916591f71c5fb2af8b548c996bc1c036dec597cd81caba21cab2376ad8574e",
+    "holdout_used_for_initialization": false,
+    "holdout_used_for_point_colors": false,
+    "use_labeled_rgb": true,
+    "use_unlabeled_rgb": true,
+    "use_semantics": false
+  },
+  "training": {
+    "iterations": 30000,
+    "seed": 0,
+    "signed_clone_threshold": 0.0002,
+    "absolute_split_threshold": 0.0004,
+    "densify_from_iter": 500,
+    "densify_until_iter": 15000,
+    "densification_interval": 100,
+    "opacity_reset_interval": 3000,
+    "command": "python3 scripts/run_rgb150_dev30.py --artifact-root <artifact-root> --stage train",
+    "output": "outputs/quality/RGB-150/full-r1"
+  },
+  "evaluation": {
+    "protocol": "Separate full-resolution metrics for 370 train views and fixed 30-view development holdout, plus the three registered composition groups",
+    "metrics": ["PSNR", "SSIM", "LPIPS"],
+    "training_metrics_are_fit_results": true,
+    "holdout_claim": "development holdout, not blind or strictly spatially guarded"
+  },
+  "output": {
+    "root": "outputs/quality/RGB-150",
+    "source": "outputs/quality/rgb140/source-r1",
+    "preserve_failures": true
+  }
+}

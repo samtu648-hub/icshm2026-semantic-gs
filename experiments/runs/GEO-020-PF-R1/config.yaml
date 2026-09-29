@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "experiment_id": "GEO-020-PF-R1",
+  "title": "DA3-Large official-P0 license and isolated-environment retry audit",
+  "phase": "geometry_prior_preflight",
+  "status": "blocked_license_confirmation",
+  "parent_experiment": "GEO-020-PF,GEO-002",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1",
+  "primary_fold": "spatial-01",
+  "seed": 0,
+  "backbone": "DepthAnything3-da3-large-offline-prior",
+  "fixed_input_contract": {
+    "pose": "official_COLMAP_CAMERA_FROM_WORLD_converted_to_OpenCV_cam2world_P0",
+    "camera": "SIMPLE_RADIAL_full_frame_undistorted_PINHOLE_pairing",
+    "rgb": "raw_undistorted_RGB_only",
+    "window": "training_only_strong_covisibility_windows_8_then_at_most_16",
+    "forbidden": ["validation_or_guard_band_inputs", "test_RGB_or_labels", "DA3_pose_replacement", "DA3_GS_branch"]
+  },
+  "source": {
+    "url": "https://github.com/ByteDance-Seed/Depth-Anything-3",
+    "code_license": "Apache-2.0",
+    "commit": "not_pinned_not_cloned_due_license_gate"
+  },
+  "checkpoint": {
+    "model_id": "depth-anything/DA3-LARGE-1.1",
+    "source_url": "https://huggingface.co/depth-anything/DA3-LARGE-1.1",
+    "license": "CC-BY-NC-4.0 per official model-zoo",
+    "sha256": "not_available_not_downloaded",
+    "size_bytes": "not_available_not_downloaded"
+  },
+  "environment": {
+    "name": "icshm-geometry",
+    "python": "3.12.13",
+    "torch": "2.11.0+cu128",
+    "cuda_runtime": "12.8",
+    "cuda_available": true,
+    "depth_anything_3": "absent",
+    "xformers": "absent",
+    "gsplat": "absent"
+  },
+  "preflight_result": {
+    "official_source_audited": true,
+    "explicit_competition_license_confirmation_found": false,
+    "source_present": false,
+    "checkpoint_present": false,
+    "model_execution": "not_started_by_license_gate",
+    "p0_windows": "not_selected_or_run_by_license_gate",
+    "geometry_prior_npz_v2": "not_produced",
+    "scaffold_training": "not_started"
+  },
+  "worktree": {
+    "git_commit": "b1cbec542a19e7b8e72a5600538dafbe619be120",
+    "tracked_diff_sha256": "6618bff1302da4b1708ed3ad296d56efc33b84db619e64cef5ba08753867936d",
+    "state": "pre_existing_unrelated_user_modifications_preserved_and_not_part_of_this_experiment"
+  },
+  "resume_only_after": [
+    "written_confirmation_that_CC_BY_NC_4_0_DA3_LARGE_1_1_use_is_compatible_with_this_competition",
+    "official_source_and_checkpoint_pinned_with_commit_revision_hash_and_size",
+    "isolated_environment_installation_recorded"
+  ],
+  "output_root": "external_gitignored:not_created_before_license_gate"
+}

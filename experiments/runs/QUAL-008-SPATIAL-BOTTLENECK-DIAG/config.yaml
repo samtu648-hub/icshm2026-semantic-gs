@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "experiment_id": "QUAL-008-SPATIAL-BOTTLENECK-DIAG",
+  "title": "Read-only RGB and semantic spatial bottleneck attribution",
+  "phase": "diagnostic",
+  "parent_experiment": "RGB-152-STANDARD-ABSGRAD-SPATIAL30;SEM-396-RGB152-SPATIAL256",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": null,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "spatial_confirmation_v1",
+  "split_path": "experiments/splits/spatial_confirmation_v1.json",
+  "main_variable": "Read-only attribution of the fixed 30-view spatial confirmation errors by joining frozen RGB metrics with frozen SEM396 metrics and recomputed per-view stay_cable boundaries.",
+  "inputs": {
+    "rgb_holdout_csv": "outputs/quality/RGB-152/full-r2/evaluation/holdout.csv",
+    "rgb_holdout_csv_sha256": "b87f12e174a321115473b82ab504ebbfd7b603600cd93e919f2eb54ce88602eb",
+    "rgb_evaluation_result": "outputs/quality/RGB-152/full-r2/evaluation/result.json",
+    "rgb_evaluation_result_sha256": "06163daf5c7629e6b1621d870cff38b28d03b9b2cbac92b323d15c4d4aee6fe9",
+    "semantic_inference_result": "outputs/quality/SEM-396/r1/inference/result.json",
+    "semantic_inference_result_sha256": "7cf83ea33c54a3e2a6d3ba83c432b31ea3b5ba7e3bf2a221075b8b94c968add4",
+    "prediction_root": "outputs/quality/SEM-396/r1/inference/predictions",
+    "label_root": "outputs/quality/all_data/SEM-370-r1/labels",
+    "label_manifest": "outputs/quality/all_data/SEM-370-r1/label_manifest.json"
+  },
+  "analysis": {
+    "view_count": 30,
+    "rgb_better_half_count": 15,
+    "rank_correlation": "Spearman with average ranks",
+    "boundary_tolerance_px": 2,
+    "semantic_residual_rule": {
+      "better_half_boundary_f1_below": 0.85,
+      "better_half_views_with_stay_cable_recall_below_0_90_at_least": 3,
+      "or_better_half_five_class_miou_below": 0.92
+    },
+    "strong_rgb_coupling_absolute_spearman_at_least": 0.70
+  },
+  "output_path": "outputs/quality/QUAL-008/r1",
+  "quality_claim": null,
+  "protocol": "docs/experiments/qual008_spatial_bottleneck_protocol.md"
+}

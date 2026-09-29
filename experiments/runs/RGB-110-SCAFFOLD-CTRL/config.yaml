@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-110-SCAFFOLD-CTRL",
+  "parent_experiment": "QUAL-001-FOUNDATION,RGB-030-FULL",
+  "protocol": "experiments/runs/QUAL-001-FOUNDATION/config.yaml",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1",
+  "seed": 0,
+  "status": "registered_not_run",
+  "backbone": "scaffold-gs",
+  "upstream_url": "https://github.com/city-super/Scaffold-GS",
+  "upstream_commit": "59c833b56bbbf510f3f64d40f81721995caced66",
+  "single_changed_variable": "fresh same-recipe matched control under quality protocol; historical model unchanged",
+  "training_arguments": ["--skip_metric_eval"],
+  "license_status": "existing noncommercial research source; redistribution remains separate review"
+}

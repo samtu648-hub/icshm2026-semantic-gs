@@ -1,0 +1,102 @@
+# Operating systems and editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+configs/local.yaml
+configs/server.yaml
+configs/private/
+configs/**/*.local.yaml
+*.pem
+*.key
+*.p12
+*.pfx
+.ssh/
+
+# Python and compiled extensions
+__pycache__/
+*.py[cod]
+*.so
+*.dylib
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Virtual environments and CUDA caches
+.venv/
+venv/
+env/
+.conda/
+.nv/
+cuda_cache/
+torch_extensions/
+
+# IDE, notebook and experiment services
+.ipynb_checkpoints/
+wandb/
+tensorboard/
+lightning_logs/
+mlruns/
+
+# Competition data: keep only documentation and lightweight manifests.
+data/*
+!data/README.md
+!data/manifests/
+data/manifests/*
+!data/manifests/README.md
+!data/manifests/*.json
+
+# Model artifacts and large geometry
+*.ckpt
+*.pth
+*.pt
+*.onnx
+*.ply
+*.obj
+*.stl
+*.safetensors
+
+# Runtime artifacts
+outputs/*
+!outputs/README.md
+renders/
+logs/
+checkpoints/
+artifacts/
+tmp/
+temp/
+*.log
+
+# Locally cloned upstream repositories
+third_party/*
+!third_party/README.md
+!third_party/patches/
+!third_party/patches/*.patch
+
+# Experiment run products stay outside Git; summaries/configs live in experiments/.
+experiments/runs/*/output/
+experiments/runs/*/logs/
+experiments/runs/*/checkpoints/
+
+# Reports may contain small curated figures, but not raw videos or archives.
+reports/**/*.mp4
+reports/**/*.mov
+reports/**/*.avi
+reports/**/*.zip
+reports/**/*.tar
+reports/**/*.tar.gz
+
+# Local Pages extraction and verification caches
+/_site/

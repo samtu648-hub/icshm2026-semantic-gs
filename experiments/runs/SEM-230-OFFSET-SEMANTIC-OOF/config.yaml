@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-230-OFFSET-SEMANTIC-OOF",
+  "title": "Per-generated-offset background/deck semantic residual spatial OOF",
+  "phase": "R2 frozen Scaffold semantic representation research",
+  "status": "completed_calibration_gate_failed",
+  "owner": "unassigned",
+  "parent_experiment": "SUBMIT-020-SEM161-FREEZE,SEM-001,SEM-150-FOUNDATION-GATE-OOF,SEM-160-DECK-BINARY-OOF,SEM-161-DECK-BINARY-FINAL",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_001_scaffold_static_v1 plus frozen sem_005_oof_spatial_v1; deterministic 108-view calibration then 111-view check; 74-view developer remains sealed until both gates pass",
+  "seed": 20260907,
+  "single_changed_variable": "Replace SEM-001's anchor-shared semantic inheritance with one independent background/deck residual for each generated Scaffold offset; no RGB, geometric, camera, opacity, appearance, densification, network, threshold, or RGB-domain change is introduced.",
+  "data": {
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "semantic_split_sha256": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+    "oof_split": "experiments/splits/sem_005_oof_spatial_v1.json",
+    "oof_split_sha256": "ce8a24e11d93df7634331a1ce33ae59385297cae90a0bd688b61769cf27f222c",
+    "label_manifest": "experiments/runs/SEM-001/label_manifest.json",
+    "training_views": 219,
+    "calibration_views": 108,
+    "check_views": 111,
+    "developer_views": 74,
+    "access_rule": "Before a complete 219-view OOF candidate and prediction/contribution hashes are sealed, no calibration/check/developer target labels are read. Calibration labels are read once; check and 74-view developer labels are forbidden unless the preceding registered gate passes. No real RGB, unlabelled view, hidden input, or target label is used by prediction."
+  },
+  "inputs": {
+    "submit020_frozen_manifest": "experiments/runs/SUBMIT-020-SEM161-FREEZE/frozen_manifest.json",
+    "submit020_frozen_manifest_sha256": "53ca7d469eed2666cd1a5d3bfd8c4374275daa6e173cddd62d88a4d410794815",
+    "sem001_checkpoint_sha256": "8e3dbe30e17f67081a72380018fc281c155ec00eed83cd5a19b3285bf4fb8aa3",
+    "sem001_training_manifest_sha256": "fc2b3008b38c6c2196cdd7cdeab6d369d771770552b01c7c7d6c51fba042ae9a",
+    "sem150_prediction_manifest_sha256": "011b2ca0e71127fb7b6e2611f7277c57cdfcd004ba2831cb71202e3e3f1abeaa",
+    "sem160_prediction_manifest_sha256": "129d82d6ee46c85632f9bd393a36d7b3f719272d8fa537f93fe2541ff25b3444"
+  },
+  "frozen_rgb": {
+    "experiment": "RGB-030-FULL",
+    "iteration": 30000,
+    "train_camera_count": 303,
+    "n_offsets": 10,
+    "appearance_camera_id": 0,
+    "coordinate_frame": "official_COLMAP_reference",
+    "pose_convention": "CAMERA_FROM_WORLD",
+    "artifact_sha256": {
+      "chkpnt30000.pth": "d287563eaa4d2a29df2f619153f53288978d1096bbbb1cd88fc4da7da076da68",
+      "point_cloud.ply": "6f22dc598205493e5a9683b95bcb6387f0c0c02f53c6b0d0f9fb0b62789c20d5",
+      "opacity_mlp.pt": "0e010c9da52caffe1a6b8a0ece2c72431431a90a6dbc334d2f7ee22a1bbd0399",
+      "cov_mlp.pt": "ad47c33af6519a38da591d8e8fc4124d0a93cdac5d8e65be212bb73cbc5cd34e",
+      "color_mlp.pt": "997f953b4771271195ea5cc27ecb12c02039b578093c42b1302ee9d1ee0e65ae",
+      "embedding_appearance.pt": "cce14bf171c611595b8f11b086f9768d293de6c5e5d4dce84dff97150f741186"
+    },
+    "frozen_parameters": ["anchor", "offset", "anchor_feat", "opacity", "scaling", "rotation", "opacity_mlp", "cov_mlp", "color_mlp", "appearance_embedding"]
+  },
+  "semantic": {
+    "historical_reference": "SEM-001 per-anchor five logits, generated offsets inherit exactly their anchor logits",
+    "new_storage": "[frozen_anchor_count, 10_generated_offsets, 2_background_deck] residual tensor initialised to zero",
+    "trainable_parameters": ["offset_background_deck_residual"],
+    "mutable_classes": ["background", "deck"],
+    "protected_classes": ["stay_cable", "tower", "foundation"],
+    "decision": "background/deck argmax only; no probability threshold and no threshold search",
+    "loss": "weighted binary NLL over official background/deck pixels only; labels 2/3/4 are excluded from this isolated binary lane"
+  },
+  "equivalence": {
+    "views": ["001.png", "017.png", "093.png"],
+    "criterion": "zero residual renders bit-identical five-class SEM-001 probability tensors; frozen RGB PNG hashes remain bit-identical; RGB artifact hashes remain unchanged"
+  },
+  "external_camera": {
+    "image_name": "140.png",
+    "contract": "official COLMAP CAMERA_FROM_WORLD plus SIMPLE_RADIAL -> 1320x989 RGB, [5,989,1320] logits, uint8 ID PNG; no target RGB or labels"
+  },
+  "training": {
+    "folds": 3,
+    "seed": 20260907,
+    "iterations_per_fold": 10000,
+    "learning_rate": 0.05,
+    "weight_decay": 0.0,
+    "class_weight_rule": "per-fold background/deck median-frequency/count clipped to [0.05,20]",
+    "checkpoint_selection": "final_10000_only_no_validation_selection",
+    "log_every": 100
+  },
+  "fusion": {
+    "baseline": "SEM-160 selected OOF five-class maps, the OOF predecessor of frozen SEM-161",
+    "mutable_lane": "only base background/deck pixels that are not an SEM-150 foundation rejection",
+    "bidirectional": "background_to_deck and deck_to_background argmax decisions are allowed only in the mutable lane",
+    "protection": "SEM-160 stay_cable/tower/foundation masks and SEM-150 foundation rejection pixels must remain exactly unchanged"
+  },
+  "gates": {
+    "minimum_deck_iou_gain": 0.002,
+    "minimum_deck_recall_gain": 0.005,
+    "minimum_deck_precision": 0.94,
+    "miou": "non_decreasing",
+    "protected_predictions_exact": true,
+    "rgb_exact": true
+  },
+  "outputs": {
+    "root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_230/offset_semantic_oof/full-20260907-r2",
+    "calibration_visual_samples": ["001.png", "017.png", "093.png"],
+    "panel_order": ["GT", "SEM-160 old", "SEM-230 offset residual", "green_corrected_red_harmed"],
+    "artifact_requirements": ["zero_residual_equivalence", "per-fold checkpoints and reload records", "OOF predictions and contribution weights", "calibration result hash", "same-view panels", "deck local zooms", "five-class metrics", "runtime", "peak memory"]
+  },
+  "budget": {"maximum_total_gpu_hours": 3.0},
+  "forbidden": ["fixed_74_view_access_before_calibration_and_check_pass", "check_access_before_calibration_pass", "real_RGB_input", "unlabeled_training", "hidden_input", "threshold_or_network_or_loss_or_RGB_search", "RGB_or_geometry_or_opacity_or_appearance_or_densification_or_camera_mutation", "modification_of_SUBMIT020_frozen_artifacts", "mutation_of_stay_cable_tower_foundation_or_foundation_rejection_pixels"],
+  "fallback": "SUBMIT-020 frozen RGB-030-FULL plus SEM-161"
+}

@@ -1,0 +1,32 @@
+{
+  "experiment_id": "SEM-290-NATIVE960-RAW-FIVECLASS-AUDIT",
+  "status": "preregistered_read_only_diagnostic",
+  "parent_experiment": "SEM-270-FOUNDATION-BINARY-OOF",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "seed": 20260805,
+  "split_id": "sem_005_oof_spatial_v1; inherited three-fold 219-view OOF; reused108 calibration only; 111 check and 74-view developer labels remain unread",
+  "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+  "semantic_split_sha256": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+  "oof_split": "experiments/splits/sem_005_oof_spatial_v1.json",
+  "oof_split_sha256": "ce8a24e11d93df7634331a1ce33ae59385297cae90a0bd688b61769cf27f222c",
+  "parents": {
+    "sem270_run": "outputs/sem270/full-20260907-r1",
+    "model_config": "r2/sem_005/third_party/nvidia_mit_b2_3bb39e8",
+    "rgb": "r2/sem_101/rendered_training_rgb/full-20260902-r3",
+    "labels": "r2/sem_001/labels"
+  },
+  "single_changed_variable": "Read the sealed SEM-270 five-class control checkpoints before protected fusion and score their fixed raw argmax predictions. No training, checkpoint, probability threshold, fusion rule, input, label split or candidate selection changes.",
+  "inference": {
+    "crop": 960,
+    "stride": 480,
+    "classes": 5,
+    "decision": "fixed raw argmax over all five control probabilities",
+    "save": "raw class PNG plus SHA-256 for every one of the 219 OOF views; no full float probability archive"
+  },
+  "evaluation": "Re-render raw predictions for all 219 inherited OOF views. Decode target labels only for the already reused deterministic 108-view calibration half; do not decode labels for the 111-view check, 74-view developer set, unlabeled images, hidden inputs or external cameras. Compare fixed raw argmax, SEM-270 fused five-control and SEM-160 baseline metrics without tuning or promotion gates.",
+  "promotion": "diagnostic_only; no model can be promoted, no final fit or submission artifact may be produced from this audit",
+  "maximum_gpu_hours": 1,
+  "minimum_free_disk_gib": 100,
+  "license": "Existing local SegFormer-B2 NVIDIA research/evaluation weights; no new external code or weights"
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-343-RAW-FOUNDATION-GATE",
+  "parent_experiment": "SEM-341-MASK2FORMER-OOF,SEM-342-RAW-FUSION-DIAG",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260805,
+  "registered_utc": "2026-09-11T06:39:51.285532+00:00",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "same SEM341 spatial OOF models; historically reused108 calibration only;111 diagnostic already known but not used to calibrate or score new candidates",
+  "comparison": "outputs/quality/mask2former/SEM-341-r1/comparison",
+  "batch": "outputs/quality/mask2former/SEM-341-r1",
+  "preflight_config": "experiments/runs/SEM-340-MASK2FORMER-PREFLIGHT/config.yaml",
+  "frozen_manifest": "experiments/runs/SUBMIT-020-SEM161-FREEZE/frozen_manifest.json",
+  "main_variable": "raw-default selective adoption of an existing calibrated-fusion foundation proposal, restricted to raw tower; only maximum raw-tower minus foundation probability margin varies",
+  "eligibility": "raw==tower AND frozen calibrated_fusion==foundation; latter is static foundation with Mask2Former foundation probability>=0.1; preserve parent proposal exactly",
+  "maximum_margin_grid": [
+    null,
+    0.05,
+    0.1,
+    0.2,
+    0.4,
+    1.0
+  ],
+  "off_semantics": "None returns raw bit-identically;1.0 accepts all eligible proposals; no averaging",
+  "protected": "raw background/deck/stay_cable pixel sets exactly unchanged; existing raw foundation always retained; only tower may become foundation",
+  "calibration_protocol": {
+    "labels": "exact parent108 only; hash-checked role-limited reader; write started/config/source snapshot before decoding",
+    "spatial_screen": "report each original OOF group; candidate eligible for later review only if every group has nonnegative mIoU, tower IoU and foundation IoU change versus raw. This is a screening rule, not a significance test or recall guarantee.",
+    "selection": "none automatic. Report all6 curves and corrected/harmed/wrong-to-wrong counts, per-class IoU/precision/recall and worst group. Any tower TP loss needs user review of the concrete108 evidence before selecting a margin. No weighted quality score or recall tolerance invented.",
+    "failure": "if no nonzero candidate passes spatial screen retain raw; no expanding grid, changing eligible class pairs, deleting failures or using111 to rescue",
+    "after_review": "freeze one exact margin and approved quality preference to a separate hashed selection record before any optional fixed111 diagnostic scoring;111 remains historically reused and cannot support an independent-improvement claim",
+    "independence": "No new blind claim or nested-validation claim. Existing OOF models share303 RGB; other-fold semantic fitting and historical108/111 method development prevent full-chain independence. Future outer spatial folds must isolate RGB/initialization/semantic fit/reference sources and inner calibration."
+  },
+  "resource": {
+    "new_training": false,
+    "new_model_inference": false,
+    "gpu_required": false,
+    "minimum_free_gib": 100,
+    "expected_output_mib_upper_bound": 20
+  },
+  "excluded": [
+    "74 labels",
+    "new111 candidate scores",
+    "full-data fitting",
+    "GAGS",
+    "crossview changes",
+    "official external-camera or trajectory quality claims",
+    "automatic promotion",
+    "uploads",
+    "purchases",
+    "Git commit/push"
+  ],
+  "input_hashes": {
+    "outputs/quality/mask2former/SEM-341-r1/comparison/result.json": "b80b03cf68e69f823cb86c9248fba9dd8e28393ea5dfb03efa2adadd1f382b08",
+    "outputs/quality/mask2former/SEM-341-r1/comparison/calibration/per_view.json": "fa7b496c02f149f0653d88fefe3ceb82b61167c27288554330c76654fd422ad2",
+    "outputs/quality/raw_fusion/SEM-342-r2/result.json": "8bb19376fc3cbcf7cce8dc0764872bcfd997852af0632b0b1c2a97ebed800a5e",
+    "experiments/runs/SEM-340-MASK2FORMER-PREFLIGHT/config.yaml": "d0bee61014a21368a80f0f89d5c07f831965a9dbe3a9184579d0ccd35ea2b755",
+    "experiments/runs/SUBMIT-020-SEM161-FREEZE/frozen_manifest.json": "53ca7d469eed2666cd1a5d3bfd8c4374275daa6e173cddd62d88a4d410794815",
+    "data/manifests/contest_dataset_v1.json": "0a188d4b4cfa5ffc2a7f151018f1cb012782e8f9860a3338aed084478d675b3e",
+    "experiments/runs/SEM-341-MASK2FORMER-OOF/config.yaml": "60014afe5b2636719cbb2dbcbaf93b3d13fd8f2dcb16f57a22c82d25c2db835f",
+    "experiments/runs/SEM-001/label_manifest.json": "62eb1cfca5b3096cccfe5dd6997d12677c7ab79726f3b860d2392b040b7ed057",
+    "experiments/splits/sem_001_scaffold_static_v1.json": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+    "experiments/splits/sem_005_oof_spatial_v1.json": "ce8a24e11d93df7634331a1ce33ae59385297cae90a0bd688b61769cf27f222c"
+  }
+}

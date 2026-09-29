@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-149-STANDARD-GT-REGION-GRADIENT",
+  "title": "RGB140 plus GT-structure-region multiscale photo-gradient supervision",
+  "phase": "reconstruction",
+  "parent_experiment": "RGB-140-STANDARD-ABSGRAD-ALL400;RGB-147-STANDARD-GT-SUPERVISION-CTRL",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "split_path": "outputs/quality/all_data/RGB-120-r2/split.json",
+  "seed": 0,
+  "source": "outputs/quality/rgb140/source-r1",
+  "data": {"scene": "outputs/quality/all_data/RGB-120-r2/scene", "resolution": "1320x989", "rgb_train_views": 400, "labeled_views": 300, "unlabeled_views": 100, "official_cameras_fixed": true, "initial_point_count": 72292, "initial_ply_sha256": "10a88fb018c27530b3bbfa0f7000408693ba75228067f5311e7775e4755e68f2"},
+  "training": {"iterations": 30000, "signed_clone_threshold": 0.0002, "absolute_split_threshold": 0.0004, "densify_from_iter": 500, "densify_until_iter": 15000, "densification_interval": 100, "opacity_reset_interval": 3000, "recovery_iterations": [5000, 10000, 15000, 20000, 25000, 30000]},
+  "auxiliary_supervision": {"mode": "region_gradient", "coefficient": 0.3103426341938125, "coefficient_status": "frozen_pretraining", "label_root": "outputs/quality/all_data/SEM-370-r1/labels", "label_manifest": "outputs/quality/all_data/SEM-370-r1/label_manifest.json", "region": {"classes": [1, 2, 3, 4], "dilation_px": 4, "normalization": "sum_weights_times_three_channels"}, "gradient": {"operator": "full_image_rgb_forward_difference", "scales": [1, 4], "scale_weights": [0.5, 0.5]}, "affects_native_densification_statistics": true},
+  "coefficient_calibration": {"status": "completed_pretraining_calibration", "artifact": "outputs/quality/rgb147/calibration-r2/result.json", "artifact_sha256": "ec275093a88f43d6a14876bcc26aba265bae5f5d12394b3ac7af50378b7d992a", "superseded_artifact": "outputs/quality/rgb147/calibration-r1/result.json", "target_image_gradient_ratio": 0.2, "views": ["001.png", "028.png", "055.png", "082.png", "109.png", "136.png", "164.png", "191.png", "218.png", "246.png", "273.png", "300.png"]},
+  "evaluation": {"metrics": ["PSNR", "SSIM", "LPIPS"], "training_metrics_are_fit_results": true, "trajectory_has_ground_truth": false},
+  "output": "outputs/quality/rgb147/region-gradient-r1",
+  "status": "registered_preflight_pending"
+}

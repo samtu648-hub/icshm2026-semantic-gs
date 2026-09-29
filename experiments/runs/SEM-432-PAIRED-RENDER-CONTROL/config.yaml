@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-432-PAIRED-RENDER-CONTROL",
+  "title": "Matched two-loss render/render control on spatial confirmation v1",
+  "phase": "semantic_segmentation",
+  "parent_experiment": "SEM-396-RGB152-SPATIAL256;SEM-431-DUAL-DOMAIN-PREFLIGHT",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "spatial_confirmation_v1",
+  "split_path": "experiments/splits/spatial_confirmation_v1.json",
+  "method": "mask2former_paired_domain_control",
+  "main_variable": "Relative to SEM396, average two independent author-loss graphs on the same render crop before each optimizer update; this controls the second-branch stochastic loss budget used by SEM433.",
+  "causal_claim": "matched control for isolating the second branch input domain in SEM433",
+  "dual_domain_arm": "render_render",
+  "iterations": 6000,
+  "crop": 768,
+  "branch_loss_weights": [0.5, 0.5],
+  "sampling_trace_keys": ["name", "top", "left", "flip"],
+  "rgb_run": "outputs/quality/RGB-152/full-r2",
+  "rgb_evaluation": "outputs/quality/RGB-152/full-r2/evaluation",
+  "photo_root": "outputs/quality/RGB-152/scene/images",
+  "label_root": "outputs/quality/all_data/SEM-370-r1/labels",
+  "label_manifest": "outputs/quality/all_data/SEM-370-r1/label_manifest.json",
+  "semantic_train_views": 256,
+  "semantic_confirmation_views": 30,
+  "buffer_excluded_views": 17,
+  "output_path": "outputs/quality/SEM-432/r1",
+  "commands": {
+    "prepare": "python scripts/run_sem432_sem433_dual_domain.py --artifact-root <artifact-root> --arm control --stage prepare",
+    "train": "python scripts/run_sem432_sem433_dual_domain.py --artifact-root <artifact-root> --arm control --stage train",
+    "inference": "python scripts/run_sem432_sem433_dual_domain.py --artifact-root <artifact-root> --arm control --stage inference"
+  },
+  "quality_claim": null,
+  "scope": "Historically exposed v1 development fold; matched methodological control; render-only inference; single seed; not blind.",
+  "protocol": "docs/experiments/sem431_433_dual_domain_protocol.md"
+}
+

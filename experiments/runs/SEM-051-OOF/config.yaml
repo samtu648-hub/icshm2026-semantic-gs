@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-051-OOF",
+  "status": "completed_three_fold_OOF",
+  "phase": "R2/U1-A",
+  "parent_experiment": "SEM-050-PF",
+  "purpose": "Three fold-specific SegFormer-B2 checkpoints giving each frozen SEM-001 training image exactly one spatially OOF prediction",
+  "inputs": {
+    "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+    "parent_split_repo_path": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "oof_split": "experiments/splits/sem_005_oof_spatial_v1.json",
+    "label_manifest": "experiments/runs/SEM-001/label_manifest.json",
+    "fixed_validation_policy": "not opened by fold training or OOF inference",
+    "unlabeled_policy": "100 unlabeled images are not opened by model training"
+  },
+  "model": {
+    "architecture": "SegFormer-B2",
+    "implementation": "huggingface/transformers==4.57.1",
+    "pretrained_model_id": "nvidia/mit-b2",
+    "pretrained_revision": "3bb39e8739149c3777d0325349b2a6c32c6413db",
+    "weight_license": "NVIDIA Source Code License for SegFormer; non-commercial research/evaluation only",
+    "classification_head": "reinitialized_for_five_official_classes"
+  },
+  "training": {
+    "seed": 20260805,
+    "folds": 3,
+    "iterations_per_fold": 3000,
+    "smoke_iterations": 16,
+    "crop_size": 768,
+    "batch_size": 1,
+    "gradient_accumulation": 1,
+    "optimizer": "AdamW",
+    "learning_rate": 0.00006,
+    "weight_decay": 0.01,
+    "loss": "five_class_cross_entropy_only",
+    "class_weight_rule": "per-fold training pixels only; median_count/count clipped to [0.05,20]",
+    "paired_augmentation": "uniform 768 crop and horizontal flip p=0.5 only",
+    "amp": "bf16_if_supported_else_fp16",
+    "early_stopping": false,
+    "checkpoint_selection": "final_3000_only_no_fold_selection"
+  },
+  "inference": {"crop_size": 768, "stride": 512, "overlap": 256, "output": "float16 five-class probabilities at 1320x989"},
+  "forbidden": ["fixed_74_view_tuning", "unlabeled_training", "Scaffold_training", "architecture_search", "loss_search"]
+}

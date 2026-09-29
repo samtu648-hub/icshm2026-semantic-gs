@@ -1,0 +1,12 @@
+{
+ "schema_version":1,
+ "base_config":"experiments/runs/RGB-152-STANDARD-ABSGRAD-SPATIAL30/config.yaml",
+ "experiment_id":"RGB-158-NATIVE-ABSGS-REPLAY",
+ "parent_experiment":"RGB-152-STANDARD-ABSGRAD-SPATIAL30;RGB-156-ABSGS-DROP-CONTROL",
+ "git_commit":"49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+ "seed":0,"dataset_manifest":"data/manifests/contest_dataset_v1.json","split_id":"spatial_confirmation_v1",
+ "main_variable":"No scientific variable: repeat original unwrapped RGB152 training to diagnose the fresh r=0 control discrepancy",
+ "training":{"output":"outputs/quality/RGB-158/full-r1"},
+ "output":{"root":"outputs/quality/RGB-158","source":"outputs/quality/rgb140/source-r1","preserve_failures":true},
+ "protocol":"docs/experiments/native_absgs_replay_protocol.md"
+}

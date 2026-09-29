@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-339-CROSSVIEW-EVIDENCE-DIAG",
+  "parent_experiment": "SEM-338-CROSSVIEW-MIGRATION",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_001_scaffold_static_v1;sem_005_oof_spatial_v1;sem110-v1;historically reused108 calibration targets only",
+  "parent_root": "outputs/quality/crossview/SEM-338-migration-r1",
+  "parent_config": "experiments/runs/SEM-338-CROSSVIEW-MIGRATION/config.yaml",
+  "parent_config_sha256": "23d9e9df2772e27c4ba0bf9f311650a7339ca214246630276116540a98605998",
+  "parent_results_sha256": {
+    "prepare": "15e3a9ae3754393a598c1c21e170619fd247e2f8e1429c03a23c1a94c7794d98",
+    "match": "ad8c809cc8ca71d4bc5021b84161017d2fb3a34d2e898f520e5a540c3a59c2a4",
+    "geometry": "b353d9b64de138146774ddc4e39275ac7c0f97513201651464fe71415a951b07",
+    "predict": "6c818884840c92bdc1fd3bd04a4d497b220a6c9d7b4ac5d49261fbd2e5ef25b4",
+    "audit": "b50379bdd67200e79a1fc6f8c3888c705aba9ec420ff4a4cb573cf1506bc6caf",
+    "score": "364d9d33632f759b4c12d9e7cf222b9061ff3b6cf33ecde7f7bbeadb43e2d1ed",
+    "batch": "4e05fbd3d46d959612cb71a3db6b25dcb4ed3746e329e6800fec317fd7656aed"
+  },
+  "resolution": [
+    1320,
+    989
+  ],
+  "pixel_space": "PINHOLE",
+  "source_selection": "Exactly SEM338 first and second pose-ordered passing sources. No third-source decoding, new matching, relaxed pair admission or voting.",
+  "target_scope": "108 calibration targets only, never additional111 target/74 target labels. All target/source roles sealed before source decoding. Historical111 IDs may be same-fold train sources; record roles. Parent111 aggregate has already been seen, not a blind protocol.",
+  "evidence": "Source-only evidence for every current SEM338-veto background pixel. Nine disjoint states: no first, no second, outside label grid, unreliable, both deck, both background, both foundation, both same other, reliable disagreement. Record native confidence, cycle, epipolar and XY for all two-source-deck-supported background pixels and all old foundation deletion attempts. No semantic prediction modifications.",
+  "boundary_upper_bounds_source_pixels": [
+    1,
+    2,
+    4,
+    8,
+    16
+  ],
+  "confidence_upper_bounds": [
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    0.95,
+    1
+  ],
+  "diagnostics": "Dense/final foundation deletions and second-veto status by GT class and source-foundation distance. Distance is sampled source PINHOLE pixel-center distance, not true geometry error. Potential deck evidence precision and coverage against all current-background pixels, separately base0 and deleted4. Fixed bins descriptive only, no counterfactual masks, threshold selection or method quality claims.",
+  "validation": "Fresh independent all108 native support/nearest labels/EDT versus KD-tree/source-only map and trace audit BEFORE decoding108 target labels for scores. Independently recounted bins and exact parent calibration confusion/correction reproduction. Preserve all parent source snapshots/RGB and18 production hashes.",
+  "stages": [
+    "evidence",
+    "audit",
+    "score"
+  ],
+  "resource": {
+    "minimum_free_disk_gib": 100,
+    "maximum_seconds_per_stage": 7200,
+    "maximum_new_output_gib_estimate": 1,
+    "points_per_chunk": 65536
+  },
+  "training": false,
+  "new_matching": false,
+  "semantic_exports": false,
+  "threshold_search": false,
+  "automatic_promotion": false,
+  "stop": "One bounded CPU batch, preserve any failure. Do not change expert weights, matcher thresholds, foundation policy or existing outputs; no111-target rescue,74,external compute,uploads,Git commit/push. A later recovery experiment needs a separate registered single-variable protocol."
+}

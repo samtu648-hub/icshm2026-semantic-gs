@@ -1,0 +1,20 @@
+{
+  "experiment_id": "SEM-312-DINOV2-COMPLEMENTARITY-DIAG",
+  "status": "preregistered",
+  "parent_experiment": "SEM-311-DINOV2-FROZEN-FEATURE-OOF,SEM-160-DECK-BINARY-OOF,SUBMIT-020-SEM161-FREEZE",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c plus sealed source snapshot",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_005_oof_spatial_v1; SAME reused108 calibration only",
+  "seed": 20260805,
+  "seed_policy": "Inherited parent seed; this exhaustive diagnostic has no sampling or training",
+  "parent_config": "experiments/runs/SEM-311-DINOV2-FROZEN-FEATURE-OOF/config.yaml",
+  "parent_config_sha256": "dcf810326c7ec9afc11402b75a8139faa7839f0d05253ba97181e82d7a77513e",
+  "parent_result_sha256": "568e476a36def2397182ca281eb913851780ca1e089b84257b25957fe718632a",
+  "freeze_manifest": "experiments/runs/SUBMIT-020-SEM161-FREEZE/frozen_manifest.json",
+  "confidence_edges": [0.5, 0.6, 0.7, 0.8, 0.9, 0.95, 0.99, 1.000001],
+  "boundary_distances_px": [4, 8, 16, 32],
+  "analysis": "Separate additions and removals, useful/harmful/neutral edits, GT and baseline-boundary distances, fixed confidence histograms, exact tie-aware AUROC/AP, matched-MiT agreement, folds and views. No thresholds are selected from these summaries.",
+  "research_screen": "A direction may motivate ONE newly registered auxiliary-evidence paired experiment only if each of three folds has more corrected than harmed pixels and the aggregate has at least1000 corrected pixels. This descriptive screen is NOT a promotion gate or a proof of learnability. Otherwise pause probability-level fusion; do not fit a rescue classifier on108.",
+  "forbidden": ["new inference", "new candidate PNG", "training", "threshold or radius scan", "111 check labels", "74 developer labels", "GT-derived inference masks", "production writes"],
+  "fallback": "Frozen RGB-030-FULL plus SEM-161; no model is installed"
+}

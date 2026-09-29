@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-332-DECK-EVIDENCE-OOF",
+  "parent_experiment": "SEM-331-QUALITY-EXPERTS,SEM-330-QUALITY-STATIC,QUAL-002-PAIRED-GAP-DIAG",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_005_oof_spatial_v1;historically reused 108 calibration/111 check",
+  "seed": 20260805,
+  "protocol": "experiments/runs/QUAL-001-FOUNDATION/config.yaml",
+  "status": "registered_waiting_for_matched_experts_and_fusion",
+  "score": "minimum(p_fiveclass_deck,p_binary_deck)",
+  "eligibility": "current background AND pre-foundation background AND post-foundation background",
+  "only_transition": "0_to_1",
+  "threshold_grid": [
+    null,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.85,
+    0.9,
+    0.925,
+    0.95,
+    0.97,
+    0.98,
+    0.99,
+    0.995
+  ],
+  "selection": "calibration deck IoU, then mIoU, then higher threshold; off is infinity on ties",
+  "check": "one fixed evaluation; never recalibrate from check; any tradeoff requires human decision",
+  "protected_classes": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "quality_claim": null
+}

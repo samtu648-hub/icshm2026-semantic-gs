@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-175-IMPROVEDGS-SPATIAL-BUDGET10M",
+  "title": "ImprovedGS空间留出100万预算严格对照",
+  "phase": "reconstruction_confirmation",
+  "parent_experiment": "RGB-166-IMPROVEDGS-FULL-ALL400-50K;RGB-152-STANDARD-ABSGRAD-SPATIAL30",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "spatial_confirmation_v1",
+  "split_path": "experiments/splits/spatial_confirmation_v1.json",
+  "seed": 0,
+  "data": {"scene": "outputs/quality/RGB-152/scene", "access": "outputs/quality/RGB-152/access.json", "rgb_train_views": 353, "rgb_confirmation_views": 30, "buffer_excluded_views": 17, "initial_point_count": 78045, "initial_ply_sha256": "b7bddeda3759a11e833bd3d60ee554b8e005688ab14f9d41b99d99e2ac59521a"},
+  "training": {"iterations": 50000, "densify_until_iter": 15000, "save_iterations": [15000, 20000, 30000, 40000, 50000], "training_method": "improvedgs", "budget": 1000000, "use_eas": true, "use_las": true, "use_rap": true, "use_mu": true, "edge_sample_cams": 10, "single_primary_variable_in_pair": "Gaussian budget 1000000 versus 1500000"},
+  "output": {"root": "outputs/quality/RGB-175", "preserve_failures": true}
+}

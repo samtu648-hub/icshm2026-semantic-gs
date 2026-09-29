@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-430-PHOTO-TEACHER-DECK-REPLICATION",
+  "title": "Deck-only photo-teacher gate replication on disjoint spatial fold",
+  "phase": "semantic_segmentation_diagnostic",
+  "parent_experiment": "SEM-429-PHOTO-TEACHER-GATE-DIAG;SEM-412-RGB154-SPATIAL255",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "spatial_confirmation_v2;released_unlabeled_301_400",
+  "split_path": "experiments/splits/spatial_confirmation_v2.json",
+  "main_variable": "Remove the harmful tower branch found by SEM429 and independently repeat only the flip-stable large background-to-deck teacher rule on the zero-overlap v2 spatial fold.",
+  "training_updates": 0,
+  "runtime_root": "outputs/quality/mask2former/SEM-340",
+  "upstream_config": "configs/ade20k/semantic-segmentation/swin/maskformer2_swin_large_IN21k_384_bs16_160k_res640.yaml",
+  "validation": {
+    "experiment_id": "SEM-412-RGB154-SPATIAL255",
+    "checkpoint": "outputs/quality/SEM-412/r1/mask2former/model-6000.pt",
+    "checkpoint_result": "outputs/quality/SEM-412/r1/mask2former/result.json",
+    "saved_predictions": "outputs/quality/SEM-412/r1/inference/predictions",
+    "render_root": "outputs/quality/RGB-154/full-r1/evaluation/images",
+    "photo_root": "outputs/quality/RGB-154/scene/images",
+    "label_root": "outputs/quality/all_data/SEM-370-r1/labels",
+    "views": 30
+  },
+  "gate": {
+    "render_source_class": 0,
+    "teacher_classes": [1],
+    "minimum_component_pixels": {"1": 128},
+    "require_horizontal_flip_agreement": true,
+    "protected_prediction_classes": [2, 3, 4]
+  },
+  "promotion_gates": {
+    "minimum_changed_precision": 0.75,
+    "minimum_five_class_miou_delta_pp": 0.0,
+    "minimum_deck_iou_delta_pp": 0.0,
+    "require_positive_net_corrections": true,
+    "require_non_deck_structural_prediction_identity": true
+  },
+  "public_source": "outputs/quality/SEM-429/r2",
+  "output_path": "outputs/quality/SEM-430/r1",
+  "command": "<artifact-root>/r1/envs/r1-cuda128/bin/python scripts/run_sem430_photo_teacher_deck_replication.py --artifact-root <artifact-root>",
+  "scope": "Zero-training historically exposed v2 confirmation; v1 selected deck-only after tower failed, so this zero-overlap v2 result is replication evidence but not blind competition evidence.",
+  "protocol": "docs/experiments/sem430_photo_teacher_deck_replication_protocol.md"
+}

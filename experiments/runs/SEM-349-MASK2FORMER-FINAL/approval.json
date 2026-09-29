@@ -1,0 +1,9 @@
+{
+  "decision": "user_approved_one_final219_6000_fit_and_two_replays",
+  "config_sha256": "6eaaadd86d407b5f2cd27295591c20808605a16e86de52183652827112f2520b",
+  "preflight_sha256": "c7dd8e26693f04f53ce95e6991ab3353cb8910a5bb80c4666f94a98bfc754f81",
+  "batch": "outputs/quality/mask2former/SEM-349-r1",
+  "user_confirmation": "好的继续推进",
+  "confirmation_context": "User explicitly confirmed the immediately preceding request for one all219 6000-step fit,74 predictions and two fresh replays; estimate45-60min,new storage<=4GiB; no OOF repetition,threshold tuning or package promotion.",
+  "approved_utc": "2026-09-13T02:16:39.751214+00:00"
+}

@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-331-QUALITY-EXPERTS",
+  "parent_experiment": "QUAL-001-FOUNDATION,SEM-330-QUALITY-STATIC,RGB-110-SCAFFOLD-CTRL,RGB-115-PGSR-SAFE-CYCLE,RGB-112-SOF-NVS,RGB-113-SOF-GEO",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_001_scaffold_static_v1;sem_005_oof_spatial_v1",
+  "seed": 20260805,
+  "protocol": "experiments/runs/QUAL-001-FOUNDATION/config.yaml",
+  "label_manifest": "experiments/runs/SEM-001/label_manifest.json",
+  "labels": "r2/sem_001/labels",
+  "resolution": [
+    1320,
+    989
+  ],
+  "pixel_space": "PINHOLE",
+  "model": {
+    "architecture": "SegFormer-B2",
+    "model_id": "nvidia/mit-b2",
+    "revision": "3bb39e8739149c3777d0325349b2a6c32c6413db",
+    "relative_weights": "r2/sem_005/third_party/nvidia_mit_b2_3bb39e8",
+    "license": "NVIDIA SegFormer non-commercial research/evaluation; inherited source record"
+  },
+  "experts": {
+    "fiveclass": {
+      "class_ids": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "crop": 768,
+      "stride": 512
+    },
+    "deck": {
+      "class_ids": [
+        0,
+        1
+      ],
+      "positive_class": 1,
+      "crop": 960,
+      "stride": 480
+    },
+    "stay_cable": {
+      "class_ids": [
+        0,
+        1
+      ],
+      "positive_class": 2,
+      "crop": 960,
+      "stride": 480
+    }
+  },
+  "training": {
+    "steps": 3000,
+    "smoke_steps": 8,
+    "optimizer": "AdamW",
+    "learning_rate": 0.00006,
+    "weight_decay": 0.01,
+    "batch_size": 1,
+    "gradient_accumulation": 1,
+    "augment": "uniform native crop + horizontal flip p=.5",
+    "weights": "median frequency inverse count clipped [.05,20], training partition only",
+    "amp": "bf16 if supported else fp16",
+    "checkpoint_selection": "final only; no early stopping",
+    "rgb_frozen": true
+  },
+  "partitions": [
+    "oof-0",
+    "oof-1",
+    "oof-2",
+    "development"
+  ],
+  "oof_scope": "shared RGB screening, not independent reconstruction validation",
+  "outputs": "float32 native probabilities and uint8 class predictions; no target labels read in fitting",
+  "calibration": "historically reused 108/111 training-side OOF only; no 74-view threshold selection",
+  "allowed_rgb_parents": [
+    "RGB-110-SCAFFOLD-CTRL",
+    "RGB-115-PGSR-SAFE-CYCLE",
+    "RGB-112-SOF-NVS",
+    "RGB-113-SOF-GEO"
+  ],
+  "quality_claim": null
+}

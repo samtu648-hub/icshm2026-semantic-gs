@@ -1,0 +1,57 @@
+{
+  "experiment_id": "RGB-092-TRANSIENT",
+  "review_type": "native RGB panels, full fixed views and unfiltered pixel crops",
+  "reviewer": "Codex visual inspection; qualitative, not a blinded human panel",
+  "class_labels_used_for_this_review": false,
+  "views": [
+    {
+      "name": "054.png",
+      "panel_sha256": "8f20a8dc25e6e59fe2865aa69e92ff4e7367ccd43768d6e4363370ea414573f0",
+      "candidate_vs_control": "improved",
+      "candidate_vs_historical": "improved",
+      "structure_erosion": false,
+      "observations": "The upper/right sky's long horizontal bars and dark vertical traces are substantially fainter than both baselines. This is a local artifact improvement, not a clean scene: right-side water ghost lines and blurred foreground deck still remain. No obvious new tower/deck erosion was identified in the native deck crop."
+    },
+    {
+      "name": "140.png",
+      "panel_sha256": "b92f5c9473b3fd36b06697c23311bd3933008eb1a00954f276779e77188dbbae",
+      "candidate_vs_control": "improved",
+      "candidate_vs_historical": "improved",
+      "structure_erosion": false,
+      "observations": "The conspicuous horizontal/vertical streaks in the upper-right sky of the control and the historical vertical streaks are largely reduced. Distant scenery and water remain smoothed and the water is not recovered to reference appearance. No obvious structural erosion was identified."
+    },
+    {
+      "name": "151.png",
+      "panel_sha256": "07c178ef8382ff7bf75ce1449146ec40416aea2b22842d7763aeccdf2450d2c9",
+      "candidate_vs_control": "unchanged_or_uncertain",
+      "candidate_vs_historical": "unchanged_or_uncertain",
+      "structure_erosion": false,
+      "observations": "Mixed water artifacts: some bright right-edge streaks are weaker, but dark ghost lines, a bright edge clump and the lost reflection pattern remain. The tower and near cables are recognizable; this is not a clear removal of the main water artifact."
+    },
+    {
+      "name": "159.png",
+      "panel_sha256": "533db83d7dfcca8863b12892afddf222aa4dbef555c5446ff84839b0d86db2ab",
+      "candidate_vs_control": "worse",
+      "candidate_vs_historical": "worse",
+      "structure_erosion": false,
+      "observations": "The left-water bundle of elongated blue/white ghost structures is more conspicuous; stretched shoreline/foreground structures remain extensive. The native deck crop still shows longitudinal smear and phantom lines across the water beside the piers. Existing large near-deck degradation is not solved; a new discrete tower/deck hole was not identified."
+    },
+    {
+      "name": "160.png",
+      "panel_sha256": "19c775ff94a1d9105065abc960acb2c38d43c8121e58e5296e9478634cba07ab",
+      "candidate_vs_control": "worse",
+      "candidate_vs_historical": "worse",
+      "structure_erosion": false,
+      "observations": "As in the adjacent 159 view, the left-water ghost bundle is stronger while near-shore geometry is still severely stretched. Lane-like foreground deck smearing and extra diagonal/vertical lines persist in the native crop. No clear new discrete structural erosion was identified, but the no-obvious-background-worsening criterion fails."
+    },
+    {
+      "name": "183.png",
+      "panel_sha256": "694fc62e01671247b91074057e914adc735d715a74aba8f00acff2ed2fc98e0c",
+      "candidate_vs_control": "unchanged_or_uncertain",
+      "candidate_vs_historical": "unchanged_or_uncertain",
+      "structure_erosion": false,
+      "observations": "Bridge outline remains recognizable and the water is still largely textureless. Shoreline blurring and diagonal smearing persist; no sufficiently clear major artifact removal was established."
+    }
+  ],
+  "conclusion": "Two local sky-artifact improvements do not offset worsened near-shore/water artifacts in 159/160. The full visual gate fails, independently of the failed numerical gates. Protected training weights do not establish unchanged reconstruction geometry."
+}

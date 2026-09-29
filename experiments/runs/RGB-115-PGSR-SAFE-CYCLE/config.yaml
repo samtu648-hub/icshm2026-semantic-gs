@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-115-PGSR-SAFE-CYCLE",
+  "parent_experiment": "RGB-111-PGSR,RGB-114-PGSR-NUMERIC-DIAG,RGB-110-SCAFFOLD-CTRL",
+  "protocol": "experiments/runs/QUAL-001-FOUNDATION/config.yaml",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1",
+  "seed": 0,
+  "status": "registered_not_run",
+  "backbone": "pgsr",
+  "upstream_url": "https://github.com/zju3dv/PGSR",
+  "upstream_commit": "de24f1a38b350387e8d8fe381b2cd70c1ae946e7",
+  "source_delta_patch": "third_party/patches/quality_pgsr_safe_cycle.patch",
+  "project_dependency": "src/quality_pgsr_geometry.py",
+  "single_changed_variable": "differentiate only the original accepted multiview cycles, excluding rejected invalid computations from autograd",
+  "training_arguments": ["--multi_view_num", "8", "--multi_view_max_angle", "30", "--multi_view_min_dis", "0.01", "--multi_view_max_dis", "1.5"],
+  "prerequisite": "RGB114 safe-cycle full3000-step diagnostic passed; then fresh common-init smoke and full30000 from scratch",
+  "resume_from_bad_model": false,
+  "image_cache_device": "cpu",
+  "license_status": "same PGSR research/nonprofit derivative conditions, retain notices; no external distribution authorized"
+}

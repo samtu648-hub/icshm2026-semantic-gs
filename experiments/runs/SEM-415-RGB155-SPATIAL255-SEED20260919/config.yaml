@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-415-RGB155-SPATIAL255-SEED20260919",
+  "title": "Second semantic seed on frozen RGB155 Standard spatial v2 renders",
+  "phase": "semantic_segmentation",
+  "parent_experiment": "SEM-413-RGB155-SPATIAL255;SEM-414-RGB154-SPATIAL255-SEED20260919",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260919,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "spatial_confirmation_v2",
+  "split_path": "experiments/splits/spatial_confirmation_v2.json",
+  "method": "mask2former",
+  "main_variable": "RGB155 replaces RGB154 in the exactly paired seed-20260919 semantic replication; all semantic settings remain fixed.",
+  "iterations": 6000,
+  "crop": 768,
+  "sampling_trace_keys": ["name", "top", "left", "flip"],
+  "rgb_run": "outputs/quality/RGB-155/full-r1",
+  "rgb_evaluation": "outputs/quality/RGB-155/full-r1/evaluation",
+  "label_root": "outputs/quality/all_data/SEM-370-r1/labels",
+  "label_manifest": "outputs/quality/all_data/SEM-370-r1/label_manifest.json",
+  "semantic_train_views": 255,
+  "semantic_confirmation_views": 30,
+  "buffer_excluded_views": 21,
+  "output_path": "outputs/quality/SEM-415/r1",
+  "seed_aware_initialization": {
+    "reference_seed": 20260919,
+    "reference_experiment": "SEM-392-RGB150-DEV270-SEED20260919-MEMORY",
+    "training_initialization_reference": "outputs/quality/SEM-392/r1/preflight/initialization-contract.json"
+  },
+  "commands": {
+    "prepare": "python scripts/run_sem415_rgb155_spatial_seed20260919.py --artifact-root <artifact-root> --stage prepare",
+    "train": "python scripts/run_sem415_rgb155_spatial_seed20260919.py --artifact-root <artifact-root> --stage train",
+    "inference": "python scripts/run_sem415_rgb155_spatial_seed20260919.py --artifact-root <artifact-root> --stage inference"
+  },
+  "confirmation_access": {
+    "rgb_during_semantic_training": false,
+    "labels_during_semantic_training": false,
+    "buffer_rgb_or_labels": false,
+    "allowed_after_both_models_6000_are_sealed": ["confirmation rendered RGB", "confirmation labels for fixed evaluation"]
+  },
+  "quality_claim": null,
+  "scope": "Second semantic seed on historically exposed spatial v2 development confirmation; frozen RGB seed 0; not blind",
+  "protocol": "docs/experiments/sem414_sem415_spatial_v2_seed_protocol.md"
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-164-IMPROVEDGS-MATCHED-CONTROL",
+  "title": "ImprovedGS同预算LAS匹配控制",
+  "phase": "reconstruction",
+  "parent_experiment": "RGB-151-STANDARD-ABSGRAD-LAS-DEV30;RGB-140-STANDARD-ABSGRAD-ALL400;RGB-163-STANDARD-DENSIFICATION-LIFECYCLE",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "split_path": "outputs/quality/all_data/RGB-120-r2/split.json",
+  "seed": 0,
+  "source": {
+    "repository": "https://github.com/XiaoBin2001/Improved-GS",
+    "commit": "20b5db343a87c2f9fb4b70c6e39ff1f042a8a47a",
+    "license": "non-commercial research and evaluation",
+    "compatibility_patch": "Add missing <cstdint> include required by the local CUDA 12.8 compiler; no algorithm change"
+  },
+  "data": {
+    "scene": "outputs/quality/all_data/RGB-120-r2/scene",
+    "rgb_train_views": 400,
+    "official_cameras_fixed": true,
+    "initial_point_count": 72292,
+    "initial_ply_sha256": "10a88fb018c27530b3bbfa0f7000408693ba75228067f5311e7775e4755e68f2",
+    "use_semantics": false
+  },
+  "training": {
+    "iterations": 30000,
+    "seed": 0,
+    "training_method": "improvedgs",
+    "budget": 1000000,
+    "use_eas": false,
+    "use_las": true,
+    "use_rap": false,
+    "use_mu": false,
+    "base_hyperparameters": "Pinned ImprovedGS source defaults shared with RGB165",
+    "camera_sampling": "private CPU torch.Generator seed 17031, identical across arms",
+    "preflight_iterations": 601,
+    "save_iterations": [15000, 30000]
+  },
+  "evaluation": {
+    "primary": "manual bridge crops for views 385-392",
+    "secondary": "views 235-245, fixed all400 fit metrics, Gaussian count, and visual bridge continuity",
+    "comparators": ["RGB-165-IMPROVEDGS-FULL-ALL400", "RGB-151-STANDARD-ABSGRAD-LAS-DEV30", "RGB-140-STANDARD-ABSGRAD-ALL400"]
+  },
+  "output": {"root": "outputs/quality/RGB-164", "preserve_failures": true}
+}

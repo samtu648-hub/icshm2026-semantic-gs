@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-343-RAW-FOUNDATION-GATE",
+  "stage": "sealed0.05_historical_check_and_local_diagnostic",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "same SEM341 spatial OOF models; historically reused108 calibration only;111 diagnostic already known but not used to calibrate or score new candidates",
+  "selection": "experiments/runs/SEM-343-RAW-FOUNDATION-GATE/selection.json",
+  "selection_sha256": "e44d2426764efa55645af4f92667b856d64c85af3c773747f29435d16203cec1",
+  "calibration_config": "experiments/runs/SEM-343-RAW-FOUNDATION-GATE/config.yaml",
+  "calibration_result": "outputs/quality/raw_fusion/SEM-343-r1/result.json",
+  "comparison": "outputs/quality/mask2former/SEM-341-r1/comparison",
+  "batch": "outputs/quality/mask2former/SEM-341-r1",
+  "roles": [
+    "calibration",
+    "check"
+  ],
+  "resolution": [
+    1320,
+    989
+  ],
+  "pixel_space": "PINHOLE",
+  "arms": [
+    "raw",
+    "calibrated_fusion",
+    "selected0.05"
+  ],
+  "no_other_margins": true,
+  "local_diagnostic": {
+    "connectivity": 8,
+    "masks": [
+      "corrected",
+      "harmed",
+      "wrong_to_wrong"
+    ],
+    "component_bounding_box": "x0,y0,x1,y1; upper bound exclusive; image pixels",
+    "report": "all views/all components per role and OOF group; local display ranks largest harmed components then view name; descriptive only, no rule feedback",
+    "future_display_limit_per_role": 6
+  },
+  "validation": "Independent new-process candidate replay via static-foundation and raw probabilities; direct five-class confusion versus3->4 algebra; selected108 matches sealed curve exactly; frozen219 RGB/18artifact hashes before/after; preserve every old config/result",
+  "no_recalibration": true,
+  "no_new_training": true,
+  "no_automatic_promotion": true,
+  "minimum_free_gib": 100,
+  "expected_output_mib_upper_bound": 100,
+  "input_hashes": {
+    "experiments/runs/SEM-343-RAW-FOUNDATION-GATE/config.yaml": "2c0d158250d11622e30e1e48fcb8925b0de13723f13b73f03fbeff4344815578",
+    "outputs/quality/raw_fusion/SEM-343-r1/result.json": "a703321093fbf36534a840b54e996e6f08204d578a7036e70b7966d76126730f",
+    "outputs/quality/raw_fusion/audit-r1/result.json": "af66ef17b08d44b2b0f03838bbeb9b9e9962dd0321de2caa903f457b1cc0c30e",
+    "src/quality_raw_foundation_gate.py": "3ed47199937e543ec9f20b30978066be80350a8da6bd5d14d7ba050cd164e0e2",
+    "experiments/runs/SEM-343-RAW-FOUNDATION-GATE/selection.json": "e44d2426764efa55645af4f92667b856d64c85af3c773747f29435d16203cec1"
+  }
+}

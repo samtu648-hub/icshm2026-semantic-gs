@@ -1,0 +1,43 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>Standard 跨视角几何落点对照</title>
+<style>body{font:15px/1.6 system-ui;margin:24px;color:#172b3a;background:#f4f6f7}h1{font-size:24px}h2{font-size:19px;margin-top:30px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.tile{background:white;padding:8px}canvas,video{width:100%}canvas{cursor:crosshair}button,select{padding:7px;margin:4px}table{border-collapse:collapse;background:white;width:100%}th,td{padding:6px 12px;text-align:right;border-bottom:1px solid #ddd}th:first-child,td:first-child{text-align:left}a{color:#086a89}.scroll{max-height:450px;overflow:auto}tr:hover{background:#e7f0f3}code{font-size:13px}</style>
+<h1>Standard 跨视角照片几何引导分裂落点</h1>
+<p>RGB145 是预算受限的新绝对梯度控制；RGB146 只替换部分原生子高斯XYZ。RGB140 为历史参考。相同全400 RGB、官方相机、初始化、seed0、30k；全400指标是训练拟合，144帧轨迹无真值。几何提议来自冻结LoFTR和官方相机三角化，仍不是独立真值；水面及多数细索缺乏可靠对应。</p>
+<!-- REVIEW_START --><p>视觉复核结论待登记；下方是已完成的原始对照产物。</p><!-- REVIEW_END -->
+<div id=metrics></div><h2>同位置 RGB 对照</h2>
+<select id=view></select><select id=roi><option value=full>完整图</option></select><button id=reset>重置</button><span id=coords></span>
+<p>可在任一图上拖选区域，四幅图同步裁剪。选择轨迹帧时只显示三模型。</p><div class=grid id=grid></div>
+<h2>同一144帧轨迹 · 仅定性检查</h2><input id=frame type=range min=0 max=143 value=0 style="width:75%"><span id=frameLabel>0</span>
+<video controls preload=metadata src=trajectory-rgb140-rgb145-rgb146.mp4></video>
+<p><a href="trajectory_details/index.html">71–73与96–98帧重点放大（事后定性展示，不计分）</a></p>
+<details><summary>展开全部144帧接触表（24页，每页6帧）</summary><div id=contacts></div></details>
+<details><summary>展开固定九图与重点局部原尺寸对照图</summary><div id=panelLinks></div></details>
+<h2>局部 RGB MAE · 0–255，越低越好</h2><div id=regions></div>
+<h2>已有标签区域的 RGB MAE · 非语义准确率</h2><p>在300张已有标签图上，先逐图求该类RGB MAE，再对存在该类的图等权平均；不是全像素池化。</p><div id=classes></div>
+<p><a href="../geometry-review-r1/index.html">RGB144照片对应、重投影、不确定性与冻结贡献诊断</a>：2,080条接受提议，1,873对照片；50贡献者×400视角有限移除。没有匹配不等于错误。</p>
+<h2>资源与预算</h2><div id=resources></div>
+<h2>实际引导的位置与覆盖</h2>
+<p>绿色标记为训练中曾使用的照片提议，黄色为未使用的接受提议。子点之后仍会移动或被剪枝，因此标记不保证最终表面正确，也不代表最终保留点数。没有对应的区域不能称为受到直接几何约束。</p>
+<img src="../placement-distribution-r1/placement-distribution.png" alt="引导次数、相对距离、世界坐标分布与位移长尾" style="max-width:100%;width:1100px">
+<p><a href="../placement-distribution-r1/placements.csv">逐次落点CSV</a> · <a href="../placement-distribution-r1/view_coverage.csv">逐视角覆盖CSV</a> · <a href="../placement-distribution-r1/result.json">完整覆盖统计</a> · <a href="../placement-distribution-r1/159-guided.png">159落点</a> · <a href="../placement-distribution-r1/160-guided.png">160落点</a> · <a href="../placement-distribution-r1/081-guided.png">081落点</a></p>
+<p>匹配总循环实测约11.58分钟，峰值allocated2691MiB；两臂均计算几何关联。完整恢复状态每1000步保存，7k/15k/30k模型保留。工程失败另见报告与failures.jsonl。</p>
+<img src=budget-and-ranking.png alt="两臂高斯数量、数量差与候选累计落点替换数量曲线" style="max-width:100%;width:1050px">
+<p>来源：两臂numeric.jsonl（每100步、增密事件前的数量）与候选densification.jsonl；每个提议每臂最多使用一次；控制只计算关联，实际替换为0。两臂均为seed0全400训练拟合。</p>
+<h2>全400逐图变化 · RGB146 − RGB145</h2><p>点击图名查看原位置；按PSNR变化升序，最差在前。<a href=per_view.csv>下载逐图CSV</a> · <a href=data.json>完整数据与增密事件</a></p><div class=scroll id=perview></div>
+<script>
+const D=__DATA__, F=(x,n=6)=>Number(x).toFixed(n), models=['RGB140','RGB145','RGB146'];
+for(let i=0;i<144;i+=6){const name='frames-'+String(i).padStart(3,'0')+'-'+String(i+5).padStart(3,'0')+'.jpg',a=document.createElement('a'),im=document.createElement('img');a.href='trajectory_contacts/'+name;im.src=a.href;im.loading='lazy';im.alt='Frames '+i+'–'+(i+5)+' / RGB140, RGB145, RGB146 / no GT';im.style='display:block;width:100%;max-width:1320px;margin:12px 0';a.append(im);contacts.append(a)}
+const panelNames=D.fixed.views.map(n=>n.replace('.png','-full.png')).concat(Object.entries(D.fixed.regions).flatMap(([key,r])=>r.boxes.map((_,i)=>key+'-'+i+'.png')),Object.keys(D.inherited_structure_crops).map(stem=>stem+'-inherited-structure-crop.png'));panelNames.forEach(name=>{const p=document.createElement('p'),a=document.createElement('a');a.href='panels/'+name;a.textContent=name;p.append(a);panelLinks.append(p)});
+function table(headers,rows){return '<table><thead><tr>'+headers.map(h=>'<th>'+h+'</th>').join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map(c=>'<td>'+c+'</td>').join('')+'</tr>').join('')+'</tbody></table>'}
+metrics.innerHTML=table(['模型','PSNR ↑ (dB)','SSIM ↑','LPIPS ↓'],models.map(k=>[k,...['PSNR','SSIM','LPIPS'].map(m=>F(D.metrics[k][m]))]));
+regions.innerHTML=table(['固定区域','RGB140','RGB145','RGB146'],D.regions.map(r=>[r.region,...models.map(k=>F(r[k],4))]));
+classes.innerHTML=table(['真实标签区域','RGB140','RGB145','RGB146'],Object.entries(D.class_rgb_mae_255).map(([k,r])=>[k,...models.map(m=>F(r[m],4))]));
+resources.innerHTML=table(['模型','高斯数','训练分钟（不含排队）','峰值allocated MiB','模型MiB','固定九图GPU渲染ms','引导子点数'],Object.entries(D.resources).map(([k,r])=>[k,r.final_gaussians,F(r.training_wall_seconds/60,2),F(r.peak_allocated_mib,1),F(r.model_mib,2),F(r.fixed9_cuda_render_median_ms,3),r.guided_child_placements]));
+perview.innerHTML=table(['图','ΔPSNR (dB)','ΔSSIM','ΔLPIPS'],[...D.rows].sort((a,b)=>a.RGB146_minus_RGB145_PSNR-b.RGB146_minus_RGB145_PSNR).map(r=>['<a href="#" data-view="'+r.name+'">'+r.name+'</a>',...['PSNR','SSIM','LPIPS'].map(m=>F(r['RGB146_minus_RGB145_'+m]))]));
+const ordered=[...D.fixed.views,...D.names.filter(n=>!D.fixed.views.includes(n)),...D.trajectory];ordered.forEach(n=>view.add(new Option(n,n)));
+Object.entries(D.fixed.regions).forEach(([key,r])=>r.boxes.forEach((b,i)=>roi.add(new Option(key+' #'+i,JSON.stringify({view:r.view,box:b})))));
+Object.entries(D.inherited_structure_crops).forEach(([stem,b])=>roi.add(new Option(stem+' 既有塔索/桥面局部',JSON.stringify({view:stem+'.png',box:b}))));
+let box=[0,0,1320,989],items=[],generation=0,drag=null;
+function draw(){coords.textContent=box.join(', ');items.forEach(({im,c})=>{c.width=box[2]-box[0];c.height=box[3]-box[1];c.getContext('2d').drawImage(im,...box.slice(0,2),c.width,c.height,0,0,c.width,c.height)})}
+function load(){const idx=D.trajectory.indexOf(view.value);if(idx>=0){frame.value=idx;frameLabel.textContent=idx}else{frameLabel.textContent='当前为训练图；拖动切换轨迹'}const z=++generation;items=[];grid.replaceChildren();const ts=D.names.includes(view.value)?D.tiles:D.tiles.slice(1);grid.style.gridTemplateColumns='repeat('+ts.length+',minmax(0,1fr))';ts.forEach(t=>{let d=document.createElement('div');d.className='tile';let c=document.createElement('canvas'),a=document.createElement('a');a.href=t.path+'/'+view.value;a.textContent=t.label+' · 原生PNG';d.append(a,c);grid.append(d);let im=new Image();im.onload=()=>{if(z===generation){items.push({im,c});draw()}};im.src=a.href;c.onpointerdown=e=>{let r=c.getBoundingClientRect();drag=[box[0]+(e.clientX-r.left)/r.width*(box[2]-box[0]),box[1]+(e.clientY-r.top)/r.height*(box[3]-box[1])];c.setPointerCapture(e.pointerId)};c.onpointerup=e=>{if(!drag)return;let r=c.getBoundingClientRect(),x=box[0]+(e.clientX-r.left)/r.width*(box[2]-box[0]),y=box[1]+(e.clientY-r.top)/r.height*(box[3]-box[1]);let b=[Math.max(0,Math.floor(Math.min(x,drag[0]))),Math.max(0,Math.floor(Math.min(y,drag[1]))),Math.min(1320,Math.ceil(Math.max(x,drag[0]))),Math.min(989,Math.ceil(Math.max(y,drag[1])))];drag=null;if(b[2]-b[0]>5&&b[3]-b[1]>5){box=b;draw()}}})}
+view.onchange=()=>{box=[0,0,1320,989];roi.value='full';load()};reset.onclick=()=>{box=[0,0,1320,989];roi.value='full';draw()};roi.onchange=()=>{if(roi.value==='full'){box=[0,0,1320,989];draw();return}let r=JSON.parse(roi.value);view.value=r.view;box=r.box;load()};frame.oninput=()=>{roi.value='full';view.value=D.trajectory[+frame.value];frameLabel.textContent=frame.value;box=[0,0,1320,989];load()};perview.onclick=e=>{if(e.target.dataset.view){e.preventDefault();roi.value='full';view.value=e.target.dataset.view;box=[0,0,1320,989];load();grid.scrollIntoView({behavior:'smooth'})}};load();
+</script></html>

@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-080-STRUCTURAL-DIAG",
+  "title": "Training-only frozen SEM-001 tower-to-deck structural cleanup diagnostic",
+  "phase": "R2 inference-only semantic feasibility diagnostic",
+  "status": "completed_drop_visual_and_metric_failure",
+  "owner": "unassigned",
+  "parent_experiment": "SEM-001,SEM-070-POST-CLEAN",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_001_scaffold_static_v1",
+  "seed": 20260902,
+  "frozen_rgb": {
+    "backbone": "Scaffold-GS",
+    "rgb_experiment": "RGB-030-FULL",
+    "iteration": 30000,
+    "train_camera_count": 303,
+    "n_offsets": 10,
+    "appearance_camera_id": 0,
+    "coordinate_frame": "official_colmap_reference",
+    "pose_convention": "CAMERA_FROM_WORLD",
+    "official_to_model_sim3": "identity"
+  },
+  "frozen_semantic": {
+    "experiment": "SEM-001",
+    "config": "experiments/runs/SEM-001/config.yaml",
+    "semantic_storage": "per_anchor_logits",
+    "class_names": ["background", "deck", "stay_cable", "tower", "foundation"],
+    "checkpoint_sha256": "8e3dbe30e17f67081a72380018fc281c155ec00eed83cd5a19b3285bf4fb8aa3",
+    "checkpoint_is_not_modified": true
+  },
+  "data": {
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "label_manifest": "experiments/runs/SEM-001/label_manifest.json",
+    "training_images": 219,
+    "validation_images_opened": 0,
+    "uses_unlabeled_rgb": false,
+    "uses_hidden_test_rgb_or_labels": false,
+    "access_rule": "The runner may load only the 219 labelled SEM-001 training views. It has no validation or external-camera mode. Labels are loaded after the cleanup predicate only to score authorised training diagnostics."
+  },
+  "structural_rule": {
+    "hough_threshold": 32,
+    "minimum_line_length_px": 48,
+    "maximum_line_gap_px": 10,
+    "minimum_verticality": 0.5,
+    "structure_contact_radius_px": 40,
+    "retained_line_half_width_px": 3
+  },
+  "mechanism": {
+    "single_changed_variable": "post-raster per-view structural topology predicate instead of SEM-070 per-anchor suppression",
+    "candidate_input": "frozen SEM-001 five-channel probabilities only",
+    "keep_rule": "raw stay_cable pixels within a continuous, sufficiently vertical Hough segment whose opposite endpoints fall in predicted tower and deck contact neighbourhoods",
+    "transfer": "for rejected raw stay_cable pixels: p_background += p_stay_cable; p_stay_cable = 0",
+    "forbidden_inputs": ["target-view RGB", "target-view labels", "validation views", "unlabelled views", "hidden test inputs"],
+    "frozen_artifacts": ["RGB geometry", "RGB colors", "RGB opacity", "RGB checkpoint", "SEM-001 anchor logits"]
+  },
+  "diagnostic_decision": {
+    "not_a_formal_candidate": true,
+    "no_configuration_selection": "This single registered rule is measured independently on hash-parity calibration and check halves; it is not tuned or selected by this run.",
+    "next_step_only_if_supported": "A separate formal candidate may be preregistered only if the check half shows non-zero tower-to-deck-supported line evidence and a useful official-error trade-off. The 74-view split remains unopened until that later rule is frozen.",
+    "formal_replacement_gates_remain": "SEM-070's mIoU, stay_cable, protected-class, difficult-view, RGB, checkpoint and official-camera gates still apply to any later candidate. If official label noise makes a visually cleaner result fail them, it is show-only and SEM-001 remains the submission fallback."
+  },
+  "isolation": {"training_views": ["001.png", "010.png", "030.png"]},
+  "outputs": {
+    "root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_080/structural_diag",
+    "training_access": "training_only_access.json",
+    "training_per_view": "training_per_view_structural_diagnostics.csv",
+    "training_visual_samples": ["001.png", "010.png", "030.png"],
+    "triptych": "training_structural_triptych/raw_cleaned_retained",
+    "result": "result.json"
+  },
+  "runtime": {"preflight_training_limit": 8, "no_output_is_tracked_by_git": true},
+  "fallback": "RGB-030-FULL Scaffold-GS + SEM-001"
+}

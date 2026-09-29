@@ -1,0 +1,13 @@
+# Isolated SEM-005-PF / U1-A environment.  Install torch/torchvision from the
+# official PyTorch CUDA 12.8 index, then install the remaining packages from
+# PyPI.  This file must never be installed into the frozen Scaffold environment.
+torch==2.11.0
+torchvision==0.26.0
+transformers==4.57.1
+huggingface-hub==0.36.0
+safetensors==0.6.2
+numpy==2.2.6
+Pillow==11.3.0
+opencv-python-headless==4.12.0.88
+scipy==1.16.3
+typing-extensions==4.15.0

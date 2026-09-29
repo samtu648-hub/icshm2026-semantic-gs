@@ -1,0 +1,22 @@
+{
+  "experiment_id": "SEM-240-OFFSET-RESPONSIBILITY-OOF",
+  "status": "registered_not_run",
+  "seed": 0,
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "parent_experiment": "SEM-160-DECK-BINARY-OOF",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_005_oof_spatial_v1",
+  "single_variable": "pixel-to-offset responsibility: all alpha-compositing contributors (control) versus unique maximum T*alpha contributor (candidate); identical offset table, data, smoothing, rendering and fusion",
+  "control": "e_ic = sum over fold training views and GT class c pixels of T_i(p)*alpha_i(p)",
+  "candidate": "e_ic = sum over same pixels of T_i(p)*alpha_i(p)*I[i = argmax_j T_j(p)*alpha_j(p)]; ties follow pinned front-to-back renderer order",
+  "fit": "single deterministic pass through sorted training views, closed-form categorical posterior p_ic=(e_ic+1)/(e_i0+e_i1+2), no network/optimizer/threshold or checkpoint search",
+  "scope": "background/deck evidence only; protected semantic classes do not train this binary lane; unseen offsets have uniform prior",
+  "render": "same frozen geometry and native T*alpha binary probability compositing with background probability 1; fixed argmax in both arms",
+  "fusion": "SEM-160 OOF background/deck pixels only, protect full class masks 2/3/4 and all original SEM-150 foundation rejects; bidirectional",
+  "isolation": "per-fold train labels only; no OOF or guard labels in fitting; all 219 predictions sealed before calibration metrics; check and developer metrics remain inaccessible until gate pass. Protected SEM-001 baseline was trained on all219 and is inherited equally by both arms; this is incremental OOF, not end-to-end fully OOF.",
+  "gates": {"minimum_deck_iou_gain": 0.002, "minimum_deck_recall_gain": 0.005, "minimum_deck_precision": 0.94, "miou": "non_decreasing", "rgb_exact": true, "protected_exact": true},
+  "engineering": {"adjoint_relative_error_max": 0.0001, "foreground_max_difference": 0.00002, "checkpoint_reload_exact": true, "rgb_tensor_exact": true},
+  "budget": {"passes_per_fold": 1, "folds": 3, "max_gpu_hours": 2},
+  "panels": ["001.png", "017.png", "093.png"],
+  "failure": "drop recipe without threshold/weight/support/seed search; do not read check/developer or fit final"
+}

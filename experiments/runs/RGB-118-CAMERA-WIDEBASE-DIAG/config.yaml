@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-118-CAMERA-WIDEBASE-DIAG",
+  "parent_experiment": "RGB-117-CAMERA-CONSISTENCY-DIAG",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1",
+  "seed": 20260909,
+  "single_changed_variable": "candidate baseline regime: nearest eligible camera ranks [16,32] instead of [1,4]",
+  "neighbor_ranks": [16, 32],
+  "inherit": "exact RGB117 303 training-view features, camera model, orientation eligibility, descriptor matcher, match split, F/H estimators and reporting rules; no new image decode",
+  "replay_pairs": 6,
+  "selection": "all training cameras; pose selects candidate pairs only, never correspondence inliers; no developer/buffer/reserved data",
+  "camera_optimization": false,
+  "pose_truth_claim": false,
+  "stopping": "one declared baseline extension and independent replay; no automatic baseline/threshold sweep until favourable result",
+  "limitations": "appearance/overlap failures and planar ambiguity retained; still pairwise image consistency, not absolute or global multi-view pose truth"
+}

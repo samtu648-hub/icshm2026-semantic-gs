@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "experiment_id": "QUAL-023-BRIDGE-DEFECT-MANIFEST",
+  "title": "RGB170缺支撑与错支撑互斥清单",
+  "phase": "diagnostic",
+  "parent_experiment": "QUAL-022-BRIDGE-GAUSSIAN-SUPPORT-DIAG;RGB-170-IMPROVEDGS-BUDGET15M-H50K",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "seed": 0,
+  "classification": {
+    "minimum_projected_coverage": 0.5,
+    "maximum_nonclean_fraction": 0.25,
+    "minimum_cross_view_observations": 3,
+    "minimum_mixed_observation_fraction": 0.5,
+    "minimum_near_background_fraction": 0.35
+  },
+  "scope": "all 300 labeled views x deck/stay_cable/tower; final RGB170 contributors",
+  "output": "outputs/quality/QUAL-023/manifest-r1"
+}

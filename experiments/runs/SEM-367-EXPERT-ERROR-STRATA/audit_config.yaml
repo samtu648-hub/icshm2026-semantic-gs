@@ -1,0 +1,21 @@
+{
+  "experiment_id": "SEM-367-EXPERT-ERROR-STRATA",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "original219 own-fold diagnostic only; historical108/111 reused; no74 quality reads; sharedRGB single seed",
+  "stage": "independent_count_audit_and_frame_location_gap",
+  "source_config": "experiments/runs/SEM-367-EXPERT-ERROR-STRATA/config.yaml",
+  "frame_distance_px": [
+    32,
+    128,
+    256
+  ],
+  "purpose": "Distinguish frame-edge crop exposure from semantic boundary association; fixed bins before primary results inspected. No parameter sweep or predictions.",
+  "expected_seconds": [
+    30,
+    120
+  ],
+  "training": false,
+  "new_74_reads": 0
+}

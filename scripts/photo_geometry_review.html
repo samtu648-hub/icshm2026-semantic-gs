@@ -1,0 +1,30 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>RGB144 照片几何证据</title>
+<style>
+body{background:#101820;color:#dce9f1;font:15px/1.65 system-ui;margin:24px}h1{font-size:27px}h2{margin-top:32px}p{max-width:1100px}select,button{padding:8px;background:#203445;color:white;border:1px solid #70889a;margin:4px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}canvas{width:100%;background:#000;cursor:crosshair}img{max-width:100%}pre{white-space:pre-wrap;font-size:12px}summary{cursor:pointer;color:#7ed8d0}a{color:#7ed8d0}.card{padding:16px;background:#1b2a36;border-left:3px solid #69c5b7;margin:16px 0;max-width:1100px}.meta{color:#a6bdcb}table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid #3b5060;padding:6px;text-align:left}.scroll{max-height:400px;overflow:auto}
+</style>
+<h1>RGB144 · 照片跨视角几何证据</h1>
+<p>400张训练照片 → 冻结LoFTR对应 → 官方相机三角化 → 额外视角检查。接受2,080条提议，不代表获得三维真值。没有匹配不等于空白或错误；水面与多数真实细索仍缺少可靠对应。</p>
+<div class="card">训练前诊断：50个去重贡献者 × 400视角有限移除。此页展示证据与限制，不将移除图视为新重建模型。</div>
+<h2>同位置照片与冻结模型</h2>
+<select id="view" aria-label="固定视角"></select><select id="region" aria-label="诊断区域"></select><select id="contributor" aria-label="移除贡献者"></select><button id="reset">重置全图</button>
+<p class="meta">可在任意图拖选，四图同步裁剪。蓝点：保留的RGB137轨迹；黄圈：新接受对应；红线：重投影偏差。</p>
+<div class="grid" id="grid"></div><div class="card" id="interpretation"></div>
+<details><summary>局部合成权重与中心深度代理</summary><p>前／邻近／后层按当前高斯中心与照片提议的深度差分组，±2σ为邻近层。这不是光线首个表面的真值。投影3σ覆盖数也不等同实际可见高斯数。</p><div class="scroll" id="layers"></div></details>
+<h2>照片对应、建点与检查</h2><p class="meta">默认仅列出当前固定视角涉及的提议；黄色中心为照片对应位置。置信度仅为匹配器分数。</p>
+<select id="proposal" aria-label="几何提议"></select><button id="allProposals">切换全部／当前视角</button><p id="proposalInfo"></p><img id="proposalImage" alt="多个照片中的同一提议、重投影误差和不确定性">
+<details><summary>全部接受／拒绝计数</summary><pre id="counts"></pre></details>
+<p><a href="geometry_proposals.csv">提议CSV</a> · <a href="diagnostic.json">完整诊断记录</a> · <a href="../photo-audit.json">独立审计与覆盖纠正</a> · <a href="../review-r1/index.html">完整重建对照（训练评价完成后生成）</a></p>
+<script>
+const D=__DATA__;let loaded=[],box=[0,0,1320,989],current=null,showAll=false,generation=0;
+const $=s=>document.querySelector(s),V=$('#view'),R=$('#region'),C=$('#contributor'),P=$('#proposal');
+D.fixed.forEach(n=>V.add(new Option(n,n)));$('#counts').textContent=JSON.stringify(D.geometry_summary,null,2);
+function draw(){document.querySelectorAll('canvas').forEach((c,i)=>{c.width=box[2]-box[0];c.height=box[3]-box[1];if(loaded[i])c.getContext('2d').drawImage(loaded[i],box[0],box[1],c.width,c.height,0,0,c.width,c.height)})}
+function proposal(){const r=D.proposals.find(x=>x.id==P.value);if(!r){$('#proposalInfo').textContent='当前视角没有接受提议。';$('#proposalImage').removeAttribute('src');return}$('#proposalImage').src='proposals/'+r.id+'.png';$('#proposalInfo').textContent=`提议 ${r.id} · ${r.views.length} 相机 · 最大误差 ${r.max_error_px.toFixed(3)} px · 最大相对标准差 ${(100*r.max_relative_sigma).toFixed(2)}% · 最大夹角 ${r.angle_deg.toFixed(2)}° · 匹配分数 ${r.confidence_score.toFixed(3)}`}
+function proposalList(){P.replaceChildren();D.proposals.filter(r=>showAll||r.views.includes(V.value+'.png')).forEach(r=>P.add(new Option(r.id+' · '+r.views.join(', '),r.id)));proposal()}
+async function show(){const gen=++generation,n=V.value,id=C.value;const paths=[D.photo_root+'/'+n+'.png',D.diagnostic_root+'/'+n+'-rgb140.png',D.overlay_root+'/'+n+'.png',D.diagnostic_root+'/'+n+'-remove-'+id+'.png'];const titles=['原始照片','冻结RGB140','旧轨迹／新照片对应','有限移除 '+id];$('#grid').innerHTML=titles.map(t=>`<div><h3>${t}</h3><canvas></canvas></div>`).join('');const images=await Promise.all(paths.map(p=>new Promise(resolve=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>resolve(null);im.src=p})));if(gen!==generation)return;loaded=images;draw();
+document.querySelectorAll('canvas').forEach(c=>{let start;c.onpointerdown=e=>{c.setPointerCapture(e.pointerId);start=[e.offsetX/c.clientWidth,e.offsetY/c.clientHeight]};c.onpointerup=e=>{if(!start)return;const end=[e.offsetX/c.clientWidth,e.offsetY/c.clientHeight],b=box.slice(),w=b[2]-b[0],h=b[3]-b[1];if(Math.abs(end[0]-start[0])>.02&&Math.abs(end[1]-start[1])>.02){box=[b[0]+Math.min(start[0],end[0])*w,b[1]+Math.min(start[1],end[1])*h,b[0]+Math.max(start[0],end[0])*w,b[1]+Math.max(start[1],end[1])*h].map((x,i)=>Math.max(0,Math.min(i%2?989:1320,Math.round(x))));draw()}start=null}})}
+function region(){current=D.regions.find(r=>r.region===R.value);C.replaceChildren();current.top_ids.forEach(i=>C.add(new Option('移除 '+i,i)));box=D.boxes[current.region]||[0,0,1320,989];const note=D.interpretations.find(r=>r.region===current.region);$('#interpretation').textContent=`${current.region}：${current.accepted_proposals}条提议；其中${current.new_coverage_gt3px_from_old}条距离旧保留轨迹超过3px。${note?.classification||'证据不足'}。${note?.interpretation||''}`;
+const rows=D.layers.filter(x=>x.view===V.value+'.png'&&current.proposal_ids.includes(x.proposal_id));$('#layers').innerHTML='<table><tr><th>提议</th><th>前／邻近／后 合成权重</th><th>照片Z ± σ</th><th>投影覆盖代理</th></tr>'+rows.map(r=>`<tr><td>${r.proposal_id}</td><td>${r.composited_front_near_back.map(v=>v.toFixed(3)).join(' / ')}</td><td>${r.photo_camera_z.toFixed(3)} ± ${r.photo_z_sigma.toFixed(3)}</td><td>${r.projected_3sigma_coverage}</td></tr>`).join('')+'</table>';show()}
+function view(){R.replaceChildren();D.regions.filter(r=>r.view===V.value+'.png').forEach(r=>R.add(new Option(r.region,r.region)));region();proposalList()}
+V.onchange=view;R.onchange=region;C.onchange=show;P.onchange=proposal;$('#allProposals').onclick=()=>{showAll=!showAll;proposalList()};$('#reset').onclick=()=>{box=[0,0,1320,989];draw()};view();
+</script></html>

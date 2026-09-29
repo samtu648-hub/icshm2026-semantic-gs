@@ -1,0 +1,85 @@
+{
+  "experiment_id": "SEM-326-DENSE-FOUNDATION-REVIEW-FINAL",
+  "status": "preregistered",
+  "parent_experiment": "SEM-325-DENSE-FOUNDATION-REVIEW-OOF,SEM-161-DECK-BINARY-FINAL,SUBMIT-020-SEM161-FREEZE",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c plus sealed sources",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "dataset_manifest_sha256": "0a188d4b4cfa5ffc2a7f151018f1cb012782e8f9860a3338aed084478d675b3e",
+  "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+  "semantic_split_sha256": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+  "label_manifest": "experiments/runs/SEM-001/label_manifest.json",
+  "label_manifest_sha256": "62eb1cfca5b3096cccfe5dd6997d12677c7ab79726f3b860d2392b040b7ed057",
+  "trajectory_segments": "experiments/trajectory_segments.json",
+  "trajectory_segments_sha256": "7c47df6117f3fb48e62a48d98e7b56d5c4782e005aa02c9d55daec1eae9d2366",
+  "split_id": "sem_001_scaffold_static_v1;219 train reference bank; once-only historically reused74 developer targets",
+  "parent_config": "experiments/runs/SEM-320-ROMAV2-DENSE-PREFLIGHT/config.yaml",
+  "parent_config_sha256": "3dcefab61d0c4d1aa30bbe0df1ab6e21f1bb7a60a9e86eecab4191de90307c3f",
+  "geometry_config": "experiments/runs/SEM-321-ROMAV2-DENSE-GEOMETRY-DIAG/config.yaml",
+  "geometry_config_sha256": "23672a35c19139ca6000598ac4cb29fad9140ea5e0af080a0962685a9b15d9cc",
+  "oof_config": "experiments/runs/SEM-325-DENSE-FOUNDATION-REVIEW-OOF/config.yaml",
+  "oof_config_sha256": "836b45510e33a0c63040592074f4e6f3af293272f9c11602571403683bac6770",
+  "qualified_check": "outputs/sem325/check-score-20260908-r1/result.json",
+  "qualified_check_sha256": "a811c2edefb2ea960088aac9b08a2aa5c92bc362a651e982f7a17e63bcfeb3c6",
+  "qualified_check_audit": "outputs/sem325/check-quality-audit-20260908-r1.json",
+  "qualified_check_audit_sha256": "d7f432c09c9d6618eeb212d4e167e22794a9a220fb4cb2912039c24b391e6e6c",
+  "freeze_manifest": "experiments/runs/SUBMIT-020-SEM161-FREEZE/frozen_manifest.json",
+  "parents": {
+    "train_rgb": "r2/sem_101/rendered_training_rgb/full-20260902-r3",
+    "train_rgb_manifest_sha256": "a8e08740ac8fa30f115f26cb822b604addca2b2f4c0a316ac4914f1fdd9ceb67",
+    "developer_rgb": "r2/sem_102/validation_render/final-20260902-r1",
+    "developer_rgb_manifest_sha256": "a805ab84e367090b501b8dc813469dc7f609d0fd3b9ef80a2521abd236e87ec4",
+    "baseline": "r2/sem_161/developer_audit/final-20260904-r1",
+    "baseline_manifest_sha256": "c23ab7029463fe81d65a0f8ed624740c3e3bb411170270e85cd19f28d76e2c0e",
+    "baseline_result_sha256": "fbf3eb9999407fec83ce3c74577603ae06e96360004d51b555327c5dfb8ec5f2",
+    "labels": "r2/sem_001/labels"
+  },
+  "retrieval": {
+    "candidates_per_target": 3,
+    "maximum_optical_axis_angle_degrees": 60
+  },
+  "single_changed_variable": "Final consolidation of SEM325 into the frozen SEM161 pipeline using all219 training reference views; paired comparison SEM161 versus SEM161 plus unchanged4-to0 reviewer. No new training, threshold, source policy or matcher variable; bank and final baseline migration are tested as one deployment recipe, not isolated causal effects.",
+  "selection": "Pose-only distance/angle/name, angle<=60deg, top3, first pair with >=1%512-grid coverage and >=80% cycle-to-epipolar retention. No target tracks, image-based ranking, source union or GT reselection. No source means exact baseline.",
+  "native_rule": "Reuse sealed SEM325 native_prediction and native_support unchanged: interpolate512 fields then .5 both-direction overlap,2px cycle,2px symmetric epipolar; only baseline4 and reliable source PINHOLE label0 changes to0. Target74 inputs/baseline/GT are PINHOLE.",
+  "external_coordinates": "Fresh bundle render additionally exports its internal PINHOLE RGB without modifying official RGB or SEM161. Match PINHOLE target RGB to real distorted source RGB. For official distorted output pixels, invert target SIMPLE_RADIAL to PINHOLE coordinates, evaluate the same native_support, undistort source coordinates to PINHOLE labels, then modify only existing raw-output class4. Never undistort/redistort baseline class maps or protected masks. Native and320x240 probes plus a novel official-frame pose; no target image IDs/tracks needed for correspondence.",
+  "developer_gates": {
+    "miou_gain": 0.003,
+    "foundation_iou_gain": 0.015,
+    "maximum_recall_drop": 0.02,
+    "recall_floor": 0.9,
+    "maximum_group_foundation_iou_drop": 0.01,
+    "maximum_group_miou_drop": 0.003,
+    "maximum_difficult_miou_drop": 0.003
+  },
+  "spatial_policy": "74 belong to one historical holdout, not three OOF folds. Use every nonempty intersection with PREEXISTING trajectory_segments for group safety, plus fixed140-146 challenge and baseline-ranked worst10% mean mIoU safety. No minimum count of improving OOF folds is asserted for this single final fit. Missing foundation union in both maps gives a not-applicable foundation group check, never invented zero quality.",
+  "access_policy": "Seal config, full219 source bank metadata/hashes and all74 pose-top3 inputs before matching. No real target RGB or target GT during prediction. Source labels must belong to219 train, not74/7buffer/100unlabeled. Seal74 native PNGs; independent native reconstruction and actual external-camera probes before74 target-label scoring. Independent quality replay may reread the same74, no tuning.",
+  "engineering": "Independent pose ranking and222-pair geometry, fresh-process matcher replay,74 exact native replays, class1/2/3/RGB/18hash. Actual native140 twice/small140 once and new pose once use current reviewer and fresh bundle renderer; native output replay exact and official RGB/base exact to frozen references. Independent arithmetic, per-view/group/subset metrics and six fixed qualitative panels.",
+  "external_probes": {
+    "reference_image": "140.png",
+    "native_repeats": 2,
+    "small_size_wh": [
+      320,
+      240
+    ],
+    "novel_target": "novel140.png",
+    "novel_translation_w2c_delta": [
+      0.05,
+      0,
+      0
+    ]
+  },
+  "visual_samples": [
+    "054.png",
+    "081.png",
+    "140.png",
+    "159.png",
+    "160.png",
+    "183.png"
+  ],
+  "resource_budget": {
+    "maximum_total_seconds": 3600,
+    "maximum_seconds_per_stage": 1800,
+    "minimum_free_disk_gib": 100
+  },
+  "stop": "Record outcome unchanged; any failed quality gate means no promotion or rescue tuning on74. Passing creates only a separately retained development candidate, not a production/bundle overwrite, official upload or all-data fit. Formal RGB030+SEM161 remains recoverable and untouched."
+}

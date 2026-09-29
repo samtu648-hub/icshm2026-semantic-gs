@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-111-PGSR",
+  "parent_experiment": "RGB-110-SCAFFOLD-CTRL,QUAL-001-FOUNDATION",
+  "protocol": "experiments/runs/QUAL-001-FOUNDATION/config.yaml",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1",
+  "seed": 0,
+  "status": "registered_not_run",
+  "backbone": "pgsr",
+  "upstream_url": "https://github.com/zju3dv/PGSR",
+  "upstream_commit": "de24f1a38b350387e8d8fe381b2cd70c1ae946e7",
+  "single_changed_variable": "PGSR backbone and its native training recipe; fixed common images/poses/initialization",
+  "training_arguments": ["--multi_view_num", "8", "--multi_view_max_angle", "30", "--multi_view_min_dis", "0.01", "--multi_view_max_dis", "1.5"],
+  "license_status": "source permits educational/research/nonprofit; modifications require open source; no external distribution authorized"
+}

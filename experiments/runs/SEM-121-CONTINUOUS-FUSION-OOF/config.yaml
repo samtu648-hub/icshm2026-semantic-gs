@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-121-CONTINUOUS-FUSION-OOF",
+  "title": "Training-OOF calibrated continuous two-stream cable fusion",
+  "phase": "R2 semantic development optimisation",
+  "status": "completed_oof_dominance_gate_failed",
+  "owner": "unassigned",
+  "parent_experiment": "SEM-110-PROTECTED-FUSION-OOF,SEM-120-DEV-THRESHOLD-SWEEP,VIS-004-DEV-THRESHOLD-FLYTHROUGH,SEM-001,SEM-101-RENDERED-SEG-OOF,SEM-102-RENDERED-SEG-FINAL,RGB-030-FULL",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "seed": 20260903,
+  "data": {
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "semantic_split_sha256": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+    "oof_split": "experiments/splits/sem_005_oof_spatial_v1.json",
+    "oof_split_sha256": "ce8a24e11d93df7634331a1ce33ae59385297cae90a0bd688b61769cf27f222c",
+    "training_images": 219,
+    "development_images": 74,
+    "access_rule": "Validate frozen SEM-001 training maps and SEM-101 spatial-OOF probabilities before labels. Fit exactly one fixed-form logistic calibrator on the existing deterministic 108-view calibration half and inspect the 111-view check once. The already-opened 74 labelled views are a developer-only set and may be read only if the candidate dominates the 0.30 visual hard-fusion baseline on all five check comparisons. No real RGB, unlabelled image, hidden test, external camera or model training is permitted."
+  },
+  "inputs": {
+    "sem001_checkpoint_sha256": "8e3dbe30e17f67081a72380018fc281c155ec00eed83cd5a19b3285bf4fb8aa3",
+    "sem001_result_sha256": "abd82b7c21820c26e7cea4fa0d7b7ce155d833107b0388e9783c78ba9b81900d",
+    "sem101_oof_summary_sha256": "88fd816d8fa9d56c0a78dece570ca38ca02d43d66a801aee671e6c4de1681923",
+    "sem110_oof_result_sha256": "e7d3d22ffd7a0f10db3a0a0abdddbe33467770fa2957a56b5c12be1fa90746ff",
+    "sem120_result_sha256": "2cc91b76d31c4915cc8775376700549f03bc469c327953fd6aad950a276f1798",
+    "sem102_validation_prediction_manifest_sha256": "8e44e34a2cb781a2a2fa814ceffc9f54a6d9fdf05a9fda977f70e77d9094a0c0"
+  },
+  "frozen_rgb": {
+    "backbone": "Scaffold-GS",
+    "rgb_experiment": "RGB-030-FULL",
+    "iteration": 30000,
+    "geometry_color_opacity_checkpoint_unchanged": true,
+    "sem001_checkpoint_unchanged": true,
+    "sem101_oof_checkpoint_unchanged": true,
+    "sem102_checkpoint_unchanged": true,
+    "coordinate_frame": "official_colmap_reference",
+    "pose_convention": "CAMERA_FROM_WORLD"
+  },
+  "single_changed_variable": "Replace SEM-110/SEM-120 hard stay_cable teacher threshold with one pre-specified continuous logistic fusion function in the mutable background/stay_cable lane. The function consumes frozen SEM-101 teacher cable-vs-background log odds and a frozen SEM-001 binary cable prior; only its three analytic coefficients are fit once on the pre-existing calibration half. All RGB, checkpoints, protected classes, data, camera inputs and inference sources remain fixed.",
+  "continuous_fusion": {
+    "formula": "sigmoid(intercept + teacher_cable_background_log_odds_weight*log(p_teacher_stay_cable/p_teacher_background) + sem001_cable_prior_weight*(+1 if SEM-001 is stay_cable else -1)); output stay_cable iff p>=0.5",
+    "feature_order": ["teacher_cable_vs_background_log_odds", "sem001_is_stay_cable_prior"],
+    "output_cable_probability_threshold": 0.5,
+    "sample_per_class_per_calibration_view": 2048,
+    "sampling": "deterministic seed 20260903; uniformly sample up to 2048 mutable GT stay_cable and 2048 mutable non-stay_cable pixels independently from each calibration view; no probability band, threshold grid or check-driven resampling",
+    "l2": 0.001,
+    "maximum_newton_iterations": 32,
+    "selection": "No candidate grid exists. Fit the one registered calibrator on calibration labels, then read check once. The 74-view developer evaluation is allowed only if the check candidate simultaneously matches or exceeds 0.30 hard fusion in mIoU, stay_cable IoU and recall, has no more background-to-stay_cable pixels, and retains protected predictions exactly."
+  },
+  "baseline": {
+    "historical_formal": "SEM-111 fixed hard threshold 0.80",
+    "developer_score_leader": "SEM-120 hard threshold 0.20",
+    "development_visual_baseline": "SEM-120 hard threshold 0.30",
+    "why_0_30": "It has the highest SEM-120 development mIoU and stay_cable IoU, fewer background-to-stay_cable pixels than 0.20, and avoids the high-difference yellow expansion observed in VIS-004."
+  },
+  "outputs": {
+    "root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_121/continuous_fusion_oof/full-20260903-r1",
+    "development_visual_samples": ["054.png", "140.png", "183.png"],
+    "panel_order": ["GT", "hard_fusion_0.30", "continuous_candidate", "candidate_error"]
+  },
+  "forbidden": [
+    "SEM-001_checkpoint_change",
+    "SEM-101_checkpoint_change",
+    "SEM-102_checkpoint_change",
+    "RGB_checkpoint_change",
+    "Scaffold_training",
+    "SegFormer_training",
+    "real_RGB_input",
+    "unlabeled_input",
+    "hidden_test_input",
+    "external_camera_mode",
+    "threshold_grid",
+    "check_based_refit_or_resampling",
+    "development_based_refit",
+    "claiming_blind_or_formal_replacement_status"
+  ],
+  "classes": {"0": "background", "1": "deck", "2": "stay_cable", "3": "tower", "4": "foundation"},
+  "fallback": "RGB-030-FULL Scaffold-GS + SEM-001"
+}

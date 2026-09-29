@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "plan_id": "a6000_geometryprior_interaction_audit_v1",
+  "status": "prepared_not_authorized_to_execute",
+  "purpose": "A6000 readiness only; preserve historical GeometryPrior evidence and require a new experiment ID for any hardware-migration run.",
+  "submission_backbone": "frozen_scaffold_gs",
+  "final_blind_test_forward_models": false,
+  "common_protocol": {
+    "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+    "split_id": "rgb_r1_spatial_v1",
+    "primary_fold": "spatial-01",
+    "train_rgb_count": 303,
+    "validation_rgb_count": 74,
+    "guard_band_required": true,
+    "seed": 0,
+    "camera_pose_convention": "CAMERA_FROM_WORLD",
+    "camera_input": "SIMPLE_RADIAL with matched full_frame_undistorted_PINHOLE training grid",
+    "resolution": [1320, 989],
+    "evaluation_entrypoint": "scripts/evaluate_rgb.py",
+    "record_iterations": [1000, 3000, 5000, 10000],
+    "training": "continuous_from_iteration_0",
+    "external_camera_gate": "official external camera, checkpoint reload, camera-specified RGB size",
+    "future_30k_rule": "new continuous 0-to-30000 run only after a separately approved 10k selection gate"
+  },
+  "hardware_gate": {
+    "target_gpu": "NVIDIA RTX A6000",
+    "minimum_vram_gib": 48,
+    "preflight": ["host_nvidia_smi", "pytorch_cuda_probe", "pinned_environment_import", "cuda_extension_import", "output_root_gitignore_check"],
+    "free_output_disk_gib_minimum": 80,
+    "free_output_disk_gib_recommended": 100
+  },
+  "historical_evidence": [
+    {
+      "experiment_id": "GEO-000-10K",
+      "status": "completed_control",
+      "result": {"psnr_db": 20.48798, "ssim": 0.85027, "lpips_alex": 0.33167},
+      "a6000_policy": "reference_only; any repeat requires a new GEO-A6000-000-10K-* ID"
+    },
+    {
+      "experiment_id": "GEO-010-10K",
+      "status": "completed_drop_at_10k",
+      "a6000_policy": "do_not_repeat_the_same_full_MapAnything_P0_replacement_recipe_or_ID"
+    },
+    {
+      "experiment_id": "GEO-020-3K-INT-R1",
+      "status": "completed_drop_quality_gate",
+      "a6000_policy": "do_not_launch_historical_GEO-020-10K; a different DA3 hypothesis requires a new Goal and ID"
+    }
+  ],
+  "reserved_id_patterns": [
+    "GEO-A6000-000-10K-R1",
+    "GEO-A6000-010-<new_hypothesis>-R1",
+    "GEO-A6000-020-<new_hypothesis>-R1"
+  ],
+  "forbidden_without_new_goal": [
+    "reuse_or_overwrite_historical_GEO_IDs",
+    "repeat_dropped_MapAnything_or_DA3_P0_initialization_recipes",
+    "change_split_camera_seed_resolution_loss_or_evaluator_after_results",
+    "run_LingBot_VGGT_Standard_Mip_MCMC_or_new_semantic_modules",
+    "use_forward_models_during_final_blind_test_rendering"
+  ],
+  "output_root": "external_gitignored:ICSHM_OUTPUT_ROOT/geometry_prior/a6000"
+}

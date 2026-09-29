@@ -1,0 +1,28 @@
+{
+  "schema_version": 2,
+  "experiment_id": "GEO-025-10K",
+  "title": "Fresh continuous Scaffold VGGT-Omega P0-initialization candidate",
+  "status": "not_started_parent_coordinate_gate_failed",
+  "code_git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "parent_experiment": "GEO-025-P0,GEO-002",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1",
+  "seed": 0,
+  "backbone": "frozen-scaffold-gs-VGGT-Omega-P0-initialization",
+  "iterations": [1000, 3000, 5000, 10000],
+  "training": "one continuous 0-to-10000 process from fused official-P0 PLY",
+  "fixed_controls": [
+    "same official P0 cameras and undistorted scene",
+    "same 303/74 train/validation split",
+    "same seed, resolution, Scaffold loss, evaluator and checkpoint schedule",
+    "Scaffold receives XYZ plus original RGB only",
+    "compare to the existing fresh GEO-000-10K control"
+  ],
+  "output_root": "external_gitignored:ICSHM_OUTPUT_ROOT/geometry_prior/v2/runs/GEO-025-10K",
+  "result": {
+    "training_started": false,
+    "fusion_started": false,
+    "candidate_scene_created": false,
+    "reason": "GEO-025-P0 failed the strict official-P0 project/backproject audit before fusion"
+  }
+}

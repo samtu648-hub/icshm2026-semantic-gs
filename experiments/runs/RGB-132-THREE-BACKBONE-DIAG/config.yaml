@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-132-THREE-BACKBONE-DIAG",
+  "parent_experiment": "RGB-120-ALL400,RGB-130-STANDARD-ALL400,RGB-131-MIP-ALL400",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 0,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "main_variable": "read-only matched region diagnostic; reuse QUAL007 and RGB121–124; no parameter training",
+  "output": "outputs/quality/diagnostics/RGB-132-r1",
+  "views": [
+    "159.png",
+    "160.png",
+    "140.png",
+    "146.png",
+    "081.png",
+    "057.png",
+    "064.png",
+    "054.png",
+    "174.png"
+  ],
+  "regions": {
+    "159-shore": {
+      "view": "159.png",
+      "boxes": [
+        [
+          20,
+          720,
+          290,
+          870
+        ],
+        [
+          920,
+          720,
+          1310,
+          860
+        ]
+      ]
+    },
+    "159-near": {
+      "view": "159.png",
+      "boxes": [
+        [
+          20,
+          890,
+          240,
+          985
+        ]
+      ]
+    },
+    "160-shore": {
+      "view": "160.png",
+      "boxes": [
+        [
+          20,
+          740,
+          285,
+          885
+        ],
+        [
+          920,
+          740,
+          1310,
+          875
+        ]
+      ]
+    },
+    "160-near": {
+      "view": "160.png",
+      "boxes": [
+        [
+          20,
+          905,
+          230,
+          985
+        ]
+      ]
+    },
+    "174-sky": {
+      "view": "174.png",
+      "boxes": [
+        [
+          0,
+          0,
+          1320,
+          380
+        ]
+      ]
+    },
+    "159-far-occlusion": {
+      "view": "159.png",
+      "boxes": [
+        [
+          850,
+          100,
+          1320,
+          340
+        ]
+      ]
+    },
+    "159-water-ghost": {
+      "view": "159.png",
+      "boxes": [
+        [
+          250,
+          350,
+          330,
+          620
+        ]
+      ]
+    }
+  },
+  "reuse": [
+    "QUAL-007-BACKBONE-COMPARISON",
+    "RGB-121-LOCAL-ISOLATION-DIAG",
+    "RGB-122-LOCAL-OPACITY-PF",
+    "RGB-123-GRADIENT-COLLISION-DIAG",
+    "RGB-124-MATCHED-DENSIFICATION-PF"
+  ],
+  "resource_estimate": "CPU seconds and one short GPU Mip cache consistency probe; <0.5GiB; no training"
+}

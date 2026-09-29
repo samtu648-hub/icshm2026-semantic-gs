@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-114-PGSR-NUMERIC-DIAG",
+  "parent_experiment": "RGB-111-PGSR",
+  "parent_diagnostic": "RGB-114-numeric-r3 (20 finite diagnostic steps; not evidence that 30k is safe)",
+  "seed": 0,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1",
+  "parent_run": "outputs/quality/runs/RGB-111-PGSR-full-serial-20260909-r1",
+  "checkpoint_iterations": [7000, 15000, 30000],
+  "resume_iteration": 7000,
+  "maximum_diagnostic_steps": 3000,
+  "single_changed_variable": "extend diagnostic observation budget from20 to3000; same native training and anomaly checks",
+  "quality_evidence": false,
+  "rng_note": "seed0 restarted; not exact continuation because upstream omits sampler/RNG state",
+  "data_access": "parent train303 RGB only; no developer RGB evaluation or semantic labels",
+  "policy": "stop on first nonfinite backward, never sanitize or overwrite parent checkpoints"
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-201-MV-DECK-INTERIOR-GEOMETRY-DIAG",
+  "title": "Interior-core multi-view deck geometry spatial-OOF qualification",
+  "phase": "new R2 bridge-geometry research line",
+  "status": "completed_calibration_gate_failed",
+  "owner": "unassigned",
+  "parent_experiment": "SEM-200-MV-DECK-GEOMETRY-DIAG,SUBMIT-020-SEM161-FREEZE",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_001_scaffold_static_v1 plus sem_005_oof_spatial_v1; existing deterministic calibration/check; fixed 74-view unavailable",
+  "seed": "not_applicable_deterministic_geometry",
+  "single_changed_variable": "Erode each source training deck label by a fixed 8-pixel ellipse before frozen-depth backprojection; every SEM-200 camera, depth, confirmation, projection, vote, fusion and gate setting remains unchanged.",
+  "data": {
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "semantic_split_sha256": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+    "oof_split": "experiments/splits/sem_005_oof_spatial_v1.json",
+    "oof_split_sha256": "ce8a24e11d93df7634331a1ce33ae59385297cae90a0bd688b61769cf27f222c",
+    "camera_graph": "experiments/geometry_camera_graph.json",
+    "training_views": 219,
+    "fixed_validation_views_opened": 0,
+    "target_input_at_submission": "external COLMAP camera only; no target RGB or target label"
+  },
+  "inputs": {
+    "sem200_depth_manifest_sha256": "fac12844189b627f128dcc6198b4a19166aa230dac3cbf93d1a5eaab09957a9d",
+    "sem200_result_sha256": "0d0ea220107e0b6cf12bc311ecab8a56166bcb68fbc63010594c5eb9575068dc"
+  },
+  "geometry": {
+    "depth_source": "RGB-030-FULL exact dominant generated Gaussian camera-space depth",
+    "minimum_foreground_mass": 0.5,
+    "source_pixel_stride": 4,
+    "source_confirmation_neighbours": 3,
+    "minimum_confirming_views": 1,
+    "target_source_views": 8,
+    "relative_depth_tolerance": 0.05,
+    "target_splat_radius_pixels": 2,
+    "minimum_target_source_votes": 2,
+    "source_deck_erosion_radius_pixels": 8
+  },
+  "fusion": {
+    "baseline": "SEM-160 frozen selected OOF predictions at threshold 0.99",
+    "only_transition": "0_to_1",
+    "eligibility": "SEM-160 is background, SEM-150 is background, and the pre-foundation provenance is background",
+    "existing_deck_and_classes_2_3_4_exact": true
+  },
+  "gates": {
+    "calibration": {
+      "minimum_mIoU_gain": 0.0,
+      "minimum_deck_iou_gain": 0.001,
+      "minimum_deck_recall_gain": 0.002,
+      "minimum_deck_precision": 0.95,
+      "maximum_background_to_deck_ratio": 1.10
+    },
+    "check": {
+      "minimum_mIoU_gain": 0.0,
+      "minimum_deck_iou_gain": 0.001,
+      "minimum_deck_recall_gain": 0.002,
+      "minimum_deck_precision": 0.95,
+      "maximum_background_to_deck_ratio": 1.10
+    }
+  },
+  "visual_samples": ["001.png", "017.png", "093.png"],
+  "outputs": {
+    "root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_201/mv_deck_interior_geometry_diag/full-20260906-r1",
+    "panel_order": ["GT", "SEM-160", "geometry_votes", "candidate", "green_correct_red_incorrect_additions"]
+  },
+  "forbidden": [
+    "fixed_74_view_access",
+    "hidden_RGB_or_labels",
+    "target_RGB_at_inference",
+    "target_label_in_prediction_function",
+    "erosion_radius_or_threshold_scan",
+    "existing_prediction_deletion",
+    "RGB_or_parent_semantic_mutation",
+    "check_based_recipe_selection"
+  ],
+  "fallback": "SUBMIT-020 frozen RGB-030-FULL plus SEM-161"
+}

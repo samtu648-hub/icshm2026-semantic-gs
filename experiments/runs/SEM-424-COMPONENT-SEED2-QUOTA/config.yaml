@@ -1,0 +1,9 @@
+{
+ "schema_version":1,"base_config":"experiments/runs/SEM-414-RGB154-SPATIAL255-SEED20260919/config.yaml",
+ "experiment_id":"SEM-424-COMPONENT-SEED2-QUOTA","parent_experiment":"SEM-422-COMPONENT-EXPLORATORY-QUOTA;SEM-423-COMPONENT-SEED2-CTRL",
+ "git_commit":"49cdcdb1c9915a9544d568754af95ea20a85ec9c","seed":20260919,
+ "dataset_manifest":"data/manifests/contest_dataset_v1.json","split_id":"spatial_confirmation_v2",
+ "component_quota":true,"output_path":"outputs/quality/SEM-424/r1",
+ "main_variable":"Second semantic seed only; unchanged16-point/5-percent/1024px quota, matched fresh control",
+ "protocol":"docs/experiments/component_seed_confirmation_protocol.md"
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-114-PGSR-NUMERIC-DIAG",
+  "parent_experiment": "RGB-111-PGSR",
+  "seed": 0,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1",
+  "parent_run": "outputs/quality/runs/RGB-111-PGSR-full-serial-20260909-r1",
+  "checkpoint_iterations": [7000, 15000, 30000],
+  "resume_iteration": 7000,
+  "maximum_diagnostic_steps": 20,
+  "single_changed_variable": "instrumentation only: anomaly detection around native backward from finite checkpoint",
+  "quality_evidence": false,
+  "rng_note": "seed0 restarted; parent did not save sampler/RNG state, so this is a diagnostic replay, not exact continuation",
+  "data_access": "parent train303 RGB only; no developer RGB evaluation or semantic labels",
+  "policy": "stop at first nonfinite backward or diagnostic step limit; never sanitize or overwrite parent checkpoints"
+}

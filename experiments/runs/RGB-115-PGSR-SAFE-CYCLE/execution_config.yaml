@@ -1,0 +1,11 @@
+{
+  "experiment_id": "RGB-115-PGSR-SAFE-CYCLE",
+  "diagnostic_result": "outputs/quality/diagnostics/RGB-114-safe-cycle-r1/result.json",
+  "diagnostic_result_sha256": "efa216e4d034d3202b266713193d04d8cee8fdaf1e3993216a7a126ee40b89b3",
+  "minimum_completed_optimizer_steps": 3000,
+  "patch": "third_party/patches/quality_pgsr_safe_cycle.patch",
+  "patch_sha256": "9fd5da47835a5735e483abe7c293efaba2dc9c169a8aff692d78cd0455f38aa8",
+  "helper": "src/quality_pgsr_geometry.py",
+  "helper_sha256": "54c2332fc87b33bd54412bbd5bfdd1b6f17c8adc2e4c7a1b7c9679b2e5e1eab3",
+  "full_requires": "separate successful same-source same-code common-initialization smoke; no resumed checkpoint"
+}

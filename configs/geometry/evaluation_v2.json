@@ -1,0 +1,189 @@
+{
+  "schema_version": 2,
+  "protocol_id": "geometry_prior_evaluation_v2",
+  "status": "preregistered_before_forward_model_results",
+  "submission_backbone": "frozen_scaffold_gs",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split": {
+    "id": "rgb_r1_spatial_v1",
+    "primary_fold": "spatial-01",
+    "cross_split_folds": ["spatial-01", "spatial-02", "spatial-03"],
+    "training_seed": 0,
+    "split_generation_seed": 20260730,
+    "train_rgb_count": 303,
+    "validation_labeled_count": 74,
+    "guard_band_required": true
+  },
+  "camera": {
+    "source_coordinate_frame": "official_colmap_reference",
+    "pose_convention": "CAMERA_FROM_WORLD",
+    "source_model": "SIMPLE_RADIAL",
+    "training_input": "full_frame_undistorted_PINHOLE_no_crop",
+    "resolution": [1320, 989],
+    "main_pose_mode": "P0_official",
+    "depth_scale": {
+      "method": "per_view_median_official_sparse_depth_ratio",
+      "minimum_correspondences": 64,
+      "minimum_depth": 1e-6
+    },
+    "world_point_sim3_gate": {
+      "minimum_inlier_fraction": 0.6,
+      "maximum_median_center_residual_scene_diameter_fraction": 0.02,
+      "maximum_median_optical_axis_error_degrees": 5.0
+    }
+  },
+  "geometry_output_schema": {
+    "id": "geometry_prior_npz_v2",
+    "required_arrays": {
+      "depth": "float32[height,width], camera_plus_z",
+      "confidence": "float32[height,width]",
+      "valid_mask": "uint8[height,width]"
+    },
+    "optional_arrays": {
+      "world_points": "float32[height,width,3]",
+      "pred_cam2world": "float64[4,4]",
+      "normal": "float32[height,width,3]",
+      "sky_or_reflection_mask": "uint8[height,width]"
+    },
+    "required_manifest_fields": [
+      "source_model",
+      "source_commit",
+      "checkpoint_sha256",
+      "image_name",
+      "official_camera_id",
+      "input_resolution",
+      "coordinate_frame",
+      "depth_scale",
+      "window_manifest_id"
+    ]
+  },
+  "candidates": [
+    {
+      "candidate_id": "GEO-000-10K",
+      "parent": "GEO-000",
+      "name": "Scaffold_original_initialization",
+      "input_organization": "R1_training_only_DLT_tracks",
+      "planned_iterations": 10000
+    },
+    {
+      "candidate_id": "GEO-010-10K",
+      "parent": "GEO-010-PF",
+      "name": "MapAnything",
+      "input_organization": "covisibility_windows",
+      "window_size": 16,
+      "overlap": 4,
+      "planned_iterations": 10000
+    },
+    {
+      "candidate_id": "GEO-020-10K",
+      "parent": "GEO-020-PF",
+      "name": "DA3-Large",
+      "input_organization": "covisibility_windows",
+      "window_size": 8,
+      "overlap": 4,
+      "planned_iterations": 10000
+    },
+    {
+      "candidate_id": "GEO-025-10K",
+      "parent": "GEO-025-PF",
+      "name": "VGGT-Omega",
+      "input_organization": "joint_covisibility_sets",
+      "allowed_view_counts": [16, 25],
+      "planned_iterations": 10000
+    },
+    {
+      "candidate_id": "GEO-030-10K",
+      "parent": "GEO-030-PF",
+      "name": "LingBot-Map",
+      "input_organization": "segmented_trajectory_with_reset",
+      "window_size": 16,
+      "overlap": 4,
+      "planned_iterations": 10000
+    }
+  ],
+  "fusion": {
+    "scene_normalization": "identity_official_reference_scale",
+    "r0_definition": "median_5nn_distance_of_GEO-000_training_only_initialization",
+    "r0_source_input_ply_sha256": "10a88fb018c27530b3bbfa0f7000408693ba75228067f5311e7775e4755e68f2",
+    "ordinary_voxel_size": "r0",
+    "line_structure_voxel_size": "r0_over_2",
+    "low_confidence_voxel_size": "1.5_r0_or_drop",
+    "ordinary_neighbor_views": 3,
+    "ordinary_required_consistent_views": 2,
+    "line_neighbor_views": 2,
+    "relative_depth_tolerance": 0.05,
+    "maximum_initial_anchors": 100000,
+    "over_budget_sampling": "confidence_quartile_stratified_deterministic"
+  },
+  "diagnostics": {
+    "depth_grid_stride_pixels": 8,
+    "depth_consistency_neighbors": 3,
+    "depth_consistency_relative_tolerance": 0.05,
+    "canny_thresholds": [100, 200],
+    "depth_edge_relative_difference": 0.05,
+    "edge_match_radius_pixels": 2,
+    "isolated_point_radius": "2_r0",
+    "isolated_point_minimum_neighbors": 3,
+    "floating_point_minimum_multiview_support": 2,
+    "hole_minimum_grid_cells": 64,
+    "nan_inf_maximum_fraction": 0.0
+  },
+  "scaffold": {
+    "baseline_config": "experiments/runs/GEO-000/config.yaml",
+    "evaluation_entrypoint": "scripts/evaluate_rgb.py",
+    "record_iterations": [1000, 3000, 5000, 10000],
+    "top2_final_iterations": 30000,
+    "main_split_runs_must_be_continuous_from_iteration_0": true,
+    "static_semantic_rgb_max_abs_difference": 0
+  },
+  "selection": {
+    "top2_pool": "forward_candidates_only",
+    "control": "GEO-000-10K",
+    "pareto_metrics": [
+      "PSNR_dB_mean",
+      "SSIM_mean",
+      "LPIPS_Alex_mean",
+      "worst_10_percent_PSNR_dB",
+      "hard_140_146_metrics"
+    ],
+    "paired_bootstrap_samples": 10000,
+    "paired_bootstrap_seed": 20260803,
+    "confidence_interval_percent": 95,
+    "near_tie": {
+      "psnr_dB_absolute_difference_lt": 0.1,
+      "lpips_absolute_difference_lt": 0.005,
+      "or_paired_confidence_interval_contains_zero": true,
+      "action": "run_second_seed_before_top2_selection"
+    }
+  },
+  "oom_policy": {
+    "initial_attempts_per_configuration": 1,
+    "maximum_memory_retries_per_configuration": 2,
+    "order": [
+      "record_and_close_unrelated_gpu_processes",
+      "batch_size_1",
+      "bf16_then_fp16",
+      "model_native_window_reduction",
+      "model_supported_cpu_offload",
+      "fresh_process_restart"
+    ],
+    "forbidden_changes": [
+      "camera_set",
+      "validation_split",
+      "rgb_evaluation",
+      "scaffold_training_configuration"
+    ]
+  },
+  "licensing_gate": {
+    "required_before_real_model_execution": [
+      "upstream_url",
+      "source_commit",
+      "code_license",
+      "checkpoint_name",
+      "checkpoint_sha256",
+      "checkpoint_license",
+      "environment_summary"
+    ],
+    "failure_wording": "All runnable candidates that passed the pre-registered functional, licensing, and hardware gates..."
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "experiment_id": "SUBMIT-040-CLEAN-UBUNTU-REPRO",
+  "image_id": "sha256:00058186bb438f5f61ace5c7f30818f0d604a47fc3785e080d15feb64984fe48",
+  "files": [
+    {
+      "path": "outputs/submit040/full-20260907-r2/container/result.json",
+      "sha256": "1c12ad66e998f4c6e35344105fe3f3ead39f7dc25a6211d3686cc52f4a5d1853"
+    },
+    {
+      "path": "outputs/submit040/full-20260907-r2/provenance.json",
+      "sha256": "a28d108fe91f3bed5928030ee76b0761f96c83f63a2531c3f159f77dc99c56cb"
+    },
+    {
+      "path": "outputs/submit040/full-20260907-r2/execution.json",
+      "sha256": "3b091e3e2c845c5a25a1e7c21f23318de607907e5a20aace7125c8f9d24eedc3"
+    },
+    {
+      "path": "outputs/submit040/full-20260907-r2/container/installed_packages.txt",
+      "sha256": "0f5b3d181b712d91237f0730138b41613dfaf72ee9907eb1146ed3aada3dbea5"
+    },
+    {
+      "path": "outputs/submit040/full-20260907-r2/container/diff-gaussian-rasterization_build.log",
+      "sha256": "dcd8e43cbafcff1ff7ef07f850d3c683630fea9b0bfae757e0c1e881f5a174b2"
+    },
+    {
+      "path": "outputs/submit040/full-20260907-r2/container/simple-knn_build.log",
+      "sha256": "907ef2c1f2d6ed9952d9f7eda20f2583f8cc304caceaa0d51f666411f7e7fef8"
+    },
+    {
+      "path": "experiments/runs/SUBMIT-040-CLEAN-UBUNTU-REPRO/config.yaml",
+      "sha256": "d31d7685458b7f385c308bf4cd667b1f3b7ec01960b2bba91aca960c0341d5cc"
+    }
+  ]
+}

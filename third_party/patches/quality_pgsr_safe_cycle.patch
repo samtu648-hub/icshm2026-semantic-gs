@@ -1,0 +1,38 @@
+diff --git a/train.py b/train.py
+index 29508f0..8898d1c 100644
+--- a/train.py
++++ b/train.py
+@@ -218,28 +218,11 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
+                 nearest_render_pkg = render(nearest_cam, gaussians, pipe, bg, app_model=app_model,
+                                             return_plane=True, return_depth_normal=False)
+ 
+-                pts = gaussians.get_points_from_depth(viewpoint_cam, render_pkg['plane_depth'])
+-                pts_in_nearest_cam = pts @ nearest_cam.world_view_transform[:3,:3] + nearest_cam.world_view_transform[3,:3]
+-                map_z, d_mask = gaussians.get_points_depth_in_depth_map(nearest_cam, nearest_render_pkg['plane_depth'], pts_in_nearest_cam)
+-                
+-                pts_in_nearest_cam = pts_in_nearest_cam / (pts_in_nearest_cam[:,2:3])
+-                pts_in_nearest_cam = pts_in_nearest_cam * map_z.squeeze()[...,None]
+-                R = torch.tensor(nearest_cam.R).float().cuda()
+-                T = torch.tensor(nearest_cam.T).float().cuda()
+-                pts_ = (pts_in_nearest_cam-T)@R.transpose(-1,-2)
+-                pts_in_view_cam = pts_ @ viewpoint_cam.world_view_transform[:3,:3] + viewpoint_cam.world_view_transform[3,:3]
+-                pts_projections = torch.stack(
+-                            [pts_in_view_cam[:,0] * viewpoint_cam.Fx / pts_in_view_cam[:,2] + viewpoint_cam.Cx,
+-                            pts_in_view_cam[:,1] * viewpoint_cam.Fy / pts_in_view_cam[:,2] + viewpoint_cam.Cy], -1).float()
+-                pixel_noise = torch.norm(pts_projections - pixels.reshape(*pts_projections.shape), dim=-1)
+-                if not opt.wo_use_geo_occ_aware:
+-                    d_mask = d_mask & (pixel_noise < pixel_noise_th)
+-                    weights = (1.0 / torch.exp(pixel_noise)).detach()
+-                    weights[~d_mask] = 0
+-                else:
+-                    d_mask = d_mask
+-                    weights = torch.ones_like(pixel_noise)
+-                    weights[~d_mask] = 0
++                from src.quality_pgsr_geometry import native_cycle_evidence
++                pixel_noise, d_mask, weights = native_cycle_evidence(
++                    gaussians, viewpoint_cam, nearest_cam, render_pkg['plane_depth'],
++                    nearest_render_pkg['plane_depth'], pixels, pixel_noise_th,
++                    occlusion_aware=not opt.wo_use_geo_occ_aware)
+                 if iteration % 200 == 0:
+                     gt_img_show = ((gt_image).permute(1,2,0).clamp(0,1)[:,:,[2,1,0]]*255).detach().cpu().numpy().astype(np.uint8)
+                     if 'app_image' in render_pkg:

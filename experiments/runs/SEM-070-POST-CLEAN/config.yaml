@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-070-POST-CLEAN",
+  "title": "Frozen SEM-001 conservative stay_cable anchor post-process",
+  "phase": "R2 inference-only semantic candidate",
+  "status": "completed_show_only_candidate_sem001_fallback",
+  "owner": "unassigned",
+  "parent_experiment": "SEM-001",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_001_scaffold_static_v1",
+  "config_role": "one-variable inference-time candidate; SEM-001 checkpoint and RGB scene remain frozen",
+  "seed": 20260902,
+  "frozen_rgb": {
+    "backbone": "Scaffold-GS",
+    "rgb_experiment": "RGB-030-FULL",
+    "iteration": 30000,
+    "train_camera_count": 303,
+    "n_offsets": 10,
+    "appearance_camera_id": 0,
+    "coordinate_frame": "official_colmap_reference",
+    "pose_convention": "CAMERA_FROM_WORLD",
+    "official_to_model_sim3": "identity"
+  },
+  "frozen_semantic": {
+    "experiment": "SEM-001",
+    "config": "experiments/runs/SEM-001/config.yaml",
+    "semantic_storage": "per_anchor_logits",
+    "class_names": ["background", "deck", "stay_cable", "tower", "foundation"],
+    "checkpoint_sha256": "8e3dbe30e17f67081a72380018fc281c155ec00eed83cd5a19b3285bf4fb8aa3",
+    "checkpoint_is_not_modified": true
+  },
+  "data": {
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "label_manifest": "experiments/runs/SEM-001/label_manifest.json",
+    "training_images": 219,
+    "validation_images": 74,
+    "uses_unlabeled_rgb": false,
+    "uses_hidden_test_rgb_or_labels": false,
+    "selection_rule": "Only the 219 labeled SEM-001 training views are read before mask freeze; fixed 74 validation views are read exactly once after mask_freeze.json is written."
+  },
+  "postprocess": {
+    "class_mapping": {"background": 0, "deck": 1, "stay_cable": 2, "tower": 3, "foundation": 4},
+    "operation": "p_background += p_stay_cable; p_stay_cable = 0",
+    "operation_scope": "generated Gaussian probabilities inherited from selected frozen anchors; other three class probabilities unchanged",
+    "dominant_contribution": "exact frozen RGB marginal r(g,p)=T(g,p)*alpha(g,p)*G(g,p) from the pinned rasterizer",
+    "calibration_half": 0,
+    "check_half": 1,
+    "hash_parity": "sha256(image_name)[0] parity over the existing 219 semantic training names",
+    "threshold_grid": [0.5, 0.6, 0.7, 0.8, 0.9],
+    "minimum_support_views": 3,
+    "minimum_dominant_pixels": 128,
+    "anchor_leaning_rule": "SEM-001 frozen anchor softmax argmax is stay_cable",
+    "anchor_false_positive_rate": "background_to_stay_cable_dominant_pixels / gt_background_dominant_pixels on calibration half",
+    "selection_minimum_recall_retention": 0.98,
+    "selection_maximum_protected_iou_drop": 0.005,
+    "tie_break": "maximum check-half background_to_stay_cable reduction, then fewer suppressed anchors, then lower threshold",
+    "mask_file": "postprocess_mask.npz",
+    "mask_schema": "exactly one NPZ key mask with boolean shape [frozen_anchor_count]"
+  },
+  "formal_gates": {
+    "mIoU_not_below_SEM001": true,
+    "stay_cable_IoU_not_below_SEM001": true,
+    "stay_cable_recall_not_below_SEM001": true,
+    "deck_tower_foundation_each_iou_drop_max": 0.005,
+    "background_to_stay_cable_reduction_min_fraction": 0.01,
+    "worst_10_percent_mIoU_without_background_drop_max": 0.005,
+    "challenge_140_146_mIoU_without_background_drop_max": 0.005,
+    "rgb_max_absolute_pixel_difference": 0,
+    "rgb_artifact_hashes_equal": true,
+    "checkpoint_reload": true,
+    "official_external_camera": true
+  },
+  "isolation": {"views": ["001.png", "054.png", "140.png"]},
+  "external_camera": {"image_name": "140.png", "input_camera_model": "SIMPLE_RADIAL", "pose_convention": "CAMERA_FROM_WORLD", "output_size": [1320, 989]},
+  "outputs": {
+    "root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_070/post_clean",
+    "training_anchor_statistics": "training_anchor_statistics.csv",
+    "training_selection_statistics": "training_selection_statistics.json",
+    "threshold_check": "threshold_grid_check.json",
+    "mask": "postprocess_mask.npz",
+    "validation_comparison": "validation_raw_cleaned_per_view.csv",
+    "quad": "validation/gt_raw_cleaned_error",
+    "result": "result.json"
+  },
+  "runtime": {
+    "preflight_training_limit": 8,
+    "preflight_validation_limit": 4,
+    "paths_are_supplied_by_command_or_environment": true,
+    "no_output_is_tracked_by_git": true
+  },
+  "fallback": "RGB-030-FULL Scaffold-GS + SEM-001"
+}

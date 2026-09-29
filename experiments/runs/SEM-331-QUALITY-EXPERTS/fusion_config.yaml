@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-331-QUALITY-EXPERTS",
+  "parent_experiment": "SEM-330-QUALITY-STATIC,SEM-331-QUALITY-EXPERTS",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "sem_001_scaffold_static_v1;sem_005_oof_spatial_v1;sem110-v1",
+  "pixel_space": "PINHOLE",
+  "stages": [
+    {"name": "fiveclass_lane", "target_class": 2, "thresholds": [null, 0.2, 0.35, 0.5, 0.65, 0.8]},
+    {"name": "cable", "target_class": 2, "thresholds": [null, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95]},
+    {"name": "foundation", "target_class": 4, "thresholds": [null, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]},
+    {"name": "deck", "target_class": 1, "thresholds": [null, 0.5, 0.6, 0.7, 0.8, 0.85, 0.9, 0.925, 0.95, 0.97, 0.98, 0.99, 0.995]}
+  ],
+  "selection": "Sequential on the fixed 108 training-side OOF calibration views only: maximise mIoU, then the stage target IoU, then prefer off, then higher threshold. Stage roles and grids inherited; selection is the new matched protocol, not the old internal weighted developer score.",
+  "check": "Seal all four thresholds before reading 111 check target labels; never change thresholds afterwards. Report per class, per view and per spatial fold; no automatic promotion.",
+  "development": "Use all-219 fitted expert and static parameters; report 74 only after thresholds sealed. Historically reused development, not blind.",
+  "rgb_shared_oof": true,
+  "automatic_promotion": false
+}

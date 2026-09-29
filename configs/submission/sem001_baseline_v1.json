@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "submission_id": "SUBMIT-010-BUNDLE",
+  "status": "frozen_fallback_baseline_pending_final_official_protocol",
+  "rgb_experiment": "RGB-030-FULL",
+  "semantic_experiment": "SEM-001",
+  "class_mapping": {
+    "background": 0,
+    "deck": 1,
+    "stay_cable": 2,
+    "tower": 3,
+    "foundation": 4
+  },
+  "camera_contract": {
+    "input_format": "COLMAP text cameras.txt plus images.txt",
+    "pose_convention": "CAMERA_FROM_WORLD",
+    "camera_model": "SIMPLE_RADIAL",
+    "official_to_model_sim3": "identity",
+    "output_grid": "official_SIMPLE_RADIAL",
+    "output_size_source": "input camera width and height",
+    "uses_reference_rgb_or_labels": false
+  },
+  "scaffold": {
+    "upstream_url": "https://github.com/city-super/Scaffold-GS.git",
+    "upstream_commit": "59c833b56bbbf510f3f64d40f81721995caced66",
+    "license": "Gaussian-Splatting research-only license in LICENSE.md",
+    "patch": "third_party/patches/scaffold-gs-r1.patch",
+    "patch_sha256": "5e2d651aac00cf48a629d0ff874811114f09ccc2ca2af5e9e33aecfb2acb8bd5"
+  },
+  "render": {
+    "iteration": 30000,
+    "train_camera_count": 303,
+    "n_offsets": 10,
+    "appearance_camera_id": 0,
+    "rgb_pattern": "rgb/{stem}.png",
+    "semantic_pattern": "semantic/{stem}.png",
+    "logits_pattern": "logits/{stem}.npy",
+    "semantic_dtype": "uint8",
+    "semantic_valid_ids": [0, 1, 2, 3, 4]
+  },
+  "artifacts": [
+    {
+      "source": "rgb_run_dir:chkpnt30000.pth",
+      "bundle_path": "model/rgb/chkpnt30000.pth",
+      "sha256": "d287563eaa4d2a29df2f619153f53288978d1096bbbb1cd88fc4da7da076da68"
+    },
+    {
+      "source": "rgb_run_dir:point_cloud/iteration_30000/point_cloud.ply",
+      "bundle_path": "model/rgb/point_cloud/iteration_30000/point_cloud.ply",
+      "sha256": "6f22dc598205493e5a9683b95bcb6387f0c0c02f53c6b0d0f9fb0b62789c20d5"
+    },
+    {
+      "source": "rgb_run_dir:point_cloud/iteration_30000/opacity_mlp.pt",
+      "bundle_path": "model/rgb/point_cloud/iteration_30000/opacity_mlp.pt",
+      "sha256": "0e010c9da52caffe1a6b8a0ece2c72431431a90a6dbc334d2f7ee22a1bbd0399"
+    },
+    {
+      "source": "rgb_run_dir:point_cloud/iteration_30000/cov_mlp.pt",
+      "bundle_path": "model/rgb/point_cloud/iteration_30000/cov_mlp.pt",
+      "sha256": "ad47c33af6519a38da591d8e8fc4124d0a93cdac5d8e65be212bb73cbc5cd34e"
+    },
+    {
+      "source": "rgb_run_dir:point_cloud/iteration_30000/color_mlp.pt",
+      "bundle_path": "model/rgb/point_cloud/iteration_30000/color_mlp.pt",
+      "sha256": "997f953b4771271195ea5cc27ecb12c02039b578093c42b1302ee9d1ee0e65ae"
+    },
+    {
+      "source": "rgb_run_dir:point_cloud/iteration_30000/embedding_appearance.pt",
+      "bundle_path": "model/rgb/point_cloud/iteration_30000/embedding_appearance.pt",
+      "sha256": "cce14bf171c611595b8f11b086f9768d293de6c5e5d4dce84dff97150f741186"
+    },
+    {
+      "source": "semantic_checkpoint:semantic_sidecar.pth",
+      "bundle_path": "model/semantic/semantic_sidecar.pth",
+      "sha256": "8e3dbe30e17f67081a72380018fc281c155ec00eed83cd5a19b3285bf4fb8aa3"
+    }
+  ]
+}

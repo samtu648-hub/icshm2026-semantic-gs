@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SUBMIT-020-SEM161-FREEZE",
+  "title": "Content-addressed freeze of RGB-030-FULL plus SEM-161",
+  "phase": "submission candidate preservation",
+  "status": "completed_hash_freeze",
+  "owner": "unassigned",
+  "parent_experiment": "SUBMIT-010-BUNDLE,RGB-030-FULL,SEM-161-DECK-BINARY-FINAL,SEM-151-FOUNDATION-GATE-FINAL,SEM-141-CABLE-BINARY-FINAL,SEM-102-RENDERED-SEG-FINAL,SEM-001",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1 and sem_001_scaffold_static_v1",
+  "seed": "read_only_freeze_of_parent_seeds",
+  "single_changed_variable": "No model variable changes; record immutable hashes and rollback order before opening the SEM-200 research line.",
+  "manifest": "experiments/runs/SUBMIT-020-SEM161-FREEZE/frozen_manifest.json",
+  "policy": {
+    "copy_or_move_parent_artifacts": false,
+    "overwrite_submission_bundle": false,
+    "allow_new_research_to_mutate_parent": false,
+    "rollback_order": ["SEM-161", "SEM-151", "SEM-141", "SEM-111", "SEM-001"]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-431-DUAL-DOMAIN-PREFLIGHT",
+  "title": "Matched render/render versus render/photo engineering preflight",
+  "phase": "semantic_segmentation_preflight",
+  "parent_experiment": "SEM-396-RGB152-SPATIAL256;SEM-430-PHOTO-TEACHER-DECK-REPLICATION",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "seed": 20260805,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "spatial_confirmation_v1_training_only",
+  "split_path": "experiments/splits/spatial_confirmation_v1.json",
+  "main_variable": "Engineering-only validation of an equal-weight two-loss update; compare render/render and render/photo with identical initialization and eight training-only samples.",
+  "steps_per_arm": 8,
+  "crop": 768,
+  "photo_root": "outputs/quality/RGB-152/scene/images",
+  "label_root": "outputs/quality/all_data/SEM-370-r1/labels",
+  "label_manifest": "outputs/quality/all_data/SEM-370-r1/label_manifest.json",
+  "maximum_peak_reserved_mib": 10240,
+  "output_path": "outputs/quality/SEM-431/preflight-r1",
+  "command": "python scripts/run_sem431_dual_domain_preflight.py --artifact-root <artifact-root>",
+  "quality_claim": null,
+  "scope": "Eight updates per arm on the 256-view training role only; no confirmation/buffer access and no quality conclusion.",
+  "protocol": "docs/experiments/sem431_433_dual_domain_protocol.md"
+}
+

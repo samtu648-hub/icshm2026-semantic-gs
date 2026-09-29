@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-111-PROTECTED-FUSION-FINAL",
+  "title": "Fixed protected two-stream fusion final audit",
+  "phase": "R2 semantic fusion final candidate",
+  "status": "completed_formal_retention_gate_passed",
+  "owner": "unassigned",
+  "parent_experiment": "SEM-110-PROTECTED-FUSION-OOF,SEM-001,SEM-102-RENDERED-SEG-FINAL,RGB-030-FULL",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "seed": 20260902,
+  "data": {
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "semantic_split_sha256": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+    "label_manifest": "experiments/runs/SEM-001/label_manifest.json",
+    "validation_images": 74,
+    "access_sequence": "Validate SEM-110's completed passing training-only result and the hash-addressed SEM-001/SEM-102 prediction sources. Generate all 74 fused class maps and their manifest before opening validation labels once. Generate the official external-camera fusion without reference RGB or labels."
+  },
+  "inputs": {
+    "sem110_result_sha256": "e7d3d22ffd7a0f10db3a0a0abdddbe33467770fa2957a56b5c12be1fa90746ff",
+    "sem110_selected_threshold": 0.8,
+    "sem001_result_sha256": "abd82b7c21820c26e7cea4fa0d7b7ce155d833107b0388e9783c78ba9b81900d",
+    "sem102_prediction_manifest_sha256": "8e44e34a2cb781a2a2fa814ceffc9f54a6d9fdf05a9fda977f70e77d9094a0c0",
+    "sem102_external_evidence_sha256": "a63003346b5dd75b39bb6a8dc805bd7745f2fa65d15d3965462b2d06d7367f76"
+  },
+  "frozen_rgb": {
+    "backbone": "Scaffold-GS",
+    "rgb_experiment": "RGB-030-FULL",
+    "iteration": 30000,
+    "geometry_color_opacity_checkpoint_unchanged": true,
+    "sem001_checkpoint_unchanged": true,
+    "sem102_checkpoint_unchanged": true,
+    "coordinate_frame": "official_colmap_reference",
+    "pose_convention": "CAMERA_FROM_WORLD"
+  },
+  "single_changed_variable": "Apply SEM-110's already selected training-only stay_cable threshold 0.80 to frozen SEM-001 class maps and frozen SEM-102 five-class probabilities, while preserving every SEM-001 deck/tower/foundation prediction exactly. No threshold selection, model fitting, checkpoint, RGB or geometry change is allowed.",
+  "fusion": {
+    "stay_cable_threshold": 0.8,
+    "protected_sem001_predicted_class_ids": [1, 3, 4],
+    "mutable_class_ids": [0, 2],
+    "output_probability_encoding": "one-hot fused class distribution with epsilon=1e-6 for the four non-winning classes"
+  },
+  "baseline_sem001": {
+    "mIoU_with_background": 0.6161030417847158,
+    "background_to_stay_cable_pixels": 13166331,
+    "worst_10_percent_mIoU_without_background": 0.4234398719211611,
+    "challenge_140_146_mIoU_without_background": 0.6012126147678796,
+    "per_class": {
+      "deck": {"iou": 0.900998934190137},
+      "stay_cable": {"iou": 0.06875938006716793, "recall": 0.36803608964116485},
+      "tower": {"iou": 0.8348696246112979},
+      "foundation": {"iou": 0.44871847315397023}
+    }
+  },
+  "formal_retention_gates": {
+    "mIoU_with_background_drop_max": 0.0,
+    "stay_cable_iou_drop_max": 0.0,
+    "stay_cable_recall_drop_max": 0.0,
+    "protected_classes": ["deck", "tower", "foundation"],
+    "protected_class_iou_drop_max": 0.0,
+    "background_to_stay_cable_reduction_min_fraction": 0.01,
+    "worst_10_percent_mIoU_without_background_drop_max": 0.005,
+    "challenge_140_146_mIoU_without_background_drop_max": 0.005
+  },
+  "outputs": {
+    "root": "external_gitignored:ICSHM_OUTPUT_ROOT/r2/sem_111/final_protected_fusion/full-20260902-r1",
+    "validation_visual_samples": ["054.png", "140.png", "183.png"],
+    "panel_order": ["GT", "frozen_SEM-001", "protected_fusion", "error"],
+    "external_camera": "official SIMPLE_RADIAL image 140: RGB + float32 five logits + uint8 0-4 semantic PNG"
+  },
+  "forbidden": [
+    "threshold_selection_after_sem110",
+    "model_training",
+    "SEM-001_checkpoint_change",
+    "SEM-102_checkpoint_change",
+    "RGB_checkpoint_change",
+    "real_RGB_input",
+    "unlabeled_input",
+    "hidden_test_access",
+    "reference_RGB_or_labels_in_external_camera"
+  ],
+  "classes": {"0": "background", "1": "deck", "2": "stay_cable", "3": "tower", "4": "foundation"},
+  "fallback": "RGB-030-FULL Scaffold-GS + SEM-001"
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": 2,
+  "experiment_id": "SEM-021-PF",
+  "title": "SEM-021 cumulative-contribution visibility gate CUDA and isolation smoke",
+  "phase": "R2/S1",
+  "parent_experiment": "SEM-001,SEM-020-EQ,SEM-020-DIAG",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "data": {
+    "split_id": "sem_001_scaffold_static_v1",
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "label_manifest": "experiments/runs/SEM-001/label_manifest.json",
+    "training_images": 219,
+    "validation_images": 74,
+    "unlabeled_rgb_in_semantic_supervision": false,
+    "pseudo_labels": false,
+    "input_resolution": [1320, 989],
+    "label_grid": "full-frame PINHOLE derived with the R1 SIMPLE_RADIAL K; no crop"
+  },
+  "frozen_rgb": {
+    "backbone": "Scaffold-GS",
+    "upstream_commit": "59c833b56bbbf510f3f64d40f81721995caced66",
+    "rgb_experiment": "RGB-030-FULL",
+    "iteration": 30000,
+    "train_camera_count": 303,
+    "n_offsets": 10,
+    "appearance_camera_id": 0,
+    "coordinate_frame": "official_colmap_reference",
+    "pose_convention": "CAMERA_FROM_WORLD",
+    "official_to_model_sim3": "identity"
+  },
+  "visibility_gate": {
+    "name": "cumulative",
+    "threshold": 0.95,
+    "definition": "For each pixel, retain the front-to-back minimal contributor prefix whose frozen RGB marginal contributions reach 95% of the rendered foreground mass. The binary selection is stop-gradient."
+  },
+  "training": {
+    "seed": 20260731,
+    "initial_background_logit": 0.0,
+    "learning_rate": 0.05,
+    "weight_decay": 0.0,
+    "loss": "SEM-001 weighted NLL on contribution-gated semantic probabilities",
+    "class_weighting": "Reuse SEM-001 train-only median_frequency/count clipped to [0.05,20.0]",
+    "rgb_optimizer": "none"
+  },
+  "preflight": {"iterations": 8, "log_every": 1, "validation_views": 3, "checkpoint_iterations": [8]},
+  "isolation": {"views": ["001.png", "054.png", "140.png"]},
+  "external_camera": {"image_name": "140.png", "output": "RGB + five log-probability logits .npy + single-channel uint8 ID PNG on official SIMPLE_RADIAL grid"},
+  "gradient_diagnostic_training_view": "001.png"
+}

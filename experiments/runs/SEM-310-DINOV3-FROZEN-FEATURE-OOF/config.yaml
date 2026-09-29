@@ -1,0 +1,59 @@
+{
+  "experiment_id": "SEM-310-DINOV3-FROZEN-FEATURE-OOF",
+  "status": "preregistered",
+  "parent_experiment": "SEM-160-DECK-BINARY-OOF,SEM-270-FOUNDATION-BINARY-OOF,SUBMIT-020-SEM161-FREEZE",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c plus sealed worktree source snapshot",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "seed": 20260805,
+  "split_id": "sem_005_oof_spatial_v1; incremental OOF, reused108 calibration/111 check",
+  "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+  "semantic_split_sha256": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+  "oof_split": "experiments/splits/sem_005_oof_spatial_v1.json",
+  "oof_split_sha256": "ce8a24e11d93df7634331a1ce33ae59385297cae90a0bd688b61769cf27f222c",
+  "camera_graph": "experiments/geometry_camera_graph.json",
+  "arm_names": ["mit_b2_control", "dinov3_vitb16_candidate"],
+  "single_changed_variable": "Frozen pretrained feature source: MiT-B2 versus DINOv3 ViT-B/16. Native feature stride, channels, pretraining and required input projection width are intrinsic; this is not a pure pretraining or equal-total-parameter causal claim.",
+  "parents": {
+    "model_config": "r2/sem_005/third_party/nvidia_mit_b2_3bb39e8",
+    "rgb": "r2/sem_101/rendered_training_rgb/full-20260902-r3",
+    "sem160": "r2/sem_160/deck_binary_oof_summary/full-20260904-r1",
+    "labels": "r2/sem_001/labels"
+  },
+  "dinov3": {
+    "model_id": "facebook/dinov3-vitb16-pretrain-lvd1689m",
+    "revision": "5931719e67bbdb9737e363e781fb0c67687896bc",
+    "source": "https://huggingface.co/facebook/dinov3-vitb16-pretrain-lvd1689m",
+    "license": "DINOv3 License; official gated weights require user account access",
+    "required_files": ["config.json", "model.safetensors", "preprocessor_config.json", "LICENSE.md"]
+  },
+  "training": {
+    "iterations": 3000,
+    "crop": 960,
+    "decoder_width": 128,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.01,
+    "optimizer": "AdamW; projection and decoder only; frozen eval-mode encoder",
+    "loss": "five-class CE; train-fold median_count/count clipped to [0.05,20]",
+    "augmentation": "identical uniform-view native960 crop and horizontal-flip sequence per fold and arm",
+    "features": "online no-grad extraction on each crop; no full-frame feature reuse that changes crop context",
+    "decoder": "input 1x1 to128; GN8/GELU; two 3x3 width128 GN8/GELU; 1x1 five logits; common stride16 grid",
+    "normalization": "existing ImageNet RGB normalization, no resizing; bf16 autocast, float32 CE",
+    "checkpoint": "final3000 only; strict head reload against immutable pretrained source; no checkpoint/seed/loss sweep"
+  },
+  "inference": {"crop": 960, "stride": 480, "threshold": 0.5, "mutable_classes": [0,4], "protected_classes": [1,2,3]},
+  "gates": {
+    "miou_gain": 0.003,
+    "foundation_iou_gain": 0.015,
+    "maximum_recall_drop": 0.02,
+    "recall_floor": 0.90,
+    "control_miou_gain": 0.001,
+    "control_foundation_iou_gain": 0.005,
+    "maximum_fold_foundation_iou_drop": 0.01,
+    "maximum_fold_miou_drop": 0.003
+  },
+  "evaluation": "Seal all219 predictions from both arms before108 calibration labels. Require aggregate gates, >=2 improving foundation folds, fold safety and exact RGB/class1/2/3. Pass permits once-only reused111 check. No74 developer labels, final fitting or production replacement in this ID. Any later final requires new registration. Inherited SEM-001 and RGB make this incremental development OOF, not full-chain unseen-camera evidence.",
+  "maximum_gpu_hours": 4,
+  "minimum_free_disk_gib": 100,
+  "visual_samples": ["028.png", "295.png", "162.png", "283.png", "282.png", "268.png"],
+  "fallback": "RGB-030-FULL plus frozen SEM-161; no frozen artifact is overwritten"
+}

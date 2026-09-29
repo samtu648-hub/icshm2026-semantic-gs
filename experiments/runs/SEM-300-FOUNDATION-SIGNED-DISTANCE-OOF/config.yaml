@@ -1,0 +1,69 @@
+{
+  "experiment_id": "SEM-300-FOUNDATION-SIGNED-DISTANCE-OOF",
+  "status": "preregistered",
+  "parent_experiment": "SEM-270-FOUNDATION-BINARY-OOF,SEM-280-FOUNDATION-BOUNDARY-OOF,SEM-160-DECK-BINARY-OOF",
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "seed": 20260805,
+  "split_id": "sem_005_oof_spatial_v1; incremental OOF; reused108 calibration then unopened111 check; developer74 closed",
+  "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+  "semantic_split_sha256": "1764d3281fedc94e03c85f2ffc272e324bb12c0d8dba1dc1955078f71d147854",
+  "oof_split": "experiments/splits/sem_005_oof_spatial_v1.json",
+  "oof_split_sha256": "ce8a24e11d93df7634331a1ce33ae59385297cae90a0bd688b61769cf27f222c",
+  "camera_graph": "experiments/geometry_camera_graph.json",
+  "arm_names": ["five_control", "foundation_signed_distance_candidate"],
+  "single_changed_variable": "A fixed auxiliary signed-distance head and loss over the foundation boundary. The control arm has the same wrapper architecture and a zero auxiliary weight; the candidate uses the registered nonzero weight. Both retain five-class CE, native resolution, all classes and the same fixed p(foundation)>=0.5 fusion.",
+  "parents": {
+    "model_config": "r2/sem_005/third_party/nvidia_mit_b2_3bb39e8",
+    "rgb": "r2/sem_101/rendered_training_rgb/full-20260902-r3",
+    "sem160": "r2/sem_160/deck_binary_oof_summary/full-20260904-r1",
+    "labels": "r2/sem_001/labels"
+  },
+  "training": {
+    "iterations": 3000,
+    "crop": 960,
+    "optimizer": "AdamW",
+    "learning_rate": 0.00006,
+    "weight_decay": 0.01,
+    "loss": "Median inverse-frequency five-class CE plus optional SmoothL1 loss from a one-channel signed-distance head over the five class logits. Signed distance is positive inside foundation, negative outside, clipped at 16 pixels.",
+    "distance_truncation_pixels": 16,
+    "smooth_l1_beta": 0.25,
+    "arm_distance_loss_weights": {
+      "five_control": 0.0,
+      "foundation_signed_distance_candidate": 0.5
+    },
+    "initialization": "Original local pretrained nvidia/mit-b2; identical full wrapper tensors checked across arms",
+    "precision": "bfloat16 autocast; float32 loss",
+    "augmentation": "Paired fixed sequence: uniform training view, native random crop, horizontal flip p0.5; no resize",
+    "checkpoint": "final only; no early stopping, seeds, step, distance, beta or loss-weight search"
+  },
+  "inference": {
+    "crop": 960,
+    "stride": 480,
+    "probability": "Five-class softmax class4 only; signed-distance output is training-only and does not change inference",
+    "threshold": 0.5,
+    "strength": 1,
+    "mutable_classes": [0, 4],
+    "protected_classes": [1, 2, 3],
+    "historical_foundation_rejection": "Released only in this research copy; no static-foundation veto, dilation or morphology"
+  },
+  "gates": {
+    "foundation_iou_gain": 0.01,
+    "foundation_precision_gain": 0.01,
+    "maximum_recall_drop": 0.005,
+    "recall_floor": 0.95,
+    "developer_recall_floor": 0.9,
+    "miou_nondecreasing": true,
+    "minimum_recall_gain_vs_control": 0.005,
+    "maximum_iou_drop_vs_control": 0.002,
+    "maximum_miou_drop_vs_control": 0.001,
+    "maximum_per_fold_iou_drop_vs_baseline": 0.01,
+    "protected_exact": true,
+    "rgb_exact": true
+  },
+  "evaluation": "Seal both 219-view arm predictions and configuration before decoding reused108 calibration labels. The candidate must meet all baseline, same-run-control, fold, RGB and protected-mask gates. Only on pass decode the unopened111 check with unchanged gates. Only on check pass may a separate all219 final and one fixed74 developer audit be registered. No result may alter SEM-161.",
+  "maximum_gpu_hours": 2,
+  "minimum_free_disk_gib": 100,
+  "visual_samples": [],
+  "license": "Existing local SegFormer-B2 NVIDIA research/evaluation weights; no new external code or weights"
+}

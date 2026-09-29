@@ -1,0 +1,14 @@
+{
+  "experiment_id": "RGB-117-CAMERA-CONSISTENCY-DIAG",
+  "purpose": "independent evidence replay and post-run triangulation-conditioning diagnosis, no new fitting recipe",
+  "seed": 20260909,
+  "feature_replays": 6,
+  "pair_replays": 6,
+  "replay_selection": "evenly spaced indices including endpoints in sorted registered training views/pairs; no error-based selection",
+  "all_pair_recomputation": "independent scalar-coordinate Sampson formula for every saved check match, tolerance atol1e-8 rtol1e-9; recheck summaries and support",
+  "tail_diagnosis": "all successful released-track leave-one-observation predictions, not just worst views; no filtering based on official residual",
+  "source_ray_angle_bins_deg": [0.1, 0.5, 1.0],
+  "large_cross_prediction_error_px": 5.0,
+  "limitation": "conditioning association cannot prove pose correctness; pairwise F cannot certify globally consistent translations, absolute pose, scale, or bridge-only accuracy",
+  "posthoc": "parallax stratification registered after first RGB117 result was read; explanatory diagnosis only, never a prospective quality claim"
+}

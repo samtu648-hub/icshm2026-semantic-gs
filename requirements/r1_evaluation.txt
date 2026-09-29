@@ -1,0 +1,5 @@
+# Frozen local R1 RGB evaluator dependencies. This is not an upstream training environment.
+numpy==1.26.4
+Pillow==10.2.0
+opencv-python-headless==4.11.0.86
+lpips==0.1.4

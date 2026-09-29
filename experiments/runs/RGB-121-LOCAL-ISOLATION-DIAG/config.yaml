@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-121-LOCAL-ISOLATION-DIAG",
+  "parent_experiment": "RGB-120-ALL400",
+  "seed": 0,
+  "git_commit": "49cdcdb1c9915a9544d568754af95ea20a85ec9c",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "parent_run": "outputs/quality/all_data/RGB-120-r2",
+  "semantic_batch": "outputs/quality/all_data/SEM-370-r1",
+  "output": "outputs/quality/diagnostics/RGB-121-r2",
+  "main_variable": "render-only opacity zero for fixed anchor/offset IDs in an independent diagnostic copy; no parameter optimization",
+  "views": [
+    "157.png",
+    "158.png",
+    "159.png",
+    "160.png",
+    "161.png",
+    "162.png",
+    "172.png",
+    "173.png",
+    "174.png",
+    "175.png",
+    "176.png",
+    "054.png",
+    "081.png",
+    "146.png"
+  ],
+  "rois": {
+    "159-shore": {
+      "view": "159.png",
+      "boxes": [
+        [
+          20,
+          720,
+          290,
+          870
+        ],
+        [
+          920,
+          720,
+          1310,
+          860
+        ]
+      ]
+    },
+    "159-near": {
+      "view": "159.png",
+      "boxes": [
+        [
+          20,
+          890,
+          240,
+          985
+        ]
+      ]
+    },
+    "160-shore": {
+      "view": "160.png",
+      "boxes": [
+        [
+          20,
+          740,
+          285,
+          885
+        ],
+        [
+          920,
+          740,
+          1310,
+          875
+        ]
+      ]
+    },
+    "160-near": {
+      "view": "160.png",
+      "boxes": [
+        [
+          20,
+          905,
+          230,
+          985
+        ]
+      ]
+    },
+    "174-sky": {
+      "view": "174.png",
+      "boxes": [
+        [
+          0,
+          0,
+          1320,
+          380
+        ]
+      ]
+    }
+  },
+  "top_k_per_roi": 8,
+  "protection_dilation_px": 4,
+  "protection_max_contribution": 0.01,
+  "selection": "top8 sum of dominant Talpha times RGB absolute residual in each fixed ROI excluding dilated structural labels; diagnostic posthoc, not deployment selection",
+  "quality_claim": null
+}

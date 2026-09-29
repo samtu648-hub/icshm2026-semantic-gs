@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "experiment_id": "RGB-114-PGSR-NUMERIC-DIAG",
+  "parent_experiment": "RGB-111-PGSR",
+  "parent_diagnostic": "r6 geo_loss-only NaNs; r7 native pixel-noise norm backward NaNs",
+  "seed": 0,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "rgb_r1_spatial_v1",
+  "parent_run": "outputs/quality/runs/RGB-111-PGSR-full-serial-20260909-r1",
+  "checkpoint_iterations": [7000, 15000, 30000],
+  "resume_iteration": 7000,
+  "maximum_diagnostic_steps": 3000,
+  "source_delta_patch": "third_party/patches/quality_pgsr_safe_cycle.patch",
+  "allowed_changed_source_files": ["train.py"],
+  "single_changed_variable": "differentiate accepted native geometry cycles only; no changes to inlier criteria or loss weights",
+  "quality_evidence": false,
+  "rng_note": "seed0 restarted; not exact continuation",
+  "data_access": "parent train303 RGB only; no developer RGB or semantic labels",
+  "policy": "independent patched source, finite gradients for full registered diagnostic window; no quality claim before new full training"
+}

@@ -1,0 +1,7 @@
+# SEM-431：双域训练工程预检
+
+2026-09-21完成并通过。两个臂各8步，只读取v1的256张训练图和标签，不读取30张确认或17张缓冲图，不产生质量结论。
+
+Render/Render与Render/Photo的初始模型state SHA256均为`90b1b339261659d51baac01d6a6afc4fadc819589d5cabd5d72447088bd8e16f`，8条view/top/left/flip逐项相同，resolved model字节相同。两个臂的loss和gradient norm均有限，各仅在首步发生一次标准AMP缩放回退；峰值reserved分别9368MiB和9416MiB，低于事前10240MiB门。全部七项工程门通过，授权SEM432/433按封存协议各自从头运行6000步。
+
+本结果只证明实现和资源可行，不证明照片域监督有效。正式因果比较是SEM433−SEM432，测试端仍只输入重建render。

@@ -1,0 +1,45 @@
+{
+  "schema_version": 3,
+  "experiment_id": "SEM-003-DIAG",
+  "title": "SEM-003 training-side all-contributor background/stay_cable conflict diagnostic",
+  "phase": "R2/S2",
+  "parent_experiment": "SEM-001,SEM-002",
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "data": {
+    "split_id": "sem_001_scaffold_static_v1",
+    "semantic_split": "experiments/splits/sem_001_scaffold_static_v1.json",
+    "label_manifest": "experiments/runs/SEM-001/label_manifest.json",
+    "training_images": 219,
+    "validation_images": 74,
+    "uses_only_semantic_training_cameras": true,
+    "uses_validation_rgb_or_labels": false,
+    "uses_guard_band": false,
+    "uses_unlabeled_rgb": false,
+    "uses_hidden_test_rgb_or_labels": false
+  },
+  "frozen_rgb": {
+    "backbone": "Scaffold-GS",
+    "upstream_commit": "59c833b56bbbf510f3f64d40f81721995caced66",
+    "rgb_experiment": "RGB-030-FULL",
+    "iteration": 30000,
+    "train_camera_count": 303,
+    "n_offsets": 10,
+    "appearance_camera_id": 0,
+    "coordinate_frame": "official_colmap_reference",
+    "pose_convention": "CAMERA_FROM_WORLD",
+    "official_to_model_sim3": "identity"
+  },
+  "conflict_diagnostic": {
+    "evidence_schema": "sem003_train_only_all_contributor_evidence_v1",
+    "contribution_definition": "Exact frozen RGB marginal r(g,p) multiplied by the official train-side one-hot label. The visibility adapter runs cumulative threshold=1 only to extract every contributor; it is not a supervision gate and discards/reweights no contributor.",
+    "eligibility_policy": {
+      "minimum_support_views": 3,
+      "minimum_background_fraction": 0.10,
+      "minimum_stay_cable_fraction": 0.10,
+      "maximum_protected_fraction": 0.05,
+      "conflict_quantile": 0.90
+    },
+    "conflict_formula": "C_bc = 2*min(E_background,E_stay_cable)/(E_background+E_stay_cable+epsilon)",
+    "selection_note": "The numerical threshold is the deterministic 90th percentile computed solely from eligible training anchors and is written to the external artifact/result before CTRL or candidate training starts."
+  }
+}

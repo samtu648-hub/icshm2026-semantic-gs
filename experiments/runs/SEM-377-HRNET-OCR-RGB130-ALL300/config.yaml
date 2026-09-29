@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "experiment_id": "SEM-377-HRNET-OCR-RGB130-ALL300",
+  "parent_experiment": "RGB-130-STANDARD-ALL400;SEM-371-STANDARD-ALL300;QUAL-007-BACKBONE-COMPARISON",
+  "git_commit": "working_tree_preexisting_changes_preserved",
+  "seed": 20260915,
+  "dataset_manifest": "data/manifests/contest_dataset_v1.json",
+  "split_id": "released_all400_rgb_all300_sem_v1",
+  "split_path": "outputs/quality/all_data/RGB-120-r2/split.json",
+  "rgb_input": "outputs/quality/backbone_comparison/standard/export/images; frozen RGB130 uint8 PNG; all400",
+  "label_input": "outputs/quality/all_data/SEM-370-r1/labels; all300 manually annotated five-class masks",
+  "method": "official HRNetV2-W48 + OCR",
+  "upstream": {
+    "semantic_repo": "https://github.com/HRNet/HRNet-Semantic-Segmentation.git",
+    "semantic_commit": "0bbb2880446ddff2d78f8dd7e8c4c610151d5a51",
+    "classification_repo": "https://github.com/HRNet/HRNet-Image-Classification.git",
+    "classification_commit": "f760c988482cdb8a1f69b10b219d669721144582",
+    "license": "MIT (semantic repository); MIT (classification repository)",
+    "weight": "HRNet_W48_C_ssld_pretrained.pth",
+    "weight_url": "https://github.com/HRNet/HRNet-Image-Classification/releases/download/PretrainedWeights/HRNet_W48_C_ssld_pretrained.pth"
+  },
+  "classes": ["background", "deck", "stay_cable", "tower", "foundation"],
+  "training": {
+    "crop_steps": 24000,
+    "optimizer_updates": 6000,
+    "crop": [768, 768],
+    "batch_size": 1,
+    "gradient_accumulation": 4,
+    "optimizer": "SGD momentum=0.9, weight_decay=0.0005",
+    "base_lr": 0.0033333333333333335,
+    "head_lr_multiplier": 10,
+    "schedule": "poly power=0.9",
+    "loss": "official auxiliary/main cross entropy [0.4, 1.0]",
+    "augmentation": "native random crop and horizontal flip only; no resize, multiscale, expert, fusion, postprocess",
+    "amp": "float16 GradScaler",
+    "official_single_gpu_adaptation": "BatchNorm2d replaces the repository SyncBatchNorm because upstream SyncBN requires DDP; architecture, OCR heads and all convolutional weights are otherwise official"
+  },
+  "evaluation_scope": "all300 training-view fit only; all100 unlabeled and 144-frame trajectory are qualitative only",
+  "quality_claim": null
+}
